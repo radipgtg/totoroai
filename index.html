@@ -281,8 +281,8 @@
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background: rgba(0,0,0,0.75);
-        backdrop-filter: blur(12px);
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(16px);
         display: none;
         align-items: center;
         justify-content: center;
@@ -293,62 +293,88 @@
     }
     .page-fullscreen .page-box {
         width: 100%;
-        max-width: 540px;
-        max-height: 92vh;
+        max-width: 580px;
+        max-height: 94vh;
         background: var(--glass-bg);
         backdrop-filter: blur(30px);
         border: 1px solid var(--glass-border);
-        border-radius: 2rem;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        border-radius: 2.5rem;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.6);
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
     .page-fullscreen .page-header {
-        padding: 1rem 1.5rem;
+        padding: 1.2rem 1.8rem;
         border-bottom: 1px solid var(--glass-border);
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-shrink: 0;
+        background: rgba(0,0,0,0.2);
     }
     .page-fullscreen .page-body {
         flex: 1;
         overflow-y: auto;
-        padding: 1.2rem 1.5rem;
+        padding: 1.8rem;
         display: flex;
         flex-direction: column;
-        gap: 0.8rem;
-        font-size: 0.85rem;
+        gap: 1rem;
+        font-size: 0.9rem;
     }
     .page-fullscreen .page-footer {
-        padding: 0.8rem 1.2rem 1.2rem;
+        padding: 1rem 1.8rem;
         border-top: 1px solid var(--glass-border);
         flex-shrink: 0;
-        background: var(--glass-bg);
+        background: rgba(0,0,0,0.15);
+        text-align: center;
+        font-size: 0.75rem;
+        opacity: 0.6;
     }
     .page-close-btn {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 2.6rem;
+        height: 2.6rem;
         border-radius: 50%;
-        background: var(--glass-bg);
+        background: rgba(255,255,255,0.08);
         border: 1px solid var(--glass-border);
         color: var(--text-primary);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         cursor: pointer;
         transition: 0.2s;
     }
     .page-close-btn:hover {
         border-color: var(--accent);
         color: var(--accent);
+        background: rgba(255,255,255,0.15);
+    }
+    .qris-image {
+        background: white;
+        padding: 1rem;
+        border-radius: 1.5rem;
+        display: inline-block;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .qris-image img {
+        width: 280px;
+        height: 280px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+    @media (max-width: 500px) {
+        .qris-image img { width: 200px; height: 200px; }
+        .page-fullscreen .page-body { padding: 1rem; }
     }
 </style>
 </head>
-
-   <body>
+   
+          <body>
 <div id="notification">
     <span>🌸 Halo! Welcome to Website Totoro AI ✨</span>
     <button class="close-btn" onclick="closeNotification()">&times;</button>
@@ -538,8 +564,8 @@
         Totoro Ai • Owner @radipgtg
     </div>
 </div>
-
-   <div id="aiChatModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+           
+           <div id="aiChatModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-md">
     <div class="chat-modal-box">
         <div class="chat-modal-header">
             <div class="flex items-center gap-2">
@@ -628,8 +654,8 @@
             <div class="glass-box p-4 rounded-2xl text-center"><div class="text-2xl font-extrabold text-amber-400">Fast</div><div class="text-xs opacity-70 mt-1 font-medium">Instant Process</div></div>
         </div>
     </section>
-    
-    <section class="space-y-6 animate-on-load delay-1">
+           
+           <section class="space-y-6 animate-on-load delay-1">
     <div class="text-center space-y-2">
         <h3 class="text-2xl font-extrabold tracking-tight">Katalog Produk Utama</h3>
         <p class="text-xs opacity-70 font-medium">Pilih pilihan yang ada di bawah untuk langsung terhubung ke WhatsApp atau melakukan pembayaran QRIS otomatis</p>
@@ -719,7 +745,6 @@
             </div>
         </div>
     </div>
-    
     <div id="catalog-am" class="catalog-slide space-y-6">
     <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Alight Motion Premium otomatis via QRIS. Pilih paket di bawah, bayar, dan akun langsung diproses instan!</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -787,8 +812,8 @@
         </div>
     </div>
 </div>
- 
-     <div id="catalog-extra" class="catalog-slide space-y-6">
+       
+           <div id="catalog-extra" class="catalog-slide space-y-6">
         <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Kamu males? Kami bantu install script, sampai sediakan source code bot Totoro AI yang siap pakai.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-box rounded-3xl p-6 space-y-4 animate-on-load delay-10">
@@ -892,7 +917,6 @@
         </div>
     </section>
 </div>
-
 <div id="paymentModal">
     <div class="chat-modal-box p-6 flex flex-col justify-between max-w-md h-auto">
         <div class="flex justify-between items-center border-b border-amber-500/20 pb-3">
@@ -925,7 +949,7 @@
 </footer>
 </main>
 
-   <div id="amOrderPage" class="page-fullscreen">
+<div id="amOrderPage" class="page-fullscreen">
     <div class="page-box">
         <div class="page-header">
             <h3 class="font-extrabold text-amber-400 text-sm" id="amPageTitle">🧾 Alight Motion Order</h3>
@@ -958,8 +982,8 @@
         </div>
     </div>
 </div>
-        
-         <script>
+     
+     <script>
     function switchCatalog(target) {
         document.querySelectorAll('.catalog-slide').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.catalog-tab').forEach(t => t.classList.remove('active'));
@@ -1058,150 +1082,149 @@
         }
         messages.scrollTop = messages.scrollHeight;
     }
+      
+      let activePaymentInterval = null;
 
-    let activePaymentInterval = null;
+async function createPayinInvoice(amount, onSuccessPaid) {
+    const bodyDiv = document.getElementById('paymentModalBody');
+    bodyDiv.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Sedang menyiapkan QRIS...</p>`;
+    document.getElementById('paymentModal').classList.add('open');
 
-    async function createPayinInvoice(amount, onSuccessPaid) {
-        const bodyDiv = document.getElementById('paymentModalBody');
-        bodyDiv.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Sedang menyiapkan QRIS...</p>`;
-        document.getElementById('paymentModal').classList.add('open');
+    try {
+        const response = await fetch('https://api.payin.biz.id/api/v2/create-transaksi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': 'G8EtAJfHPXEQn5Et'
+            },
+            body: JSON.stringify({
+                amount: amount,
+                payment_method: 'qris',
+                expired_minutes: 30
+            })
+        });
 
-        try {
-            const response = await fetch('https://api.payin.biz.id/api/v2/create-transaksi', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-KEY': 'G8EtAJfHPXEQn5Et'
-                },
-                body: JSON.stringify({
-                    amount: amount,
-                    payment_method: 'qris',
-                    expired_minutes: 30
-                })
-            });
+        const data = await response.json();
+        if (!data.success) {
+            bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Gagal: ${data.message || 'unknown error'}</p>`;
+            return;
+        }
 
-            const data = await response.json();
-            if (!data.success) {
-                bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Gagal: ${data.message || 'unknown error'}</p>`;
-                return;
-            }
+        const { reference, qr_url, total_to_pay, expired_at } = data.data;
 
-            const { reference, qr_url, total_to_pay, expired_at } = data.data;
-
-            let html = `
-                <div class="space-y-2">
-                    <p class="text-xs font-bold text-amber-300">ID Transaksi: <span class="font-mono">${reference}</span></p>
-                    <div class="bg-white p-2 rounded-2xl inline-block shadow-lg">
-                        <img src="${qr_url}" alt="QRIS" class="w-48 h-48 mx-auto object-contain" 
-                             onerror="this.style.display='none'; document.getElementById('qrisFallback').style.display='block';">
-                        <div id="qrisFallback" style="display:none; color:red; font-size:0.8rem;">
-                            ❌ Gagal muat, <a href="${qr_url}" target="_blank" class="underline text-sky-400">klik lihat QRIS</a>
-                        </div>
+        let html = `
+            <div class="space-y-2">
+                <p class="text-xs font-bold text-amber-300">ID Transaksi: <span class="font-mono">${reference}</span></p>
+                <div class="bg-white p-2 rounded-2xl inline-block shadow-lg">
+                    <img src="${qr_url}" alt="QRIS" class="w-48 h-48 mx-auto object-contain" 
+                         onerror="this.style.display='none'; document.getElementById('qrisFallback').style.display='block';">
+                    <div id="qrisFallback" style="display:none; color:red; font-size:0.8rem;">
+                        ❌ Gagal muat, <a href="${qr_url}" target="_blank" class="underline text-sky-400">klik lihat QRIS</a>
                     </div>
-                    <p class="text-sm font-extrabold text-amber-400">Total Bayar: Rp${parseFloat(total_to_pay).toLocaleString('id-ID')}</p>
-                    <p class="text-[10px] opacity-70">Berakhir: ${expired_at || 'N/A'}</p>
-                    <p class="text-[11px] text-amber-300 mt-2">⏳ Menunggu pembayaran...</p>
                 </div>
-            `;
-            bodyDiv.innerHTML = html;
+                <p class="text-sm font-extrabold text-amber-400">Total Bayar: Rp${parseFloat(total_to_pay).toLocaleString('id-ID')}</p>
+                <p class="text-[10px] opacity-70">Berakhir: ${expired_at || 'N/A'}</p>
+                <p class="text-[11px] text-amber-300 mt-2">⏳ Menunggu pembayaran...</p>
+            </div>
+        `;
+        bodyDiv.innerHTML = html;
 
-            if (activePaymentInterval) clearInterval(activePaymentInterval);
-            activePaymentInterval = setInterval(async () => {
-                try {
-                    const statusRes = await fetch(`https://api.payin.biz.id/api/v2/cek-status?reference=${reference}`, {
-                        headers: { 'X-API-KEY': 'G8EtAJfHPXEQn5Et' }
-                    });
-                    const statusData = await statusRes.json();
-                    if (statusData.success && statusData.data.status === 'success') {
-                        clearInterval(activePaymentInterval);
-                        closePaymentModal();
-                        onSuccessPaid();
-                    } else if (statusData.data.status === 'expired' || statusData.data.status === 'failed') {
-                        clearInterval(activePaymentInterval);
-                        bodyDiv.innerHTML = `<p class="text-xs text-red-400">⏰ Transaksi ${statusData.data.status}.</p>`;
-                    }
-                } catch (e) { console.error(e); }
-            }, 3000);
+        if (activePaymentInterval) clearInterval(activePaymentInterval);
+        activePaymentInterval = setInterval(async () => {
+            try {
+                const statusRes = await fetch(`https://api.payin.biz.id/api/v2/cek-status?reference=${reference}`, {
+                    headers: { 'X-API-KEY': 'G8EtAJfHPXEQn5Et' }
+                });
+                const statusData = await statusRes.json();
+                if (statusData.success && statusData.data.status === 'success') {
+                    clearInterval(activePaymentInterval);
+                    closePaymentModal();
+                    onSuccessPaid();
+                } else if (statusData.data.status === 'expired' || statusData.data.status === 'failed') {
+                    clearInterval(activePaymentInterval);
+                    bodyDiv.innerHTML = `<p class="text-xs text-red-400">⏰ Transaksi ${statusData.data.status}.</p>`;
+                }
+            } catch (e) { console.error(e); }
+        }, 3000);
 
-        } catch (err) {
-            console.error(err);
-            bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Error: ${err.message}</p>`;
-        }
+    } catch (err) {
+        console.error(err);
+        bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Error: ${err.message}</p>`;
     }
+}
 
-    function startAmBulkOrder() {
-        const amount = parseInt(document.getElementById('amBulkAmount').value) || 10;
-        if (amount < 10) { alert("Minimal pembelian 10 akun!"); return; }
-        if (amount > 100) { alert("Maksimal 100 akun!"); return; }
-        const url = window.location.href.split('?')[0] + '?action=am-bulk&amount=' + amount;
-        window.open(url, '_blank');
+function startAmBulkOrder() {
+    const amount = parseInt(document.getElementById('amBulkAmount').value) || 10;
+    if (amount < 10) { alert("Minimal pembelian 10 akun!"); return; }
+    if (amount > 100) { alert("Maksimal 100 akun!"); return; }
+    const url = window.location.href.split('?')[0] + '?action=am-bulk&amount=' + amount;
+    window.open(url, '_blank');
+}
+
+function startAmBuyerOrder() {
+    const url = window.location.href.split('?')[0] + '?action=am-buyer';
+    window.open(url, '_blank');
+}
+
+function startAmSellerOrder() {
+    const url = window.location.href.split('?')[0] + '?action=am-seller';
+    window.open(url, '_blank');
+}
+
+function startAmResellerOrder(paket, harga) {
+    const url = window.location.href.split('?')[0] + `?action=am-reseller&paket=${encodeURIComponent(paket)}&harga=${harga}`;
+    window.open(url, '_blank');
+}
+
+function closeAmPage() {
+    document.getElementById('amOrderPage').classList.remove('open');
+}
+
+function closeAiPage() {
+    document.getElementById('aiChatPage').classList.remove('open');
+}
+
+const NDXHS_KEY = "RADIPGTG";
+
+function initPageFromParams() {
+    const params = new URLSearchParams(window.location.search);
+    const action = params.get('action');
+
+    if (!action) return;
+
+    document.querySelector('main')?.classList.add('opacity-0', 'pointer-events-none');
+    document.querySelector('header')?.classList.add('opacity-0', 'pointer-events-none');
+    document.querySelector('footer')?.classList.add('opacity-0', 'pointer-events-none');
+    document.querySelectorAll('.deco, .sparkle-container').forEach(el => el.style.display = 'none');
+
+    if (action === 'am-bulk') {
+        const amount = parseInt(params.get('amount')) || 10;
+        document.getElementById('amOrderPage').classList.add('open');
+        document.getElementById('amPageTitle').innerText = '📦 AM Bulk (' + amount + ' akun)';
+        processAmBulk(amount);
     }
-
-    function startAmBuyerOrder() {
-        const url = window.location.href.split('?')[0] + '?action=am-buyer';
-        window.open(url, '_blank');
+    else if (action === 'am-buyer') {
+        document.getElementById('amOrderPage').classList.add('open');
+        document.getElementById('amPageTitle').innerText = '✨ AM Premium Buyer';
+        processAmBuyer();
     }
-
-    function startAmSellerOrder() {
-        const url = window.location.href.split('?')[0] + '?action=am-seller';
-        window.open(url, '_blank');
+    else if (action === 'am-seller') {
+        document.getElementById('amOrderPage').classList.add('open');
+        document.getElementById('amPageTitle').innerText = '🚀 AM Seller (1 akun)';
+        processAmSeller();
     }
-
-    function startAmResellerOrder(paket, harga) {
-        const url = window.location.href.split('?')[0] + `?action=am-reseller&paket=${encodeURIComponent(paket)}&harga=${harga}`;
-        window.open(url, '_blank');
+    else if (action === 'am-reseller') {
+        const paket = params.get('paket') || 'Paket';
+        const harga = parseInt(params.get('harga')) || 0;
+        document.getElementById('amOrderPage').classList.add('open');
+        document.getElementById('amPageTitle').innerText = '🛍️ Reseller AM (' + paket + ')';
+        processAmReseller(paket, harga);
     }
-
-    function closeAmPage() {
-        document.getElementById('amOrderPage').classList.remove('open');
+    else if (action === 'ai-chat') {
+        document.getElementById('aiChatPage').classList.add('open');
     }
-
-    function closeAiPage() {
-        document.getElementById('aiChatPage').classList.remove('open');
-    }
-
-    const NDXHS_KEY = "RADIPGTG";
-
-    function initPageFromParams() {
-        const params = new URLSearchParams(window.location.search);
-        const action = params.get('action');
-
-        if (!action) return;
-
-        document.querySelector('main')?.classList.add('opacity-0', 'pointer-events-none');
-        document.querySelector('header')?.classList.add('opacity-0', 'pointer-events-none');
-        document.querySelector('footer')?.classList.add('opacity-0', 'pointer-events-none');
-        document.querySelectorAll('.deco, .sparkle-container').forEach(el => el.style.display = 'none');
-
-        if (action === 'am-bulk') {
-            const amount = parseInt(params.get('amount')) || 10;
-            document.getElementById('amOrderPage').classList.add('open');
-            document.getElementById('amPageTitle').innerText = '📦 AM Bulk (' + amount + ' akun)';
-            processAmBulk(amount);
-        }
-        else if (action === 'am-buyer') {
-            document.getElementById('amOrderPage').classList.add('open');
-            document.getElementById('amPageTitle').innerText = '✨ AM Premium Buyer';
-            processAmBuyer();
-        }
-        else if (action === 'am-seller') {
-            document.getElementById('amOrderPage').classList.add('open');
-            document.getElementById('amPageTitle').innerText = '🚀 AM Seller (1 akun)';
-            processAmSeller();
-        }
-        else if (action === 'am-reseller') {
-            const paket = params.get('paket') || 'Paket';
-            const harga = parseInt(params.get('harga')) || 0;
-            document.getElementById('amOrderPage').classList.add('open');
-            document.getElementById('amPageTitle').innerText = '🛍️ Reseller AM (' + paket + ')';
-            processAmReseller(paket, harga);
-        }
-        else if (action === 'ai-chat') {
-            document.getElementById('aiChatPage').classList.add('open');
-        }
-    }
-
-    async function processAmBulk(amount) {
+}
+        async function processAmBulk(amount) {
         const body = document.getElementById('amPageBody');
         const price = amount * 300;
         createPayinInvoiceInContainer(price, 'amPageBody', async () => {
@@ -1251,17 +1274,18 @@
             const { reference, qr_url, total_to_pay, expired_at } = data.data;
             let html = `
                 <div class="space-y-2">
-                    <p class="text-xs font-bold text-amber-300">ID: <span class="font-mono">${reference}</span></p>
-                    <div class="bg-white p-2 rounded-2xl inline-block shadow-lg">
-                        <img src="${qr_url}" alt="QRIS" class="w-48 h-48 mx-auto object-contain"
+                    <p class="text-xs font-bold text-amber-300">ID Transaksi: <span class="font-mono">${reference}</span></p>
+                    <div class="qris-image">
+                        <img src="${qr_url}" alt="QRIS" class="w-64 h-64 object-contain"
                              onerror="this.style.display='none'; document.getElementById('qrisFallbackPage').style.display='block';">
-                        <div id="qrisFallbackPage" style="display:none; color:red; font-size:0.8rem;">
+                        <div id="qrisFallbackPage" style="display:none; color:red; font-size:0.8rem; text-align:center;">
                             ❌ Gagal muat, <a href="${qr_url}" target="_blank" class="underline text-sky-400">klik lihat QRIS</a>
                         </div>
                     </div>
-                    <p class="text-sm font-extrabold text-amber-400">Total: Rp${parseFloat(total_to_pay).toLocaleString('id-ID')}</p>
+                    <p class="text-sm font-extrabold text-amber-400">Total Bayar: Rp${parseFloat(total_to_pay).toLocaleString('id-ID')}</p>
                     <p class="text-[10px] opacity-70">Berakhir: ${expired_at || 'N/A'}</p>
                     <p class="text-[11px] text-amber-300">⏳ Menunggu pembayaran...</p>
+                    <p class="text-[10px] opacity-50">Klik <span class="text-red-400">&times;</span> di pojok kanan atas untuk batalkan transaksi</p>
                 </div>
             `;
             body.innerHTML = html;
@@ -1277,7 +1301,7 @@
                         onSuccess();
                     } else if (statusData.data.status === 'expired' || statusData.data.status === 'failed') {
                         clearInterval(interval);
-                        body.innerHTML = `<p class="text-xs text-red-400">⏰ Transaksi ${statusData.data.status}.</p>`;
+                        body.innerHTML = `<p class="text-xs text-red-400">⏰ Transaksi ${statusData.data.status}.</p><button onclick="closeAmPage()" class="mt-4 action-btn py-2 px-4 rounded-xl text-xs">Tutup</button>`;
                     }
                 })
                 .catch(() => {});
@@ -1303,8 +1327,8 @@
             let listHtml = emailList.map((m, idx) => `<div class="p-2 rounded bg-white/5 font-mono text-[11px]">${idx+1}. ${m}</div>`).join('');
             body.innerHTML = `
                 <div class="space-y-3">
-                    <p class="text-xs font-bold text-emerald-400">✅ Berhasil! (${emailList.length} akun)</p>
-                    <div class="max-h-60 overflow-y-auto space-y-1">${listHtml}</div>
+                    <p class="text-xs font-bold text-emerald-400">✅ Pembayaran Berhasil! (${emailList.length} akun)</p>
+                    <div class="max-h-60 overflow-y-auto space-y-1 bg-black/20 p-2 rounded-xl">${listHtml}</div>
                     <p class="text-[10px] opacity-70">Salin email untuk login ke Alight Motion.</p>
                     <button onclick="closeAmPage()" class="w-full action-btn py-2.5 rounded-xl text-xs font-bold">Tutup</button>
                 </div>
@@ -1318,7 +1342,8 @@
         const body = document.getElementById('amPageBody');
         body.innerHTML = `
             <div class="space-y-3">
-                <p class="text-xs opacity-80">Pembayaran sukses! Masukkan email kamu untuk verifikasi:</p>
+                <p class="text-xs font-bold text-emerald-400">✅ Pembayaran Berhasil!</p>
+                <p class="text-xs opacity-80">Masukkan email kamu untuk verifikasi:</p>
                 <input type="email" id="buyerEmailPage" placeholder="email@generator.email" class="w-full bg-white/5 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-white outline-none">
                 <button onclick="submitBuyerEmailPage()" class="w-full action-btn py-2.5 rounded-xl text-xs font-bold">Kirim Link Verifikasi</button>
             </div>
