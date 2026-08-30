@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totoro Ai — Official Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] } } }
+    }
+</script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ===== 20 TEMA LENGKAP ===== */
+    :root {
+        --bg1: #1A312C; --bg2: #428475; --bg3: #89D7B7;
+        --text-primary: #E8F0EC; --text-secondary: #B0C8C0; --text-light: #8AA89A;
+        --glass-bg: rgba(26,49,44,0.75); --glass-border: rgba(137,215,183,0.25);
+        --glass-border-hover: rgba(137,215,183,0.5); --accent: #89D7B7; --accent-light: #A8E8CC;
+        --sparkle-color: #89D7B7; --rating-star: #89D7B7; --header-bg: #0A1A16;
+    }
+    .theme-forest { --bg1:#1A312C;--bg2:#428475;--bg3:#89D7B7;--text-primary:#E8F0EC;--text-secondary:#B0C8C0;--text-light:#8AA89A;--glass-bg:rgba(26,49,44,0.75);--glass-border:rgba(137,215,183,0.25);--glass-border-hover:rgba(137,215,183,0.5);--accent:#89D7B7;--accent-light:#A8E8CC;--sparkle-color:#89D7B7;--rating-star:#89D7B7;--header-bg:#0A1A16; }
+    .theme-earth { --bg1:#A56F63;--bg2:#D99B7F;--bg3:#F2EFE7;--text-primary:#2A1E1A;--text-secondary:#5A4A42;--text-light:#8A7A72;--glass-bg:rgba(245,235,225,0.75);--glass-border:rgba(165,111,99,0.25);--glass-border-hover:rgba(165,111,99,0.5);--accent:#A56F63;--accent-light:#C99B8F;--sparkle-color:#D99B7F;--rating-star:#A56F63;--header-bg:#3A2822; }
+    .theme-mountain { --bg1:#0F3040;--bg2:#464858;--bg3:#C8DFDB;--text-primary:#E8EEF0;--text-secondary:#A0B0B8;--text-light:#788A90;--glass-bg:rgba(15,48,64,0.75);--glass-border:rgba(200,223,219,0.25);--glass-border-hover:rgba(200,223,219,0.5);--accent:#C8DFDB;--accent-light:#E0F0EC;--sparkle-color:#C8DFDB;--rating-star:#C8DFDB;--header-bg:#081A22; }
+    .theme-river { --bg1:#273338;--bg2:#2B5748;--bg3:#9CB080;--text-primary:#E8F0EA;--text-secondary:#A0B8A8;--text-light:#788A78;--glass-bg:rgba(39,51,56,0.75);--glass-border:rgba(156,176,128,0.25);--glass-border-hover:rgba(156,176,128,0.5);--accent:#9CB080;--accent-light:#B8CCA0;--sparkle-color:#9CB080;--rating-star:#9CB080;--header-bg:#18222A; }
+    .theme-oceanrise { --bg1:#66A3BF;--bg2:#E2B4BD;--bg3:#FFF5F5;--text-primary:#1A2A30;--text-secondary:#4A5A62;--text-light:#7A8A92;--glass-bg:rgba(240,245,248,0.75);--glass-border:rgba(102,163,191,0.25);--glass-border-hover:rgba(102,163,191,0.5);--accent:#66A3BF;--accent-light:#90C8D8;--sparkle-color:#66A3BF;--rating-star:#66A3BF;--header-bg:#1A3A48; }
+    .theme-cotton { --bg1:#FFC3A0;--bg2:#FFAFBD;--bg3:#C9E4DE;--text-primary:#2A1A1A;--text-secondary:#5A3A3A;--text-light:#8A5A5A;--glass-bg:rgba(255,245,240,0.75);--glass-border:rgba(255,175,189,0.25);--glass-border-hover:rgba(255,175,189,0.5);--accent:#FFAFBD;--accent-light:#FFD0D8;--sparkle-color:#FFAFBD;--rating-star:#FFAFBD;--header-bg:#3A1A1A; }
+    .theme-twilight { --bg1:#FED18C;--bg2:#FEA8A8;--bg3:#D0A1FF;--text-primary:#2A1A30;--text-secondary:#5A3A5A;--text-light:#8A5A8A;--glass-bg:rgba(250,240,245,0.75);--glass-border:rgba(208,161,255,0.25);--glass-border-hover:rgba(208,161,255,0.5);--accent:#D0A1FF;--accent-light:#E8C8FF;--sparkle-color:#D0A1FF;--rating-star:#D0A1FF;--header-bg:#2A1A3A; }
+    .theme-matchalat { --bg1:#E3E7D3;--bg2:#BDC7A2;--bg3:#97A97C;--text-primary:#1A2A1A;--text-secondary:#3A4A3A;--text-light:#6A7A6A;--glass-bg:rgba(235,240,225,0.75);--glass-border:rgba(151,169,124,0.25);--glass-border-hover:rgba(151,169,124,0.5);--accent:#97A97C;--accent-light:#B8C8A0;--sparkle-color:#97A97C;--rating-star:#97A97C;--header-bg:#1A2A1A; }
+    .theme-lilac { --bg1:#E8DBFC;--bg2:#F8C8DC;--bg3:#B3C5FF;--text-primary:#1A1A2A;--text-secondary:#3A3A5A;--text-light:#6A6A8A;--glass-bg:rgba(240,235,250,0.75);--glass-border:rgba(179,197,255,0.25);--glass-border-hover:rgba(179,197,255,0.5);--accent:#B3C5FF;--accent-light:#D0DCFF;--sparkle-color:#B3C5FF;--rating-star:#B3C5FF;--header-bg:#1A1A3A; }
+    .theme-vanilla { --bg1:#FFF5EB;--bg2:#FFE3D1;--bg3:#FFCDB2;--text-primary:#2A1A10;--text-secondary:#5A3A28;--text-light:#8A6A58;--glass-bg:rgba(255,248,240,0.75);--glass-border:rgba(255,205,178,0.25);--glass-border-hover:rgba(255,205,178,0.5);--accent:#FFCDB2;--accent-light:#FFE0D0;--sparkle-color:#FFCDB2;--rating-star:#FFCDB2;--header-bg:#2A1A10; }
+    .theme-peachcream { --bg1:#FFE8D6;--bg2:#FFD9C0;--bg3:#FCE4D6;--text-primary:#3A2A20;--text-secondary:#5A4A3A;--text-light:#8A7A6A;--glass-bg:rgba(255,248,240,0.75);--glass-border:rgba(255,200,180,0.25);--glass-border-hover:rgba(255,200,180,0.5);--accent:#E8B89A;--accent-light:#F0D0BA;--sparkle-color:#F0D0BA;--rating-star:#E8B89A;--header-bg:#2A1A10; }
+    .theme-mistyrose { --bg1:#FDE2E4;--bg2:#FAD2D8;--bg3:#F5C8D0;--text-primary:#3A2A2A;--text-secondary:#5A3A3A;--text-light:#8A5A5A;--glass-bg:rgba(250,235,240,0.75);--glass-border:rgba(240,180,190,0.25);--glass-border-hover:rgba(240,180,190,0.5);--accent:#DBA0A8;--accent-light:#E8B8C0;--sparkle-color:#E8B8C0;--rating-star:#DBA0A8;--header-bg:#2A1A1A; }
+    .theme-palelavender { --bg1:#E8E0F0;--bg2:#D8D0E8;--bg3:#C8C0E0;--text-primary:#2A2A3A;--text-secondary:#4A4A5A;--text-light:#7A7A8A;--glass-bg:rgba(235,230,245,0.75);--glass-border:rgba(200,190,220,0.25);--glass-border-hover:rgba(200,190,220,0.5);--accent:#B0A0C8;--accent-light:#C8B8D8;--sparkle-color:#C8B8D8;--rating-star:#B0A0C8;--header-bg:#1A1A2A; }
+    .theme-seafoam { --bg1:#D4ECE8;--bg2:#C0E0DA;--bg3:#A8D0CA;--text-primary:#1A2A2A;--text-secondary:#3A4A4A;--text-light:#6A7A7A;--glass-bg:rgba(220,240,235,0.75);--glass-border:rgba(160,210,200,0.25);--glass-border-hover:rgba(160,210,200,0.5);--accent:#80B8AE;--accent-light:#A0D0C6;--sparkle-color:#A0D0C6;--rating-star:#80B8AE;--header-bg:#0A1A1A; }
+    .theme-buttercream { --bg1:#F5F0E6;--bg2:#EDE4D8;--bg3:#E0D4C8;--text-primary:#2A2A20;--text-secondary:#4A4A3A;--text-light:#7A7A6A;--glass-bg:rgba(245,240,235,0.75);--glass-border:rgba(210,200,180,0.25);--glass-border-hover:rgba(210,200,180,0.5);--accent:#C8B8A0;--accent-light:#D8C8B0;--sparkle-color:#D8C8B0;--rating-star:#C8B8A0;--header-bg:#1A1A10; }
+    .theme-blushnude { --bg1:#FCE8E0;--bg2:#F5D8D0;--bg3:#ECC8C0;--text-primary:#3A2A28;--text-secondary:#5A4A48;--text-light:#8A7A78;--glass-bg:rgba(250,240,235,0.75);--glass-border:rgba(230,190,180,0.25);--glass-border-hover:rgba(230,190,180,0.5);--accent:#D8A898;--accent-light:#E8B8A8;--sparkle-color:#E8B8A8;--rating-star:#D8A898;--header-bg:#2A1A18; }
+    .theme-skycloud { --bg1:#E0ECF5;--bg2:#D0E0F0;--bg3:#C0D4E8;--text-primary:#1A2A3A;--text-secondary:#3A4A5A;--text-light:#6A7A8A;--glass-bg:rgba(230,240,248,0.75);--glass-border:rgba(180,200,220,0.25);--glass-border-hover:rgba(180,200,220,0.5);--accent:#90B0C8;--accent-light:#B0C8D8;--sparkle-color:#B0C8D8;--rating-star:#90B0C8;--header-bg:#1A2A3A; }
+    .theme-mintvanilla { --bg1:#E8F0E0;--bg2:#D8E8D0;--bg3:#C8DCC0;--text-primary:#1A2A1A;--text-secondary:#3A4A3A;--text-light:#6A7A6A;--glass-bg:rgba(235,245,230,0.75);--glass-border:rgba(180,210,180,0.25);--glass-border-hover:rgba(180,210,180,0.5);--accent:#A0B890;--accent-light:#B8D0A8;--sparkle-color:#B8D0A8;--rating-star:#A0B890;--header-bg:#1A2A1A; }
+    .theme-dustyrose { --bg1:#E8D8D8;--bg2:#DCC8C8;--bg3:#D0B8B8;--text-primary:#3A2A2A;--text-secondary:#5A4A4A;--text-light:#8A7A7A;--glass-bg:rgba(240,230,230,0.75);--glass-border:rgba(200,170,170,0.25);--glass-border-hover:rgba(200,170,170,0.5);--accent:#C09898;--accent-light:#D0B0B0;--sparkle-color:#D0B0B0;--rating-star:#C09898;--header-bg:#2A1A1A; }
+    .theme-warmbeige { --bg1:#F2ECE4;--bg2:#E8E0D8;--bg3:#DCD4CC;--text-primary:#2A2A22;--text-secondary:#4A4A42;--text-light:#7A7A72;--glass-bg:rgba(245,240,235,0.75);--glass-border:rgba(210,200,190,0.25);--glass-border-hover:rgba(210,200,190,0.5);--accent:#C8B8A8;--accent-light:#D8C8B8;--sparkle-color:#D8C8B8;--rating-star:#C8B8A8;--header-bg:#1A1A12; }
+
+    /* ===== BASE ===== */
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: linear-gradient(145deg, var(--bg1), var(--bg2), var(--bg3));
+        color: var(--text-primary);
+        min-height: 100vh;
+        overflow-x: hidden;
+        transition: background 1.2s ease, color 0.8s ease;
+        margin: 0; padding: 0;
+    }
+
+    /* ===== ANIMASI SLIDE UP FADE ===== */
+    .animate-on-load {
+        opacity: 0;
+        transform: translateY(50px) scale(0.96);
+        animation: slideUpFade 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .animate-on-load.delay-1 { animation-delay: 0.1s; }
+    .animate-on-load.delay-2 { animation-delay: 0.2s; }
+    .animate-on-load.delay-3 { animation-delay: 0.3s; }
+    .animate-on-load.delay-4 { animation-delay: 0.4s; }
+    .animate-on-load.delay-5 { animation-delay: 0.5s; }
+    .animate-on-load.delay-6 { animation-delay: 0.6s; }
+    .animate-on-load.delay-7 { animation-delay: 0.7s; }
+    .animate-on-load.delay-8 { animation-delay: 0.8s; }
+    .animate-on-load.delay-9 { animation-delay: 0.9s; }
+    .animate-on-load.delay-10 { animation-delay: 1.0s; }
+
+    @keyframes slideUpFade {
+        0% { opacity: 0; transform: translateY(50px) scale(0.96); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ===== NOTIF ===== */
+    #notification {
+        position: fixed; top: 80px; z-index: 1000;
+        background: var(--glass-bg); backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        padding: 12px 24px; border-radius: 2rem 1rem 2rem 1rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        font-weight: 600; font-size: 0.95rem; color: var(--text-primary);
+        display: flex; align-items: center; gap: 12px; max-width: 90%; white-space: nowrap;
+        animation: notifSlide 7s ease forwards;
+        left: -120%;
+    }
+    @keyframes notifSlide {
+        0% { left: -120%; opacity: 0; }
+        15% { left: 20px; opacity: 1; }
+        75% { left: 20px; opacity: 1; }
+        90% { left: calc(100% + 20px); opacity: 0; }
+        100% { left: calc(100% + 20px); opacity: 0; }
+    }
+    #notification .close-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem; padding: 0 4px; transition: transform 0.2s; }
+    #notification .close-btn:hover { transform: scale(1.2); }
+
+    /* ===== SPARKLE ===== */
+    .sparkle-container { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .sparkle {
+        position: absolute; border-radius: 50%;
+        background: var(--sparkle-color); box-shadow: 0 0 12px var(--sparkle-color);
+        animation: sparkleFloat 8s ease-in-out infinite alternate;
+        opacity: 0.3;
+    }
+    @keyframes sparkleFloat {
+        0% { transform: translate(0,0) scale(0.2); opacity:0.1; }
+        50% { opacity:0.7; transform: translate(70px,-50px) scale(1.4); }
+        100% { transform: translate(-50px,60px) scale(0.4); opacity:0.2; }
+    }
+
+    /* ===== HIASAN ===== */
+    .deco {
+        position: fixed; pointer-events: none; z-index: 0;
+        font-size: 2.6rem; opacity: 0.08;
+        animation: floatDeco 24s ease-in-out infinite alternate;
+    }
+    .deco:nth-child(1) { top:4%; left:3%; animation-duration:26s; }
+    .deco:nth-child(2) { top:8%; right:4%; animation-duration:22s; animation-delay:1s; }
+    .deco:nth-child(3) { top:50%; left:2%; animation-duration:28s; animation-delay:0.5s; }
+    .deco:nth-child(4) { top:55%; right:2%; animation-duration:24s; animation-delay:2s; }
+    .deco:nth-child(5) { bottom:6%; left:3%; animation-duration:30s; animation-delay:0.8s; }
+    .deco:nth-child(6) { bottom:10%; right:4%; animation-duration:22s; animation-delay:1.5s; }
+    .deco:nth-child(7) { bottom:3%; left:50%; transform:translateX(-50%); animation-duration:32s; animation-delay:2.5s; }
+    .deco:nth-child(8) { top:28%; left:50%; transform:translateX(-50%); animation-duration:26s; animation-delay:1.2s; }
+    .deco:nth-child(9) { top:75%; left:6%; animation-duration:20s; animation-delay:0.3s; }
+    .deco:nth-child(10) { bottom:30%; right:5%; animation-duration:28s; animation-delay:1.8s; }
+    .deco:nth-child(11) { top:15%; left:8%; animation-duration:24s; animation-delay:0.6s; }
+    .deco:nth-child(12) { bottom:18%; right:8%; animation-duration:22s; animation-delay:2.2s; }
+    .deco:nth-child(13) { top:35%; left:12%; animation-duration:27s; animation-delay:0.4s; }
+    .deco:nth-child(14) { bottom:22%; right:12%; animation-duration:23s; animation-delay:1.1s; }
+    @keyframes floatDeco {
+        0% { transform: translate(0,0) rotate(0deg) scale(1); }
+        100% { transform: translate(80px,-90px) rotate(28deg) scale(1.15); }
+    }
+
+    /* ===== GLASS & BUTTON ===== */
+    .glass-box {
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+        transition: all 0.35s ease;
+    }
+    .glass-box:hover {
+        border-color: var(--glass-border-hover);
+        box-shadow: 0 0 40px var(--glass-border-hover);
+    }
+    .glass-glow {
+        background: linear-gradient(135deg, rgba(var(--bg1),0.15), rgba(var(--bg2),0.10));
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 0 45px var(--glass-border-hover);
+    }
+    .action-btn {
+        background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 25px var(--glass-border-hover);
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+    .action-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 35px var(--glass-border-hover);
+        filter: brightness(1.05);
+    }
+
+    .catalog-tab.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        color: var(--text-primary);
+        box-shadow: 0 0 30px var(--glass-border-hover);
+        border-color: transparent;
+        font-weight: 800;
+    }
+    .catalog-slide {
+        display: none;
+        animation: fadeIn 0.5s ease forwards;
+    }
+    .catalog-slide.active { display: block; }
+    @keyframes fadeIn {
+        from { opacity:0; transform:translateY(15px); }
+        to { opacity:1; transform:translateY(0); }
+    }
+
+    /* ===== SIDEBAR ===== */
+    #sidebarDrawer {
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sidebarDrawer.open { transform: translateX(0); }
+
+    .theme-select-btn, .ui-select-btn {
+        display: inline-block; padding: 0.35rem 0.8rem; border-radius: 2rem;
+        font-size: 0.6rem; font-weight: 700;
+        border: 2px solid var(--glass-border);
+        background: var(--glass-bg);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center; min-width: 60px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .theme-select-btn:hover, .ui-select-btn:hover {
+        transform: scale(1.05);
+        border-color: var(--accent);
+        background: var(--glass-border-hover);
+    }
+    .theme-select-btn.active-theme, .ui-select-btn.active-ui {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--text-primary);
+        box-shadow: 0 0 20px var(--glass-border-hover);
+    }
+
+    /* ===== UI VARIANTS ===== */
+    .ui-card .glass-box { border-radius: 0.5rem; border-width: 2px; background: var(--glass-bg); box-shadow: 0 8px 0 var(--glass-border); }
+    .ui-card .action-btn { border-radius: 0; text-transform: uppercase; letter-spacing: 2px; }
+    .ui-card .catalog-tab { border-radius: 0; }
+    .ui-minimal .glass-box { background: rgba(255,255,255,0.02); border: none; backdrop-filter: none; box-shadow: none; }
+    .ui-minimal .action-btn { background: transparent; border: 2px solid var(--accent); color: var(--text-primary); }
+    .ui-minimal .action-btn:hover { background: var(--accent); color: var(--text-primary); }
+    .ui-minimal .catalog-tab { background: transparent; border: 2px solid transparent; }
+    .ui-minimal .catalog-tab.active { background: var(--accent); border-color: var(--accent); }
+    .ui-playful .glass-box { border-radius: 3rem 0.5rem 3rem 0.5rem; border-color: var(--accent); }
+    .ui-playful .action-btn { border-radius: 3rem 0.5rem 3rem 0.5rem; background: linear-gradient(45deg, var(--accent), var(--accent-light)); }
+    .ui-playful .catalog-tab { border-radius: 2rem 0.3rem 2rem 0.3rem; }
+    .ui-playful .catalog-tab.active { border-radius: 2rem 0.3rem 2rem 0.3rem; }
+
+    /* ===== MODAL ===== */
+    #aiChatModal, #paymentModal, #amInteractModal {
+        display: none;
+        position: fixed; inset: 0; z-index: 999;
+        background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+        align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    #aiChatModal.open, #paymentModal.open, #amInteractModal.open {
+        display: flex; animation: modalFade 0.3s ease;
+    }
+    @keyframes modalFade {
+        from { opacity:0; transform:scale(0.95); }
+        to { opacity:1; transform:scale(1); }
+    }
+    .chat-modal-box {
+        width:100%; max-width:520px; max-height:90vh;
+        display:flex; flex-direction:column;
+        background:var(--glass-bg); backdrop-filter:blur(30px);
+        border:1px solid var(--glass-border); border-radius:2rem;
+        box-shadow:0 30px 80px rgba(0,0,0,0.3); overflow:hidden;
+    }
+    .chat-modal-header {
+        padding:1rem 1.5rem; border-bottom:1px solid var(--glass-border);
+        display:flex; justify-content:space-between; align-items:center; flex-shrink:0;
+    }
+    .chat-messages { flex:1; overflow-y:auto; padding:1rem 1.2rem; display:flex; flex-direction:column; gap:0.6rem; font-size:0.85rem; }
+    .chat-messages .bot-msg { background:rgba(var(--bg1),0.15); border-left:3px solid var(--accent); padding:0.7rem 1rem; border-radius:1rem 1rem 1rem 0.25rem; color:var(--text-primary); align-self:flex-start; max-width:85%; }
+    .chat-messages .user-msg { background:linear-gradient(135deg, var(--accent), var(--accent-light)); color:var(--text-primary); padding:0.7rem 1rem; border-radius:1rem 1rem 0.25rem 1rem; align-self:flex-end; max-width:85%; font-weight:500; }
+    .chat-input-area {
+        padding:0.8rem 1.2rem 1.2rem; border-top:1px solid var(--glass-border);
+        display:flex; gap:0.6rem; flex-shrink:0; background:var(--glass-bg);
+    }
+    .chat-input-area input {
+        flex:1; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border);
+        border-radius:2rem; padding:0.6rem 1.2rem; font-size:0.85rem;
+        color:var(--text-primary); outline:none; transition:border 0.2s;
+    }
+    .chat-input-area input:focus { border-color:var(--accent); }
+    .chat-input-area button {
+        background:linear-gradient(135deg, var(--accent), var(--accent-light));
+        border:none; border-radius:2rem; padding:0.6rem 1.2rem;
+        font-weight:700; color:var(--text-primary); cursor:pointer; transition:all 0.2s; font-size:0.85rem;
+    }
+
+    .rating-stars i { color:var(--rating-star); text-shadow:0 0 12px var(--rating-star); margin-right:2px; font-size:1.1rem; }
+    .rating-badge {
+        background:var(--glass-bg); backdrop-filter:blur(8px);
+        border:1px solid var(--glass-border); border-radius:2rem;
+        padding:0.8rem 1.2rem 1.2rem; border-top:1px solid var(--glass-border);
+        display:flex; gap:0.6rem; flex-shrink:0; background:var(--glass-bg);
+    }
+    .chat-input-area input {
+        flex:1; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border);
+        border-radius:2rem; padding:0.6rem 1.2rem; font-size:0.85rem;
+        color:var(--text-primary); outline:none; transition:border 0.2s;
+    }
+    .chat-input-area input:focus { border-color:var(--accent); }
+    .chat-input-area button {
+        background:linear-gradient(135deg, var(--accent), var(--accent-light));
+        border:none; border-radius:2rem; padding:0.6rem 1.2rem;
+        font-weight:700; color:var(--text-primary); cursor:pointer; transition:all 0.2s; font-size:0.85rem;
+    }
+
+    .rating-stars i { color:var(--rating-star); text-shadow:0 0 12px var(--rating-star); margin-right:2px; font-size:1.1rem; }
+    .rating-badge {
+        background:var(--glass-bg); backdrop-filter:blur(8px);
+        border:1px solid var(--glass-border); border-radius:2rem;
+        padding:0.25rem 1rem 0.25rem 0.8rem;
+        display:inline-flex; align-items:center; gap:0.4rem;
+        font-weight:700; font-size:0.9rem; box-shadow:0 0 25px var(--glass-border-hover);
+    }
+    .header-fixed {
+        background:var(--header-bg);
+        border-bottom:1px solid var(--glass-border);
+        transition:background 0.8s ease, border-color 0.8s ease;
+    }
+
+    @media (max-width:640px) {
+        .deco { display:none; }
+        .sparkle { width:4px; height:4px; }
+        #notification { top:70px; padding:10px 16px; font-size:0.8rem; white-space:normal; }
+        .chat-modal-box { max-width:100%; border-radius:1.5rem; }
+    }
+</style>
+</head>
+<body>
+<div id="notification">
+    <span>🌸 Halo! Welcome to Website Totoro AI ✨</span>
+    <button class="close-btn" onclick="closeNotification()">&times;</button>
+</div>
+<script>
+    function closeNotification() {
+        const notif = document.getElementById('notification');
+        notif.style.animation = 'none';
+        notif.style.left = 'calc(100% + 20px)';
+        notif.style.opacity = '0';
+    }
+    setTimeout(() => {
+        const notif = document.getElementById('notification');
+        notif.style.display = 'none';
+    }, 7500);
+</script>
+
+
+<div class="sparkle-container" id="sparkleContainer"></div>
+<script>
+    (function createSparkles() {
+        const c = document.getElementById('sparkleContainer');
+        for (let i = 0; i < 130; i++) {
+            const sp = document.createElement('div');
+            sp.className = 'sparkle';
+            const size = 4 + Math.random() * 12;
+            sp.style.width = size + 'px';
+            sp.style.height = size + 'px';
+            sp.style.left = Math.random() * 100 + '%';
+            sp.style.top = Math.random() * 100 + '%';
+            sp.style.animationDuration = (5 + Math.random() * 8) + 's';
+            sp.style.animationDelay = (Math.random() * 7) + 's';
+            c.appendChild(sp);
+        }
+    })();
+</script>
+
+<div class="deco" style="top:4%; left:3%;">🌸</div>
+<div class="deco" style="top:8%; right:4%;">🌙</div>
+<div class="deco" style="top:50%; left:2%;">✨</div>
+<div class="deco" style="top:55%; right:2%;">🌿</div>
+<div class="deco" style="bottom:6%; left:3%;">🌺</div>
+<div class="deco" style="bottom:10%; right:4%;">🍃</div>
+<div class="deco" style="bottom:3%; left:50%; transform:translateX(-50%);">🪷</div>
+<div class="deco" style="top:28%; left:50%; transform:translateX(-50%);">☘️</div>
+<div class="deco" style="top:75%; left:6%;">🌱</div>
+<div class="deco" style="bottom:30%; right:5%;">🌻</div>
+<div class="deco" style="top:15%; left:8%;">🕊️</div>
+<div class="deco" style="bottom:18%; right:8%;">🌷</div>
+<div class="deco" style="top:35%; left:12%;">🌼</div>
+<div class="deco" style="bottom:22%; right:12%;">🌾</div>
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div id="fab-menu" class="flex flex-col space-y-3 mb-3 transition-all duration-300 transform scale-0 opacity-0 origin-bottom">
+        <a href="https://wa.me/6285711170694" target="_blank" class="flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-slate-800 transition">
+            <span class="text-xs font-semibold text-green-400">WhatsApp 1</span>
+            <svg class="w-5 h-5 fill-current text-green-400" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <a href="https://wa.me/6285602654058" target="_blank" class="flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-slate-800 transition">
+            <span class="text-xs font-semibold text-emerald-400">Order (WA 2)</span>
+            <svg class="w-5 h-5 fill-current text-emerald-400" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <a href="https://t.me/radipgtg" target="_blank" class="flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-slate-800 transition">
+            <span class="text-xs font-semibold text-sky-400">Telegram</span>
+            <svg class="w-5 h-5 fill-current text-sky-400" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.534.26l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.462c-.538-.196 1.006.128.832.941z"/></svg>
+        </a>
+        <a href="https://instagram.com/radipppppp" target="_blank" class="flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-white px-4 py-2.5 rounded-full shadow-xl hover:bg-slate-800 transition">
+            <span class="text-xs font-semibold text-pink-400">Instagram</span>
+            <svg class="w-5 h-5 fill-current text-pink-400" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+    </div>
+    <button onclick="toggleFabMenu()" class="bg-slate-900/80 backdrop-blur-md border border-slate-700/60 hover:bg-slate-800 text-amber-400 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-transform transform active:scale-95 focus:outline-none">
+        <svg id="fab-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+    </button>
+</div>
+<script>
+    function toggleFabMenu() {
+        const menu = document.getElementById('fab-menu');
+        const icon = document.getElementById('fab-icon');
+        if (menu.classList.contains('scale-0')) {
+            menu.classList.remove('scale-0','opacity-0');
+            menu.classList.add('scale-100','opacity-100');
+            icon.style.transform = 'scale(1.1)';
+        } else {
+            menu.classList.add('scale-0','opacity-0');
+            menu.classList.remove('scale-100','opacity-100');
+            icon.style.transform = 'scale(1)';
+        }
+    }
+</script>
+
+<div id="sidebarBackdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+<div id="sidebarDrawer" class="fixed inset-y-0 left-0 h-screen w-80 sm:w-96 max-w-[85vw] glass-box z-50 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto transform -translate-x-full transition-transform duration-300 border-r border-amber-500/30">
+    <div class="space-y-6">
+        <div class="flex justify-between items-center border-b border-amber-500/20 pb-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-2xl glass-glow flex items-center justify-center text-lg">🤖</div>
+                <div>
+                    <h3 class="text-sm font-extrabold tracking-wide">Totoro AI Menu</h3>
+                    <p class="text-[10px] text-amber-400 font-semibold">Control Center</p>
+                </div>
+            </div>
+            <button onclick="toggleSidebar()" class="w-9 h-9 rounded-full glass-box flex items-center justify-center text-xs hover:text-amber-400 transition-colors">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+        </div>
+
+        <div class="space-y-3">
+            <p class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">🎨 Ganti Tema</p>
+            <div class="flex flex-wrap gap-2">
+                <button onclick="setTheme('forest')" class="theme-select-btn active-theme" data-theme="forest">Forest</button>
+                <button onclick="setTheme('earth')" class="theme-select-btn" data-theme="earth">Earth</button>
+                <button onclick="setTheme('mountain')" class="theme-select-btn" data-theme="mountain">Mountain</button>
+                <button onclick="setTheme('river')" class="theme-select-btn" data-theme="river">River</button>
+                <button onclick="setTheme('oceanrise')" class="theme-select-btn" data-theme="oceanrise">Oceanrise</button>
+                <button onclick="setTheme('cotton')" class="theme-select-btn" data-theme="cotton">Cotton</button>
+                <button onclick="setTheme('twilight')" class="theme-select-btn" data-theme="twilight">Twilight</button>
+                <button onclick="setTheme('matchalat')" class="theme-select-btn" data-theme="matchalat">Matcha</button>
+                <button onclick="setTheme('lilac')" class="theme-select-btn" data-theme="lilac">Lilac</button>
+                <button onclick="setTheme('vanilla')" class="theme-select-btn" data-theme="vanilla">Vanilla</button>
+                <button onclick="setTheme('peachcream')" class="theme-select-btn" data-theme="peachcream">Peach</button>
+                <button onclick="setTheme('mistyrose')" class="theme-select-btn" data-theme="mistyrose">Misty</button>
+                <button onclick="setTheme('palelavender')" class="theme-select-btn" data-theme="palelavender">Lavender</button>
+                <button onclick="setTheme('seafoam')" class="theme-select-btn" data-theme="seafoam">Seafoam</button>
+                <button onclick="setTheme('buttercream')" class="theme-select-btn" data-theme="buttercream">Butter</button>
+                <button onclick="setTheme('blushnude')" class="theme-select-btn" data-theme="blushnude">Blush</button>
+                <button onclick="setTheme('skycloud')" class="theme-select-btn" data-theme="skycloud">Sky</button>
+                <button onclick="setTheme('mintvanilla')" class="theme-select-btn" data-theme="mintvanilla">Mint</button>
+                <button onclick="setTheme('dustyrose')" class="theme-select-btn" data-theme="dustyrose">Dusty</button>
+                <button onclick="setTheme('warmbeige')" class="theme-select-btn" data-theme="warmbeige">Beige</button>
+            </div>
+            <p class="text-[10px] opacity-60 mt-1" id="currentThemeLabel">Tema aktif: Forest</p>
+        </div>
+
+        <div class="space-y-3">
+            <p class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">🖌️ Ganti UI</p>
+            <div class="flex flex-wrap gap-2">
+                <button onclick="setUI('default')" class="ui-select-btn active-ui" data-ui="default">Default</button>
+                <button onclick="setUI('card')" class="ui-select-btn" data-ui="card">Card</button>
+                <button onclick="setUI('minimal')" class="ui-select-btn" data-ui="minimal">Minimal</button>
+                <button onclick="setUI('playful')" class="ui-select-btn" data-ui="playful">Playful</button>
+            </div>
+            <p class="text-[10px] opacity-60 mt-1" id="currentUILabel">UI aktif: Default</p>
+        </div>
+
+        <div class="space-y-3">
+            <p class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">👑 Owner</p>
+            <div class="glass-box p-4 rounded-2xl space-y-2 text-xs">
+                <div class="flex items-center gap-3 border-b border-amber-500/20 pb-2.5">
+                    <div class="w-12 h-12 rounded-full glass-glow flex items-center justify-center text-2xl">👑</div>
+                    <div>
+                        <p class="font-bold text-amber-400 text-sm">@radipgtg</p>
+                        <p class="text-[10px] opacity-75">Developer</p>
+                    </div>
+                </div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">Telegram:</span><span class="font-bold text-sky-400">@radipgtg</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">WA Utama:</span><span class="font-bold">0857-1117-0694</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">WA Order:</span><span class="font-bold text-amber-400">0856-0265-4058</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">Status:</span><span class="font-bold text-emerald-400">Buka 24 Jam</span></div>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <p class="text-[11px] font-extrabold uppercase tracking-wider text-pink-400">🛟 Admin Help</p>
+            <div class="glass-box p-4 rounded-2xl space-y-2 text-xs">
+                <div class="flex items-center gap-3 border-b border-amber-500/20 pb-2.5">
+                    <div class="w-12 h-12 rounded-full glass-glow flex items-center justify-center text-2xl">🤝</div>
+                    <div>
+                        <p class="font-bold text-pink-400 text-sm">Haidar</p>
+                        <p class="text-[10px] opacity-75">Admin Support</p>
+                    </div>
+                </div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">WA:</span><span class="font-bold text-green-400">0851-2410-2334</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">Telegram:</span><span class="font-bold text-sky-400">@idardndle</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">TikTok:</span><span class="font-bold text-pink-400">@byeonwoodar</span></div>
+                <div class="flex justify-between py-0.5"><span class="opacity-75">Status:</span><span class="font-bold text-emerald-400">Aktif</span></div>
+            </div>
+        </div>
+
+        <button onclick="openAIChat()" class="w-full action-btn py-3.5 rounded-xl text-center text-xs font-bold flex items-center justify-center gap-2 shadow-md">
+            <i class="fa-solid fa-robot"></i> Buka AI Assistant
+        </button>
+    </div>
+
+    <div class="pt-4 border-t border-amber-500/20 text-center text-[10px] opacity-75 font-medium">
+        Totoro Ai • Owner @radipgtg
+    </div>
+</div>
+
+<div id="aiChatModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+    <div class="chat-modal-box">
+        <div class="chat-modal-header">
+            <div class="flex items-center gap-2">
+                <span class="text-lg">🤖</span>
+                <span class="font-bold text-sm">Totoro AI Assistant</span>
+                <span class="text-[10px] opacity-60">TotoroAi</span>
+            </div>
+            <button onclick="closeAIChat()" class="w-8 h-8 rounded-full glass-box flex items-center justify-center text-xs hover:text-amber-400 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="aiModalMessages">
+            <div class="bot-msg">👋 Halo! Saya AI Assistant Buatan radipgtg, Tanya apa saja seputar harga bot, panel pterodactyl, Alight Motion otomatis, atau jasa kami!</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="aiModalInput" placeholder="Ketik pertanyaan..." onkeydown="if(event.key==='Enter') sendAIModal()">
+            <button onclick="sendAIModal()"><i class="fa-solid fa-paper-plane"></i> Kirim</button>
+        </div>
+    </div>
+</div>
+
+<header class="sticky top-0 z-40 header-fixed backdrop-blur-2xl transition-colors">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <button onclick="toggleSidebar()" class="w-11 h-11 rounded-2xl glass-box flex items-center justify-center text-amber-400 hover:text-white transition-all shadow-lg focus:outline-none">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+            <div class="w-11 h-11 rounded-2xl glass-glow flex items-center justify-center text-xl shadow-lg">🤖</div>
+            <div>
+                <h1 class="text-base font-extrabold tracking-tight text-white">Totoro AI</h1>
+                <p class="text-xs text-amber-400 font-semibold tracking-wide">Official Website</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="rating-badge hidden sm:flex text-white">
+                <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                <span>4.9</span>
+            </div>
+            <a href="https://wa.me/6285602654058" target="_blank" class="action-btn px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Order WA</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 mt-8 space-y-12 relative z-10">
+
+    <section class="glass-glow rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden animate-on-load">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold mb-6 tracking-wider uppercase">
+            <i class="fa-solid fa-shield-halved"></i> Layanan terpercaya dan fast respons
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto">
+            Layanan Digital <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">Trusted & Bergaransi</span>
+        </h2>
+        <p class="text-sm sm:text-base opacity-80 font-light max-w-2xl mx-auto mt-4 leading-relaxed">
+            sedia berbagai macam produk digital buat kamu yang butuh bot WhatsApp, panel hosting, premium apk edit video, sampai jasa setup dan script. Dikelola langsung oleh <b class="text-amber-400">@radipgtg</b>, semua transaksi otomatis Via QRIS & WhatsApp. Proses cepat, aman, dan terpercaya.
+        </p>
+        <div class="rating-badge sm:hidden mt-4 mx-auto">
+            <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+            <span>4.9</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-4xl mx-auto">
+            <div class="glass-box p-4 rounded-2xl text-center">
+                <div id="uptime-counter" class="text-2xl font-extrabold text-amber-400">00:00:00</div>
+                <div class="text-xs opacity-70 mt-1 font-medium">Uptime Server</div>
+            </div>
+            <script>
+                let startTime = localStorage.getItem('serverStartTime');
+                if (!startTime) { startTime = new Date().getTime(); localStorage.setItem('serverStartTime', startTime); } else { startTime = parseInt(startTime); }
+                function updateUptime() {
+                    const now = new Date().getTime();
+                    const totalSeconds = Math.floor((now - startTime) / 1000);
+                    const sec = totalSeconds % 60;
+                    const min = Math.floor(totalSeconds / 60) % 60;
+                    const hrs = Math.floor(totalSeconds / 3600);
+                    document.getElementById('uptime-counter').innerText = `${String(hrs).padStart(2,'0')}:${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+                }
+                setInterval(updateUptime, 1000);
+                updateUptime();
+            </script>
+            <div class="glass-box p-4 rounded-2xl text-center"><div class="text-2xl font-extrabold text-amber-400">24/7</div><div class="text-xs opacity-70 mt-1 font-medium">Active Support</div></div>
+            <div class="glass-box p-4 rounded-2xl text-center"><div class="text-2xl font-extrabold text-amber-400">100%</div><div class="text-xs opacity-70 mt-1 font-medium">Legal & Aman</div></div>
+            <div class="glass-box p-4 rounded-2xl text-center"><div class="text-2xl font-extrabold text-amber-400">Fast</div><div class="text-xs opacity-70 mt-1 font-medium">Instant Process</div></div>
+        </div>
+    </section>
+
+<section class="space-y-6 animate-on-load delay-1">
+    <div class="text-center space-y-2">
+        <h3 class="text-2xl font-extrabold tracking-tight">Katalog Produk Utama</h3>
+        <p class="text-xs opacity-70 font-medium">Pilih pilihan yang ada di bawah untuk langsung terhubung ke WhatsApp atau melakukan pembayaran QRIS otomatis</p>
+    </div>
+    <div class="glass-box rounded-2xl p-2 grid grid-cols-2 sm:grid-cols-4 gap-2 border border-amber-500/20">
+        <button onclick="switchCatalog('bot')" id="tab-bot" class="catalog-tab active py-3 px-4 rounded-xl text-xs font-bold transition-all text-center">Sewa Bot WA</button>
+        <button onclick="switchCatalog('panel')" id="tab-panel" class="catalog-tab py-3 px-4 rounded-xl text-xs font-bold transition-all text-center">Panel Legal Pterodactyl</button>
+        <button onclick="switchCatalog('am')" id="tab-am" class="catalog-tab py-3 px-4 rounded-xl text-xs font-bold transition-all text-center">Alight Motion (Auto)</button>
+        <button onclick="switchCatalog('extra')" id="tab-extra" class="catalog-tab py-3 px-4 rounded-xl text-xs font-bold transition-all text-center">Jasa & Tools</button>
+    </div>
+
+    <div id="catalog-bot" class="catalog-slide active space-y-6">
+        <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Bot WhatsApp siap pakai dengan 1300+ fitur yang hidup. Cocok buat seru seruan bersama temanmu, Pilih durasi sewa sesuai kebutuhan.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-box rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-2">
+                <div>
+                    <p class="text-xs font-extrabold text-amber-400 border-b border-amber-500/20 pb-3 mb-4 uppercase tracking-wider">Bot Standar</p>
+                    <div class="space-y-2.5 text-xs font-light">
+                        <div onclick="orderWhatsApp('Bot Standar (1 Hari)', 'Rp3.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>1 Hari</span><span class="font-bold text-amber-400">Rp3.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (3 Hari)', 'Rp6.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>3 Hari</span><span class="font-bold text-amber-400">Rp6.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (7 Hari)', 'Rp9.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>7 Hari</span><span class="font-bold text-amber-400">Rp9.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (15 Hari)', 'Rp15.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>15 Hari</span><span class="font-bold text-amber-400">Rp15.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (30 Hari)', 'Rp20.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>30 Hari</span><span class="font-bold text-amber-400">Rp20.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (60 Hari)', 'Rp30.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>60 Hari</span><span class="font-bold text-amber-400">Rp30.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Standar (Permanen)', 'Rp55.000')" class="flex justify-between py-2.5 px-3 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/30 cursor-pointer transition-all"><span class="font-bold text-amber-200">Permanen</span><span class="font-extrabold text-amber-400">Rp55.000</span></div>
+                    </div>
+                </div>
+                <a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20sewa%20Bot%20Standar" target="_blank" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block">Pilih Bot Standar</a>
+            </div>
+            <div class="glass-box rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-3">
+                <div>
+                    <p class="text-xs font-extrabold text-yellow-400 border-b border-amber-500/20 pb-3 mb-4 uppercase tracking-wider">Bot Store</p>
+                    <div class="space-y-2.5 text-xs font-light">
+                        <div onclick="orderWhatsApp('Bot Store (1 Hari)', 'Rp2.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>1 Hari</span><span class="font-bold text-yellow-400">Rp2.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (3 Hari)', 'Rp4.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>3 Hari</span><span class="font-bold text-yellow-400">Rp4.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (7 Hari)', 'Rp6.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>7 Hari</span><span class="font-bold text-yellow-400">Rp6.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (15 Hari)', 'Rp9.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>15 Hari</span><span class="font-bold text-yellow-400">Rp9.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (30 Hari)', 'Rp10.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>30 Hari</span><span class="font-bold text-yellow-400">Rp10.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (60 Hari)', 'Rp15.000')" class="flex justify-between py-2 px-3 rounded-xl bg-white/[0.03] hover:bg-yellow-500/20 cursor-pointer transition-all"><span>60 Hari</span><span class="font-bold text-yellow-400">Rp15.000</span></div>
+                        <div onclick="orderWhatsApp('Bot Store (Permanen)', 'Rp30.000')" class="flex justify-between py-2.5 px-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30 hover:bg-yellow-500/30 cursor-pointer transition-all"><span class="font-bold text-yellow-200">Permanen</span><span class="font-extrabold text-yellow-400">Rp30.000</span></div>
+                    </div>
+                </div>
+                <a href="https://wa.me/6285602654058?text=Halo%20kak,%20saya%20mau%20sewa%20Bot%20Store" target="_blank" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block">Pilih Bot Store</a>
+            </div>
+            <div class="glass-glow rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden animate-on-load delay-4">
+                <div>
+                    <p class="text-xs font-extrabold text-amber-300 border-b border-amber-500/20 pb-3 mb-4 uppercase tracking-wider">Tutor Pembuatan Bot</p>
+                    <div class="text-center py-8 space-y-3">
+                        <div class="text-3xl font-extrabold text-amber-400">Rp50.000</div>
+                        <p class="text-xs opacity-80 font-light leading-relaxed">Kamu akan dibimbing langsung bikin bot dari nol, dapet panel unlimited gratis, script totoro Ai, Bisa open sewa juga dengan botmu.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/6285602654058?text=Halo%20kak,%20saya%20mau%20ambil%20paket%20Tutor%20Pembuatan%20Bot%20harga%20Rp50.000" target="_blank" class="w-full action-btn py-3 rounded-xl text-center text-xs block shadow-lg">Ambil Paket Tutor</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="catalog-panel" class="catalog-slide space-y-6">
+        <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Panel Pterodactyl legal dan resmi untuk run bot WhatsApp, bot telegram dan lain lain. Kami sediakan paket RAM mulai 3GB hingga Unlimited. Stabil, aman, dan tanpa takut kena blokir.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-box rounded-3xl p-6 animate-on-load delay-5">
+                <p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider mb-4 border-b border-amber-500/20 pb-3">Paket Reguler RAM</p>
+                <div class="grid grid-cols-2 gap-3 text-xs font-light">
+                    <div onclick="orderWhatsApp('Panel RAM 3GB', 'Rp5.000')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>3 GB</span><span class="font-bold text-amber-400">Rp5.000</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 4GB', 'Rp6.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>4 GB</span><span class="font-bold text-amber-400">Rp6.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 5GB', 'Rp7.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>5 GB</span><span class="font-bold text-amber-400">Rp7.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 6GB', 'Rp8.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>6 GB</span><span class="font-bold text-amber-400">Rp8.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 7GB', 'Rp9.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>7 GB</span><span class="font-bold text-amber-400">Rp9.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 8GB', 'Rp10.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>8 GB</span><span class="font-bold text-amber-400">Rp10.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 9GB', 'Rp11.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>9 GB</span><span class="font-bold text-amber-400">Rp11.500</span></div>
+                    <div onclick="orderWhatsApp('Panel RAM 10GB', 'Rp12.500')" class="flex justify-between p-3 rounded-xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all"><span>10 GB</span><span class="font-bold text-amber-400">Rp12.500</span></div>
+                </div>
+                <a href="https://wa.me/6285602654058?text=Halo%20kak,%20saya%20mau%20order%20Panel%20Reguler" target="_blank" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block">Order Panel Reguler</a>
+            </div>
+            <div class="glass-glow rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-6">
+                <div>
+                    <p class="text-xs font-extrabold text-amber-300 uppercase tracking-wider mb-4 border-b border-amber-500/20 pb-3">Unlimited Server Plan</p>
+                    <div class="space-y-4 py-6">
+                        <div class="flex justify-between items-center p-4 rounded-2xl bg-amber-500/15 border border-amber-500/40">
+                            <span class="text-xs font-bold">Unlimited RAM & Storage</span>
+                            <span class="font-extrabold text-amber-400 text-lg">Rp18.500</span>
+                        </div>
+                        <p class="text-xs opacity-80 font-light leading-relaxed">Lebih lega dan cepat karena memiliki cpu yang tak terbatas</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20order%20Panel%20Unlimited%20harga%20Rp18.500" target="_blank" class="w-full action-btn py-3 rounded-xl text-center text-xs block shadow-lg">Order Panel Unlimited</a>
+            </div>
+        </div>
+    </div>
+     
+    <div id="catalog-am" class="catalog-slide space-y-6">
+        <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Alight Motion Premium otomatis via QRIS. Pilih paket di bawah, bayar, dan akun langsung diproses instan!</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-box rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-7">
+                <div><p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider mb-4 border-b border-amber-500/20 pb-3">📦 AM Bulk (Auto QRIS)</p>
+                    <div class="space-y-3 text-xs font-light">
+                        <p class="opacity-80">Generate banyak akun sekaligus (maksimal 100 akun). Bayar via QRIS otomatis.</p>
+                        <div class="space-y-2 pt-2">
+                            <label class="block text-[11px] font-bold text-amber-300">Masukkan Jumlah Akun (1 - 100):</label>
+                            <input type="number" id="amBulkAmount" min="1" max="100" value="1" class="w-full bg-white/5 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-amber-400">
+                            <p class="text-[10px] opacity-60">Harga: Rp1.000 per akun</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="startAmBulkOrder()" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block">Beli AM Bulk Sekarang</button>
+            </div>
+            <div class="glass-box rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-8">
+                <div><p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider mb-4 border-b border-amber-500/20 pb-3">✨ AM Premium Buyer (Emailmu)</p>
+                    <div class="space-y-3 text-xs font-light">
+                        <p class="opacity-80">Premiumkan akun email pribadi kamu. Bayar dulu via QRIS, lalu masukkan email & link verifikasi dari email.</p>
+                        <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-300">
+                            <p class="font-bold">Tarif: Rp1.000 / akun</p>
+                            <p class="opacity-80 mt-1">Sistem otomatis kirim magic link & verifikasi.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="startAmBuyerOrder()" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block">Beli AM Premium Buyer</button>
+            </div>
+            <div class="glass-glow rounded-3xl p-6 flex flex-col justify-between animate-on-load delay-9">
+                <div><p class="text-xs font-extrabold text-amber-300 uppercase tracking-wider mb-4 border-b border-amber-500/20 pb-3">🚀 AM Premium Seller (1 Akun Instan)</p>
+                    <div class="space-y-3">
+                        <p class="text-xs opacity-80 font-light">Generate 1 akun siap pakai.</p>
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                            <span class="text-xs font-bold">1 Akun Satuan</span>
+                            <span class="font-extrabold text-amber-400 text-sm">Rp1.000</span>
+                        </div>
+                        <div class="text-[11px] opacity-80 space-y-1 font-light bg-white/[0.02] p-2.5 rounded-xl">
+                            <p class="text-amber-300 font-bold">⚠️ Reminder:</p>
+                            <p>Jika payment error/tidak terdeteksi otomatis, lapor owner dan admin help.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="startAmSellerOrder()" class="mt-6 w-full action-btn py-3 rounded-xl text-center text-xs block shadow-lg">Beli AM Seller Instan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="catalog-extra" class="catalog-slide space-y-6">
+        <p class="text-xs opacity-80 font-light text-center max-w-2xl mx-auto">Kamu males? Kami bantu install script, sampai sediakan source code bot Totoro AI yang siap pakai.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-box rounded-3xl p-6 space-y-4 animate-on-load delay-10">
+                <p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider border-b border-amber-500/20 pb-3">Jasa Run Script & Install Bot</p>
+                <p class="text-xs opacity-80 font-light leading-relaxed">akan aku bantu run bot ke panel pterodactyl dariku, dan pastikan bot berjalan 24/7 tanpa kendala.</p>
+                <div onclick="orderWhatsApp('Jasa Run Script & Install Bot', 'Mulai Rp10.000')" class="flex justify-between items-center p-3.5 rounded-2xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all">
+                    <span class="text-xs font-medium">Tarif Layanan Setup</span>
+                    <span class="text-xs font-extrabold text-amber-400">Mulai Rp10.000</span>
+                </div>
+                <a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20konsultasi%20Jasa%20Setup%20Bot" target="_blank" class="w-full action-btn py-3 rounded-xl text-center text-xs block">Konsultasi Jasa Setup</a>
+            </div>
+            <div class="glass-box rounded-3xl p-6 space-y-4 animate-on-load delay-10">
+                <p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider border-b border-amber-500/20 pb-3">Script Bot Totoro AI</p>
+                <p class="text-xs opacity-80 font-light leading-relaxed">Dapatkan source code bot WhatsApp premium Totoro AI Full update beserta apikey yang tersedia, Fitur lengkap, dan aman. Cocok buat kamu yang mau punya bot sendiri.</p>
+                <div onclick="orderWhatsApp('Script Bot Totoro AI', 'Rp35.000')" class="flex justify-between items-center p-3.5 rounded-2xl bg-white/[0.03] hover:bg-amber-500/20 cursor-pointer transition-all">
+                    <span class="text-xs font-medium">Full Source Master</span>
+                    <span class="text-xs font-extrabold text-amber-400">Rp35.000</span>
+                </div>
+                <a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20Beli%20Script%20Totoro%20AI%20harga%20Rp35.000" target="_blank" class="w-full action-btn py-3 rounded-xl text-center text-xs block">Beli Script Totoro AI</a>
+            </div>
+        </div>
+    </div>
+</section>
+   
+    <div class="space-y-12 pt-6">
+        <section class="space-y-6 animate-on-load delay-2">
+            <div class="text-center space-y-2">
+                <h3 class="text-2xl font-extrabold tracking-tight">Keunggulan Platform</h3>
+                <p class="text-xs opacity-70 font-medium">Standar kualitas terbaik yang diberikan untuk kenyamanan bertransaksi</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-box rounded-3xl p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold"><i class="fa-solid fa-bolt"></i></div>
+                    <h4 class="text-sm font-bold">Proses Cepat Instan</h4>
+                    <p class="text-xs opacity-70 font-light leading-relaxed">Semua trx akan di lakukan secepatnya jika tidak ada kendala 🍄</p>
+                </div>
+                <div class="glass-box rounded-3xl p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-500/20 border border-yellow-500/40 flex items-center justify-center text-yellow-400 font-bold"><i class="fa-solid fa-headset"></i></div>
+                    <h4 class="text-sm font-bold">Support Responsif</h4>
+                    <p class="text-xs opacity-70 font-light leading-relaxed">Owner siap bantu kapan pun, baik masalah teknis maupun konsultasi produk.</p>
+                </div>
+                <div class="glass-box rounded-3xl p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-600/20 border border-amber-600/40 flex items-center justify-center text-amber-500 font-bold"><i class="fa-solid fa-shield-check"></i></div>
+                    <h4 class="text-sm font-bold">Legal & Bergaransi</h4>
+                    <p class="text-xs opacity-70 font-light leading-relaxed">Garansi penuh selama masa aktif produk, demi kepuasan kalian semuaaa 💖</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6 animate-on-load delay-3">
+            <div class="text-center space-y-2">
+                <h3 class="text-2xl font-extrabold tracking-tight">Dukung & Donasi</h3>
+                <p class="text-xs opacity-70 font-medium">Dukung pengembangan Totoro AI dan @radipgtg agar terus aktif serta update 24/7</p>
+            </div>
+            <div class="glass-glow rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto space-y-6 relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-48 h-48 bg-amber-500/15 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="text-center space-y-3">
+                    <p class="text-xs font-extrabold text-amber-400 uppercase tracking-wider border-b border-amber-500/20 pb-3">QRIS All Payment</p>
+                    <div class="bg-white p-4 rounded-2xl inline-block shadow-xl mx-auto border border-amber-500/30">
+                        <img src="https://files.catbox.moe/vjvqpu.jpeg" alt="QRIS Donasi" class="w-80 h-80 sm:w-96 sm:h-96 mx-auto object-contain rounded-xl">
+                    </div>
+                    <p class="text-[11px] opacity-80 font-light">Scan menggunakan GoPay, DANA, OVO, ShopeePay, BCA, atau m-Banking lainnya.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                    <a href="https://saweria.co/radipgtg" target="_blank" class="glass-box p-4 rounded-2xl text-center space-y-1 hover:bg-amber-500/10 transition-all block">
+                        <div class="text-amber-400 font-bold text-sm flex items-center justify-center gap-1.5"><i class="fa-solid fa-heart"></i> Saweria</div>
+                        <div class="text-[11px] opacity-70 font-mono truncate">saweria.co/radipgtg</div>
+                        <div class="text-[9px] text-amber-300 font-medium">Klik untuk dukung</div>
+                    </a>
+                    <div onclick="navigator.clipboard.writeText('085711170694'); alert('Nomor DANA 085711170694 berhasil disalin!');" class="glass-box p-4 rounded-2xl text-center space-y-1 hover:bg-amber-500/10 transition-all cursor-pointer group">
+                        <div class="text-blue-400 font-bold text-sm flex items-center justify-center gap-1.5"><i class="fa-solid fa-wallet"></i> DANA</div>
+                        <div class="text-[11px] opacity-70 font-mono">085711170694</div>
+                        <div class="text-[9px] text-amber-400 font-medium group-hover:underline">(Klik untuk salin)</div>
+                    </div>
+                    <div onclick="navigator.clipboard.writeText('085711170694'); alert('Nomor Gopay 085711170694 berhasil disalin!');" class="glass-box p-4 rounded-2xl text-center space-y-1 hover:bg-amber-500/10 transition-all cursor-pointer group">
+                        <div class="text-emerald-400 font-bold text-sm flex items-center justify-center gap-1.5"><i class="fa-solid fa-mobile-screen"></i> Gopay</div>
+                        <div class="text-[11px] opacity-70 font-mono">085711170694</div>
+                        <div class="text-[9px] text-amber-400 font-medium group-hover:underline">(Klik untuk salin)</div>
+                    </div>
+                </div>
+                <div class="text-center pt-2 border-t border-amber-500/20">
+                    <p class="text-[11px] text-amber-300 font-semibold">Terima kasih banyak atas dukungan terbaik kalian! 💖 — @radipgtg</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-6 animate-on-load delay-4">
+            <div class="glass-glow rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto space-y-4">
+                <div class="space-y-2 text-center">
+                    <p class="text-xs font-extrabold text-amber-300 uppercase tracking-wider border-b border-amber-500/20 pb-3">Hubungi Kami</p>
+                    <p class="text-xs opacity-80 font-light">Owner & Admin siap membantu kamu 😊</p>
+                </div>
+                <div class="space-y-3 pt-2">
+                    <a href="https://wa.me/6285711170694" target="_blank" class="glass-box py-3 px-4 rounded-2xl flex items-center justify-between text-xs font-bold text-emerald-400 block"><span class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-base"></i> Owner WA 1: 0857-1117-0694</span><i class="fa-solid fa-chevron-right text-[10px] opacity-60"></i></a>
+                    <a href="https://wa.me/6285602654058" target="_blank" class="glass-box py-3 px-4 rounded-2xl flex items-center justify-between text-xs font-bold text-amber-400 block"><span class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-base"></i> Owner WA Order: 0856-0265-4058</span><i class="fa-solid fa-chevron-right text-[10px] opacity-60"></i></a>
+                    <a href="https://wa.me/6285124102334" target="_blank" class="glass-box py-3 px-4 rounded-2xl flex items-center justify-between text-xs font-bold text-pink-400 block"><span class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-base"></i> Admin Help (Haidar): 0851-2410-2334</span><i class="fa-solid fa-chevron-right text-[10px] opacity-60"></i></a>
+                    <a href="https://instagram.com/radipppppp" target="_blank" class="glass-box py-3 px-4 rounded-2xl flex items-center justify-between text-xs font-bold text-pink-400 block"><span class="flex items-center gap-3"><i class="fa-brands fa-instagram text-base"></i> IG Owner: @radipppppp</span><i class="fa-solid fa-chevron-right text-[10px] opacity-60"></i></a>
+                    <a href="https://t.me/radipgtg" target="_blank" class="glass-box py-3 px-4 rounded-2xl flex items-center justify-between text-xs font-bold text-sky-400 block"><span class="flex items-center gap-3"><i class="fa-brands fa-telegram text-base"></i> Telegram Owner: @radipgtg</span><i class="fa-solid fa-chevron-right text-[10px] opacity-60"></i></a>
+                </div>
+                <div class="text-[11px] text-amber-300 text-center pt-6 font-semibold border-t border-amber-500/20">Totoro AI Sewabot</div>
+            </div>
+        </section>
+    </div>
+
+    <div id="paymentModal">
+        <div class="chat-modal-box p-6 flex flex-col justify-between max-w-md h-auto">
+            <div class="flex justify-between items-center border-b border-amber-500/20 pb-3">
+                <h3 class="font-extrabold text-sm text-amber-400">🧾 QRIS Payment</h3>
+                <button onclick="closePaymentModal()" class="w-7 h-7 rounded-full glass-box flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-4 text-center space-y-3" id="paymentModalBody"></div>
+            <div class="pt-3 border-t border-amber-500/20 text-center text-[11px] opacity-70">Scan QRIS di atas untuk membayar. Sistem otomatis mendeteksi pembayaran!</div>
+        </div>
+    </div>
+
+    <div id="amInteractModal">
+        <div class="chat-modal-box p-6 flex flex-col justify-between max-w-md h-auto">
+            <div class="flex justify-between items-center border-b border-amber-500/20 pb-3">
+                <h3 class="font-extrabold text-sm text-amber-400" id="amInteractTitle">✨ Verifikasi Alight Motion</h3>
+                <button onclick="closeAmInteractModal()" class="w-7 h-7 rounded-full glass-box flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="py-4 space-y-4 text-xs" id="amInteractBody"></div>
+        </div>
+    </div>
+
+    <footer class="relative z-10 max-w-6xl mx-auto px-4 mt-20 pt-8 border-t border-amber-500/20 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center text-xs opacity-70 gap-4">
+        <div><p>© 2026 Totoro AI. Created by @radipgtg. All rights reserved.</p></div>
+        <div class="flex space-x-6">
+            <a href="https://wa.me/6285711170694" target="_blank" class="hover:opacity-100 transition-colors">WA 1</a>
+            <a href="https://wa.me/6285602654058" target="_blank" class="hover:opacity-100 transition-colors">WA Order</a>
+            <a href="https://instagram.com/radipppppp" target="_blank" class="hover:opacity-100 transition-colors">Instagram</a>
+            <a href="https://t.me/radipgtg" target="_blank" class="hover:opacity-100 transition-colors">Telegram</a>
+        </div>
+    </footer>
+</main>
+
+<script>
+    const SAIRIBOT_KEY = "SKY_546ef0e92304473f";
+    const SAIRIBOT_BASE = "https://api.sairibot.my.id/api";
+    const NDXHS_KEY = "RADIPGTG";
+    let activePaymentInterval = null;
+
+    function switchCatalog(target) {
+        document.querySelectorAll('.catalog-slide').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.catalog-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('catalog-' + target).classList.add('active');
+        document.getElementById('tab-' + target).classList.add('active');
+    }
+
+    function orderWhatsApp(productName, price) {
+        const phone = "6285602654058";
+        const msg = `Halo kak, saya mau sewa ${productName} dengan harga ${price}. Mohon panduannya ya!`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebarDrawer').classList.toggle('open');
+        document.getElementById('sidebarBackdrop').classList.toggle('hidden');
+    }
+
+    const themeNames = ['forest','earth','mountain','river','oceanrise','cotton','twilight','matchalat','lilac','vanilla',
+        'peachcream','mistyrose','palelavender','seafoam','buttercream','blushnude','skycloud','mintvanilla','dustyrose','warmbeige'];
+    const themeLabels = {
+        forest:'Forest Mist', earth:'Earth & Clay', mountain:'Deep Mountain Sky',
+        river:'River Stone', oceanrise:'Calm Ocean Sunrise', cotton:'Pastel Cotton Candy',
+        twilight:'Warm Twilight', matchalat:'Matcha Latte', lilac:'Dreamy Lilac',
+        vanilla:'Vanilla Peach', peachcream:'Soft Peach & Cream', mistyrose:'Misty Rose',
+        palelavender:'Pale Lavender', seafoam:'Seafoam', buttercream:'Buttercream',
+        blushnude:'Blush & Nude', skycloud:'Sky Blue & Cloud', mintvanilla:'Mint & Vanilla',
+        dustyrose:'Dusty Rose', warmbeige:'Warm Beige'
+    };
+
+    function setTheme(themeName) {
+        themeNames.forEach(t => document.documentElement.classList.remove('theme-' + t));
+        document.documentElement.classList.add('theme-' + themeName);
+        document.querySelectorAll('.theme-select-btn').forEach(btn => {
+            btn.classList.remove('active-theme');
+            if (btn.dataset.theme === themeName) btn.classList.add('active-theme');
+        });
+        document.getElementById('currentThemeLabel').textContent = 'Tema aktif: ' + (themeLabels[themeName] || themeName);
+        localStorage.setItem('totoro_theme', themeName);
+    }
+
+    const uiVariants = ['default','card','minimal','playful'];
+    function setUI(uiName) {
+        uiVariants.forEach(u => document.body.classList.remove('ui-' + u));
+        if (uiName !== 'default') document.body.classList.add('ui-' + uiName);
+        document.querySelectorAll('.ui-select-btn').forEach(btn => {
+            btn.classList.remove('active-ui');
+            if (btn.dataset.ui === uiName) btn.classList.add('active-ui');
+        });
+        document.getElementById('currentUILabel').textContent = 'UI aktif: ' + uiName.charAt(0).toUpperCase() + uiName.slice(1);
+        localStorage.setItem('totoro_ui', uiName);
+    }
+
+    function openAIChat() {
+        document.getElementById('aiChatModal').classList.add('open');
+        document.getElementById('aiModalInput').focus();
+        toggleSidebar();
+    }
+    function closeAIChat() { document.getElementById('aiChatModal').classList.remove('open'); }
+    document.getElementById('aiChatModal').addEventListener('click', function(e) { if (e.target === this) closeAIChat(); });
+
+    function closePaymentModal() {
+        if (activePaymentInterval) clearInterval(activePaymentInterval);
+        document.getElementById('paymentModal').classList.remove('open');
+    }
+    function closeAmInteractModal() { document.getElementById('amInteractModal').classList.remove('open'); }
+
+    async function sendAIModal() {
+        const input = document.getElementById('aiModalInput');
+        const messages = document.getElementById('aiModalMessages');
+        const text = input.value.trim();
+        if (!text) return;
+        messages.innerHTML += `<div class="user-msg">${text}</div>`;
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+        const loadId = 'load-' + Date.now();
+        messages.innerHTML += `<div class="bot-msg" id="${loadId}" style="opacity:0.6;">⏳ mengetik...</div>`;
+        messages.scrollTop = messages.scrollHeight;
+        const storeContext = `[Context Totoro AI. Owner: @radipppppp. Telegram: @radipgtg. WA Utama: 085711170694, WA Khusus Order: 085602654058. Admin Help: Haidar 085124102334. Katalog Produk: Bot, Panel Pterodactyl, Dan alight Motion Premium.]`;
+        const apiKey = "7e8ad0a7d820904939559aa4";
+        const fullQuestion = `${storeContext} Pertanyaan User: ${text}`;
+        const apiUrl = `https://ndxhs.my.id/ai/gemini?apikey=${apiKey}&question=${encodeURIComponent(fullQuestion)}`;
+        try {
+            const res = await fetch(apiUrl);
+            document.getElementById(loadId)?.remove();
+            if (res.ok) {
+                const data = await res.json();
+                const reply = data.result || data.message || JSON.stringify(data);
+                messages.innerHTML += `<div class="bot-msg"><b>🤖 Totoro AI:</b> ${reply}</div>`;
+            } else {
+                messages.innerHTML += `<div class="bot-msg">🤖 Halo! Silakan hubungi WhatsApp Owner @radipgtg di 085602654058 untuk pemesanan cepat ya!</div>`;
+            }
+        } catch (err) {
+            document.getElementById(loadId)?.remove();
+            messages.innerHTML += `<div class="bot-msg">🤖 Halo! Silahkan hubungi Owner yaaa untuk pemesanan cepat ya!</div>`;
+        }
+        messages.scrollTop = messages.scrollHeight;
+    }
+    
+    async function createSairibotInvoice(amount, onSuccessPaid) {
+        const bodyDiv = document.getElementById('paymentModalBody');
+        bodyDiv.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Sedang meracik QRIS pembayaran magis...</p>`;
+        document.getElementById('paymentModal').classList.add('open');
+        try {
+            const res = await fetch(`${SAIRIBOT_BASE}/invoice?apikey=${SAIRIBOT_KEY}&amount=${amount}`);
+            const data = await res.json();
+            if (!data.success && !data.invoice_id) {
+                bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Gagal membuat QRIS pembayaran. Coba beberapa saat lagi.</p>`;
+                return;
+            }
+            const { invoice_id, total, qris_image, expired_at } = data;
+            bodyDiv.innerHTML = `
+                <div class="space-y-2">
+                    <p class="text-xs font-bold text-amber-300">ID Nota: <span class="font-mono">${invoice_id}</span></p>
+                    <div class="bg-white p-2 rounded-2xl inline-block shadow-lg">
+                        <img src="${qris_image}" alt="QRIS" class="w-48 h-48 mx-auto object-contain">
+                    </div>
+                    <p class="text-sm font-extrabold text-amber-400">Total: Rp${total.toLocaleString('id-ID')}</p>
+                    <p class="text-[10px] opacity-70">Berakhir pada: ${expired_at}</p>
+                    <p class="text-[11px] text-amber-300 mt-2">🔄 Menunggu pembayaran terdeteksi otomatis...</p>
+                </div>
+            `;
+            if (activePaymentInterval) clearInterval(activePaymentInterval);
+            activePaymentInterval = setInterval(async () => {
+                try {
+                    const statusRes = await fetch(`${SAIRIBOT_BASE}/invoice/status?apikey=${SAIRIBOT_KEY}&invoice_id=${invoice_id}`);
+                    const statusData = await statusRes.json();
+                    if (statusData.status === "paid") {
+                        clearInterval(activePaymentInterval);
+                        closePaymentModal();
+                        onSuccessPaid();
+                    } else if (statusData.status === "expired") {
+                        clearInterval(activePaymentInterval);
+                        bodyDiv.innerHTML = `<p class="text-xs text-red-400">⏰ Invoice telah kedaluwarsa.</p>`;
+                    }
+                } catch (e) { console.error(e); }
+            }, 5000);
+        } catch (err) {
+            console.error(err);
+            bodyDiv.innerHTML = `<p class="text-xs text-red-400">❌ Terjadi kesalahan jaringan.</p>`;
+        }
+    }
+
+    function startAmBulkOrder() {
+        const amount = parseInt(document.getElementById('amBulkAmount').value) || 1;
+        if (amount < 1 || amount > 100) { alert("Jumlah akun harus antara 1 sampai 100!"); return; }
+        const price = amount * 1000;
+        createSairibotInvoice(price, async () => { await deliverAmBulk(amount); });
+    }
+
+    async function deliverAmBulk(amount) {
+        const modal = document.getElementById('amInteractModal');
+        document.getElementById('amInteractTitle').innerText = "📦 AM Bulk Berhasil Dibuat!";
+        const body = document.getElementById('amInteractBody');
+        body.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Sebentar aku sedang mengambil akun nya</p>`;
+        modal.classList.add('open');
+        try {
+            const res = await fetch(`https://ndxhs.my.id/alightmotion/bulk?akseskey=${NDXHS_KEY}&amount=${amount}`);
+            const json = await res.json();
+            if (!json || json.status === false || json.status === "error") {
+                body.innerHTML = `<p class="text-xs text-red-400">❌ Pembayaran sukses, tapi gagal generate akun AM: ${json?.message || "Server error"}. Hubungi owner atau admin help untuk proses pengambilan akun alightmotion.</p>`;
+                return;
+            }
+            const accounts = json.result?.accounts || json.data || [];
+            let emailList = [];
+            if (Array.isArray(accounts)) {
+                emailList = accounts.map(item => (typeof item === "string" ? item : item.email || item.mail || Object.values(item)[0])).filter(Boolean);
+            }
+            let listHtml = emailList.map((m, idx) => `<div class="p-2 rounded bg-white/5 font-mono text-[11px]">${idx+1}. ${m}</div>`).join('');
+            body.innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-emerald-400">✅ Pembayaran & Generate Akun Berhasil (${emailList.length} Akun)!</p>
+                    <div class="max-h-60 overflow-y-auto space-y-1">${listHtml}</div>
+                    <p class="text-[10px] opacity-70">Salin akun email di atas untuk login ke Alight Motion.</p>
+                </div>
+            `;
+        } catch (err) {
+            body.innerHTML = `<p class="text-xs text-red-400">❌ Gagal menghubungi apikey alightmotion, Silakan lapor owner sekarang.</p>`;
+        }
+    }
+
+    function startAmBuyerOrder() {
+        createSairibotInvoice(1000, () => {
+            const modal = document.getElementById('amInteractModal');
+            document.getElementById('amInteractTitle').innerText = "✨ Masukkan Email Alight Motion Kamu";
+            const body = document.getElementById('amInteractBody');
+            body.innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-xs opacity-80">Pembayaran berhasil! Masukkan alamat email kamu untuk dikirimkan magic link verifikasi:</p>
+                    <input type="email" id="buyerEmailInput" placeholder="Contoh: emailkamu@generator.email" class="w-full bg-white/5 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-white outline-none">
+                    <button onclick="submitBuyerEmail()" class="w-full action-btn py-2.5 rounded-xl text-xs font-bold">Kirim Link Verifikasi</button>
+                </div>
+            `;
+            modal.classList.add('open');
+        });
+    }
+
+    async function submitBuyerEmail() {
+        const email = document.getElementById('buyerEmailInput').value.trim();
+        if (!email) { alert("Masukkan email yang valid!"); return; }
+        const body = document.getElementById('amInteractBody');
+        body.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Mengirim magic link ke email ${email}...</p>`;
+        try {
+            const res = await fetch(`https://ndxhs.my.id/alightmotion/send?akseskey=${NDXHS_KEY}&email=${encodeURIComponent(email)}`);
+            const json = await res.json();
+            if (json.status === false || json.status === "error") {
+                body.innerHTML = `<p class="text-xs text-red-400">❌ Gagal mengirim link: ${json.message || "Error"}</p>`;
+                return;
+            }
+            body.innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-emerald-400">✅ Magic link berhasil dikirim ke email!</p>
+                    <div class="text-[11px] opacity-80 space-y-1 bg-white/5 p-3 rounded-xl">
+                        <p class="font-bold text-amber-300">Cara Ambil Link Verifikasi:</p>
+                        <p>1. Buka browser, kunjungi <a href="https://generator.email/" target="_blank" class="underline text-sky-400">https://generator.email/</a> lalu masukkan email: <b class="text-white">${email}</b></p>
+                        <p>2. Klik Refresh. Buka folder <b>Spam</b> jika tidak ada di Inbox, lalu buka email dari Alight Motion.</p>
+                        <p>3. Salin tautan/link verifikasi dari email tersebut dan paste di bawah ini!</p>
+                    </div>
+                    <input type="text" id="verifyLinkInput" placeholder="Paste link verifikasi disini..." class="w-full bg-white/5 border border-amber-500/30 rounded-xl px-3 py-2 text-xs text-white outline-none">
+                    <button onclick="submitVerifyLink('${email}')" class="w-full action-btn py-2.5 rounded-xl text-xs font-bold">Verifikasi & Aktifkan AM</button>
+                </div>
+            `;
+        } catch (err) {
+            body.innerHTML = `<p class="text-xs text-red-400">❌ Terjadi kesalahan saat mengirim magic link.</p>`;
+        }
+    }
+
+    async function submitVerifyLink(email) {
+        const link = document.getElementById('verifyLinkInput').value.trim();
+        if (!link) { alert("Masukkan link verifikasi dengan benar!"); return; }
+        const body = document.getElementById('amInteractBody');
+        body.innerHTML = `<p class="text-xs animate-pulse text-amber-400">⏳ Memproses verifikasi akun...</p>`;
+        try {
+            const res = await fetch(`https://ndxhs.my.id/alightmotion/verify?akseskey=${NDXHS_KEY}&email=${encodeURIComponent(email)}&link=${encodeURIComponent(link)}`);
+            const json = await res.json();
+            if (json.status === false || json.status === "error") {
+                body.innerHTML = `<p class="text-xs text-red-400">❌ Gagal verifikasi: ${json.message || "Error"}. Pastikan link valid.</p>`;
+                return;
+            }
+            body.innerHTML = `
+                <div class="space-y-3 text-xs">
+                    <p class="font-extrabold text-emerald-400 text-sm">🎉 AM Premium Berhasil Diaktifkan!</p>
+                    <div class="bg-white/5 p-3 rounded-xl space-y-2">
+                        <p class="font-bold text-amber-300">📧 Email Kamu: <span class="font-mono text-white">${email}</span></p>
+                        <p class="font-bold text-amber-300">📝 Cara Masuk ke Alight Motion:</p>
+                        <p>1. Buka aplikasi Alight Motion dan pilih login menggunakan email.</p>
+                        <p>2. Ketik/paste email di atas, lalu klik <b>Berikutnya</b>.</p>
+                        <p>3. Buka browser, kunjungi <a href="https://generator.email/" target="_blank" class="underline text-sky-400">https://generator.email/</a>, masukkan email yang sama.</p>
+                        <p>4. Klik Refresh, buka email dari Alight Motion, klik "Login ke alight creative" dan pilih Alight Motion.</p>
+                    </div>
+                    <p class="text-[10px] opacity-70">🎥 Tutorial Video: <a href="https://youtube.com/shorts/utDfO2yjfvA?si=-63G0r3LYYrpvcLw" target="_blank" class="text-sky-400 underline">Tonton Disini</a></p>
+                </div>
+            `;
+        } catch (err) {
+            body.innerHTML = `<p class="text-xs text-red-400">❌ Terjadi kesalahan saat verifikasi.</p>`;
+        }
+    }
+
+    function startAmSellerOrder() {
+        createSairibotInvoice(1000, async () => { await deliverAmBulk(1); });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('totoro_theme') || 'forest';
+        setTheme(savedTheme);
+        const savedUI = localStorage.getItem('totoro_ui') || 'default';
+        setUI(savedUI);
+    });
+</script>
+</body>
+</html>
