@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a1e17;--card:rgba(255,255,255,.055);--card2:rgba(255,255,255,.095);--ln:rgba(255,255,255,.11);--t:#eef3e6;--mute:#a3bbac;--moss:#9be07a;--moss2:#4f9f62;--gold:#f2cf7e;--sky:#8ec9e8;--rose:#f2a3a3;--r:20px}
+:root{--bg:#0a1e17;--card:rgba(255,255,255,.055);--card2:rgba(255,255,255,.095);--ln:rgba(255,255,255,.11);--t:#eef3e6;--mute:#a3bbac;--moss:#9be07a;--moss2:#4f9f62;--gold:#f2cf7e;--sky:#8ec9e8;--rose:#f2a3a3;--r:20px;--ease:cubic-bezier(.2,.8,.2,1)}
 html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--t);background:var(--bg);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);background:var(--bg);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 50% at 12% 0%,rgba(155,224,122,.13),transparent 70%),radial-gradient(50% 45% at 100% 100%,rgba(242,207,126,.1),transparent 70%),radial-gradient(40% 40% at 90% 20%,rgba(142,201,232,.07),transparent 70%)}
 h1,h2,h3,.serif{font-family:Fraunces,serif;font-weight:600;letter-spacing:-.015em}
 button,input,textarea,select{font-family:inherit}
@@ -29,35 +29,41 @@ h2{font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin-bottom:6px}
 /* header */
 header{position:sticky;top:0;z-index:40;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top))}
 .bar{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 10px 8px 18px;border-radius:99px;background:rgba(10,30,23,.72)}
-.logo{display:flex;align-items:center;gap:9px;font-size:19px;cursor:pointer;white-space:nowrap}
+.logo{display:flex;align-items:center;gap:9px;font-size:19px;cursor:pointer;white-space:nowrap;transition:transform .25s var(--ease)}
+.logo:active{transform:scale(.95)}
 .logo i{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--moss),var(--moss2));display:grid;place-items:center;font-style:normal;font-size:16px}
 .stat-chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;border:1px solid var(--ln);color:var(--mute);white-space:nowrap}
-.stat-chip b{width:7px;height:7px;border-radius:50%;background:var(--moss);box-shadow:0 0 8px var(--moss)}
+.stat-chip b{width:7px;height:7px;border-radius:50%;background:var(--moss);box-shadow:0 0 8px var(--moss);flex:none}
 .stat-chip.off b{background:var(--rose);box-shadow:0 0 8px var(--rose)}
 nav{display:flex;gap:2px;align-items:center}
-nav a{display:flex;align-items:center;gap:6px;padding:8px 13px;border-radius:99px;font-size:13.5px;font-weight:500;cursor:pointer;color:var(--mute);transition:.2s;white-space:nowrap}
+nav a{display:flex;align-items:center;gap:6px;padding:8px 13px;border-radius:99px;font-size:13.5px;font-weight:500;cursor:pointer;color:var(--mute);white-space:nowrap}
 nav a i{font-style:normal;font-size:14px}
 nav a:hover{color:var(--t);background:var(--card)}
 nav a.on{color:#0a1e17;background:var(--moss);font-weight:600}
 nav img.av{width:20px;height:20px;border-radius:50%;object-fit:cover}
 .mb{max-width:1180px;margin:8px auto 0;padding:0 16px;position:sticky;top:70px;z-index:35}
-.mb div{padding:10px 18px;border-radius:14px;font-size:13.5px;font-weight:500;background:rgba(242,207,126,.16);border:1px solid rgba(242,207,126,.45);color:var(--gold)}
+.mb div{padding:10px 18px;border-radius:14px;font-size:13.5px;font-weight:500;background:rgba(242,207,126,.16);border:1px solid rgba(242,207,126,.45);color:var(--gold);animation:rise .4s var(--ease)}
 .mb div.red{background:rgba(242,163,163,.15);border-color:rgba(242,163,163,.5);color:var(--rose)}
 .wrap{position:relative;z-index:1;max-width:1180px;margin:auto;padding:26px 16px 90px;min-height:70vh}
-.view{animation:rise .4s ease both}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.view{animation:rise .45s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#app.out{opacity:0;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease}
 /* buttons & forms */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14px Inter,sans-serif;padding:12px 24px;border-radius:99px;background:linear-gradient(135deg,#9be07a,#4f9f62);color:#082015;text-decoration:none;box-shadow:0 6px 20px rgba(79,159,98,.35);transition:.2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14px Inter,sans-serif;padding:12px 24px;border-radius:99px;background:linear-gradient(135deg,#9be07a,#4f9f62);color:#082015;text-decoration:none;box-shadow:0 6px 20px rgba(79,159,98,.35)}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn:disabled{opacity:.5;cursor:wait;transform:none}
 .btn.ghost{background:var(--card);color:var(--t);border:1px solid var(--ln);box-shadow:none}.btn.ghost:hover{background:var(--card2)}
 .btn.red{background:linear-gradient(135deg,#e07b7b,#b24a4a);color:#fff;box-shadow:none}.btn.sm{padding:7px 14px;font-size:12px}.full{width:100%}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.acts.c{justify-content:center}
-input,textarea,select{width:100%;padding:12px 15px;border-radius:14px;border:1px solid var(--ln);background:rgba(0,0,0,.22);color:var(--t);font-size:15px;outline:none;margin-top:6px;transition:.2s}
+input,textarea,select{width:100%;padding:12px 15px;border-radius:14px;border:1px solid var(--ln);background:rgba(0,0,0,.22);color:var(--t);font-size:15px;outline:none;margin-top:6px;transition:border-color .25s,box-shadow .25s}
 select option{background:#10291f}
 textarea{resize:vertical;min-height:84px}
 input::placeholder,textarea::placeholder{color:rgba(238,243,230,.38)}
 input:focus,textarea:focus,select:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(155,224,122,.15)}
 label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:14px}
 .chk{display:flex;align-items:center;gap:9px;margin-top:12px;font-size:13px;color:var(--t);font-weight:500;cursor:pointer}.chk input{width:auto;margin:0;accent-color:#9be07a}
+.pw{position:relative}.pw input{padding-right:50px}
+.eye{position:absolute;right:6px;top:calc(50% + 3px);transform:translateY(-50%);width:38px;height:38px;border:0;background:none;color:var(--mute);font-size:18px;cursor:pointer;border-radius:50%}
+.eye:hover{background:var(--card);color:var(--t)}.eye:active{transform:translateY(-50%) scale(.88)}
 /* hero */
 .hero{position:relative;overflow:hidden;padding:56px 36px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;min-height:520px}
 .hero h1{font-size:clamp(36px,5.6vw,62px);line-height:1.04;margin:12px 0 16px}
@@ -87,13 +93,13 @@ label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:
 .split{display:grid;gap:18px;grid-template-columns:1fr 1fr;align-items:start}
 .split2{display:grid;gap:18px;grid-template-columns:320px 1fr;align-items:start}
 @media(max-width:860px){.split,.split2{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding:40px 22px 0}.phone{display:none}.hero-l{padding-bottom:120px}}
-.cat{padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:.25s;min-height:200px}
+.cat{padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:200px}
 .cat:hover,.tile:hover,.feat:hover{transform:translateY(-4px);background:var(--card2);border-color:rgba(242,207,126,.45)}
 .cat .ic{font-size:34px}.cat small{margin-top:auto;color:var(--moss);font-weight:600}
-.tile{padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;border-radius:16px;transition:.2s;font-size:14px}
+.tile{padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;border-radius:16px;font-size:14px}
 .tile b{color:var(--gold);white-space:nowrap}.tile s{display:block;font-size:11px;color:var(--mute)}
 .off{background:var(--gold);color:#3a2f0a;border-radius:99px;font-size:11px;font-weight:700;padding:2px 9px;margin-left:6px;vertical-align:middle}
-.feat{padding:22px;transition:.25s;cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.feat{padding:22px;cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .feat .ic{font-size:30px;width:54px;height:54px;border-radius:16px;background:rgba(155,224,122,.12);display:grid;place-items:center;margin-bottom:6px}
 .cmd{display:inline-block;font:600 12px ui-monospace,monospace;color:var(--gold);background:rgba(242,207,126,.12);padding:3px 10px;border-radius:99px;width:fit-content}
 .demo{margin-top:8px;padding:10px;border-radius:14px;background:rgba(0,0,0,.25);font-size:12px;display:flex;flex-direction:column;gap:5px}
@@ -106,7 +112,7 @@ label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:
 .badge{font-size:11px;font-weight:700;padding:3px 11px;border-radius:99px;white-space:nowrap}
 .s-awaiting{background:#f2cf7e;color:#4a3a05}.s-verifying{background:#9ccbee;color:#12395b}.s-success{background:#a6e08a;color:#1c4a10}.s-rejected{background:#f2a3a3;color:#5a1414}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-.ord{padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;cursor:pointer;margin-bottom:12px;transition:.2s;align-items:center}
+.ord{padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;cursor:pointer;margin-bottom:12px;align-items:center}
 .ord:hover{background:var(--card2)}.ord small{color:var(--mute)}
 .steps{display:grid;gap:26px 16px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s;margin-top:34px}
 .step{padding:32px 22px 22px;position:relative}
@@ -115,26 +121,29 @@ label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:
 .help{padding:20px 24px;margin-top:20px;font-size:13.5px}
 .help h4{font:600 16px Fraunces,serif;color:var(--gold);margin-bottom:6px}
 .help ol,.help ul{margin-left:20px}.help li{margin:5px 0;color:var(--mute)}.help li b{color:var(--t)}.help p{color:var(--mute)}
-details{padding:15px 20px;margin-top:10px}summary{cursor:pointer;font-weight:600;font-size:14px}details p{margin-top:8px;color:var(--mute);font-size:13.5px}
-.back{background:none;border:0;color:var(--t);opacity:.7;cursor:pointer;font:500 13px Inter;margin-bottom:14px}
+details{padding:15px 20px;margin-top:10px}summary{cursor:pointer;font-weight:600;font-size:14px;transition:color .2s}details:hover summary{color:var(--gold)}details p{margin-top:8px;color:var(--mute);font-size:13.5px}
+details[open] p{animation:rise .3s ease}
+.back{background:none;border:0;color:var(--t);opacity:.7;cursor:pointer;font:500 13px Inter;margin-bottom:14px;transition:opacity .2s,transform .25s var(--ease)}.back:hover{opacity:1;transform:translateX(-3px)}
 table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;text-align:left;border-bottom:1px solid var(--ln)}th{color:var(--mute);font-weight:600}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--mute);margin-top:10px}
 /* avatar */
 .avt{display:inline-grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--moss2),#2f6f4a);color:#fff;font-weight:700;overflow:hidden;flex:none;object-fit:cover}
 .avt img{width:100%;height:100%;object-fit:cover}
+.avt.t{position:relative}.avt.t img{position:absolute;inset:0}
 .avbtn{position:relative;cursor:pointer;border-radius:50%;display:inline-block}
-.avbtn::after{content:"📷 Ganti";position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center;font-size:12px;font-weight:600;opacity:0;transition:.2s}
+.avbtn::after{content:"📷 Ganti";position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center;font-size:12px;font-weight:600;opacity:0;transition:opacity .25s}
 .avbtn:hover::after{opacity:1}
+.rl{font-size:10px;background:var(--gold);color:#3a2f0a;border-radius:99px;padding:1px 8px;font-weight:700;letter-spacing:.03em;vertical-align:middle;white-space:nowrap;font-family:Inter,sans-serif}
+.rl.big{font-size:12px;padding:2px 11px}
 /* chat */
 .chat{height:56vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:4px 4px 4px 0;margin-top:12px;scroll-behavior:smooth}
-.cm{display:flex;gap:10px;align-items:flex-end}.cm.mine{flex-direction:row-reverse}
-.cm .bx{max-width:76%}
-.cm .nm{font-size:11.5px;color:var(--mute);margin:0 6px 3px;display:flex;gap:6px;align-items:center}.cm.mine .nm{justify-content:flex-end}
+.cm{display:flex;gap:10px;align-items:flex-end;animation:rise .35s var(--ease)}.cm.mine{flex-direction:row-reverse}
+.cm .bx{max-width:76%;min-width:0}
+.cm .nm{font-size:11.5px;color:var(--mute);margin:0 6px 3px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.cm.mine .nm{justify-content:flex-end}
 .cm .tx{padding:9px 14px;border-radius:16px;font-size:14px;background:var(--card2);border:1px solid var(--ln);border-bottom-left-radius:4px;word-break:break-word}
 .cm.mine .tx{background:linear-gradient(135deg,#2e7d52,#215f3f);border-color:transparent;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
-.cm .rl{font-size:10px;background:var(--gold);color:#3a2f0a;border-radius:99px;padding:0 7px;font-weight:700}
 .cm .x{background:none;border:0;color:var(--rose);cursor:pointer;font-size:11px;opacity:.7}
-.m{max-width:82%;padding:11px 15px;border-radius:18px;font-size:14px}
+.m{max-width:82%;padding:11px 15px;border-radius:18px;font-size:14px;animation:rise .3s var(--ease)}
 .m.bot{background:var(--card2);border:1px solid var(--ln);align-self:flex-start;border-bottom-left-radius:4px}
 .m.me{background:linear-gradient(135deg,#2e7d52,#215f3f);align-self:flex-end;border-bottom-right-radius:4px}
 .send{display:flex;gap:8px;margin-top:12px}.send input{margin:0}
@@ -145,18 +154,18 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;t
 .bar-r{display:grid;grid-template-columns:104px 1fr 42px;gap:10px;align-items:center;font-size:12.5px}
 .bar-r div{height:9px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}.bar-r div i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--moss2),var(--moss));width:0;transition:width 1s ease}
 .bar-r span:last-child{text-align:right;color:var(--mute)}
-.cmdc{padding:12px 14px;border-radius:14px;cursor:pointer;transition:.2s;font-size:13px}.cmdc:hover{background:var(--card2)}
+.cmdc{padding:12px 14px;border-radius:14px;cursor:pointer;font-size:13px}.cmdc:hover{background:var(--card2)}
 .cmdc b{font-family:ui-monospace,monospace;color:var(--gold);font-size:13px}.cmdc small{display:block;color:var(--mute);font-size:11.5px;line-height:1.4;margin-top:2px}
 .pills{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
-.pill{padding:6px 13px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;background:var(--card);border:1px solid var(--ln);color:var(--mute);transition:.2s}.pill.on{background:var(--moss);color:#0a1e17;border-color:var(--moss)}
-.shot{overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.pill{padding:6px 13px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;background:var(--card);border:1px solid var(--ln);color:var(--mute)}.pill.on{background:var(--moss);color:#0a1e17;border-color:var(--moss)}
+.shot{overflow:hidden;display:flex;flex-direction:column}
 .shot:hover{transform:translateY(-4px);border-color:rgba(242,207,126,.45)}.shot .cmd{cursor:copy}
 .shot .im{position:relative;background:radial-gradient(circle at 50% 0,rgba(155,224,122,.1),rgba(0,0,0,.35));padding:12px;display:grid;place-items:center;cursor:zoom-in}
-.shot img{width:100%;height:auto;max-height:340px;object-fit:contain;display:block;border-radius:10px;transition:.4s}.shot:hover img{transform:scale(1.03)}
-.shot .zoom{position:absolute;right:14px;bottom:14px;font-style:normal;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.6);opacity:0;transition:.2s}.shot:hover .zoom{opacity:1}
+.shot img{width:100%;height:auto;max-height:340px;object-fit:contain;display:block;border-radius:10px;transition:transform .4s var(--ease)}.shot:hover img{transform:scale(1.03)}
+.shot .zoom{position:absolute;right:14px;bottom:14px;font-style:normal;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.6);opacity:0;transition:opacity .2s}.shot:hover .zoom{opacity:1}
 @media(hover:none){.shot .zoom{opacity:1}}
-#lb{position:fixed;inset:0;z-index:90;background:rgba(5,15,11,.93);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;cursor:zoom-out}#lb.on{display:flex}
-#lb img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6)}#lb small{color:var(--mute)}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(5,15,11,.93);display:flex;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;cursor:zoom-out}#lb.on{opacity:1;visibility:visible}
+#lb img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.92);transition:transform .35s var(--ease)}#lb.on img{transform:none}#lb small{color:var(--mute)}
 .shot .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}
 .shot.more{align-items:center;justify-content:center;text-align:center;padding:30px;min-height:240px;gap:8px;cursor:default}
 .shots{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
@@ -172,16 +181,44 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;t
 .cd{display:flex;gap:7px}.cdb{min-width:54px;padding:8px 6px;border-radius:12px;background:rgba(0,0,0,.28);border:1px solid var(--ln);text-align:center}.cdb b{display:block;font:700 22px Fraunces,serif;color:var(--gold);line-height:1.1}.cdb span{font-size:10px;color:var(--mute)}
 @media(max-width:860px){.promo{grid-template-columns:1fr;padding:30px 22px 24px;gap:16px}.pbadge{width:92px;height:92px}.pbadge b{font-size:26px}.pside{align-items:flex-start;text-align:left}.pside .btn{width:100%}}
 footer{position:relative;z-index:1;text-align:center;padding:30px 18px 100px;font-size:12px;color:var(--mute)}
-#toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);padding:11px 22px;border-radius:99px;font-size:13px;opacity:0;transition:.3s;z-index:99;pointer-events:none;background:rgba(10,30,23,.96);border:1px solid var(--ln)}
+#toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);padding:11px 22px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .3s,transform .4s cubic-bezier(.2,1.3,.4,1);z-index:99;pointer-events:none;background:rgba(10,30,23,.96);border:1px solid var(--ln);max-width:92vw;text-align:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 @media(min-width:761px){#toast{bottom:26px}footer{padding-bottom:50px}}
-/* mobile bottom nav */
+/* ===== transisi & animasi halus ===== */
+.btn,.cat,.tile,.feat,.shot,.ord,.pill,.chip,nav a,.cmdc{transition:transform .25s var(--ease),background .25s,border-color .25s,box-shadow .25s,filter .25s,color .25s}
+.btn:active{transform:scale(.95)}
+.cat:active,.tile:active,.feat:active,.ord:active,.shot:active,.cmdc:active{transform:scale(.97)}
+nav a:active{transform:scale(.9)}
+.view .grid>*,.view .sgrid>*,.view .steps>*,.view .g3>*{animation:rise .5s var(--ease) backwards}
+.grid>:nth-child(2),.sgrid>:nth-child(2),.steps>:nth-child(2),.g3>:nth-child(2){animation-delay:.06s}
+.grid>:nth-child(3),.sgrid>:nth-child(3),.steps>:nth-child(3),.g3>:nth-child(3){animation-delay:.12s}
+.grid>:nth-child(4),.steps>:nth-child(4){animation-delay:.18s}
+.grid>:nth-child(5){animation-delay:.24s}.grid>:nth-child(n+6){animation-delay:.3s}
+#fl>*{animation:none}
+/* ===== mobile ===== */
 @media(max-width:760px){
- .bar .stat-chip span{display:none}
- nav{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;justify-content:space-around;padding:6px;border-radius:22px;background:rgba(10,30,23,.92);backdrop-filter:blur(16px);border:1px solid var(--ln);box-shadow:0 10px 30px rgba(0,0,0,.45)}
- nav a{flex-direction:column;gap:1px;padding:6px 8px;font-size:10px;border-radius:14px;flex:1;justify-content:center}
+ /* kunci fix: matikan blur di header supaya nav fixed nempel ke layar, bukan ke header */
+ .bar.glass{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,30,23,.94)}
+ header{padding:8px 10px;padding-top:calc(8px + env(safe-area-inset-top))}
+ .bar{padding:6px 8px 6px 12px;gap:8px}
+ .logo{font-size:17px}.logo i{width:26px;height:26px;font-size:14px}
+ .stat-chip{font-size:10.5px;padding:4px 9px}
+ nav{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;justify-content:space-around;padding:6px;border-radius:22px;background:rgba(10,30,23,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--ln);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+ nav a{flex-direction:column;gap:1px;padding:6px 2px;font-size:9.5px;border-radius:14px;flex:1;justify-content:center}
  nav a i{font-size:18px}nav img.av{width:22px;height:22px}
- .mb{top:64px}
+ .mb{top:60px;padding:0 10px}.mb div{font-size:12.5px;padding:9px 14px}
+ .wrap{padding:16px 12px 115px}
+ .pad{padding:18px}.mt{margin-top:40px}
+ .hero{padding:30px 18px 0;min-height:0;gap:10px}.hero-l{padding-bottom:100px}
+ .hero svg.hills{height:90px}
+ .grid,.shots{grid-template-columns:1fr}
+ .cat{min-height:0}
+ .bar-r{grid-template-columns:84px 1fr 34px}
+ .chat{height:50vh}.cm .bx,.m{max-width:90%}
+ .split2,.split{gap:14px}
+ .promo{padding:34px 18px 20px}
+ input,textarea,select{font-size:16px}
+ #toast{bottom:calc(92px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bub{opacity:1}}
 </style>
@@ -209,6 +246,8 @@ async function api(p,o={}){
  const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false)throw new Error(j.message||"Gagal ("+r.status+")");return j}
 const load=t=>`<div class="center pad"><span class="spin">❀</span><p class="serif" style="margin-top:10px">${t}</p></div>`;
 const avatar=(u,s=36)=>u&&u.av?`<span class="avt" style="width:${s}px;height:${s}px"><img src="${API}/api/avatar/${u.id||u.uid}?v=${u.av}" alt="" loading="lazy"></span>`:`<span class="avt" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.42)}px">${esc((u?.name||"?").trim().charAt(0).toUpperCase())}</span>`;
+/* avatar untuk chat: coba muat foto, kalau tidak ada otomatis tampil huruf awal */
+const avatarTry=(u,s=34)=>`<span class="avt t" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.42)}px">${esc((u?.name||"?").trim().charAt(0).toUpperCase())}<img src="${API}/api/avatar/${u.id||u.uid}?v=${u.av||0}" alt="" loading="lazy" onerror="this.remove()"></span>`;
 /* suasana latar: sengaja sedikit */
 for(let i=0;i<5;i++){const f=document.createElement("i");f.className="ff";f.style.cssText=`left:${8+Math.random()*84}%;top:${10+Math.random()*80}%;animation-delay:${-Math.random()*12}s;animation-duration:${10+Math.random()*8}s`;document.body.appendChild(f)}
 for(let i=0;i<3;i++){const l=document.createElement("i");l.className="leaf";l.textContent=["🍃","🌿","🍃"][i];l.style.cssText=`left:${10+i*35+Math.random()*15}%;font-size:${15+Math.random()*8}px;animation-duration:${28+Math.random()*14}s;animation-delay:${-Math.random()*25}s`;document.body.appendChild(l)}
@@ -230,7 +269,7 @@ const GAMES=[
  {n:"TTC HTML",cmd:".ttchtml",img:"https://files.catbox.moe/igzetm.jpeg",d:"Tampilan HTML interaktif langsung dari bot."},
  {n:"Menu HTML",cmd:".menuhtml",img:"https://files.catbox.moe/jzv05w.jpeg",d:"Menu bot dengan tampilan HTML yang cantik."}];
 const shots=(L,more)=>`<div class="grid shots">${L.map(g=>`<div class="glass shot"><div class="im" onclick="openLb(${GAMES.indexOf(g)})"><img src="${g.img}" alt="${g.n}" loading="lazy"><i class="zoom">🔍 Perbesar</i></div><div class="bd"><h3 style="font-size:18px">${g.n}</h3><span class="cmd" onclick="cpy('${g.cmd}',event)">${g.cmd} ⧉</span><p class="sub">${g.d}</p></div></div>`).join("")}${more?`<div class="glass shot more"><div style="font-size:42px">✨</div><h3 style="font-size:18px">Dan masih banyak lagi</h3><p class="sub">Game, tools, downloader, AI, dan ratusan fitur keren lainnya menunggumu.</p></div>`:""}</div>`;
-function openLb(i){const g=GAMES[i],l=$("#lb");l.innerHTML=`<img src="${g.img}" alt="${esc(g.n)}"><div class="cap"><b>${g.n}</b> <span class="cmd">${g.cmd}</span></div><small>Ketuk di mana saja untuk menutup</small>`;l.classList.add("on")}
+function openLb(i){const g=GAMES[i],l=$("#lb");l.innerHTML=`<img src="${g.img}" alt="${esc(g.n)}"><div class="cap"><b>${g.n}</b> <span class="cmd">${g.cmd}</span></div><small>Ketuk di mana saja untuk menutup</small>`;requestAnimationFrame(()=>l.classList.add("on"))}
 function cpy(c,e){e.stopPropagation();navigator.clipboard?.writeText(c);toast("Disalin: "+c)}
 addEventListener("keydown",e=>{if(e.key==="Escape")$("#lb").classList.remove("on")});
 const EXPL={
@@ -269,7 +308,8 @@ function route(){
  else if(a==="komunitas")vChat();
  else if(a==="ai")vAi();
  else vHome()}
-addEventListener("hashchange",route);
+/* fade out halaman lama, lalu fade in halaman baru */
+addEventListener("hashchange",()=>{clearInterval(P);app.classList.remove("view");app.classList.add("out");setTimeout(()=>{app.classList.remove("out");route()},180)});
 function countUp(){document.querySelectorAll("[data-n]").forEach(el=>{const n=+el.dataset.n,suf=el.dataset.s||"+",t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3);el.textContent=Math.round(n*e).toLocaleString("id-ID")+(p>=1?suf:"");if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 let SKEW=0;
 const pad2=n=>String(n).padStart(2,"0");
@@ -352,19 +392,21 @@ async function pullChat(first){
  let j;try{j=await api("/api/chat")}catch{return}
  const key=j.messages.length+":"+(j.messages.at(-1)?.id||"");if(key===CHK&&!first)return;CHK=key;
  const near=c.scrollHeight-c.scrollTop-c.clientHeight<140||first;
- c.innerHTML=j.messages.length?j.messages.map(m=>{const mine=ME&&m.uid===ME.id;return `<div class="cm ${mine?"mine":""}">${avatar(m,34)}<div class="bx"><div class="nm"><b style="color:var(--t)">${esc(m.name)}</b>${m.role==="owner"?'<span class="rl">OWNER</span>':""}<span>${hm(m.t)}</span>${ME?.role==="owner"?`<button class="x" onclick="delChat('${m.id}')">hapus</button>`:""}</div><div class="tx">${esc(m.text)}</div></div></div>`}).join(""):`<div class="center sub" style="margin:auto">Belum ada obrolan. Jadi yang pertama menyapa 🌿</div>`;
+ c.innerHTML=j.messages.length?j.messages.map(m=>{const mine=ME&&m.uid===ME.id,u=mine?{...m,name:ME.name,av:ME.av,id:ME.id}:m,own=m.role==="owner"||(mine&&ME.role==="owner");return `<div class="cm ${mine?"mine":""}">${avatarTry({...u,id:m.uid||u.id},34)}<div class="bx"><div class="nm"><b style="color:var(--t)">${esc(u.name)}</b>${own?'<span class="rl">Owner</span>':""}<span>${hm(m.t)}</span>${ME?.role==="owner"?`<button class="x" onclick="delChat('${m.id}')">hapus</button>`:""}</div><div class="tx">${esc(m.text)}</div></div></div>`}).join(""):`<div class="center sub" style="margin:auto">Belum ada obrolan. Jadi yang pertama menyapa 🌿</div>`;
  if(near)c.scrollTop=c.scrollHeight}
 async function sendChat(){
  const i=$("#ci"),t=i.value.trim();if(!t)return;i.value="";
  try{await api("/api/chat",{b:{text:t}});await pullChat(true)}catch(e){toast("⚠ "+e.message);i.value=t}}
 async function delChat(id){try{await api("/api/owner/chat/"+id+"/delete",{b:{}});pullChat(true)}catch(e){toast("⚠ "+e.message)}}
 /* ===== auth ===== */
+function togglePw(id,b){const i=document.getElementById(id),s=i.type==="password";i.type=s?"text":"password";b.textContent=s?"🙈":"👁";b.setAttribute("aria-label",s?"Sembunyikan password":"Lihat password")}
 function vAuth(){
  const reg=AUTHTAB==="up";
  app.innerHTML=`<div class="glass pad" style="max-width:440px;margin:30px auto"><div class="center"><div style="font-size:40px">🍃</div><h2>${reg?"Buat Akun":"Masuk ke Hutan"}</h2><p class="sub">Akun menyimpan riwayat transaksimu ✿</p></div>
  <div class="tabs" style="justify-content:center"><button class="btn sm ${reg?"ghost":""}" onclick="AUTHTAB='in';vAuth()">Masuk</button><button class="btn sm ${reg?"":"ghost"}" onclick="AUTHTAB='up';vAuth()">Daftar</button></div>
- ${reg?`<label>Nama</label><input id="aN" placeholder="Nama kamu" autocomplete="name"><label>Nomor WhatsApp</label><input id="aW" placeholder="08123456789" inputmode="tel" autocomplete="tel">`:""}
- <label>Email</label><input id="aE" type="email" placeholder="email@kamu.com" autocomplete="email"><label>Password</label><input id="aP" type="password" placeholder="min. 6 karakter" autocomplete="${reg?"new-password":"current-password"}" onkeydown="if(event.key==='Enter')doAuth()">
+ ${reg?`<label>Nama</label><input id="aN" placeholder="Nama kamu" maxlength="24" autocomplete="name"><label>Nomor WhatsApp</label><input id="aW" placeholder="08123456789" inputmode="tel" autocomplete="tel">`:""}
+ <label>Email</label><input id="aE" type="email" placeholder="email@kamu.com" autocomplete="email"><label>Password</label>
+ <div class="pw"><input id="aP" type="password" placeholder="min. 6 karakter" autocomplete="${reg?"new-password":"current-password"}" onkeydown="if(event.key==='Enter')doAuth()"><button type="button" class="eye" onclick="togglePw('aP',this)" aria-label="Lihat password">👁</button></div>
  <button class="btn full" style="margin-top:20px" id="aB" onclick="doAuth()">${reg?"✿ Daftar":"➜ Masuk"}</button></div>`}
 async function doAuth(){
  const reg=AUTHTAB==="up",b=$("#aB");b.disabled=true;
@@ -418,10 +460,13 @@ async function vProfile(){
  try{d=await api("/api/me")}catch(e){return app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`}
  ME=d.user;navDraw("profil");
  const O=d.orders,n=s=>O.filter(o=>o.status===s).length,L=FIL==="all"?O:O.filter(o=>o.status===FIL);
- app.innerHTML=`<div class="glass pad" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:16px"><label class="avbtn" style="margin:0">${avatar(ME,76)}<input type="file" accept="image/*" hidden onchange="upAvatar(this)"></label><div><h2 style="margin:0">${esc(ME.name)}</h2><p class="sub">${esc(ME.email)} · +${ME.wa}${ME.role==="owner"?" · 👑 owner":""}</p><p class="sub" style="font-size:12px">Ketuk foto untuk menggantinya</p></div></div><button class="btn ghost sm" onclick="logout()">Keluar</button></div>
+ app.innerHTML=`<div class="glass pad" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:16px;min-width:0"><label class="avbtn" style="margin:0">${avatar(ME,76)}<input type="file" accept="image/*" hidden onchange="upAvatar(this)"></label><div style="min-width:0"><h2 style="margin:0;word-break:break-word">${esc(ME.name)}${ME.role==="owner"?' <span class="rl big">Owner</span>':""}</h2><p class="sub" style="word-break:break-all">${esc(ME.email)} · +${ME.wa}</p><p class="sub" style="font-size:12px">Ketuk foto untuk menggantinya</p></div></div><button class="btn ghost sm" onclick="logout()">Keluar</button></div>
  <div class="sgrid"><div class="glass stat sm"><b>${O.length}</b><span>Total</span></div><div class="glass stat sm"><b style="color:#a6e08a">${n("success")}</b><span>Berhasil</span></div><div class="glass stat sm"><b>${n("awaiting")+n("verifying")}</b><span>Tertunda</span></div><div class="glass stat sm"><b style="color:#f2a3a3">${n("rejected")}</b><span>Ditolak</span></div></div>
+ <div class="glass pad" style="margin-top:18px"><h3>✏️ Ganti Username</h3><p class="sub">Nama ini tampil di profil dan chat publik${ME.role==="owner"?", lengkap dengan label Owner":""}.</p>
+ <label>Username baru</label><input id="pU" maxlength="24" value="${esc(ME.name)}" placeholder="3-24 karakter" autocomplete="nickname" onkeydown="if(event.key==='Enter')chName()">
+ <button class="btn" style="margin-top:16px" id="pUB" onclick="chName()">Simpan Username</button></div>
  <div class="glass pad" style="margin-top:18px"><h3>🔒 Ganti Password</h3><p class="sub">Masukkan password lama untuk memastikan ini benar-benar kamu.</p>
- <div class="split" style="gap:0 18px"><div><label>Password lama</label><input id="pO" type="password" autocomplete="current-password" placeholder="Password lama"></div><div><label>Password baru</label><input id="pN" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"></div></div><label>Ulangi password baru</label><input id="pC" type="password" autocomplete="new-password" placeholder="Ketik lagi password baru" onkeydown="if(event.key==='Enter')chPw()">
+ <div class="split" style="gap:0 18px"><div><label>Password lama</label><div class="pw"><input id="pO" type="password" autocomplete="current-password" placeholder="Password lama"><button type="button" class="eye" onclick="togglePw('pO',this)" aria-label="Lihat password">👁</button></div></div><div><label>Password baru</label><div class="pw"><input id="pN" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"><button type="button" class="eye" onclick="togglePw('pN',this)" aria-label="Lihat password">👁</button></div></div></div><label>Ulangi password baru</label><div class="pw"><input id="pC" type="password" autocomplete="new-password" placeholder="Ketik lagi password baru" onkeydown="if(event.key==='Enter')chPw()"><button type="button" class="eye" onclick="togglePw('pC',this)" aria-label="Lihat password">👁</button></div>
  <button class="btn" style="margin-top:16px" id="pB" onclick="chPw()">Simpan Password</button><p class="sub" style="font-size:12px;margin-top:8px">Perangkat lain yang sedang masuk akan otomatis keluar.</p></div>
  <h3 style="margin-top:28px">Riwayat transaksi</h3><div class="legend"><span><span class="badge s-awaiting">Belum bayar</span> menunggu bukti</span><span><span class="badge s-verifying">Menunggu ACC</span> owner memeriksa</span><span><span class="badge s-success">Berhasil</span> layanan aktif</span><span><span class="badge s-rejected">Ditolak</span> hubungi admin</span></div>
  <div class="tabs">${[["all","Semua"],["success","Berhasil"],["verifying","Menunggu ACC"],["awaiting","Belum bayar"],["rejected","Ditolak"]].map(([k,t])=>`<button class="btn sm ${FIL===k?"":"ghost"}" onclick="FIL='${k}';vProfile()">${t}</button>`).join("")}</div>
@@ -429,6 +474,14 @@ async function vProfile(){
 async function upAvatar(inp){
  const f=inp.files[0];if(!f)return;toast("Mengunggah foto…");
  try{const j=await api("/api/me/avatar",{b:{image:await square(f)}});ME=j.user;toast("✿ Foto profil diperbarui");vProfile()}catch(e){toast("⚠ "+e.message)}}
+/* butuh endpoint backend: POST /api/me/name  body {name}  -> {success:true,user:{...}} */
+async function chName(){
+ const v=$("#pU").value.trim().replace(/\s+/g," ");
+ if(v.length<3)return toast("⚠ Username minimal 3 karakter");if(v.length>24)return toast("⚠ Username maksimal 24 karakter");
+ if(v===ME.name)return toast("Username masih sama ✿");
+ const b=$("#pUB");b.disabled=true;
+ try{const j=await api("/api/me/name",{b:{name:v}});ME=j.user||{...ME,name:v};toast("✿ Username diganti jadi "+ME.name);vProfile()}
+ catch(e){toast("⚠ "+e.message);b.disabled=false}}
 async function chPw(){
  const o=$("#pO").value,n=$("#pN").value,c=$("#pC").value;
  if(!o)return toast("⚠ Isi password lama dulu");if(n.length<6)return toast("⚠ Password baru minimal 6 karakter");if(n!==c)return toast("⚠ Konfirmasi password tidak sama");
@@ -493,8 +546,8 @@ function local(q){
  if(has(/garansi|jaminan|refund/))return{s:1,t:"Ada garansi selama masa aktif produk. Kalau ada kendala, hubungi WA Order 0856-0265-4058 ✿"};
  if(has(/kontak|admin|owner|wa order|whatsapp|telegram|instagram|hubungi/))return{s:1,t:"Kontak ✿\n• WA Order: 0856-0265-4058\n• WA Owner: 0857-1117-0694\n• Telegram: @radipgtg\n• Instagram: @radipppppp"};
  if(has(/lama|cepat|proses|acc|nunggu|menunggu/))return{s:1,t:"Biasanya hitungan menit setelah bukti transfer terkirim. Status di halaman pesanan berubah otomatis begitu owner menekan ACC ✿"};
- if(has(/password|sandi|ganti pass/))return{s:1,t:"Buka Profil › Ganti Password. Kamu perlu mengisi password lama, lalu password baru ✿"};
- if(has(/login|masuk|daftar|riwayat|profil|akun saya/))return{s:1,t:"Daftar atau masuk lewat tombol Masuk. Di Profil kamu bisa melihat semua transaksi, mengganti foto, dan mengganti password ✿"};
+ if(has(/username|ganti nama|ganti pass|password|sandi/))return{s:1,t:"Buka Profil. Di sana ada Ganti Username dan Ganti Password (perlu password lama) ✿"};
+ if(has(/login|masuk|daftar|riwayat|profil|akun saya/))return{s:1,t:"Daftar atau masuk lewat tombol Masuk. Di Profil kamu bisa melihat semua transaksi, mengganti foto, username, dan password ✿"};
  if(has(/error|gagal|bug|rusak|tidak bisa|gabisa|ga bisa/))return{s:1,t:"Maaf ya 🍃 Coba muat ulang halaman. Kalau masih bermasalah, chat WA Order 0856-0265-4058 dengan ID pesananmu."};
  if(has(/harga|katalog|produk|jual|list|daftar harga/))return{s:1,t:`Harga mulai dari ✿\n• Sewa Bot: ${mn("bot")}\n• Panel: ${mn("panel")}\n• Alight Motion: ${mn("am")}\n• Jasa: ${mn("jasa")}\nBuka Katalog untuk detailnya.`};
  return{s:0,t:"Hmm, daun-daun belum paham maksudmu 🍃 Coba tanya soal harga bot, panel, Alight Motion, cara order, atau pembayaran. Atau chat WA Order 0856-0265-4058."};
@@ -504,7 +557,7 @@ function vAi(){
  app.innerHTML=`<div class="split2"><div class="glass pad"><div style="font-size:42px">🌳</div><h2>Tanya Totoro</h2><p class="sub">Asisten hutan yang menjawab seputar toko ini.</p>
  <div class="help" style="padding:0;margin-top:14px"><h4>Bisa ditanya soal</h4><ul><li>Harga sewa bot, panel, Alight Motion, jasa</li><li>Cara order dan cara bayar</li><li>Diskon yang sedang aktif</li><li>Lama proses dan garansi</li><li>Kontak owner dan admin</li></ul></div>
  <div style="margin-top:12px">${["Berapa harga sewa bot?","Panel 5 GB berapa?","Bulk 20 akun berapa?","Cara order?","Ada diskon?"].map(q=>`<span class="chip" style="cursor:pointer" onclick="ask('${q}')">${q}</span>`).join("")}</div></div>
- <div class="glass pad"><div class="chat" id="chat" style="height:56vh;margin-top:0">${chat.map(m=>`<div class="m ${m.r}">${m.typing?'<span class="dots"><i></i><i></i><i></i></span>':esc(m.t).replace(/\n/g,"<br>")}</div>`).join("")}</div>
+ <div class="glass pad"><div class="chat" id="chat" style="margin-top:0">${chat.map(m=>`<div class="m ${m.r}">${m.typing?'<span class="dots"><i></i><i></i><i></i></span>':esc(m.t).replace(/\n/g,"<br>")}</div>`).join("")}</div>
  <div class="send"><input id="aiIn" placeholder="Ketik pertanyaan…" onkeydown="if(event.key==='Enter')ask()"><button class="btn" onclick="ask()">➤</button></div></div></div>`;
  const c=$("#chat");c.scrollTop=c.scrollHeight}
 async function ask(q){
