@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d1f1b">
 <title>Totoro AI ✿ Toko Digital Hutan</title>
-<link rel="icon" href="https://files.catbox.moe/3h14or.jpeg">
-<link rel="apple-touch-icon" href="https://files.catbox.moe/3h14or.jpeg">
+<link rel="icon" href="https://api.totoroai.my.id/api/img/logo">
+<link rel="apple-touch-icon" href="https://api.totoroai.my.id/api/img/logo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -645,6 +645,28 @@ html{scroll-behavior:smooth}
 .fqa .tip{margin-top:10px;padding:10px 14px;border-radius:12px;background:rgba(244,213,141,.09);border:1px solid rgba(244,213,141,.25);color:#e9dcb2;font-size:13px}
 .faqcta{padding:22px;margin-top:18px;text-align:center}
 @media(max-width:560px){.fqa{padding:2px 16px 16px 16px}.faqi summary{padding:13px 14px}}
+.loader-core{background-image:var(--tt-svg),linear-gradient(145deg,rgba(143,227,176,.2),rgba(31,87,57,.35))!important;background-size:cover,cover!important;background-position:center!important}
+.brand-badge,.drawer-brand img{background-image:var(--tt-svg);background-size:cover;background-position:center}
+/* ===== Header menempel di atas (tidak melayang) ===== */
+header{padding:0!important;padding-top:env(safe-area-inset-top)!important;background:rgba(10,24,20,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ln);transition:box-shadow .3s var(--ease),border-color .3s var(--ease)}
+header.scrolled{border-bottom-color:rgba(143,227,176,.26);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+header .bar,header .bar.glass,header.scrolled .bar{max-width:1180px;margin:0 auto;border-radius:0!important;border:0!important;box-shadow:none!important;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:10px 16px!important}
+@media(max-width:760px){header .bar,header .bar.glass{padding:8px 12px!important}}
+/* ===== Loading 1%-100% ===== */
+.loader-pct{display:flex;align-items:baseline;justify-content:center;gap:2px;font:700 44px "Bricolage Grotesque",sans-serif;color:var(--t);line-height:1;margin-top:4px;font-variant-numeric:tabular-nums;text-shadow:0 0 28px rgba(143,227,176,.35)}
+.loader-pct small{font-size:20px;color:var(--moss);font-weight:600}
+.loader-track{height:8px!important;width:min(280px,78%)!important;position:relative}
+.loader-track i.ld-bar{width:1%;animation:none!important;transition:width .18s linear;position:relative}
+.loader-track i.ld-bar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:translateX(-100%);animation:ldShine 1.4s ease-in-out infinite}
+@keyframes ldShine{to{transform:translateX(100%)}}
+/* ===== Avatar WhatsApp di leaderboard ===== */
+.pav{position:relative;overflow:hidden}
+.pav img,.lav img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lav{position:relative;overflow:hidden;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;font:700 16px "Bricolage Grotesque",sans-serif;color:#10241d;background:linear-gradient(135deg,#cfe9d8,#8fe3b0)}
+.lr{grid-template-columns:30px 40px 1fr auto}.lr .lbar{grid-column:2/5}
+.tc .who{display:flex;align-items:center;gap:10px;min-width:0}.tc .who .lav{width:34px;height:34px;font-size:14px}.tc .who>div{min-width:0}
+.rg.d .v{stroke:var(--gold)}.rg.h .v{stroke:var(--rose)}
+.b-w .kv:last-child{border-bottom:0}
 </style>
 </head>
 <body>
@@ -652,7 +674,7 @@ html{scroll-behavior:smooth}
 <header>
   <div class="bar glass">
     <div class="logo serif" onclick="go('home')">
-      <span class="brand-badge"><img src="https://files.catbox.moe/3h14or.jpeg" alt="Totoro AI"></span>
+      <span class="brand-badge"><img src="https://api.totoroai.my.id/api/img/logo" alt="Totoro AI"></span>
       <span class="lt">Totoro AI</span>
     </div>
     <div class="header-right">
@@ -668,7 +690,7 @@ html{scroll-behavior:smooth}
 <div class="drawer-backdrop" id="drawerBackdrop" onclick="if(event.target===this)closeForestMenu()">
   <aside class="forest-drawer" role="dialog" aria-modal="true" aria-label="Menu Totoro AI">
     <div class="drawer-top">
-      <div class="drawer-brand"><img src="https://files.catbox.moe/3h14or.jpeg" alt="Totoro AI"><span>Sudut Hutan Totoro</span></div>
+      <div class="drawer-brand"><img src="https://api.totoroai.my.id/api/img/logo" alt="Totoro AI"><span>Sudut Hutan Totoro</span></div>
       <button class="drawer-close" onclick="closeForestMenu()" aria-label="Tutup menu">×</button>
     </div>
     <div class="drawer-quote">“Pelan-pelan saja. Bahkan perjalanan jauh dimulai dari satu langkah kecil di bawah rindangnya pepohonan.”</div>
@@ -700,7 +722,16 @@ html{scroll-behavior:smooth}
 <div id="toast"></div>
 
 <script>
-const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058",AVATAR_IMG="https://files.catbox.moe/3h14or.jpeg";
+const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058",AVATAR_IMG="https://api.totoroai.my.id/api/img/logo";
+const LOGO_ORIG="https://files.catbox.moe/3h14or.jpeg";
+const TOTORO_SVG="data:image/svg+xml,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect width='120' height='120' fill='#16382c'/><path d='M36 34 30 8 54 26ZM84 34 90 8 66 26Z' fill='#8d9aa0'/><ellipse cx='60' cy='72' rx='42' ry='44' fill='#8d9aa0'/><ellipse cx='60' cy='86' rx='28' ry='27' fill='#ece5d2'/><g fill='none' stroke='#8d9aa0' stroke-width='3' stroke-linecap='round'><path d='M46 78q4-5 8 0M58 74q4-5 8 0M68 80q4-5 8 0M50 92q4-5 8 0M64 92q4-5 8 0'/></g><circle cx='43' cy='50' r='10' fill='#fff'/><circle cx='77' cy='50' r='10' fill='#fff'/><circle cx='45' cy='51' r='4' fill='#1d2a2a'/><circle cx='75' cy='51' r='4' fill='#1d2a2a'/><ellipse cx='60' cy='58' rx='6' ry='3.5' fill='#2b3535'/><g stroke='#2b3535' stroke-width='1.6' stroke-linecap='round'><path d='M20 60h16M20 68h16M100 60h-16M100 68h-16'/></g></svg>");
+document.documentElement.style.setProperty("--tt-svg",'url("'+TOTORO_SVG+'")');
+const isLogo=t=>t&&t.tagName==="IMG"&&/\/api\/img\/logo|3h14or/.test(t.currentSrc||t.src||"");
+function imgFb(i){if(i.dataset.fb==="x")return;const s=i.getAttribute("src")||"";
+ if(s.indexOf("/api/img/logo")>-1&&!i.dataset.fb){i.dataset.fb="1";i.src=LOGO_ORIG;return}
+ i.dataset.fb="x";i.src=TOTORO_SVG}
+addEventListener("error",e=>{if(isLogo(e.target))imgFb(e.target)},true);
+document.querySelectorAll("img").forEach(i=>{if(isLogo(i)&&i.complete&&i.naturalWidth===0)imgFb(i)});
 const GEMINI_KEY="ISI_API_KEY_GEMINI_KAMU_DISINI";
 const GEMINI_MODEL="gemini-2.0-flash";
 let CAT=null,ME=null,TOK=localStorage.getItem("tt_tok")||"",NEXT="",P=null,AUTHTAB="in",FIL="all",FEAT=null,FEATAT=0,SS={bot:true,maint:null,stats:{features:1300,groups:50,users:1000}},FCAT="all",FQ="",FN=500,AMRE=false,BUYSEL=null;
@@ -758,9 +789,15 @@ async function api(p,o={}){
 
 /* Loader */
 const LOADER_MSGS=["Membuka jalan setapak…","Kunang-kunang sedang menyalakan lentera…","Angin hutan membawa kabar baik…","Menyiapkan tempat singgahmu…","Sebentar lagi, dunia kecil ini terbuka…"];
+let LDV=0,LDCAP=92;
+const LDMSG=[[25,"Membuka jalan setapak…"],[50,"Kunang-kunang menyalakan lentera…"],[75,"Mengumpulkan kabar dari hutan…"],[95,"Merapikan dedaunan…"],[101,"Sedikit lagi, hutan siap dikunjungi ✿"]];
+function paintLd(){document.querySelectorAll(".loader").forEach(l=>{const v=Math.max(1,Math.min(100,Math.round(LDV)));const a=l.querySelector(".ld-pct"),b=l.querySelector(".ld-bar"),m=l.querySelector(".loader-sub");if(a)a.textContent=v;if(b)b.style.width=v+"%";if(m)m.textContent=LDMSG.find(x=>v<x[0])[1]})}
+function setLd(v,cap){LDV=Math.max(LDV,v);if(cap)LDCAP=cap;paintLd()}
+setInterval(()=>{if(!document.querySelector(".loader")){LDV=0;LDCAP=92;return}if(!LDV)LDV=1;LDV=Math.min(LDCAP,LDV+Math.max(.15,(LDCAP-LDV)*.05));paintLd()},110);
+async function finishLd(){if(!document.querySelector(".loader"))return;LDV=100;paintLd();await new Promise(r=>setTimeout(r,420))}
 const load=(t)=>{
  const i=Math.floor(Math.random()*LOADER_MSGS.length);
- return `<div class="loader"><div class="loader-scene"><div class="loader-orbit"></div><span class="loader-firefly one">✦</span><span class="loader-firefly two">✧</span><span class="loader-firefly three">✦</span><div class="loader-core"><img src="${AVATAR_IMG}" alt="Totoro AI"></div></div><div class="loader-txt">${esc(t||LOADER_MSGS[i])}</div><div class="loader-sub" id="lds">Sedang merapikan dedaunan dan menyiapkan ruang kecil untukmu.</div><div class="loader-track"><i></i></div><div class="loader-caption">A little forest is waking up</div></div>`;
+ return `<div class="loader"><div class="loader-scene"><div class="loader-orbit"></div><span class="loader-firefly one">✦</span><span class="loader-firefly two">✧</span><span class="loader-firefly three">✦</span><div class="loader-core"><img src="${AVATAR_IMG}" alt="Totoro AI"></div></div><div class="loader-txt">${esc(t||LOADER_MSGS[i])}</div><div class="loader-sub" id="lds">Sedang merapikan dedaunan dan menyiapkan ruang kecil untukmu.</div><div class="loader-pct"><b class="ld-pct">1</b><small>%</small></div><div class="loader-track"><i class="ld-bar"></i></div><div class="loader-caption">A little forest is waking up</div></div>`;
 }
 const avatar=(u,s=36)=>u&&u.av?`<span class="avt" style="width:${s}px;height:${s}px"><img src="${API}/api/avatar/${u.id||u.uid}?v=${u.av}" alt="" loading="lazy"></span>`:`<span class="avt" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.42)}px">${esc((u?.name||"?").trim().charAt(0).toUpperCase())}</span>`;
 const avatarTry=(u,s=34)=>`<span class="avt t" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.42)}px">${esc((u?.name||"?").trim().charAt(0).toUpperCase())}<img src="${API}/api/avatar/${u.id||u.uid}?v=${u.av||0}" alt="" loading="lazy" onerror="this.remove()"></span>`;
@@ -874,10 +911,10 @@ function menuContact(){
 
 async function boot(){
  app.innerHTML=load("Menyiapkan hutan…");
- try{CAT=await api("/api/catalog");applyState(CAT)}catch{
+ try{setLd(8,60);CAT=await api("/api/catalog");applyState(CAT);setLd(62,88)}catch{
   app.innerHTML=`<div class="glass pad center"><h2>🍃 Server belum terhubung</h2><p class="sub">Pastikan bot menyala, lalu muat ulang halaman.</p><button class="btn" style="margin-top:16px" onclick="boot()">↻ Coba lagi</button></div>`;return}
  if(TOK)try{ME=(await api("/api/me")).user}catch{TOK="";localStorage.removeItem("tt_tok")}
- chrome();route();setInterval(tick,1000);pullSys();setInterval(pullSys,8000);
+ setLd(90,97);await finishLd();chrome();route();setInterval(tick,1000);pullSys();setInterval(pullSys,8000);
  setInterval(async()=>{try{applyState(await api("/api/status"))}catch{applyState({bot:false,maint:SS.maint,stats:SS.stats})}},30000)}
 
 function navDraw(a){
@@ -944,20 +981,25 @@ function paintSys(){const q=i=>document.getElementById(i);if(!q("sysTxt"))return
  q("sysPh").textContent=SS.bot?T("Catbus tepat waktu, semua jalan setapak terbuka.","The Catbus is on time and every forest path is open."):T("Catbus sedang istirahat. Pesanan bisa tertunda sebentar.","The Catbus is resting. Orders may take a little longer.");
  const last=MSS[MSS.length-1];q("sysMs").textContent=last!=null?last+" ms":"-";q("sysPk").textContent=MSP?T("Puncak sesi ini ","Session peak ")+MSP+" ms":"";
  if(MSS.length>1){const mn=Math.min(...MSS),mx=Math.max(...MSS),r=Math.max(1,mx-mn);q("sysSp").setAttribute("points",MSS.map((v,i)=>`${(i/(MSS.length-1)*200).toFixed(1)},${(46-(v-mn)/r*38).toFixed(1)}`).join(" "))}
- if(SYS&&SYS.cores){const c=Math.round(SYS.cpu),hp=SYS.heapTotal?SYS.heapUsed/SYS.heapTotal*100:0;
-  q("cpuV").textContent=c+"%";ringSet("cpuR",c);q("cpuS").textContent=SYS.cores+T(" inti prosesor · angin hutan "," cores · forest breeze ")+(c<35?T("tenang","calm"):c<75?T("sibuk","busy"):T("ramai","crowded"));
-  q("memV").textContent=Math.round(hp)+"%";ringSet("memR",hp);q("memS").textContent=Math.round(SYS.heapUsed)+" / "+Math.round(SYS.heapTotal)+" MB · RSS "+Math.round(SYS.rss)+" MB";
-  q("upV").textContent=fmtUp(SYS.uptime);q("osV").textContent=SYS.os||"-";q("nodeV").textContent=SYS.node||"-";q("sysNote").style.display="none"}}
+ if(SYS&&SYS.cores){const set=(id,v)=>{const e=q(id);if(e)e.textContent=v},fm=x=>x>=1024?(x/1024).toFixed(1)+" GB":Math.round(x)+" MB",pc=(a,b)=>b?Math.min(100,a/b*100):0;
+  const c=Math.round(SYS.cpu);set("cpuV",c+"%");ringSet("cpuR",c);set("cpuS",SYS.cores+T(" inti prosesor · angin hutan "," cores · forest breeze ")+(c<35?T("tenang","calm"):c<75?T("sibuk","busy"):T("ramai","crowded")));
+  const rp1=pc(SYS.ramUsed,SYS.ramTotal);set("memV",Math.round(rp1)+"%");ringSet("memR",rp1);set("memS",fm(SYS.ramUsed)+" / "+fm(SYS.ramTotal));
+  const dp=pc(SYS.diskUsed,SYS.diskTotal);set("dskV",SYS.diskTotal?Math.round(dp)+"%":"-");ringSet("dskR",dp);set("dskS",SYS.diskTotal?fm(SYS.diskUsed)+" / "+fm(SYS.diskTotal):T("Tidak terbaca","Unavailable"));
+  const hp=pc(SYS.heapUsed,SYS.heapTotal);set("hpV",Math.round(hp)+"%");ringSet("hpR",hp);set("hpS",Math.round(SYS.heapUsed)+" / "+Math.round(SYS.heapTotal)+" MB · RSS "+Math.round(SYS.rss)+" MB");
+  set("upV",fmtUp(SYS.uptime));set("upS",fmtUp(SYS.upServer||0));set("pgV",last!=null?last+" ms":"-");set("netV",SYS.net||"-");
+  set("osV",SYS.os||"-");set("plV",SYS.platform||"-");set("hostV",SYS.host||"-");set("mdlV",SYS.model||"-");set("ldV",(SYS.load||[]).join(" / ")||"-");set("nodeV",SYS.node||"-");
+  set("usV",(SYS.users||0).toLocaleString("id-ID"));set("prV",(SYS.premium||0).toLocaleString("id-ID"));set("grV",(SYS.groups||0).toLocaleString("id-ID"));
+  const n=q("sysNote");if(n)n.style.display="none"}}
 async function pullSys(){const t0=performance.now();
  try{applyState(await api("/api/status"));const ms=Math.round(performance.now()-t0);MSS.push(ms);if(MSS.length>24)MSS.shift();MSP=Math.max(MSP,ms)}catch{}
  try{SYS=await api("/api/system")}catch{}
  paintSys()}
 const ringHTML=(id,cls,title,vid,sid)=>`<div class="glass bc b-ring reveal"><h4>${title}</h4><div class="rg ${cls}"><svg viewBox="0 0 84 84"><circle class="t" cx="42" cy="42" r="34"/><circle class="v" id="${id}" cx="42" cy="42" r="34"/></svg><div><div class="big" id="${vid}">-</div></div></div><small id="${sid}">-</small></div>`;
 const sysHTML=()=>`<div class="bento"><div class="glass bc b-st reveal"><h4>${T("Denyut hutan","Forest pulse")}</h4><div class="big"><i id="sysDot" class="sd"></i><span id="sysTxt">Bot</span></div><small id="sysPh">-</small><div class="mr" style="margin-top:18px"><div><small>${T("Respons bot","Bot response")}</small><div class="big" id="sysMs">-</div></div><small id="sysPk"></small></div><svg class="sp" viewBox="0 0 200 52" preserveAspectRatio="none"><polyline id="sysSp" points=""/></svg></div>
- ${ringHTML("cpuR","c","CPU","cpuV","cpuS")}${ringHTML("memR","m",T("Memori heap","Heap memory"),"memV","memS")}
- <div class="glass bc b-w reveal"><h4>${T("Aktif sejak","Uptime")}</h4><div class="big" id="upV">-</div><small>${T("Tanpa tidur, menjaga hutan","Awake and watching the forest")}</small></div>
- <div class="glass bc b-w reveal"><h4>${T("Sistem operasi","Operating system")}</h4><div class="big" id="osV" style="font-size:24px">-</div><small>Node.js <span id="nodeV">-</span></small></div>
- <div class="glass bc b-w reveal"><h4>${T("Perintah dijalankan","Commands run")}</h4><div class="big" data-n="${CMDN}">${CMDN.toLocaleString("id-ID")}</div><small>${T("Sejak bot mulai mencatat","Since the bot began counting")}</small></div></div><p class="note0" id="sysNote">${T("Data CPU dan memori muncul setelah endpoint /api/system dipasang di bot.","CPU and memory appear once the /api/system endpoint is added to the bot.")}</p>`;
+ ${ringHTML("cpuR","c","CPU","cpuV","cpuS")}${ringHTML("memR","m",T("Memori (RAM)","Memory (RAM)"),"memV","memS")}${ringHTML("dskR","d",T("Penyimpanan","Disk"),"dskV","dskS")}${ringHTML("hpR","h",T("Heap Node.js","Node.js heap"),"hpV","hpS")}
+ <div class="glass bc b-w reveal"><h4>Uptime</h4><div class="kv"><span>Bot</span><span id="upV">-</span></div><div class="kv"><span>Server</span><span id="upS">-</span></div><div class="kv"><span>Respons bot</span><span id="pgV">-</span></div><div class="kv"><span>Jaringan</span><span id="netV">-</span></div></div>
+ <div class="glass bc b-w reveal"><h4>Server</h4><div class="kv"><span>OS</span><span id="osV">-</span></div><div class="kv"><span>Platform</span><span id="plV">-</span></div><div class="kv"><span>Host</span><span id="hostV">-</span></div><div class="kv"><span>CPU</span><span id="mdlV">-</span></div><div class="kv"><span>Load 1/5/15m</span><span id="ldV">-</span></div><div class="kv"><span>Node.js</span><span id="nodeV">-</span></div></div>
+ <div class="glass bc b-w reveal"><h4>${T("Database bot","Bot database")}</h4><div class="kv"><span>${T("Pengguna","Users")}</span><span id="usV">-</span></div><div class="kv"><span>Premium</span><span id="prV">-</span></div><div class="kv"><span>${T("Grup","Groups")}</span><span id="grV">-</span></div><div class="kv"><span>${T("Perintah dijalankan","Commands run")}</span><span data-n="${CMDN}" data-s="">${CMDN.toLocaleString("id-ID")}</span></div></div></div><p class="note0" id="sysNote">${T("Data CPU dan memori muncul setelah endpoint /api/system dipasang di bot.","CPU and memory appear once the /api/system endpoint is added to the bot.")}</p>`;
 const faceSVG=()=>{let t="";for(let i=0;i<12;i++){const a=i*30*Math.PI/180,r1=i%3?50:46,x1=60+Math.sin(a)*r1,y1=60-Math.cos(a)*r1,x2=60+Math.sin(a)*55,y2=60-Math.cos(a)*55;t+=`<line class="tk${i%3?"":" m"}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke-linecap="round"/>`}
  return `<svg class="face" viewBox="0 0 120 120"><circle class="r" cx="60" cy="60" r="58"/>${t}<line id="hH" class="hand" x1="60" y1="60" x2="60" y2="36" stroke="#eaf3ec" stroke-width="4" stroke-linecap="round"/><line id="hM" class="hand" x1="60" y1="60" x2="60" y2="22" stroke="#8fe3b0" stroke-width="3" stroke-linecap="round"/><line id="hS" class="hand" x1="60" y1="66" x2="60" y2="18" stroke-width="1.6" stroke-linecap="round"/><circle cx="60" cy="60" r="3.5" fill="#ff7d92"/></svg>`};
 const liveHTML=()=>{const P=ME;
@@ -1342,9 +1384,11 @@ let RK=null,RKAT=0,RKSIG="";
 const medal=i=>["🥇","🥈","🥉"][i]||"";
 const kfmt=n=>{n=Number(n)||0;for(const[v,s]of[[1e12,"T"],[1e9,"B"],[1e6,"M"],[1e3,"K"]])if(n>=v)return(n/v).toFixed(2)+s;return n.toLocaleString("id-ID")};
 const rkName=u=>esc(u.name||u.n);
+const rkAv=(u,i)=>`<span class="lav">${u.name?esc(u.name.trim().charAt(0).toUpperCase()):"🌿"}${u.id?`<img src="${API}/api/lbavatar/${u.id}" alt="" loading="lazy" onerror="this.remove()">`:""}</span>`;
+
 async function pullRank(force){if(!force&&RK&&Date.now()-RKAT<20000)return RK;RK=await api("/api/leaderboard");RKAT=Date.now();return RK}
-function podiumHTML(top){return`<div class="podium">${[1,0,2].filter(i=>top[i]).map(i=>{const u=top[i];return`<div class="glass pd p${i+1} reveal d${i}"><span class="crown">${i===0?"👑":medal(i)}</span><div class="pav">${u.name?esc(u.name.trim().charAt(0).toUpperCase()):i+1}</div><div class="pnm">${rkName(u)}</div><small class="pmask">${u.name?esc(u.n):"&nbsp;"}</small><div class="pco">💰 ${kfmt(u.koin)}</div><div class="pbase">#${i+1}</div></div>`}).join("")}</div>`}
-function rowsHTML(list,max,from){return list.map((u,i)=>`<div class="glass lr reveal" style="--w:${Math.max(3,Math.round(u.koin/max*100))}%"><span class="lrk">${from+i}</span><div class="lnm"><b>${rkName(u)}</b>${u.name?`<small>${esc(u.n)}</small>`:""}</div><span class="lco">💰 ${kfmt(u.koin)}</span><div class="lbar"><i></i></div></div>`).join("")}
+function podiumHTML(top){return`<div class="podium">${[1,0,2].filter(i=>top[i]).map(i=>{const u=top[i];return`<div class="glass pd p${i+1} reveal d${i}"><span class="crown">${i===0?"👑":medal(i)}</span><div class="pav">${u.name?esc(u.name.trim().charAt(0).toUpperCase()):"🌿"}${u.id?`<img src="${API}/api/lbavatar/${u.id}" alt="" onerror="this.remove()">`:""}</div><div class="pnm">${rkName(u)}</div><small class="pmask">${u.name?esc(u.n):"&nbsp;"}</small><div class="pco">💰 ${kfmt(u.koin)}</div><div class="pbase">#${i+1}</div></div>`}).join("")}</div>`}
+function rowsHTML(list,max,from){return list.map((u,i)=>`<div class="glass lr reveal" style="--w:${Math.max(3,Math.round(u.koin/max*100))}%"><span class="lrk">${from+i}</span>${rkAv(u)}<div class="lnm"><b>${rkName(u)}</b>${u.name?`<small>${esc(u.n)}</small>`:""}</div><span class="lco">💰 ${kfmt(u.koin)}</span><div class="lbar"><i></i></div></div>`).join("")}
 function rankBody(j){
  const top=j.top||[];
  if(!top.length)return`<div class="glass pad center"><h3>🍃 Belum ada koin di hutan</h3><p class="sub">Peringkat muncul setelah penghuni mulai mengumpulkan koin lewat fitur ekonomi dan game di bot WhatsApp.</p></div>`;
@@ -1353,16 +1397,16 @@ function rankBody(j){
  ${podiumHTML(top)}${top.length>3?rowsHTML(top.slice(3),mx,4):""}
  <div class="glass pad mt reveal"><h3>Cara naik peringkat</h3><p class="sub" style="margin-top:6px">Koin dikumpulkan lewat fitur ekonomi dan game di bot (misalnya tebak-tebakan, casino, dan perintah harian yang ada di menu). Makin aktif kamu bermain, makin tinggi posisimu. Peringkat diperbarui otomatis tiap 30 detik. Nomor WhatsApp disamarkan demi privasi.</p><p class="sub" style="margin-top:10px">Ketuk perintah untuk menyalin, lalu kirim di WhatsApp:</p><div class="rkcmd"><code onclick="cpy('.leaderboard',event)">.leaderboard</code><code onclick="cpy('.top',event)">.top</code><code onclick="cpy('.menu',event)">.menu</code></div><div class="acts" style="margin-top:16px"><button class="btn" onclick="go('katalog-bot')">🤖 Sewa bot untuk grupmu</button><button class="btn ghost" onclick="go('fitur')">✨ Lihat semua fitur</button></div></div>`}
 async function vRank(){
- app.innerHTML=`<span class="eyebrow">Peringkat WhatsApp</span><h2>Leaderboard penghuni hutan</h2><p class="sub">Siapa yang paling banyak menyimpan koin di bot Totoro AI? Inilah 10 teratas dari semua pengguna bot, langsung dari database.</p><div id="rkBody">${load("Menghitung harta para penghuni…")}</div>`;
+ app.innerHTML=`<span class="eyebrow">Peringkat WhatsApp</span><h2>Leaderboard penghuni hutan</h2><p class="sub">Siapa yang paling banyak menyimpan koin di bot Totoro AI? Inilah 10 teratas dari semua pengguna bot, lengkap dengan nama dan foto profil WhatsApp mereka.</p><div id="rkBody">${load("Menghitung harta para penghuni…")}</div>`;
  const paint=async first=>{const el=$("#rkBody");if(!el)return;let j;
   try{j=await pullRank(true)}catch(e){if(first||!RK)el.innerHTML=`<div class="glass pad center"><h3>🍃 Peringkat belum bisa dimuat</h3><p class="sub" style="margin:6px 0 14px">${esc(e.message)}. Pastikan bot menyala dan endpoint /api/leaderboard sudah dipasang di server.</p><button class="btn" onclick="vRank()">↻ Coba lagi</button></div>`;return}
-  const sig=JSON.stringify(j.top);if(!first&&sig===RKSIG)return;RKSIG=sig;el.innerHTML=rankBody(j);setTimeout(initReveal,50)};
+  const sig=JSON.stringify(j.top);if(!first&&sig===RKSIG)return;RKSIG=sig;if(first)await finishLd();if(!$("#rkBody"))return;$("#rkBody").innerHTML=rankBody(j);setTimeout(initReveal,50)};
  await paint(true);P=setInterval(()=>paint(false),30000)}
 async function homeRank(){
  const el=$("#rkHome");if(!el)return;
  try{const j=await pullRank();if(!j.top?.length){el.remove();return}
   const t=j.top.slice(0,5),mx=t[0].koin||1;
-  el.innerHTML=`<div class="rkh"><div class="reveal"><span class="eyebrow">Peringkat WhatsApp</span><h2>Juragan koin di hutan</h2><p class="sub">Penghuni paling aktif di bot Totoro AI dan jumlah koin yang mereka kumpulkan. Mau namamu ada di sini? Main game dan pakai fitur ekonomi di grup yang memakai bot kami.</p><div class="acts"><button class="btn" onclick="go('peringkat')">🏆 Lihat leaderboard lengkap</button></div></div><div class="top10">${t.map((u,i)=>`<div class="glass tc reveal d${i}" onclick="go('peringkat')" style="--w:${Math.round(u.koin/mx*100)}%"><span class="rk">${medal(i)||i+1}</span><div><code>${rkName(u)}</code>${u.name?`<small>${esc(u.n)}</small>`:""}</div><span class="nb">${kfmt(u.koin)}</span><div class="ln"><i></i></div></div>`).join("")}</div></div>`;
+  el.innerHTML=`<div class="rkh"><div class="reveal"><span class="eyebrow">Peringkat WhatsApp</span><h2>Juragan koin di hutan</h2><p class="sub">Penghuni paling aktif di bot Totoro AI dan jumlah koin yang mereka kumpulkan. Mau namamu ada di sini? Main game dan pakai fitur ekonomi di grup yang memakai bot kami.</p><div class="acts"><button class="btn" onclick="go('peringkat')">🏆 Lihat leaderboard lengkap</button></div></div><div class="top10">${t.map((u,i)=>`<div class="glass tc reveal d${i}" onclick="go('peringkat')" style="--w:${Math.round(u.koin/mx*100)}%"><span class="rk">${medal(i)||i+1}</span><div class="who">${rkAv(u)}<div><code>${rkName(u)}</code>${u.name?`<small>${esc(u.n)}</small>`:""}</div></div><span class="nb">${kfmt(u.koin)}</span><div class="ln"><i></i></div></div>`).join("")}</div></div>`;
   setTimeout(initReveal,50)}catch{el.remove()}}
 
 /* ===== FAQ ===== */
