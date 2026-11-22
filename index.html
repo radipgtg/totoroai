@@ -1,750 +1,325 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Totoro AI — Official Website</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Totoro AI ✿ Toko Digital Hutan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    :root{
-        --bg-cream:#F4F0E4;--bg-paper:#FBF8EF;--ink:#2B3328;--ink-soft:#4A5548;
-        --ink-mute:#7A8878;--gold:#C9A961;--moss:#6B8E5E;--moss-deep:#557A4B;
-        --line:rgba(43,51,40,0.10);--line-strong:rgba(43,51,40,0.18);
-        --shadow-sm:0 2px 8px rgba(43,51,40,0.06);--shadow-md:0 8px 24px rgba(43,51,40,0.10);
-        --radius:16px;--radius-lg:20px;
-    }
-    html,body{min-height:100%;}
-    body{font-family:'Inter',sans-serif;color:var(--ink);background:linear-gradient(180deg,#EAF1E6 0%,#F4F0E4 50%,#DDE7D8 100%);background-attachment:fixed;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;position:relative;}
-    .font-display{font-family:'Fraunces',serif;letter-spacing:-0.015em;font-weight:600;}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--t:#f4f1e4;--mute:rgba(244,241,228,.68);--moss:#8fd16f;--gold:#f0cf7a;--g:rgba(255,255,255,.11);--gb:rgba(255,255,255,.24)}
+body{font-family:Inter,sans-serif;color:var(--t);line-height:1.6;min-height:100vh;background:#0c2a20;overflow-x:hidden}
+.blob{position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none;animation:float 18s ease-in-out infinite}
+@keyframes float{50%{transform:translate(40px,-50px) scale(1.1)}}
+.ff{position:fixed;width:5px;height:5px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 12px 4px rgba(255,233,168,.5);animation:fly 10s ease-in-out infinite;z-index:0;pointer-events:none}
+@keyframes fly{0%,100%{transform:translate(0,0);opacity:.15}50%{transform:translate(40px,-60px);opacity:1}}
+.serif,h1,h2,h3{font-family:Fraunces,serif;letter-spacing:-.01em}
+.glass{background:var(--g);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--gb);border-radius:24px;box-shadow:0 10px 36px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.3)}
+header{position:sticky;top:0;z-index:30;padding:12px 18px;padding-top:calc(12px + env(safe-area-inset-top))}
+.bar{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 18px;border-radius:99px}
+.logo{font-size:20px;font-weight:600;cursor:pointer;white-space:nowrap}
+nav{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+nav a{padding:8px 14px;border-radius:99px;font-size:13.5px;font-weight:500;color:var(--t);cursor:pointer;white-space:nowrap;opacity:.8;transition:.2s}
+nav a:hover,nav a.on{background:rgba(255,255,255,.16);opacity:1}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:auto;padding:24px 18px 70px;min-height:70vh}
+.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pad{padding:26px}.center{text-align:center}
+h2{font-size:28px;line-height:1.2;margin-bottom:6px}.sub{color:var(--mute);font-size:14px}.mt{margin-top:40px}
+.hero{text-align:center;padding:56px 18px 34px}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.08;margin:16px auto;max-width:780px}.hero h1 em{color:var(--gold)}
+.hero p{max-width:560px;margin:auto;color:var(--mute)}
+.chip{display:inline-block;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.13);border:1px solid var(--gb);font-size:12px;margin:3px}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14px Inter,sans-serif;padding:12px 24px;border-radius:99px;background:linear-gradient(135deg,#7cc35d,#3f8f55);color:#fff;text-decoration:none;box-shadow:0 6px 18px rgba(63,143,85,.4);transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:rgba(255,255,255,.1);border:1px solid var(--gb);box-shadow:none}.btn.red{background:linear-gradient(135deg,#c75a5a,#9a3a3a);box-shadow:none}.btn.sm{padding:7px 14px;font-size:12px}.full{width:100%}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.g3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.split{display:grid;gap:20px;grid-template-columns:1fr 1fr;align-items:start}
+@media(max-width:820px){.split{grid-template-columns:1fr}.bar{border-radius:26px}}
+.cat{padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:.3s;min-height:210px}
+.cat:hover{transform:translateY(-6px);background:rgba(255,255,255,.17)}
+.cat .ic{font-size:36px;animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-5px)}}
+.cat small{margin-top:auto;color:var(--moss);font-weight:600}
+.tile{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;border-radius:18px;transition:.2s;font-size:14px}
+.tile:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
+.tile b{color:var(--gold);white-space:nowrap}.tile s{display:block;font-size:11px;color:var(--mute)}
+.off{background:var(--gold);color:#3a2f0a;border-radius:99px;font-size:11px;font-weight:700;padding:2px 9px;margin-left:6px}
+input,textarea,select{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--gb);background:rgba(255,255,255,.1);color:var(--t);font:15px Inter,sans-serif;outline:none;margin-top:6px}
+input::placeholder{color:rgba(244,241,228,.45)}input:focus{border-color:var(--moss);background:rgba(255,255,255,.16)}
+label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:14px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--gb);font-size:14px}
+.kv span:first-child{color:var(--mute)}.kv span:last-child{text-align:right;font-weight:600;word-break:break-all}
+.note{background:rgba(240,207,122,.15);border:1px solid rgba(240,207,122,.4);border-radius:14px;padding:12px 14px;font-size:13px;margin-top:14px}
+.qr{background:#fff;padding:12px;border-radius:18px;display:inline-block}.qr img{width:260px;max-width:100%;display:block}
+.spin{font-size:40px;display:inline-block;animation:sp 2.4s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.badge{font-size:11px;font-weight:700;padding:3px 11px;border-radius:99px;white-space:nowrap}
+.s-awaiting{background:#f0cf7a;color:#4a3a05}.s-verifying{background:#9ccbee;color:#12395b}.s-success{background:#a6e08a;color:#1c4a10}.s-rejected{background:#f0a3a3;color:#5a1414}
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:18px 0}
+.stat{padding:16px;text-align:center}.stat b{font-size:26px;display:block;font-family:Fraunces,serif}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.ord{padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;cursor:pointer;margin-bottom:12px;transition:.2s;align-items:center}
+.ord:hover{background:rgba(255,255,255,.18)}.ord small{color:var(--mute)}
+.chat{height:50vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px;margin-top:12px}
+.m{max-width:82%;padding:11px 15px;border-radius:18px;font-size:14px}
+.m.bot{background:rgba(255,255,255,.16);border:1px solid var(--gb);align-self:flex-start;border-bottom-left-radius:4px}
+.m.me{background:linear-gradient(135deg,#7cc35d,#3f8f55);align-self:flex-end;border-bottom-right-radius:4px}
+.send{display:flex;gap:8px;margin-top:12px}.send input{margin:0}
+details{padding:15px 20px;margin-top:10px}summary{cursor:pointer;font-weight:600;font-size:14px}details p{margin-top:8px;color:var(--mute);font-size:13.5px}
+.back{background:none;border:0;color:var(--t);opacity:.75;cursor:pointer;font:500 13px Inter;margin-bottom:14px}
+.banner{padding:12px 20px;text-align:center;margin-bottom:10px;color:var(--gold);font-weight:600;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;text-align:left;border-bottom:1px solid var(--gb)}th{color:var(--mute);font-weight:600}
+footer{position:relative;z-index:1;text-align:center;padding:30px 18px 50px;font-size:12px;color:var(--mute)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);padding:11px 22px;border-radius:99px;font-size:13px;opacity:0;transition:.3s;z-index:99;pointer-events:none;background:rgba(12,42,32,.9);border:1px solid var(--gb)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 
-    /* Ambient background: gradient + soft clouds only (no leaves) */
-    .ghibli-sky{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,#EAF1E6 0%,#F4F0E4 50%,#DDE7D8 100%);}
-    .ghibli-clouds{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
-    .cloud{position:absolute;background:radial-gradient(ellipse,rgba(255,255,255,0.7),transparent 70%);border-radius:50%;filter:blur(24px);animation:driftCloud linear infinite;}
-    .cloud.c1{width:340px;height:100px;top:12%;left:-15%;animation-duration:70s;}
-    .cloud.c2{width:220px;height:70px;top:28%;left:-10%;animation-duration:90s;animation-delay:-25s;}
-    .cloud.c3{width:280px;height:90px;top:65%;left:-12%;animation-duration:80s;animation-delay:-40s;}
-    .cloud.c4{width:180px;height:60px;top:82%;left:-8%;animation-duration:100s;animation-delay:-15s;}
-    @keyframes driftCloud{0%{transform:translateX(0)}100%{transform:translateX(calc(100vw + 400px))}}
-
-    .paper{background:var(--bg-paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);position:relative;}
-    .paper-warm{background:linear-gradient(150deg,#FBF8EF 0%,#F5EDDA 100%);}
-
-    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(145deg,var(--moss) 0%,var(--moss-deep) 100%);color:#FBF8EF;border:none;cursor:pointer;padding:11px 20px;border-radius:999px;font-weight:600;font-size:13px;transition:filter .2s ease,transform .2s ease;}
-    .btn-primary:hover{filter:brightness(1.07);transform:translateY(-1px);}
-    .btn-primary:active{transform:scale(0.98);}
-    .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,0.6);color:var(--ink);border:1px solid var(--line-strong);cursor:pointer;padding:10px 18px;border-radius:999px;font-weight:600;font-size:13px;transition:all .2s ease;}
-    .btn-ghost:hover{background:#fff;border-color:var(--moss);color:var(--moss);}
-    .btn-danger{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(200,90,90,0.08);color:#A04545;border:1px solid rgba(200,90,90,0.3);cursor:pointer;padding:10px 18px;border-radius:999px;font-weight:600;font-size:13px;transition:all .2s ease;}
-    .btn-danger:hover{background:rgba(200,90,90,0.15);border-color:#A04545;}
-
-    .site-header{background:rgba(244,240,228,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
-    .hamburger-btn{transition:transform .25s ease;}
-    .hamburger-btn:hover{transform:scale(1.05);}
-    .hamburger-icon{display:inline-flex;flex-direction:column;gap:4px;}
-    .hamburger-icon span{width:20px;height:2px;background:currentColor;border-radius:2px;transition:all .3s ease;display:block;}
-    .hamburger-btn:hover .hamburger-icon span:nth-child(1){transform:translateX(-3px);}
-    .hamburger-btn:hover .hamburger-icon span:nth-child(2){width:14px;}
-    .hamburger-btn:hover .hamburger-icon span:nth-child(3){transform:translateX(3px);}
-
-    .header-nav{display:flex;align-items:center;gap:2px;padding:4px;background:rgba(255,255,255,0.55);border-radius:999px;border:1px solid var(--line);overflow-x:auto;scrollbar-width:none;min-width:0;}
-    .header-nav::-webkit-scrollbar{display:none;}
-    .header-nav .nav-btn{padding:7px 13px;border-radius:999px;font-weight:500;font-size:13px;color:var(--ink-soft);background:none;border:none;cursor:pointer;transition:all .2s ease;white-space:nowrap;flex-shrink:0;}
-    .header-nav .nav-btn:hover{background:rgba(107,142,94,0.12);color:var(--moss);}
-
-    .hero-panel{background:linear-gradient(160deg,#FBF8EF 0%,#EDE8D5 100%);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow-md);position:relative;overflow:hidden;}
-    .hero-panel::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(107,142,94,0.08),transparent 70%);}
-
-    .trust-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,0.7);border:1px solid rgba(201,169,97,0.35);font-size:12px;font-weight:600;color:var(--ink-soft);}
-    .trust-stars{display:inline-flex;gap:2px;color:var(--gold);font-size:12px;}
-
-    .cat-card{cursor:pointer;text-decoration:none;color:inherit;transition:transform .3s ease,box-shadow .3s ease;position:relative;overflow:hidden;}
-    .cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--moss),transparent);opacity:0;transition:opacity .3s ease;}
-    .cat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
-    .cat-card:hover::before{opacity:1;}
-    .cat-card .cat-icon{transition:transform .4s cubic-bezier(.34,1.4,.64,1);}
-    .cat-card:hover .cat-icon{transform:scale(1.1) rotate(-8deg);}
-
-    .faq-item{background:var(--bg-paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease;}
-    .faq-item.open{border-color:var(--line-strong);box-shadow:var(--shadow-sm);}
-    .faq-summary{padding:16px 18px;cursor:pointer;font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:center;user-select:none;}
-    .faq-summary .chev{font-size:11px;color:var(--ink-mute);transition:transform .3s ease;}
-    .faq-item.open .faq-summary .chev{transform:rotate(180deg);color:var(--moss);}
-    .faq-body{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease;opacity:0;}
-    .faq-item.open .faq-body{opacity:1;}
-    .faq-body-inner{padding:0 18px 16px;font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
-
-    .price-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:12px;background:rgba(107,142,94,0.06);cursor:pointer;transition:background .2s ease,transform .15s ease;font-size:13px;}
-    .price-row:hover{background:rgba(107,142,94,0.15);transform:translateX(2px);}
-    .price-row.featured{background:linear-gradient(135deg,rgba(201,169,97,0.15),rgba(201,169,97,0.06));border:1px solid rgba(201,169,97,0.35);}
-    .price-row.featured:hover{background:rgba(201,169,97,0.22);}
-
-    .fs-tab{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#F4F0E4 0%,#E8EEE4 100%);display:none;flex-direction:column;opacity:0;transition:opacity .3s ease;}
-    .fs-tab.open{display:flex;opacity:1;}
-    .fs-inner{width:100%;height:100%;display:flex;flex-direction:column;position:relative;overflow:hidden;}
-    .fs-tab-header{padding:16px 22px;padding-top:calc(16px + env(safe-area-inset-top));border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:rgba(251,248,239,0.95);flex-shrink:0;position:relative;z-index:2;}
-    .fs-tab-body{flex:1;overflow-y:auto;padding:24px 22px;display:flex;flex-direction:column;gap:16px;position:relative;z-index:2;}
-    .fs-tab-footer{padding:12px 22px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:rgba(251,248,239,0.95);flex-shrink:0;position:relative;z-index:2;}
-
-    .tab-deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
-    .tab-deco .dec-cloud{position:absolute;background:radial-gradient(ellipse,rgba(255,255,255,0.5),transparent 70%);border-radius:50%;filter:blur(15px);animation:driftCloud 60s linear infinite;}
-    .tab-deco .dec-cloud:nth-child(1){width:200px;height:60px;top:20%;left:-10%;animation-duration:50s;}
-    .tab-deco .dec-cloud:nth-child(2){width:150px;height:50px;top:60%;left:-8%;animation-duration:70s;animation-delay:-20s;}
-
-    body.page-mode header.site-header,body.page-mode main,body.page-mode footer,body.page-mode .fab-wrap{display:none!important;}
-    body.page-mode{background:linear-gradient(180deg,#F4F0E4 0%,#E8EEE4 100%);}
-
-    .chat-bubble-bot{background:#fff;border:1px solid var(--line);color:var(--ink);padding:11px 15px;border-radius:16px 16px 16px 4px;align-self:flex-start;max-width:85%;font-size:13.5px;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
-    .chat-bubble-user{background:linear-gradient(145deg,var(--moss),var(--moss-deep));color:#FBF8EF;padding:11px 15px;border-radius:16px 16px 4px 16px;align-self:flex-end;max-width:85%;font-size:13.5px;line-height:1.6;}
-    .chat-input{flex:1;background:#fff;border:1px solid var(--line-strong);border-radius:999px;padding:11px 18px;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s ease;}
-    .chat-input:focus{border-color:var(--moss);}
-
-    .history-item{background:var(--bg-paper);border:1px solid var(--line);border-radius:var(--radius);padding:15px 17px;display:flex;flex-direction:column;gap:6px;}
-    .history-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
-    .badge-pending{background:rgba(201,169,97,0.18);color:#8A6E2C;}
-    .badge-success{background:rgba(107,142,94,0.18);color:#4A6E3E;}
-    .badge-expired{background:rgba(200,90,90,0.15);color:#A04545;}
-
-    #totoroToast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(43,51,40,0.92);color:#FBF8EF;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:500;z-index:99999;opacity:0;pointer-events:none;transition:all .3s ease;max-width:90vw;text-align:center;}
-    #totoroToast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-    ::-webkit-scrollbar{width:8px;height:8px;}
-    ::-webkit-scrollbar-thumb{background:rgba(43,51,40,0.2);border-radius:4px;}
-    @media (max-width:640px){.hero-panel{border-radius:22px}}
-
-    .ai-hero{background:linear-gradient(135deg,#FBF8EF 0%,#EDE8D5 100%);border:1px solid var(--line);border-radius:18px;position:relative;overflow:hidden;}
-    .ai-hero::after{content:'🌿';position:absolute;right:15px;top:8px;font-size:50px;opacity:0.1;}
-    .chip{display:inline-flex;align-items:center;gap:6px;background:rgba(107,142,94,0.1);border:1px solid rgba(107,142,94,0.22);color:var(--moss-deep);padding:6px 12px;border-radius:999px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s ease;white-space:nowrap;}
-    .chip:hover{background:var(--moss);color:#FBF8EF;border-color:var(--moss);}
-    .info-block{background:rgba(107,142,94,0.06);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
-    .info-block-icon{width:36px;height:36px;min-width:36px;border-radius:10px;background:rgba(255,255,255,0.7);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--moss);font-size:14px;}
-    .feature-list{list-style:none;padding:0;}
-    .feature-list li{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:12.5px;color:var(--ink-soft);}
-    .feature-list li i{color:var(--moss);font-size:11px;margin-top:5px;}
-
-    .loading-box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:60px 20px;position:relative;}
-    .leaf-spinner{position:relative;width:70px;height:70px;}
-    .leaf-spinner::before{content:'🌿';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;animation:leafSpin 1.4s cubic-bezier(0.45,0,0.55,1) infinite;}
-    .leaf-spinner::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(107,142,94,0.35);animation:spinRing 3s linear infinite;}
-    @keyframes leafSpin{0%{transform:rotate(0deg) scale(1);}25%{transform:rotate(90deg) scale(0.9);}50%{transform:rotate(180deg) scale(1.1);}75%{transform:rotate(270deg) scale(0.9);}100%{transform:rotate(360deg) scale(1);}}
-    @keyframes spinRing{to{transform:rotate(360deg)}}
-    .loading-text{font-size:13px;color:var(--ink-mute);font-weight:500;font-family:'Fraunces',serif;letter-spacing:0.02em;}
-    .loading-dots{display:inline-flex;gap:4px;margin-left:4px;}
-    .loading-dots span{width:4px;height:4px;border-radius:50%;background:var(--moss);animation:dotPulse 1.4s ease-in-out infinite;}
-    .loading-dots span:nth-child(2){animation-delay:0.2s;}
-    .loading-dots span:nth-child(3){animation-delay:0.4s;}
-    @keyframes dotPulse{0%,100%{opacity:0.3;transform:scale(0.8);}50%{opacity:1;transform:scale(1.2);}}
-
-    #sidebarBackdrop{position:fixed;inset:0;background:rgba(20,30,20,0.4);backdrop-filter:blur(4px);z-index:100;opacity:0;pointer-events:none;transition:opacity .3s ease;}
-    #sidebarBackdrop.open{opacity:1;pointer-events:auto;}
-    #sidebarDrawer{position:fixed;inset-y-0;left:0;height:100vh;width:340px;max-width:88vw;z-index:101;background:#FBF8EF;border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:4px 0 30px rgba(0,0,0,0.15);overflow-y:auto;}
-    #sidebarDrawer.open{transform:translateX(0);}
-    .sidebar-head{padding:20px 20px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
-    .sidebar-body{padding:20px;display:flex;flex-direction:column;gap:20px;flex:1;}
-    .sidebar-section-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-mute);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-    .contact-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:all .2s ease;cursor:pointer;text-decoration:none;color:inherit;display:flex;align-items:center;gap:12px;width:100%;text-align:left;}
-    .contact-card:hover{border-color:var(--moss);box-shadow:0 4px 12px rgba(107,142,94,0.15);transform:translateX(2px);}
-    .contact-icon{width:38px;height:38px;min-width:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
-    .contact-icon.wa{background:rgba(37,211,102,0.12);color:#25D366;}
-    .contact-icon.tg{background:rgba(34,158,217,0.12);color:#229ED9;}
-    .contact-icon.ig{background:rgba(225,48,108,0.12);color:#E1306C;}
-    .contact-icon.admin{background:rgba(201,169,97,0.15);color:#8A6E2C;}
-    .contact-icon.ai{background:rgba(107,142,94,0.12);color:var(--moss);}
-    .contact-card .cc-info{flex:1;min-width:0;}
-    .contact-card .cc-info .cc-name{font-weight:700;font-size:13px;color:var(--ink);}
-    .contact-card .cc-info .cc-desc{font-size:11px;color:var(--ink-mute);font-family:monospace;margin-top:1px;}
-    .contact-card .cc-arrow{font-size:10px;color:var(--ink-mute);transition:transform .2s ease;}
-    .contact-card:hover .cc-arrow{transform:translateX(3px);color:var(--moss);}
-    .sidebar-footer{padding:16px 20px 20px;border-top:1px solid var(--line);text-align:center;font-family:'Fraunces',serif;font-size:13px;color:var(--ink-mute);letter-spacing:0.05em;}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 20% 10%,rgba(143,209,111,.2),transparent 45%),radial-gradient(circle at 85% 90%,rgba(240,207,122,.16),transparent 45%);animation:aur 14s ease-in-out infinite alternate}
+@keyframes aur{to{transform:scale(1.18) rotate(3deg)}}
+.leaf{position:fixed;top:-40px;z-index:0;pointer-events:none;opacity:.5;font-style:normal;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(90px,115vh) rotate(360deg)}}
+.wrap{padding:34px 24px 90px}.pad{padding:32px}
+.hero{position:relative;overflow:hidden;padding:72px 24px 52px}
+.hero h1 em{background:linear-gradient(90deg,#f0cf7a,#8fd16f,#f0cf7a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.deco{position:absolute;font-size:32px;opacity:.75;animation:bob 4s ease-in-out infinite;pointer-events:none}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:.7s}
+.btn:hover::after{left:150%}
+.glass{transition:transform .3s,box-shadow .3s,border-color .3s,background .3s}
+.cat:hover,.tile:hover{border-color:rgba(240,207,122,.6);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 28px rgba(143,209,111,.25)}
+.tick{overflow:hidden;white-space:nowrap;margin:34px 0 4px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.tick div{display:inline-block;animation:mq 30s linear infinite;font-family:Fraunces,serif;font-size:18px;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.steps{display:grid;gap:26px 18px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s;margin-top:30px}
+.step{padding:34px 22px 22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#f0cf7a,#d9a93f);color:#3a2f0a;font:700 17px Fraunces,serif;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.step h3{font-size:17px;margin-bottom:4px}
+.help{padding:20px 24px;margin-top:20px;font-size:13.5px}
+.help h4{font-family:Fraunces,serif;font-size:16px;color:var(--gold);margin-bottom:6px}
+.help ol,.help ul{margin-left:20px}.help li{margin:5px 0;color:var(--mute)}.help li b{color:var(--t)}
+.help p{color:var(--mute)}
+:is(.grid,.g3,.stats,.steps)>*{animation:rise .6s ease backwards}
+:is(.grid,.g3,.stats,.steps)>*:nth-child(2){animation-delay:.08s}:is(.grid,.g3,.stats,.steps)>*:nth-child(3){animation-delay:.16s}:is(.grid,.g3,.stats,.steps)>*:nth-child(4){animation-delay:.24s}:is(.grid,.g3,.stats,.steps)>*:nth-child(n+5){animation-delay:.32s}
+.dots i{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--t);animation:dot 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes dot{50%{transform:translateY(-5px);opacity:.4}}
+.split2{display:grid;gap:22px;grid-template-columns:340px 1fr;align-items:start}
+@media(max-width:820px){.split2{grid-template-columns:1fr}.hero{padding:52px 16px 36px}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--mute);margin-top:10px}
 </style>
 </head>
 <body>
-
-<div class="ghibli-sky"></div>
-<div class="ghibli-clouds">
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-    <div class="cloud c4"></div>
-</div>
-
-<!-- FAB kontak -->
-<div class="fab-wrap fixed bottom-6 right-6 z-40 flex flex-col items-end">
-    <div id="fab-menu" class="flex flex-col space-y-2.5 mb-3 transition-all duration-300 transform scale-0 opacity-0 origin-bottom">
-        <a href="https://wa.me/6285711170694" target="_blank" class="flex items-center gap-2 bg-white/90 border border-[var(--line-strong)] text-[var(--ink)] px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold"><span class="text-[#25D366]">WhatsApp 1</span><i class="fa-brands fa-whatsapp text-[#25D366]"></i></a>
-        <a href="https://wa.me/6285602654058" target="_blank" class="flex items-center gap-2 bg-white/90 border border-[var(--line-strong)] text-[var(--ink)] px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold"><span class="text-[#6B8E5E]">Order WA</span><i class="fa-brands fa-whatsapp text-[#6B8E5E]"></i></a>
-        <a href="https://t.me/radipgtg" target="_blank" class="flex items-center gap-2 bg-white/90 border border-[var(--line-strong)] text-[var(--ink)] px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold"><span class="text-[#229ED9]">Telegram</span><i class="fa-brands fa-telegram text-[#229ED9]"></i></a>
-        <a href="https://instagram.com/radipppppp" target="_blank" class="flex items-center gap-2 bg-white/90 border border-[var(--line-strong)] text-[var(--ink)] px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold"><span class="text-[#E1306C]">Instagram</span><i class="fa-brands fa-instagram text-[#E1306C]"></i></a>
-    </div>
-    <button onclick="toggleFabMenu()" class="bg-gradient-to-br from-[var(--moss)] to-[var(--moss-deep)] text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center active:scale-95 focus:outline-none">
-        <i id="fab-icon" class="fa-solid fa-comments text-lg transition-transform duration-300"></i>
-    </button>
-</div>
-
-<!-- SIDEBAR -->
-<div id="sidebarBackdrop" onclick="toggleSidebar()"></div>
-<div id="sidebarDrawer">
-    <div class="sidebar-head">
-        <div>
-            <h3 class="font-display text-lg leading-none">Totoro AI</h3>
-            <p class="text-[11px] text-[var(--ink-mute)] mt-1">Kontak & Bantuan</p>
-        </div>
-        <button onclick="toggleSidebar()" class="w-9 h-9 rounded-full bg-white border border-[var(--line)] flex items-center justify-center hover:bg-[var(--moss)] hover:text-white transition">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-    <div class="sidebar-body">
-        <div>
-            <div class="sidebar-section-title"><i class="fa-solid fa-crown"></i> Kontak Owner</div>
-            <div class="space-y-2">
-                <a href="https://wa.me/6285711170694" target="_blank" class="contact-card">
-                    <div class="contact-icon wa"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div class="cc-info"><div class="cc-name">Owner · WA Utama</div><div class="cc-desc">0857-1117-0694</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-                <a href="https://wa.me/6285602654058" target="_blank" class="contact-card">
-                    <div class="contact-icon wa"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div class="cc-info"><div class="cc-name">Owner · WA Order</div><div class="cc-desc">0856-0265-4058</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-                <a href="https://t.me/radipgtg" target="_blank" class="contact-card">
-                    <div class="contact-icon tg"><i class="fa-brands fa-telegram"></i></div>
-                    <div class="cc-info"><div class="cc-name">Owner · Telegram</div><div class="cc-desc">@radipgtg</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-                <a href="https://instagram.com/radipppppp" target="_blank" class="contact-card">
-                    <div class="contact-icon ig"><i class="fa-brands fa-instagram"></i></div>
-                    <div class="cc-info"><div class="cc-name">Owner · Instagram</div><div class="cc-desc">@radipppppp</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-            </div>
-        </div>
-        <div>
-            <div class="sidebar-section-title"><i class="fa-solid fa-headset"></i> Admin Help</div>
-            <div class="space-y-2">
-                <a href="https://wa.me/6285124102334" target="_blank" class="contact-card">
-                    <div class="contact-icon admin"><i class="fa-solid fa-user-shield"></i></div>
-                    <div class="cc-info"><div class="cc-name">Haidar · Admin</div><div class="cc-desc">0851-2410-2334</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-                <a href="https://t.me/idardndle" target="_blank" class="contact-card">
-                    <div class="contact-icon tg"><i class="fa-brands fa-telegram"></i></div>
-                    <div class="cc-info"><div class="cc-name">Haidar · Telegram</div><div class="cc-desc">@idardndle</div></div>
-                    <i class="fa-solid fa-chevron-right cc-arrow"></i>
-                </a>
-            </div>
-        </div>
-        <div>
-            <div class="sidebar-section-title"><i class="fa-solid fa-robot"></i> Layanan AI</div>
-            <button onclick="toggleSidebar(); openAiChatTab()" class="contact-card">
-                <div class="contact-icon ai"><i class="fa-solid fa-robot"></i></div>
-                <div class="cc-info"><div class="cc-name">Totoro AI Assistant</div><div class="cc-desc">Tanya apa saja · Online</div></div>
-                <i class="fa-solid fa-chevron-right cc-arrow"></i>
-            </button>
-        </div>
-    </div>
-    <div class="sidebar-footer">TOTORO AI</div>
-</div>
-
-<!-- HEADER -->
-<header class="site-header sticky top-0 z-30">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center gap-3">
-        <div class="flex items-center gap-3 flex-shrink-0">
-            <button onclick="toggleSidebar()" class="hamburger-btn w-10 h-10 rounded-xl bg-white border border-[var(--line-strong)] flex items-center justify-center hover:bg-[var(--moss)] transition text-[var(--ink)] hover:text-white">
-                <span class="hamburger-icon"><span></span><span></span><span></span></span>
-            </button>
-            <div>
-                <h1 class="font-display text-xl leading-none">Totoro AI</h1>
-                <p class="text-[11px] text-[var(--ink-mute)] mt-0.5 hidden sm:block">Official Website</p>
-            </div>
-        </div>
-        <div class="flex items-center gap-2 ml-auto min-w-0">
-            <nav class="header-nav">
-                <button onclick="scrollToSection('produkSection')" class="nav-btn">Katalog</button>
-                <button onclick="scrollToSection('keunggulanSection')" class="nav-btn">Keunggulan</button>
-                <button onclick="scrollToSection('donasiSection')" class="nav-btn">Donasi</button>
-                <button onclick="scrollToSection('faq')" class="nav-btn">FAQ</button>
-                <button onclick="scrollToSection('kontakSection')" class="nav-btn">Kontak</button>
-            </nav>
-            <a href="https://wa.me/6285602654058" target="_blank" class="btn-primary text-xs flex-shrink-0"><i class="fa-brands fa-whatsapp"></i> Order WA</a>
-        </div>
-    </div>
-</header>
-
-<main class="max-w-6xl mx-auto px-4 mt-8 space-y-14 pb-20">
-<section class="hero-panel p-8 sm:p-14 text-center">
-    <div class="flex flex-wrap items-center justify-center gap-3 mb-6 relative z-10">
-        <span class="trust-badge"><span class="trust-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><span>4.9 / 5</span></span>
-        <span class="trust-badge"><i class="fa-solid fa-leaf text-[var(--moss)]"></i><span>Trusted & Bergaransi</span></span>
-    </div>
-    <h2 class="font-display text-4xl sm:text-6xl leading-[1.05] max-w-3xl mx-auto relative z-10">Layanan Digital <span class="bg-gradient-to-r from-[var(--moss)] to-[var(--gold)] bg-clip-text text-transparent">Trusted & Bergaransi</span></h2>
-    <p class="text-sm sm:text-base text-[var(--ink-soft)] max-w-2xl mx-auto mt-5 leading-relaxed relative z-10">Sedia berbagai macam produk digital — bot WhatsApp, panel hosting, premium apk edit video, sampai jasa setup dan script. Dikelola langsung oleh <b class="text-[var(--moss)]">@radipgtg</b>, semua transaksi otomatis via QRIS & WhatsApp.</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-10 max-w-2xl mx-auto relative z-10">
-        <div class="paper p-4 text-center bg-white/70"><div class="text-2xl font-display text-[var(--moss)]">24/7</div><div class="text-xs text-[var(--ink-mute)] mt-1">Active Support</div></div>
-        <div class="paper p-4 text-center bg-white/70"><div class="text-2xl font-display text-[var(--moss)]">100%</div><div class="text-xs text-[var(--ink-mute)] mt-1">Legal & Aman</div></div>
-        <div class="paper p-4 text-center bg-white/70 col-span-2 sm:col-span-1"><div class="text-2xl font-display text-[var(--moss)]">Instant</div><div class="text-xs text-[var(--ink-mute)] mt-1">Fast Process</div></div>
-    </div>
-</section>
-
-<section id="produkSection" class="space-y-8 scroll-mt-24">
-    <div class="text-center space-y-2"><h3 class="font-display text-3xl">Katalog Produk</h3><p class="text-sm text-[var(--ink-mute)]">Klik kategori untuk membuka halaman produk di tab baru</p></div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <a onclick="openCategoryTab('bot')" class="cat-card paper p-7 flex flex-col gap-5">
-            <div class="flex items-start justify-between"><div class="cat-icon w-14 h-14 rounded-2xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)] text-2xl"><i class="fa-solid fa-robot"></i></div><span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[rgba(201,169,97,0.15)] text-[#8A6E2C]">Populer</span></div>
-            <div class="space-y-2"><h4 class="font-display text-xl">Sewa Bot WA</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Bot WhatsApp 1300+ fitur, siap pakai, pilih durasi sewa sesuai kebutuhan.</p></div>
-            <div class="flex items-center justify-between"><span class="text-sm font-semibold text-[var(--moss)] flex items-center gap-2">Buka Katalog <i class="fa-solid fa-arrow-right text-xs"></i></span><span class="text-xs text-[var(--ink-mute)]">Mulai Rp4.000</span></div>
-        </a>
-        <a onclick="openCategoryTab('panel')" class="cat-card paper p-7 flex flex-col gap-5">
-            <div class="flex items-start justify-between"><div class="cat-icon w-14 h-14 rounded-2xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)] text-2xl"><i class="fa-solid fa-server"></i></div><span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[rgba(107,142,94,0.15)] text-[var(--moss)]">Stabil</span></div>
-            <div class="space-y-2"><h4 class="font-display text-xl">Panel Legal Pterodactyl</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Panel resmi buat run bot WhatsApp/Telegram, RAM 3GB sampai Unlimited.</p></div>
-            <div class="flex items-center justify-between"><span class="text-sm font-semibold text-[var(--moss)] flex items-center gap-2">Buka Katalog <i class="fa-solid fa-arrow-right text-xs"></i></span><span class="text-xs text-[var(--ink-mute)]">Mulai Rp5.000</span></div>
-        </a>
-        <a onclick="openCategoryTab('am')" class="cat-card paper p-7 flex flex-col gap-5">
-            <div class="flex items-start justify-between"><div class="cat-icon w-14 h-14 rounded-2xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)] text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[rgba(201,169,97,0.15)] text-[#8A6E2C]">Otomatis</span></div>
-            <div class="space-y-2"><h4 class="font-display text-xl">Alight Motion (Auto)</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Alight Motion Premium via QRIS, bayar langsung diproses instan.</p></div>
-            <div class="flex items-center justify-between"><span class="text-sm font-semibold text-[var(--moss)] flex items-center gap-2">Buka Katalog <i class="fa-solid fa-arrow-right text-xs"></i></span><span class="text-xs text-[var(--ink-mute)]">Mulai Rp1.000</span></div>
-        </a>
-        <a onclick="openCategoryTab('extra')" class="cat-card paper p-7 flex flex-col gap-5">
-            <div class="flex items-start justify-between"><div class="cat-icon w-14 h-14 rounded-2xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)] text-2xl"><i class="fa-solid fa-toolbox"></i></div><span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[rgba(107,142,94,0.15)] text-[var(--moss)]">Bantuan</span></div>
-            <div class="space-y-2"><h4 class="font-display text-xl">Jasa & Tools</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Jasa run script, install bot, sampai source code Totoro AI siap pakai.</p></div>
-            <div class="flex items-center justify-between"><span class="text-sm font-semibold text-[var(--moss)] flex items-center gap-2">Buka Katalog <i class="fa-solid fa-arrow-right text-xs"></i></span><span class="text-xs text-[var(--ink-mute)]">Mulai Rp10.000</span></div>
-        </a>
-    </div>
-</section>
-
-<section id="keunggulanSection" class="space-y-8 scroll-mt-24">
-    <div class="text-center space-y-2"><h3 class="font-display text-3xl">Keunggulan Platform</h3><p class="text-sm text-[var(--ink-mute)]">Standar kualitas terbaik untuk kenyamanan bertransaksi</p></div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="paper p-6 space-y-3"><div class="w-11 h-11 rounded-xl bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-bolt"></i></div><h4 class="font-display text-lg">Proses Cepat Instan</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Semua transaksi dilakukan secepatnya jika tidak ada kendala.</p></div>
-        <div class="paper p-6 space-y-3"><div class="w-11 h-11 rounded-xl bg-[rgba(107,142,94,0.15)] flex items-center justify-center text-[var(--moss)]"><i class="fa-solid fa-headset"></i></div><h4 class="font-display text-lg">Support Responsif</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Owner siap bantu kapan pun, baik masalah teknis maupun konsultasi.</p></div>
-        <div class="paper p-6 space-y-3"><div class="w-11 h-11 rounded-xl bg-[rgba(107,142,94,0.15)] flex items-center justify-center text-[var(--moss)]"><i class="fa-solid fa-shield-halved"></i></div><h4 class="font-display text-lg">Legal & Bergaransi</h4><p class="text-sm text-[var(--ink-mute)] leading-relaxed">Garansi penuh selama masa aktif produk untuk kepuasan kalian.</p></div>
-    </div>
-</section>
-
-<section id="donasiSection" class="space-y-8 scroll-mt-24">
-    <div class="text-center space-y-2"><h3 class="font-display text-3xl">Dukung & Donasi</h3><p class="text-sm text-[var(--ink-mute)]">Dukung pengembangan Totoro AI agar terus aktif 24/7</p></div>
-    <div class="paper paper-warm p-6 sm:p-8 max-w-2xl mx-auto space-y-6">
-        <div class="text-center space-y-3">
-            <p class="text-xs font-bold uppercase tracking-wider text-[var(--ink-mute)]">QRIS All Payment</p>
-            <div class="bg-white p-4 rounded-2xl inline-block shadow-md border border-[var(--line)]"><img src="https://files.catbox.moe/vjvqpu.jpeg" alt="QRIS Donasi" class="w-72 h-72 sm:w-80 sm:h-80 object-contain rounded-lg"></div>
-            <p class="text-xs text-[var(--ink-mute)]">Scan pakai GoPay, DANA, OVO, ShopeePay, BCA, atau m-Banking lainnya.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <a href="https://saweria.co/radipgtg" target="_blank" class="paper p-3 text-center hover:bg-white transition block"><div class="text-[var(--gold)] font-bold text-sm"><i class="fa-solid fa-heart"></i> Saweria</div><div class="text-[11px] text-[var(--ink-mute)] font-mono truncate mt-1">saweria.co/radipgtg</div></a>
-            <div onclick="copyText('085711170694','Nomor DANA disalin!')" class="paper p-3 text-center hover:bg-white transition cursor-pointer"><div class="text-[#2196F3] font-bold text-sm"><i class="fa-solid fa-wallet"></i> DANA</div><div class="text-[11px] text-[var(--ink-mute)] font-mono mt-1">085711170694</div></div>
-            <div onclick="copyText('085711170694','Nomor Gopay disalin!')" class="paper p-3 text-center hover:bg-white transition cursor-pointer"><div class="text-[#00AA13] font-bold text-sm"><i class="fa-solid fa-mobile-screen"></i> Gopay</div><div class="text-[11px] text-[var(--ink-mute)] font-mono mt-1">085711170694</div></div>
-        </div>
-    </div>
-</section>
-
-<section id="faq" class="max-w-3xl mx-auto space-y-6 scroll-mt-24">
-    <div class="text-center space-y-2"><h3 class="font-display text-3xl">Pertanyaan Umum</h3><p class="text-sm text-[var(--ink-mute)]">Klik untuk melihat jawaban</p></div>
-    <div class="space-y-3" id="faqList"></div>
-</section>
-</main>
-
-<footer id="kontakSection" class="max-w-6xl mx-auto px-4 mt-10 pb-16 pt-10 border-t border-[var(--line)] scroll-mt-20">
-    <div class="flex flex-col items-center justify-center gap-4 text-center">
-        <p class="font-display text-3xl text-[var(--ink)]">TOTORO AI</p>
-        <p class="text-xs text-[var(--ink-mute)]">© 2026 Totoro AI. Created by @radipgtg.</p>
-        <div class="flex flex-wrap gap-5 text-xs font-medium text-[var(--ink-mute)] justify-center">
-            <a href="https://wa.me/6285711170694" target="_blank" class="hover:text-[var(--moss)] transition">WA 1</a>
-            <a href="https://wa.me/6285602654058" target="_blank" class="hover:text-[var(--moss)] transition">WA Order</a>
-            <a href="https://instagram.com/radipppppp" target="_blank" class="hover:text-[var(--moss)] transition">Instagram</a>
-            <a href="https://t.me/radipgtg" target="_blank" class="hover:text-[var(--moss)] transition">Telegram</a>
-        </div>
-    </div>
-</footer>
-
-<!-- HALAMAN KATALOG -->
-<div id="catalogTab" class="fs-tab">
-    <div class="fs-inner">
-        <div class="tab-deco"><div class="dec-cloud"></div><div class="dec-cloud"></div></div>
-        <div class="fs-tab-header"><div><h3 class="font-display text-lg" id="catalogTabTitle">Katalog Produk</h3><p class="text-[11px] text-[var(--ink-mute)]" id="catalogTabSubtitle">Pilih produk</p></div></div>
-        <div class="fs-tab-body" id="catalogTabBody"></div>
-        <div class="fs-tab-footer text-center text-[10px] text-[var(--ink-mute)]">Totoro AI • Auto QRIS via Payin</div>
-    </div>
-</div>
-
-<!-- HALAMAN RIWAYAT -->
-<div id="historyTab" class="fs-tab">
-    <div class="fs-inner">
-        <div class="tab-deco"><div class="dec-cloud"></div><div class="dec-cloud"></div></div>
-        <div class="fs-tab-header"><div><h3 class="font-display text-lg">Riwayat Order</h3><p class="text-[11px] text-[var(--ink-mute)]">Transaksi tersimpan di perangkat ini</p></div><button onclick="clearHistory()" class="text-xs text-red-500 hover:text-red-700 font-semibold px-3 py-2">Hapus</button></div>
-        <div class="fs-tab-body" id="historyTabBody"></div>
-        <div class="fs-tab-footer text-center text-[10px] text-[var(--ink-mute)]">Totoro AI • History Order</div>
-    </div>
-</div>
-
-<!-- HALAMAN AI CHAT -->
-<div id="aiChatTab" class="fs-tab">
-    <div class="fs-inner">
-        <div class="tab-deco"><div class="dec-cloud"></div><div class="dec-cloud"></div></div>
-        <div class="fs-tab-header">
-            <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--moss)] to-[var(--moss-deep)] flex items-center justify-center text-white shadow-sm"><i class="fa-solid fa-robot"></i></div><div><h3 class="font-display text-lg">Totoro AI Assistant</h3><p class="text-[11px] text-[var(--ink-mute)] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--moss)]"></span> Online</p></div></div>
-        </div>
-        <div class="fs-tab-body" id="aiChatBody" style="gap:12px;">
-            <div class="ai-hero p-5 mb-2">
-                <p class="font-display text-xl mb-1">Halo! 👋</p>
-                <p class="text-sm text-[var(--ink-soft)]">Aku Totoro AI — asisten virtual yang siap bantu kamu. Tanya apa saja soal harga, produk, atau cara order!</p>
-                <div class="flex flex-wrap gap-2 mt-3">
-                    <span class="chip" onclick="quickAsk('Berapa harga sewa bot?')">💰 Harga sewa bot</span>
-                    <span class="chip" onclick="quickAsk('Panel RAM berapa saja?')">📦 Paket panel</span>
-                    <span class="chip" onclick="quickAsk('Cara beli Alight Motion premium?')">✨ Alight Motion</span>
-                    <span class="chip" onclick="quickAsk('Cara order?')">🛒 Cara order</span>
-                </div>
-            </div>
-            <div class="chat-bubble-bot">🌿 Silakan ketik pertanyaanmu di bawah, aku siap bantu!</div>
-        </div>
-        <div class="fs-tab-footer">
-            <div class="flex gap-2 max-w-3xl mx-auto">
-                <input type="text" id="aiInput" class="chat-input" placeholder="Ketik pertanyaan..." onkeydown="if(event.key==='Enter') sendAiMessage()">
-                <button onclick="sendAiMessage()" class="btn-primary px-5"><i class="fa-solid fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- LAYAR ORDER -->
-<div id="orderTab" class="fs-tab">
-    <div class="fs-inner">
-        <div class="tab-deco"><div class="dec-cloud"></div><div class="dec-cloud"></div></div>
-        <div class="fs-tab-header"><div><h3 class="font-display text-lg" id="orderTabTitle">Order</h3><p class="text-[11px] text-[var(--ink-mute)]" id="orderTabSubtitle">Detail pesanan</p></div></div>
-        <div class="fs-tab-body" id="orderTabBody"></div>
-        <div class="fs-tab-footer text-center text-[10px] text-[var(--ink-mute)]">Pembayaran aman via QRIS</div>
-    </div>
-</div>
-
-<div id="totoroToast"></div>
-
+<div class="blob" style="width:420px;height:420px;background:#2f8f5b;top:-100px;left:-80px"></div>
+<div class="blob" style="width:380px;height:380px;background:#c9a94d;opacity:.35;bottom:-120px;right:-60px;animation-delay:-8s"></div>
+<div class="blob" style="width:300px;height:300px;background:#3b7fa6;opacity:.3;top:40%;left:55%;animation-delay:-4s"></div>
+<header><div class="bar glass"><div class="logo serif" onclick="go('home')">☁ Totoro AI ❀</div><nav id="nav"></nav></div></header>
+<main class="wrap"><div id="app" class="view"></div></main>
+<footer>⋆｡˚ ☁︎ Totoro AI · dibuat dengan ♡ oleh @radipgtg ☁︎ ˚｡⋆<br>“Hutan kecil untuk kebutuhan digitalmu.”</footer>
+<div id="toast"></div>
 <script>
-/* ============================================================
-   CONFIG
-============================================================ */
-const GEMINI_KEY = "AIzaSyC6Xg-NJLvpfC5p-JaiOf7O0kuP5wIabM0";
-const GEMINI_MODELS = ['gemini-2.5-flash','gemini-2.5-flash-lite','gemini-1.5-flash'];
-const JX_KEY = "RADIPGTG";
-const JX_BASE = "https://api.jerexd.my.id";
-const AI_CHAT_URL = `${JX_BASE}/api/ai/aichat?apikey=${JX_KEY}`;
-// Backup AI endpoint publik (fallback terakhir)
-const NDXHS_KEY = "7e8ad0a7d820904939559aa4";
-const NDXHS_URL = `https://ndxhs.my.id/ai/gemini?apikey=${NDXHS_KEY}&question=`;
+const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058";
+let CAT=null,ME=null,TOK=localStorage.getItem("tt_tok")||"",NEXT="",P=null,AUTHTAB="in",FIL="all";
+const $=s=>document.querySelector(s),app=$("#app");
+const rp=n=>"Rp"+Number(n).toLocaleString("id-ID");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ST={awaiting:"Belum bayar",verifying:"Menunggu ACC",success:"Berhasil",rejected:"Ditolak"};
+const dt=s=>new Date(s).toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"});
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2600)}
+const go=h=>{location.hash=h};
+async function api(p,o={}){
+ const r=await fetch(API+p,{method:o.b?"POST":"GET",headers:{"Content-Type":"application/json",...(TOK?{Authorization:"Bearer "+TOK}:{})},body:o.b?JSON.stringify(o.b):undefined});
+ const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false)throw new Error(j.message||"Gagal ("+r.status+")");return j}
+const load=t=>`<div class="center pad"><span class="spin">❀</span><p class="serif" style="margin-top:10px">${t}</p></div>`;
+for(let i=0;i<14;i++){const f=document.createElement("i");f.className="ff";f.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${-Math.random()*10}s;animation-duration:${8+Math.random()*8}s`;document.body.appendChild(f)}
 
-const PAYIN_KEY = "G8EtAJfHPXEQn5Et";
-const PAYIN_BASE = "https://api.payin.biz.id";
-const ADMIN_ORDER_WA = "6285602654058";
-const SEWA_OFFICIAL_GROUP = "https://chat.whatsapp.com/LCioKqGHYEQL6LlWowOskb";
-const QRIS_TIMEOUT_MS = 10000;
-const LOAD_MS = 3000;
+for(let i=0;i<9;i++){const l=document.createElement("i");l.className="leaf";l.textContent=["🍃","✿","❀","☘","🌿"][i%5];l.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*14}px;animation-duration:${14+Math.random()*14}s;animation-delay:${-Math.random()*20}s`;document.body.appendChild(l)}
+const EXPL={
+ bot:{what:"Bot WhatsApp siap pakai yang kamu sewa untuk grupmu: AI, downloader TikTok/YouTube, pembuat stiker, game, dan 1300+ fitur lain. Tidak perlu hosting sendiri.",who:"Admin grup, komunitas, atau toko online yang ingin grupnya lebih hidup dan otomatis.",flow:["Pilih durasi sewa","Isi <b>nomor WhatsApp</b> dan <b>link grup</b> (wajib)","Transfer QRIS lalu kirim bukti transfer","Owner menekan ACC, bot otomatis masuk ke grupmu"]},
+ panel:{what:"Server hosting Pterodactyl yang legal untuk menjalankan bot WhatsApp/Telegram 24 jam nonstop. Makin besar RAM, makin banyak yang bisa dijalankan.",who:"Pemilik script bot yang butuh tempat menjalankannya, dari bot pribadi sampai bot ramai.",flow:["Pilih ukuran RAM","Isi <b>nomor WhatsApp</b> aktif","Transfer QRIS lalu kirim bukti transfer","Owner ACC, lalu detail login panel dikirim ke WhatsApp-mu"]},
+ am:{what:"Alight Motion Premium untuk edit video tanpa watermark dan dengan fitur lengkap. Ada akun siap pakai (Seller/Bulk), premium untuk email sendiri (Buyer), dan paket Reseller.",who:"Editor video, pembuat konten, atau penjual ulang akun premium.",flow:["Pilih jenis paket (Bulk: tentukan jumlah 10-50)","Isi <b>nomor WhatsApp</b> aktif (dan email AM di catatan untuk Buyer)","Transfer QRIS lalu kirim bukti transfer","Owner ACC, akun tampil di halaman pesanan dan dikirim ke WhatsApp"]},
+ jasa:{what:"Bantuan teknis: owner memasang dan menjalankan botmu di panel, menjual source code bot Totoro AI, atau membimbing kamu membuat bot dari nol.",who:"Pemula yang bingung setup, atau yang ingin langsung punya script bot lengkap.",flow:["Pilih jasa yang dibutuhkan","Isi <b>nomor WhatsApp</b> aktif dan jelaskan kebutuhan di catatan","Transfer QRIS lalu kirim bukti transfer","Owner ACC lalu menghubungi WhatsApp-mu untuk langkah berikutnya"]}};
+const helpBox=k=>{const E=EXPL[k];return `<div class="help glass"><h4>✦ Apa ini?</h4><p>${E.what}</p><h4 style="margin-top:14px">☘ Cocok untuk</h4><p>${E.who}</p><h4 style="margin-top:14px">➶ Alurnya</h4><ol>${E.flow.map(f=>`<li>${f}</li>`).join("")}</ol></div>`};
+/* ===== boot & router ===== */
+async function boot(){
+ app.innerHTML=load("Menyiapkan hutan…");
+ try{CAT=await api("/api/catalog")}catch{app.innerHTML=`<div class="glass pad center"><h2>🍃 Server belum terhubung</h2><p class="sub">Pastikan bot menyala, lalu muat ulang halaman.</p><button class="btn" style="margin-top:16px" onclick="boot()">↻ Coba lagi</button></div>`;return}
+ if(TOK)try{ME=(await api("/api/me")).user}catch{TOK="";localStorage.removeItem("tt_tok")}
+ route()}
+function navDraw(a){
+ const L=[["home","⌂ Beranda"],["katalog","✿ Katalog"],["ai","✦ Tanya AI"]];
+ if(ME){L.push(["profil","❀ Profil"]);if(ME.role==="owner")L.push(["owner","♛ Owner"])}else L.push(["masuk","➜ Masuk"]);
+ $("#nav").innerHTML=L.map(([r,t])=>`<a class="${a===r?"on":""}" onclick="go('${r}')">${t}</a>`).join("")}
+function route(){
+ clearInterval(P);const[a,b,c]=(location.hash.slice(1)||"home").split("-");navDraw(a);
+ app.classList.remove("view");void app.offsetWidth;app.classList.add("view");scrollTo(0,0);
+ if(!CAT)return;
+ const need=()=>{NEXT=location.hash.slice(1);go("masuk")};
+ if(a==="katalog")b&&CAT.cats[b]?vCat(b):vCatalog();
+ else if(a==="beli"&&CAT.cats[b]?.it[c])ME?vBuy(b,+c):need();
+ else if(a==="order")ME?vOrder(b):need();
+ else if(a==="profil")ME?vProfile():need();
+ else if(a==="owner")ME?.role==="owner"?vOwner():go("home");
+ else if(a==="masuk")ME?go("profil"):vAuth();
+ else if(a==="ai")vAi();
+ else vHome()}
+addEventListener("hashchange",route);
 
-/* ============================================================
-   UTIL
-============================================================ */
-function showToast(msg){const el=document.getElementById('totoroToast');el.textContent=msg;el.classList.add('show');clearTimeout(window._toastT);window._toastT=setTimeout(()=>el.classList.remove('show'),2600);}
-function copyText(t,msg='Disalin!'){navigator.clipboard.writeText(t);showToast('📋 '+msg);}
-function toggleFabMenu(){const m=document.getElementById('fab-menu'),i=document.getElementById('fab-icon');if(m.classList.contains('scale-0')){m.classList.remove('scale-0','opacity-0');m.classList.add('scale-100','opacity-100');i.style.transform='rotate(90deg)';}else{m.classList.add('scale-0','opacity-0');m.classList.remove('scale-100','opacity-100');i.style.transform='rotate(0deg)';}}
-function toggleSidebar(){document.getElementById('sidebarDrawer').classList.toggle('open');document.getElementById('sidebarBackdrop').classList.toggle('open');}
-function closeTab(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=document.body.classList.contains('page-mode')?'hidden':'';}
-function openTab(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function scrollToSection(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
-function loadingHtml(text='Memuat'){return `<div class="loading-box"><div class="leaf-spinner"></div><p class="loading-text">${text}<span class="loading-dots"><span></span><span></span><span></span></span></p></div>`;}
-function errBox(m){return `<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-6 text-center text-sm text-red-500">${m}</div><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;}
+/* ===== katalog ===== */
+const cards=()=>`<div class="grid">${Object.entries(CAT.cats).map(([k,c])=>`<div class="glass cat" onclick="go('katalog-${k}')"><span class="ic">${c.ic}</span><h3 style="font-size:21px">${c.n}${c.disc?`<span class="off">-${c.disc}%</span>`:""}</h3><p class="sub">${c.d}</p><small>mulai ${rp(Math.min(...c.it.map(i=>i.p)))} ➜</small></div>`).join("")}</div>`;
+function vCatalog(){app.innerHTML=`<h2>✿ Katalog Hutan</h2><p class="sub" style="margin-bottom:20px">Pilih layanan yang kamu butuhkan ✦</p>${cards()}`}
+function vHome(){
+ const F=[["Bagaimana cara memesan?","Masuk akun, pilih paket, transfer lewat QRIS, kirim bukti transfer. Owner menerima notifikasi WhatsApp dan menekan ACC."],["Berapa lama prosesnya?","Biasanya hitungan menit setelah bukti terkirim. Halaman pesanan ikut berubah otomatis."],["Untuk sewa bot, apa yang harus disiapkan?","Link grup WhatsApp. Setelah di-ACC bot langsung masuk ke grupmu."],["Ada garansi?","Ada, selama masa aktif produk. Hubungi owner jika ada kendala."]];
+ app.innerHTML=`${CAT.banner?`<div class="glass banner">✦ ${esc(CAT.banner)} ✦</div>`:""}
+ <section class="hero glass"><span class="deco" style="left:6%;top:14%">🌿</span><span class="deco" style="right:8%;top:18%;animation-delay:-1.5s">☁️</span><span class="deco" style="left:12%;bottom:12%;animation-delay:-2.5s">✿</span><span class="deco" style="right:12%;bottom:14%;animation-delay:-3s">🍃</span><span class="chip">★ 4.9 / 5 · terpercaya</span><span class="chip">☘ bergaransi</span>
+ <h1>Selamat datang di <em>hutan Totoro</em> ✿</h1><p>Bot WhatsApp, panel hosting, Alight Motion, sampai jasa setup. Bayar lewat QRIS, kirim bukti, dan biar daun-daun yang mengantar ➶</p>
+ <div class="acts"><button class="btn" onclick="go('katalog')">✿ Lihat Katalog</button><button class="btn ghost" onclick="go('ai')">✦ Tanya Totoro</button></div></section>
+ <div class="tick"><div>${"✿ Sewa Bot WA ⋆ Panel Pterodactyl ⋆ Alight Motion Premium ⋆ Jasa Setup ⋆ Bayar QRIS ⋆ Bot Otomatis Masuk Grup ⋆ ".repeat(2)}</div></div><h2 class="mt center">✿ Pilih Layanan</h2><p class="sub center" style="margin-bottom:20px">Semua pesanan diteruskan langsung ke WhatsApp owner</p>${cards()}
+ <h2 class="mt center">➶ Cara Order</h2><p class="sub center">Empat langkah mudah, dari masuk sampai layananmu aktif</p><div class="steps"><div class="glass step"><h3>Masuk Akun</h3><p class="sub">Daftar sekali dengan email. Semua transaksimu tersimpan di Profil.</p></div><div class="glass step"><h3>Pilih Paket</h3><p class="sub">Buka katalog, baca penjelasannya, lalu isi nomor WhatsApp (dan link grup untuk sewa bot).</p></div><div class="glass step"><h3>Bayar & Kirim Bukti</h3><p class="sub">Scan QRIS sesuai total, lalu unggah foto bukti transfer.</p></div><div class="glass step"><h3>Owner ACC</h3><p class="sub">Owner memeriksa. Setelah ACC, layanan aktif dan kabarnya dikirim ke WhatsApp-mu.</p></div></div><h2 class="mt center">⋆ Kenapa Totoro AI?</h2><p class="sub center" style="margin-bottom:20px">Seperti pohon camphor: kokoh, teduh, selalu ada</p>
+ <div class="g3"><div class="glass pad"><h3>⚡ Cepat</h3><p class="sub">Bukti transfer langsung masuk ke WhatsApp owner.</p></div><div class="glass pad"><h3>☘ Ramah</h3><p class="sub">Owner siap membantu lewat WhatsApp & Telegram.</p></div><div class="glass pad"><h3>❀ Bergaransi</h3><p class="sub">Garansi penuh selama masa aktif produk.</p></div></div>
+ <div style="max-width:700px;margin:40px auto 0"><h2 class="center">❓ Pertanyaan Umum</h2>${F.map(f=>`<details class="glass"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
+ <div class="acts"><a class="btn ghost" href="https://wa.me/${WA}" target="_blank">WA Order</a><a class="btn ghost" href="https://t.me/radipgtg" target="_blank">Telegram</a><a class="btn ghost" href="https://instagram.com/radipppppp" target="_blank">Instagram</a></div>`}
+function vCat(k){
+ const c=CAT.cats[k];
+ app.innerHTML=`<button class="back" onclick="go('katalog')">← Kembali ke katalog</button><div class="glass pad"><div style="font-size:40px">${c.ic}</div><h2>${c.n}${c.disc?`<span class="off">-${c.disc}%</span>`:""}</h2><p class="sub">${c.d}</p>
+ <div class="grid" style="margin-top:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">${c.it.map((x,i)=>`<div class="glass tile" onclick="go('beli-${k}-${i}')"><span>${esc(x.l)}</span><b>${x.p!==x.b?`<s>${rp(x.b)}</s>`:""}${rp(x.p)}</b></div>`).join("")}</div><div class="note">☘ ${c.tip}</div>${helpBox(k)}</div>`}
 
-/* ============================================================
-   ROUTING
-============================================================ */
-const BASE_URL = location.href.split('#')[0];
-function openNewTab(hash){const w=window.open(BASE_URL+'#'+hash,'_blank');if(!w)showToast('⚠️ Izinkan pop-up untuk membuka tab baru');}
-function routePage(){
-    const h=(location.hash||'').replace('#','');
-    if(!h)return;
-    if(h==='riwayat'){document.body.classList.add('page-mode');showHistory();}
-    else if(h==='ai'){document.body.classList.add('page-mode');showAiChat();}
-    else if(h.startsWith('katalog-')&&CATALOG[h.slice(8)]){document.body.classList.add('page-mode');showCategory(h.slice(8));}
+/* ===== auth ===== */
+function vAuth(){
+ const reg=AUTHTAB==="up";
+ app.innerHTML=`<div class="glass pad" style="max-width:440px;margin:30px auto"><div class="center"><div style="font-size:40px">🍃</div><h2>${reg?"Buat Akun":"Masuk ke Hutan"}</h2><p class="sub">Akun menyimpan riwayat transaksimu ✿</p></div>
+ <div class="tabs" style="justify-content:center"><button class="btn sm ${reg?"ghost":""}" onclick="AUTHTAB='in';vAuth()">Masuk</button><button class="btn sm ${reg?"":"ghost"}" onclick="AUTHTAB='up';vAuth()">Daftar</button></div>
+ ${reg?`<label>Nama</label><input id="aN" placeholder="Nama kamu" autocomplete="name"><label>Nomor WhatsApp</label><input id="aW" placeholder="08123456789" inputmode="tel" autocomplete="tel">`:""}
+ <label>Email</label><input id="aE" type="email" placeholder="email@kamu.com" autocomplete="email"><label>Password</label><input id="aP" type="password" placeholder="min. 6 karakter" autocomplete="${reg?"new-password":"current-password"}" onkeydown="if(event.key==='Enter')doAuth()">
+ <button class="btn full" style="margin-top:20px" id="aB" onclick="doAuth()">${reg?"✿ Daftar":"➜ Masuk"}</button></div>`}
+async function doAuth(){
+ const reg=AUTHTAB==="up",b=$("#aB");b.disabled=true;
+ try{const j=await api(reg?"/api/auth/register":"/api/auth/login",{b:{name:$("#aN")?.value,wa:$("#aW")?.value,email:$("#aE").value,password:$("#aP").value}});
+  TOK=j.token;ME=j.user;localStorage.setItem("tt_tok",TOK);toast("✿ Selamat datang, "+ME.name);const n=NEXT;NEXT="";go(n||"profil")}
+ catch(e){toast("⚠ "+e.message);b.disabled=false}}
+function logout(){TOK="";ME=null;localStorage.removeItem("tt_tok");toast("Sampai jumpa di hutan ☁");go("home")}
+
+/* ===== checkout ===== */
+function vBuy(k,i){
+ const c=CAT.cats[k],it=c.it[i],bulk=it.k==="bulk";
+ app.innerHTML=`<button class="back" onclick="go('katalog-${k}')">← Ganti paket</button><div class="glass pad" style="max-width:520px;margin:auto"><h2>❀ Konfirmasi Pesanan</h2><p class="sub">Periksa dulu sebelum lanjut ya ✦</p><div class="help glass" style="margin-top:14px"><h4>Apa yang terjadi setelah ini?</h4><ol><li>Pesanan dibuat, lalu kamu diarahkan ke halaman pembayaran QRIS.</li><li>Kamu transfer dan <b>unggah bukti transfer</b>.</li><li>Owner memeriksa dan menekan ACC.</li><li>Layanan diproses dan owner mengirim kabar ke <b>nomor WhatsApp</b> yang kamu isi di bawah.</li></ol></div>
+ <div style="margin-top:12px"><div class="kv"><span>Layanan</span><span>${c.n}</span></div><div class="kv"><span>Paket</span><span>${esc(it.l)}</span></div><div class="kv"><span>Pembeli</span><span>${esc(ME.name)} · +${ME.wa}</span></div><div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px" id="tot">${rp(bulk?it.p*10:it.p)}</span></div></div>
+ ${bulk?`<label>Jumlah akun (10-50)</label><input id="bQ" type="number" min="10" max="50" value="10" oninput="$('#tot').textContent=rp(${it.p}*Math.min(50,Math.max(0,+this.value||0)))">`:""}
+ <label>Nomor WhatsApp (wajib)</label><input id="bW" value="${esc(ME.wa)}" placeholder="08123456789" inputmode="tel"><p class="sub" style="font-size:12px;margin-top:4px">Owner memakai nomor ini untuk mengirim pesanan, akun, atau info login. Pastikan aktif dan bisa dihubungi.</p>
+ ${k==="bot"?`<label>Link grup WhatsApp (wajib)</label><input id="bG" placeholder="https://chat.whatsapp.com/…">`:""}
+ <label>Catatan (opsional)</label><input id="bN" placeholder="${k==="am"?"Email AM, dll":"Pesan untuk owner"}">
+ <button class="btn full" style="margin-top:20px" id="bB" onclick="mkOrder('${k}',${i})">✿ Buat Pesanan & Bayar</button></div>`}
+async function mkOrder(k,i){
+ const b=$("#bB");b.disabled=true;
+ try{const j=await api("/api/orders",{b:{cat:k,idx:i,wa:$("#bW").value,qty:$("#bQ")?.value,group:$("#bG")?.value,note:$("#bN").value}});go("order-"+j.order.id)}
+ catch(e){toast("⚠ "+e.message);b.disabled=false}}
+
+/* ===== halaman pesanan ===== */
+function shrink(f){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const s=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.8))};i.onerror=no;i.src=URL.createObjectURL(f)})}
+function sum(o){return `<div class="kv"><span>ID</span><span style="font-family:monospace;font-size:12px">${o.id}</span></div><div class="kv"><span>Produk</span><span>${esc(o.product)}${o.qty>1?" × "+o.qty:""}</span></div><div class="kv"><span>WhatsApp</span><span>+${o.wa}</span></div><div class="kv"><span>Status</span><span><span class="badge s-${o.status}">${ST[o.status]}</span></span></div>${o.group?`<div class="kv"><span>Grup</span><span style="font-size:12px">${esc(o.group)}</span></div>`:""}<div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px">${rp(o.amount)}</span></div>`}
+async function vOrder(id){
+ app.innerHTML=load("Membuka pesanan…");let last="";
+ const draw=async()=>{if(location.hash!=="#order-"+id)return;
+  let o;try{o=(await api("/api/orders/"+id)).order}catch(e){app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`;return}
+  if(o.status===last)return;last=o.status;const c=CAT.cats[o.cat];window._acc=o.accounts||[];let h;
+  if(o.status==="awaiting")h=`<div class="split"><div class="glass pad"><h2>❀ Pesananmu</h2>${sum(o)}<div class="help glass"><h4>✦ Langkah selanjutnya</h4><ol><li>Scan QRIS lalu bayar <b>tepat sesuai total</b>.</li><li>Screenshot bukti transfer, unggah di kolom Kirim Bukti.</li><li>Bukti langsung masuk ke WhatsApp owner untuk diperiksa.</li><li>Setelah di-ACC, halaman ini otomatis berubah jadi berhasil dan owner menghubungi nomor WhatsApp-mu.</li></ol></div></div>
+   <div class="glass pad center"><h3>1 · Scan & Bayar</h3><div class="qr" style="margin:14px 0"><img src="${QRIS}" alt="QRIS"></div><p class="sub">Nominal: <b style="color:var(--gold)">${rp(o.amount)}</b></p>
+   <h3 style="margin-top:22px">2 · Kirim Bukti</h3><input type="file" id="pf" accept="image/*" style="margin-bottom:12px"><button class="btn full" id="pb" onclick="upProof('${o.id}')">➶ Kirim Bukti Transfer</button></div></div>`;
+  else if(o.status==="verifying")h=`<div class="glass pad" style="max-width:520px;margin:auto">${load("Bukti diterima! Owner sedang memeriksa…")}${sum(o)}<p class="note">Halaman ini berubah otomatis begitu pesananmu di-ACC.</p></div>`;
+  else if(o.status==="success")h=`<div class="glass pad" style="max-width:560px;margin:auto"><div class="center"><div style="font-size:52px">🥳</div><h2>Yeay, pesananmu berhasil!</h2><p class="sub">Terima kasih sudah mampir ke hutan Totoro ✿</p></div>${sum(o)}
+   ${o.groupJid?`<div class="note">🌿 Bot sudah masuk ke grupmu dan siap dipakai.</div>`:`<div class="note">☘ ${c.tip}</div>`}
+   ${window._acc.length?`<h3 style="margin-top:16px">Akun Alight Motion</h3><div style="max-height:260px;overflow:auto;margin-top:8px">${window._acc.map((a,i)=>`<div class="kv"><span>${i+1}</span><span style="font-family:monospace;font-size:12px">${esc(a)}</span></div>`).join("")}</div><button class="btn ghost full" style="margin-top:12px" onclick="navigator.clipboard.writeText(window._acc.join('\\n'));toast('❀ Disalin!')">❐ Salin semua</button>`:""}
+   <button class="btn ghost full" style="margin-top:12px" onclick="go('profil')">❀ Ke profil</button></div>`;
+  else h=`<div class="glass pad center" style="max-width:520px;margin:auto"><div style="font-size:48px">🍂</div><h2>Pesanan belum bisa diproses</h2><p class="sub" style="margin:8px 0 16px">Owner menolak pesanan ini. Hubungi admin untuk penjelasan.</p>${sum(o)}<a class="btn full" target="_blank" href="https://wa.me/${WA}?text=${encodeURIComponent("Halo kak, pesanan "+o.id+" ditolak. Mohon info.")}">Hubungi WA Order</a></div>`;
+  app.innerHTML=h};
+ await draw();P=setInterval(draw,5000)}
+async function upProof(id){
+ const f=$("#pf").files[0];if(!f)return toast("⚠ Pilih foto bukti transfer dulu");
+ const b=$("#pb");b.disabled=true;b.textContent="Mengirim…";
+ try{await api("/api/orders/"+id+"/proof",{b:{image:await shrink(f)}});toast("✿ Bukti terkirim ke owner");route()}
+ catch(e){toast("⚠ "+e.message);b.disabled=false;b.textContent="➶ Kirim Bukti Transfer"}}
+
+/* ===== profil ===== */
+async function vProfile(){
+ app.innerHTML=load("Membuka profil…");let d;
+ try{d=await api("/api/me")}catch(e){return app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`}
+ const O=d.orders,n=s=>O.filter(o=>o.status===s).length,L=FIL==="all"?O:O.filter(o=>o.status===FIL);
+ app.innerHTML=`<div class="glass pad" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap"><div><h2>❀ ${esc(d.user.name)}</h2><p class="sub">${esc(d.user.email)} · +${d.user.wa}${d.user.role==="owner"?" · ♛ owner":""}</p></div><button class="btn ghost sm" onclick="logout()">Keluar</button></div>
+ <div class="stats"><div class="glass stat"><b>${O.length}</b><span class="sub">Total</span></div><div class="glass stat"><b style="color:#a6e08a">${n("success")}</b><span class="sub">Berhasil</span></div><div class="glass stat"><b style="color:#f0cf7a">${n("awaiting")+n("verifying")}</b><span class="sub">Tertunda</span></div><div class="glass stat"><b style="color:#f0a3a3">${n("rejected")}</b><span class="sub">Ditolak</span></div></div>
+ <div class="legend"><span><span class="badge s-awaiting">Belum bayar</span> menunggu bukti transfer</span><span><span class="badge s-verifying">Menunggu ACC</span> bukti diterima, owner memeriksa</span><span><span class="badge s-success">Berhasil</span> layanan aktif</span><span><span class="badge s-rejected">Ditolak</span> hubungi admin</span></div><div class="tabs">${[["all","Semua"],["success","Berhasil"],["verifying","Menunggu ACC"],["awaiting","Belum bayar"],["rejected","Ditolak"]].map(([k,t])=>`<button class="btn sm ${FIL===k?"":"ghost"}" onclick="FIL='${k}';vProfile()">${t}</button>`).join("")}</div>
+ ${L.length?L.map(o=>`<div class="glass ord" onclick="go('order-${o.id}')"><b>${esc(o.product)}${o.qty>1?" × "+o.qty:""}</b><span class="badge s-${o.status}">${ST[o.status]}</span><small>${o.id} · ${dt(o.createdAt)}</small><b style="color:var(--gold)">${rp(o.amount)}</b></div>`).join(""):`<div class="glass pad center sub"><div style="font-size:40px">🍃</div>Belum ada transaksi di sini ✿</div>`}`}
+
+/* ===== owner ===== */
+async function vOwner(){
+ app.innerHTML=load("Membuka ruang owner…");let d;
+ try{d=await api("/api/owner/data")}catch(e){return app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`}
+ const s=d.settings,dv=k=>s.disc?.[k]??"",pend=d.orders.filter(o=>o.status==="verifying").length;
+ app.innerHTML=`<h2>♛ Ruang Owner</h2><div class="stats"><div class="glass stat"><b>${d.orders.length}</b><span class="sub">Pesanan</span></div><div class="glass stat"><b style="color:#9ccbee">${pend}</b><span class="sub">Menunggu ACC</span></div><div class="glass stat"><b>${d.users}</b><span class="sub">Pengguna</span></div><div class="glass stat"><b style="color:var(--gold);font-size:20px">${rp(d.revenue)}</b><span class="sub">Pendapatan</span></div></div>
+ <div class="split"><div class="glass pad"><h3>✦ Diskon & Banner</h3><p class="sub">Kosongkan untuk tanpa diskon. Diskon kategori menimpa diskon semua.</p>
+ <div class="g3" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px">${[["all","Semua %"],["bot","Bot %"],["panel","Panel %"],["am","AM %"],["jasa","Jasa %"]].map(([k,t])=>`<div><label>${t}</label><input type="number" min="0" max="90" id="d_${k}" value="${dv(k)}"></div>`).join("")}</div>
+ <label>Banner promo (tampil di beranda)</label><input id="d_bn" maxlength="160" value="${esc(s.banner)}" placeholder="Diskon akhir bulan!"><button class="btn full" style="margin-top:16px" onclick="saveSet()">✿ Simpan</button></div>
+ <div class="glass pad" style="overflow:auto"><h3>♡ Pesanan Terbaru</h3><table><tr><th>ID</th><th>Produk</th><th>Status</th><th></th></tr>${d.orders.slice(0,30).map(o=>`<tr><td style="font-family:monospace;font-size:11px">${o.id}<br><span class="sub">${rp(o.amount)}</span></td><td>${esc(o.product)}<br><span class="sub">${esc(o.name)} · +${o.wa}</span></td><td><span class="badge s-${o.status}">${ST[o.status]}</span></td>
+ <td style="white-space:nowrap">${o.proofAt?`<a class="btn ghost sm" target="_blank" href="${API}/api/owner/proof/${o.id}?t=${TOK}">Bukti</a> `:""}${o.status==="verifying"?`<button class="btn sm" onclick="act('${o.id}','approve')">ACC</button> <button class="btn red sm" onclick="act('${o.id}','reject')">Tolak</button>`:""}</td></tr>`).join("")}</table></div></div>`}
+async function saveSet(){
+ const disc={};for(const k of ["all","bot","panel","am","jasa"])disc[k]=$("#d_"+k).value;
+ try{await api("/api/owner/settings",{b:{disc,banner:$("#d_bn").value}});CAT=await api("/api/catalog");toast("✿ Tersimpan")}catch(e){toast("⚠ "+e.message)}}
+async function act(id,a){
+ if(!confirm((a==="approve"?"ACC":"Tolak")+" pesanan "+id+"?"))return;toast("Memproses…");
+ try{const j=await api(`/api/owner/orders/${id}/${a}`,{b:{}});toast("✿ "+j.message)}catch(e){toast("⚠ "+e.message)}vOwner()}
+
+/* ===== AI: logika lokal dulu, lalu Gemini, lalu server ===== */
+const GEMINI_KEY=""; // opsional: isi untuk memanggil Gemini langsung dari browser (key jadi publik). Disarankan pakai env GEMINI_KEY di server.
+let chat=[],hist=[],busy=false;
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9 ]/g," ");
+const bl=k=>CAT.cats[k].it.map(i=>"• "+i.l+": "+rp(i.p)).join("\n");
+const mn=k=>rp(Math.min(...CAT.cats[k].it.map(i=>i.p)));
+function local(q){
+ const t=" "+norm(q)+" ",has=r=>r.test(t),C=CAT.cats;let m;
+ if((m=t.match(/(\d+) ?(gb|g)\b/))&&has(/panel|ram|gb|server/)){const it=C.panel.it.find(i=>parseInt(i.l)==m[1]);if(it)return{s:1,t:`Panel ${it.l} harganya ${rp(it.p)} ✿ ${+m[1]<=4?"Pas untuk bot ringan atau bot pribadi.":"Cukup lega untuk bot yang makin ramai."} Pilih di Katalog › Panel.`}}
+ if((m=t.match(/(\d+) ?(hari|hr)\b/))&&has(/sewa|bot|hari|hr/)){const it=C.bot.it.find(i=>parseInt(i.l)==m[1]);if(it)return{s:1,t:`Sewa bot ${it.l} harganya ${rp(it.p)} ✿ Siapkan link grup WhatsApp-mu; setelah di-ACC bot langsung masuk ke grup.`}}
+ if((m=t.match(/(\d+) ?akun/))&&has(/bulk|akun|alight|am/)){const n=+m[1],b=C.am.it.find(i=>i.k==="bulk");return{s:1,t:n>=10&&n<=50?`Bulk ${n} akun = ${rp(b.p*n)} (${rp(b.p)} per akun) ✿ Akun dikirim otomatis setelah di-ACC.`:`Bulk bisa 10-50 akun per pesanan, ${rp(b.p)} per akun ✿`}}
+ if(has(/^ *(hai|halo|hi|hello|hey|p|permisi|assalamualaikum)( |$)/))return{s:1,t:"Halo, selamat datang di hutan Totoro ☁ Mau tanya harga, cara order, atau pembayaran?"};
+ if(has(/terima kasih|makasih|thanks|thx|tengkyu/))return{s:1,t:"Sama-sama! Kalau ada yang mau ditanyakan lagi, Totoro di sini ✿"};
+ if(has(/cara|gimana|bagaimana/)&&has(/order|beli|pesan|bayar|sewa/)||has(/ orderan | order /))return{s:1,t:"Cara order ➶\n1. Masuk atau daftar akun\n2. Pilih paket di Katalog\n3. Isi nomor WhatsApp (dan link grup untuk sewa bot)\n4. Scan QRIS, bayar sesuai total\n5. Unggah bukti transfer\n6. Tunggu owner menekan ACC, halaman otomatis berubah jadi berhasil ✿"};
+ if(has(/bayar|pembayaran|qris|transfer|bukti|dana|gopay|ovo/))return{s:1,t:"Pembayaran lewat QRIS (semua e-wallet dan m-banking). Setelah pesanan dibuat, scan QRIS, bayar tepat sesuai total, lalu unggah foto bukti transfer di halaman pesanan. Owner akan memeriksanya ✿"};
+ if(has(/diskon|promo|murah|potongan/)){const d=Object.values(C).filter(c=>c.disc).map(c=>`• ${c.n}: -${c.disc}%`).join("\n");return{s:1,t:d?"Diskon yang sedang berjalan ✿\n"+d:"Saat ini belum ada diskon aktif 🍃 Pantau banner di beranda ya."}}
+ if(has(/panel|ram|pterodactyl|hosting|server/))return{s:1,t:"Panel Pterodactyl adalah server untuk menjalankan bot 24 jam ✿\n"+bl("panel")};
+ if(has(/alight|\bam\b|reseller|seller|buyer|bulk|premium|edit video/))return{s:1,t:"Alight Motion Premium ✨\n"+bl("am")+"\nSeller dan Bulk dikirim otomatis setelah di-ACC."};
+ if(has(/jasa|script|source|tutor|install|setup|run bot/))return{s:1,t:"Jasa & Tools 🧰\n"+bl("jasa")};
+ if(has(/sewa|bot|addsewa|grup|group/))return{s:1,t:"Sewa Bot WA 🤖 (1300+ fitur)\n"+bl("bot")+"\nLink grup WhatsApp wajib diisi saat order. Setelah di-ACC, bot otomatis masuk ke grupmu."};
+ if(has(/garansi|jaminan|refund/))return{s:1,t:"Ada garansi selama masa aktif produk. Kalau ada kendala, hubungi WA Order 0856-0265-4058 ✿"};
+ if(has(/kontak|admin|owner|wa order|whatsapp|telegram|instagram|hubungi/))return{s:1,t:"Kontak ✿\n• WA Order: 0856-0265-4058\n• WA Owner: 0857-1117-0694\n• Telegram: @radipgtg\n• Instagram: @radipppppp"};
+ if(has(/lama|cepat|proses|acc|nunggu|menunggu/))return{s:1,t:"Biasanya hitungan menit setelah bukti transfer terkirim. Status di halaman pesanan berubah otomatis begitu owner menekan ACC ✿"};
+ if(has(/login|masuk|daftar|riwayat|profil|akun saya/))return{s:1,t:"Daftar atau masuk lewat tombol Masuk di atas. Di Profil kamu bisa melihat semua transaksi: berhasil, tertunda, atau ditolak ✿"};
+ if(has(/error|gagal|bug|rusak|tidak bisa|gabisa|ga bisa/))return{s:1,t:"Maaf ya 🍃 Coba muat ulang halaman. Kalau masih bermasalah, chat WA Order 0856-0265-4058 dengan ID pesananmu."};
+ if(has(/harga|katalog|produk|jual|list|daftar harga/))return{s:1,t:`Harga mulai dari ✿\n• Sewa Bot: ${mn("bot")}\n• Panel: ${mn("panel")}\n• Alight Motion: ${mn("am")}\n• Jasa: ${mn("jasa")}\nBuka Katalog untuk detailnya.`};
+ return{s:0,t:"Hmm, daun-daun belum paham maksudmu 🍃 Coba tanya soal harga bot, panel, Alight Motion, cara order, atau pembayaran. Atau chat WA Order 0856-0265-4058."};
 }
-
-/* ============================================================
-   FAQ
-============================================================ */
-const FAQ_DATA=[
-    {q:'Gimana cara order produk?',a:'Klik kategori produk → pilih produk & durasi → review pesanan → klik "Buat Pesanan" → invoice QRIS muncul. Setelah bayar, sistem proses otomatis.'},
-    {q:'Metode pembayaran apa saja tersedia?',a:'QRIS otomatis (GoPay, DANA, OVO, ShopeePay, m-Banking) atau transfer manual ke DANA/Gopay di halaman Donasi, lalu konfirmasi ke WhatsApp Order.'},
-    {q:'Berapa lama proses aktivasi?',a:'Untuk Panel dan Alight Motion, otomatis instan setelah pembayaran terdeteksi. Untuk Sewa Bot dan Jasa Setup, dibantu manual lewat WhatsApp.'},
-    {q:'Kalau QRIS gagal dibuat atau timeout?',a:'Sistem akan kasih opsi Order Manual WA. Hubungi WA Order 0856-0265-4058 dengan detail pesanan, admin akan proses manual.'},
-    {q:'Apakah ada garansi produk?',a:'Ada, garansi penuh selama masa aktif produk. Kalau ada kendala, hubungi Owner atau Admin Support di bagian Kontak.'},
-];
-function renderFaq(){const list=document.getElementById('faqList');list.innerHTML=FAQ_DATA.map((f,i)=>`<div class="faq-item" data-idx="${i}"><div class="faq-summary" onclick="toggleFaq(${i})"><span>${escapeHtml(f.q)}</span><i class="fa-solid fa-chevron-down chev"></i></div><div class="faq-body" id="faqBody${i}"><div class="faq-body-inner">${escapeHtml(f.a)}</div></div></div>`).join('');}
-function toggleFaq(i){const item=document.querySelector(`.faq-item[data-idx="${i}"]`);const body=document.getElementById(`faqBody${i}`);const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-body').style.maxHeight='0px';});if(!isOpen){item.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}}
-
-/* ============================================================
-   HISTORY
-============================================================ */
-function getHistory(){try{return JSON.parse(localStorage.getItem('totoro_history')||'[]');}catch{return [];}}
-function saveHistory(entry){const arr=getHistory();arr.unshift(entry);if(arr.length>50)arr.length=50;localStorage.setItem('totoro_history',JSON.stringify(arr));}
-function updateHistoryStatus(reference,status){const arr=getHistory();const idx=arr.findIndex(x=>x.reference===reference);if(idx>=0){arr[idx].status=status;localStorage.setItem('totoro_history',JSON.stringify(arr));}}
-function clearHistory(){if(!confirm('Hapus semua riwayat order?'))return;localStorage.removeItem('totoro_history');renderHistory();showToast('Riwayat dihapus');}
-function showHistory(){document.title='Riwayat Order — Totoro AI';const body=document.getElementById('historyTabBody');body.innerHTML=loadingHtml('Memuat riwayat');openTab('historyTab');setTimeout(renderHistory,LOAD_MS);}
-function renderHistory(){const arr=getHistory();const body=document.getElementById('historyTabBody');if(!arr.length){body.innerHTML=`<div class="text-center py-16 text-[var(--ink-mute)]"><i class="fa-solid fa-clock-rotate-left text-5xl opacity-30 mb-4"></i><p class="text-sm">Belum ada riwayat order.</p></div>`;return;}body.innerHTML=arr.map(h=>{const badge=h.status==='success'?'badge-success':h.status==='pending'?'badge-pending':'badge-expired';const statusText=h.status==='success'?'Berhasil':h.status==='pending'?'Menunggu':'Expired';return `<div class="history-item"><div class="flex justify-between items-start gap-3"><div><p class="font-semibold text-sm">${escapeHtml(h.product||'-')}</p><p class="text-xs text-[var(--ink-mute)] mt-0.5 font-mono">${escapeHtml(h.reference||'')}</p></div><span class="history-badge ${badge}">${statusText}</span></div><div class="flex justify-between items-center text-xs pt-2 border-t border-[var(--line)] mt-1"><span class="text-[var(--ink-mute)]">${h.date||''}</span><span class="font-bold text-[var(--moss)]">Rp${Number(h.amount||0).toLocaleString('id-ID')}</span></div></div>`;}).join('');}
-
-/* ============================================================
-   CATALOG
-============================================================ */
-const CATALOG={
-    bot:{title:'Sewa Bot WA',subtitle:'Bot WhatsApp 1300+ fitur siap pakai',render:renderBotCatalog},
-    panel:{title:'Panel Pterodactyl',subtitle:'Panel legal RAM 3GB–Unlimited',render:renderPanelCatalog},
-    am:{title:'Alight Motion Auto',subtitle:'Premium otomatis via QRIS',render:renderAmCatalog},
-    extra:{title:'Jasa & Tools',subtitle:'Setup bot & source code',render:renderExtraCatalog}
-};
-function openCategoryTab(cat){if(CATALOG[cat])openNewTab('katalog-'+cat);}
-function showCategory(cat){const data=CATALOG[cat];if(!data)return;document.title=data.title+' — Totoro AI';document.getElementById('catalogTabTitle').textContent=data.title;document.getElementById('catalogTabSubtitle').textContent=data.subtitle;const body=document.getElementById('catalogTabBody');body.innerHTML=loadingHtml('Menyiapkan produk');openTab('catalogTab');setTimeout(()=>{body.innerHTML=data.render();},LOAD_MS);}
-
-function renderBotCatalog(){
-    const std=[['7 Hari',4000,'std_7d'],['15 Hari',6000,'std_15d'],['30 Hari',10000,'std_30d'],['60 Hari',20000,'std_60d'],['Permanen',35000,'std_perm']];
-    const row=(lbl,price,key,feat)=>`<div class="price-row ${feat?'featured':''}" onclick="openReviewPage('bot','${key}','Bot Standar - ${lbl}',${price})"><span>${lbl}</span><span class="font-bold text-[var(--moss)]">Rp${price.toLocaleString('id-ID')}</span></div>`;
-    return `<div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-robot"></i></div><div><p class="text-sm font-bold">Apa itu Sewa Bot WA?</p><p class="text-xs text-[var(--ink-soft)] mt-1 leading-relaxed">Bot WhatsApp dengan <b>1300+ fitur</b> siap pakai — downloader, sticker maker, AI chat, game, hingga panel admin. Pilih durasi sewa, bot aktif di grupmu.</p></div></div><div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto w-full"><div class="paper p-6 flex flex-col md:col-span-2"><h4 class="font-display text-lg mb-1">Bot Standar</h4><p class="text-xs text-[var(--ink-mute)] mb-4">Pilih durasi sewa sesuai kebutuhan</p><div class="space-y-2 flex-1">${std.map(([l,p,k],i)=>row(l,p,k,i===std.length-1)).join('')}</div><a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20tanya%20Sewa%20Bot%20Standar" target="_blank" class="btn-ghost mt-5 w-full">Tanya via WA</a></div><div class="paper paper-warm p-6 flex flex-col"><h4 class="font-display text-lg mb-1">Tutor Pembuatan Bot</h4><p class="text-xs text-[var(--ink-mute)] mb-3">Belajar bikin bot dari nol</p><div class="text-center py-4 flex-1 flex flex-col justify-center gap-3"><div class="font-display text-3xl text-[var(--gold)]">Rp40.000</div><p class="text-xs text-[var(--ink-mute)] leading-relaxed">Dibimbing bikin bot sendiri, dapat panel unlimited gratis, script Totoro AI, bisa open sewa juga.</p></div><a href="https://wa.me/6285602654058?text=Halo%20kak,%20saya%20mau%20ambil%20paket%20Tutor%20Pembuatan%20Bot%20Rp40.000" target="_blank" class="btn-primary mt-4 w-full">Ambil Paket Tutor</a></div></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto w-full"><div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-bolt"></i></div><div><p class="text-xs font-bold">Aktivasi Instan</p><p class="text-[11px] text-[var(--ink-mute)] mt-0.5">Setelah bayar, join grup & ketik .addsewa</p></div></div><div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-crown"></i></div><div><p class="text-xs font-bold">1300+ Fitur</p><p class="text-[11px] text-[var(--ink-mute)] mt-0.5">Downloader, sticker, AI, game, admin panel</p></div></div><div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-circle-info"></i></div><div><p class="text-xs font-bold">Cara Pakai</p><p class="text-[11px] text-[var(--ink-mute)] mt-0.5">Join grup → ketik .addsewa &lt;link&gt; &lt;durasi&gt;</p></div></div></div>`;
-}
-function renderPanelCatalog(){
-    const rams=[[3,5000],[4,6500],[5,7500],[6,8500],[7,9500],[8,10500],[9,11500],[10,12500]];
-    return `<div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-server"></i></div><div><p class="text-sm font-bold">Apa itu Panel Pterodactyl?</p><p class="text-xs text-[var(--ink-soft)] mt-1 leading-relaxed">Panel hosting resmi & legal untuk run bot WhatsApp/Telegram. Pakai Pterodactyl yang support <b>Node.js, Python, dan panel management lengkap</b> — upload file, jalankan bot 24/7, kelola server lewat web.</p></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto w-full"><div class="paper p-6"><div class="flex items-center justify-between mb-3"><h4 class="font-display text-lg">Paket RAM Reguler</h4><span class="text-[10px] font-bold uppercase tracking-wider bg-[rgba(107,142,94,0.15)] text-[var(--moss)] px-2 py-1 rounded-full">Populer</span></div><p class="text-xs text-[var(--ink-mute)] mb-4">RAM kecil untuk bot ringan, cocok coba-coba atau bot pribadi</p><div class="grid grid-cols-2 gap-2">${rams.map(([gb,p])=>`<div class="price-row" onclick="openReviewPage('panel','ram${gb}','Panel RAM ${gb}GB',${p})"><span>${gb} GB</span><span class="font-bold text-[var(--moss)]">Rp${p.toLocaleString('id-ID')}</span></div>`).join('')}</div></div><div class="paper paper-warm p-6 flex flex-col"><div class="flex items-center justify-between mb-3"><h4 class="font-display text-lg">Unlimited Server</h4><span class="text-[10px] font-bold uppercase tracking-wider bg-[rgba(201,169,97,0.2)] text-[#8A6E2C] px-2 py-1 rounded-full">Bestseller</span></div><p class="text-xs text-[var(--ink-mute)] mb-4">RAM, storage, dan CPU tak terbatas. Cocok untuk bot yang makin gede</p><div class="flex-1 flex flex-col justify-center gap-4"><div class="price-row featured" onclick="openReviewPage('panel','unlimited','Panel Unlimited',18500)"><span class="font-semibold">Unlimited RAM & Storage</span><span class="font-display text-lg text-[var(--gold)]">Rp18.500</span></div></div></div></div><div class="paper p-5 max-w-4xl mx-auto w-full"><p class="text-xs font-bold mb-3"><i class="fa-solid fa-check-circle text-[var(--moss)]"></i> Fitur yang kamu dapat:</p><ul class="feature-list grid grid-cols-1 sm:grid-cols-2 gap-x-4"><li><i class="fa-solid fa-check"></i> Node.js, Python, Bun, dan banyak runtime</li><li><i class="fa-solid fa-check"></i> File manager + console real-time</li><li><i class="fa-solid fa-check"></i> Uptime 99% & server Singapore/Indonesia</li><li><i class="fa-solid fa-check"></i> Support install script gratis</li><li><i class="fa-solid fa-check"></i> Backup otomatis harian</li><li><i class="fa-solid fa-check"></i> 24/7 online tanpa tidur</li></ul></div>`;
-}
-function renderAmCatalog(){
-    return `<div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><p class="text-sm font-bold">Alight Motion Premium Otomatis</p><p class="text-xs text-[var(--ink-soft)] mt-1 leading-relaxed">Dapatkan <b>Alight Motion Premium</b> — apk editor video profesional — dengan harga super murah. Sistem otomatis via QRIS: pilih sesuai kebutuhan — pakai email sendiri (Buyer), beli akun instan (Seller), atau generate banyak akun sekaligus (Bulk).</p></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto w-full"><div class="paper p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)]"><i class="fa-solid fa-user"></i></div><div><h4 class="font-display text-base">AM Premium Buyer</h4><p class="text-[11px] text-[var(--ink-mute)]">Pakai email pribadimu</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Premiumkan <b>email kamu sendiri</b> jadi akun Alight Motion Premium. Cocok kalau kamu mau akun permanen pakai email pribadi.</p><div class="bg-[rgba(201,169,97,0.1)] border border-[rgba(201,169,97,0.3)] rounded-xl p-3 text-xs mb-4"><p class="font-bold text-[#8A6E2C]">💰 Rp1.000 / akun</p><p class="text-[11px] text-[var(--ink-mute)] mt-1">Flow: bayar → kirim email → cek inbox → verifikasi</p></div><ul class="feature-list mb-4"><li><i class="fa-solid fa-check"></i> Pakai email sendiri</li><li><i class="fa-solid fa-check"></i> Aktif selamanya</li><li><i class="fa-solid fa-check"></i> Verifikasi via generator.email</li></ul><button onclick="startAmBuyer()" class="btn-primary mt-auto w-full">Beli AM Buyer</button></div><div class="paper paper-warm p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-bolt"></i></div><div><h4 class="font-display text-base">AM Seller</h4><p class="text-[11px] text-[var(--ink-mute)]">1 akun instan</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Dapat <b>1 akun Alight Motion Premium siap pakai</b> langsung. Email & password otomatis dikirim setelah bayar.</p><div class="bg-[rgba(201,169,97,0.12)] border border-[rgba(201,169,97,0.3)] rounded-xl p-3 text-xs mb-4"><p class="font-bold text-[#8A6E2C]">💰 Rp1.500 / akun</p><p class="text-[11px] text-[var(--ink-mute)] mt-1">Flow: bayar → langsung dapat akun</p></div><ul class="feature-list mb-4"><li><i class="fa-solid fa-check"></i> Email + password langsung</li><li><i class="fa-solid fa-check"></i> Proses instan 1 menit</li><li><i class="fa-solid fa-check"></i> Garansi login</li></ul><button onclick="startAmSeller()" class="btn-primary mt-auto w-full">Beli AM Seller</button></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto w-full"><div class="paper p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)]"><i class="fa-solid fa-layer-group"></i></div><div><h4 class="font-display text-base">AM Bulk</h4><p class="text-[11px] text-[var(--ink-mute)]">Banyak akun sekaligus</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Generate <b>banyak akun sekaligus</b> (10–50 akun). Cocok buat reseller atau tim yang butuh stok akun.</p><input type="number" id="amBulkAmount" min="10" max="50" value="10" class="w-full bg-white border border-[var(--line-strong)] rounded-xl px-3 py-2.5 text-sm outline-none focus:border-[var(--moss)] mb-2"><p class="text-[11px] text-[var(--ink-mute)] mb-3">Rp300 × jumlah akun (min 10, max 50)</p><button onclick="startAmBulk()" class="btn-primary mt-auto w-full">Beli AM Bulk</button></div><div class="paper paper-warm p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-store"></i></div><div><h4 class="font-display text-base">Reseller AM</h4><p class="text-[11px] text-[var(--ink-mute)]">Jual ulang, untung besar</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Dapat <b>harga khusus reseller</b> + akses grup eksklusif. Bisa jual ulang AM Premium dengan margin keuntungan sendiri.</p><div class="space-y-2"><div class="price-row" onclick="startAmReseller('1 Bulan',5000)"><span>1 Bulan</span><span class="font-bold text-[var(--moss)]">Rp5.000</span></div><div class="price-row" onclick="startAmReseller('2 Bulan',7000)"><span>2 Bulan</span><span class="font-bold text-[var(--moss)]">Rp7.000</span></div><div class="price-row" onclick="startAmReseller('3 Bulan',9000)"><span>3 Bulan</span><span class="font-bold text-[var(--moss)]">Rp9.000</span></div><div class="price-row featured" onclick="startAmReseller('Permanen',12000)"><span class="font-bold">Permanen</span><span class="font-bold text-[var(--gold)]">Rp12.000</span></div></div></div></div>`;
-}
-function renderExtraCatalog(){
-    return `<div class="info-block"><div class="info-block-icon"><i class="fa-solid fa-toolbox"></i></div><div><p class="text-sm font-bold">Jasa & Tools</p><p class="text-xs text-[var(--ink-soft)] mt-1 leading-relaxed">Kalau kamu males setup sendiri, tim kami siap bantu — mulai dari install script ke panel, sampai sediakan source code bot Totoro AI yang bisa kamu develop sendiri.</p></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto w-full"><div class="paper p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(107,142,94,0.12)] flex items-center justify-center text-[var(--moss)]"><i class="fa-solid fa-gears"></i></div><div><h4 class="font-display text-base">Jasa Run & Install Bot</h4><p class="text-[11px] text-[var(--ink-mute)]">Mulai Rp10.000</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Tim kami bantu <b>run bot ke panel</b> pterodactyl kamu, install dependency, atur 24/7, dan pastikan bot jalan tanpa error.</p><ul class="feature-list mb-4"><li><i class="fa-solid fa-check"></i> Setup script ke panel</li><li><i class="fa-solid fa-check"></i> Install dependency & config</li><li><i class="fa-solid fa-check"></i> Testing sampai bot hidup</li><li><i class="fa-solid fa-check"></i> Garansi 7 hari</li></ul><div class="price-row mb-4" onclick="openReviewPage('extra','jasa','Jasa Run Script & Install Bot',10000)"><span>Setup Layanan</span><span class="font-bold text-[var(--moss)]">Mulai Rp10.000</span></div><a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20konsultasi%20Jasa%20Setup%20Bot" target="_blank" class="btn-ghost mt-auto w-full">Konsultasi WA</a></div><div class="paper paper-warm p-6 flex flex-col"><div class="flex items-center gap-2 mb-3"><div class="w-10 h-10 rounded-xl bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-code"></i></div><div><h4 class="font-display text-base">Script Bot Totoro AI</h4><p class="text-[11px] text-[var(--ink-mute)]">Full source code</p></div></div><p class="text-xs text-[var(--ink-soft)] mb-3 leading-relaxed">Dapatkan <b>source code bot WhatsApp premium</b> Totoro AI — full update + apikey. Bisa kamu kembangkan sendiri jadi bot sewa.</p><ul class="feature-list mb-4"><li><i class="fa-solid fa-check"></i> 1300+ fitur siap pakai</li><li><i class="fa-solid fa-check"></i> Free update</li><li><i class="fa-solid fa-check"></i> Full dokumentasi</li><li><i class="fa-solid fa-check"></i> Support grup developer</li></ul><div class="price-row featured mb-4" onclick="openReviewPage('extra','script','Script Bot Totoro AI',35000)"><span>Full Source</span><span class="font-bold text-[var(--gold)]">Rp35.000</span></div><a href="https://wa.me/6285711170694?text=Halo%20kak,%20saya%20mau%20Beli%20Script%20Totoro%20AI" target="_blank" class="btn-ghost mt-auto w-full">Order WA</a></div></div>`;
-}
-
-/* ============================================================
-   REVIEW + ORDER
-============================================================ */
-let pendingOrder=null;
-function openReviewPage(cat,key,product,price){
-    pendingOrder={cat,key,product,price};
-    document.getElementById('orderTabTitle').textContent='Review Pesanan';
-    document.getElementById('orderTabSubtitle').textContent='Periksa sebelum lanjut';
-    const body=document.getElementById('orderTabBody');
-    body.innerHTML=loadingHtml('Menyiapkan review');
-    openTab('orderTab');
-    setTimeout(()=>{
-        const orderId='TMP-'+Date.now().toString(36).toUpperCase().slice(-6);
-        body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-6 space-y-4"><div class="text-center"><div class="w-16 h-16 rounded-full bg-gradient-to-br from-[var(--moss)] to-[var(--moss-deep)] flex items-center justify-center mx-auto text-white text-2xl mb-3"><i class="fa-solid fa-clipboard-check"></i></div><p class="font-display text-xl">Konfirmasi Pesanan</p><p class="text-xs text-[var(--ink-mute)] mt-1">Periksa detail pesananmu sebelum lanjut</p></div><div class="space-y-2.5 text-sm pt-3 border-t border-[var(--line)]"><div class="flex justify-between gap-3"><span class="text-[var(--ink-mute)]">ID Pesanan</span><span class="font-mono font-semibold text-right">${orderId}</span></div><div class="flex justify-between gap-3"><span class="text-[var(--ink-mute)]">Produk</span><span class="font-semibold text-right">${escapeHtml(product)}</span></div><div class="flex justify-between gap-3"><span class="text-[var(--ink-mute)]">Tanggal</span><span class="font-semibold text-right">${new Date().toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'})}</span></div><div class="flex justify-between gap-3 pt-3 border-t border-[var(--line)]"><span class="font-semibold">Total</span><span class="font-display text-xl text-[var(--moss)]">Rp${price.toLocaleString('id-ID')}</span></div></div><div class="bg-[rgba(201,169,97,0.1)] border border-[rgba(201,169,97,0.3)] rounded-xl p-3 text-xs"><p class="font-bold text-[#8A6E2C] mb-1"><i class="fa-solid fa-circle-info"></i> Perhatian</p><p class="text-[var(--ink-soft)] leading-relaxed">Pastikan produk & durasi sudah benar. Setelah lanjut, invoice QRIS akan dibuat.</p></div></div><button onclick="confirmOrder()" class="btn-primary w-full py-3.5"><i class="fa-solid fa-check"></i> Buat Pesanan & Lanjut Bayar</button><button onclick="closeTab('orderTab')" class="btn-danger w-full"><i class="fa-solid fa-xmark"></i> Batal</button></div>`;
-    },LOAD_MS);
-}
-function confirmOrder(){
-    if(!pendingOrder)return;
-    const {cat,key,product,price}=pendingOrder;
-    if(cat==='am'){confirmAm(key,product,price);return;}
-    if(cat==='panel'||cat==='extra'){
-        document.getElementById('orderTabTitle').textContent=product;
-        document.getElementById('orderTabSubtitle').textContent='Bayar → Dapat kode order';
-        createInvoice(price,product,'orderTabBody',(info)=>{
-            const code=genOrderCode('TR');
-            const waMsg=`Halo kak, saya sudah bayar untuk *${product}* (Rp${info.amount}).\nKode: ${code}\nMohon diproses ya, terima kasih!`;
-            document.getElementById('orderTabBody').innerHTML=`<div class="max-w-md mx-auto w-full space-y-4 text-center"><div class="paper p-6 space-y-3"><div class="w-16 h-16 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] text-2xl"><i class="fa-solid fa-check"></i></div><p class="font-display text-xl">Pembayaran Berhasil!</p><p class="text-xs text-[var(--ink-mute)]">Salin kode order & kirim ke WhatsApp admin.</p><div class="bg-[rgba(107,142,94,0.08)] rounded-xl p-3 font-mono text-sm text-[var(--moss)] break-all">${code}</div><button onclick="copyText('${code}','Kode order disalin')" class="text-xs text-[var(--moss)] underline">📋 Salin Kode</button></div><a href="https://wa.me/${ADMIN_ORDER_WA}?text=${encodeURIComponent(waMsg)}" target="_blank" class="btn-primary w-full">Kirim ke WA Admin</a><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;
-        });
-    } else if(cat==='bot'){
-        document.getElementById('orderTabTitle').textContent=product;
-        document.getElementById('orderTabSubtitle').textContent='Bayar → Join grup → Addsewa';
-        createInvoice(price,product,'orderTabBody',()=>{
-            const dur=(key.split('_')[1]||'').toLowerCase();
-            const cmd=dur==='perm'?'lifetime':dur;
-            document.getElementById('orderTabBody').innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-6 text-center space-y-2"><div class="w-14 h-14 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] text-xl"><i class="fa-solid fa-check"></i></div><p class="font-display text-xl">Pembayaran Berhasil!</p><p class="text-xs text-[var(--ink-mute)]">Sekarang aktifkan bot-mu.</p></div><div class="paper p-5 space-y-3 text-sm"><p><b class="text-[var(--moss)]">1.</b> Join grup official:</p><a href="${SEWA_OFFICIAL_GROUP}" target="_blank" class="block break-all text-xs text-[var(--moss)] underline">${SEWA_OFFICIAL_GROUP}</a><p><b class="text-[var(--moss)]">2.</b> Kamu otomatis dapat akses <code class="bg-[rgba(107,142,94,0.08)] px-1.5 py-0.5 rounded">.addsewa</code> (1x pakai).</p><p><b class="text-[var(--moss)]">3.</b> Ketik command ini:</p><div class="bg-[rgba(107,142,94,0.08)] rounded-xl p-3 font-mono text-xs break-all">.addsewa &lt;link_grup_kamu&gt; ${cmd}</div><button onclick="copyText('.addsewa <link_grup_kamu> ${cmd}','Command disalin')" class="text-xs text-[var(--moss)] underline">📋 Salin</button></div><a href="${SEWA_OFFICIAL_GROUP}" target="_blank" class="btn-primary w-full">Join Grup Sekarang</a><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;
-        });
-    }
-}
-
-/* ============================================================
-   AM FLOWS
-============================================================ */
-function startAmBuyer(){openReviewPage('am','buyer','AM Premium Buyer',1000);}
-function startAmSeller(){openReviewPage('am','seller','AM Seller (1 Akun)',1500);}
-function startAmBulk(){const amt=parseInt(document.getElementById('amBulkAmount').value)||10;if(amt<10){showToast('⚠️ Minimal 10 akun');return;}if(amt>50){showToast('⚠️ Maksimal 50 akun');return;}openReviewPage('am','bulk:'+amt,`AM Bulk (${amt} akun)`,amt*300);}
-function startAmReseller(paket,harga){openReviewPage('am','reseller:'+paket,`Reseller AM (${paket})`,harga);}
-function confirmAm(key,product,price){
-    document.getElementById('orderTabTitle').textContent=product;
-    document.getElementById('orderTabSubtitle').textContent='Bayar via QRIS';
-    const [type,arg]=key.split(':');
-    createInvoice(price,product,'orderTabBody',()=>{
-        if(type==='buyer')showBuyerStep1();
-        else if(type==='seller')deliverAmBulk(1);
-        else if(type==='bulk')deliverAmBulk(parseInt(arg));
-        else if(type==='reseller')showResellerStep(arg);
-    });
-}
-function showBuyerStep1(){document.getElementById('orderTabBody').innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5 text-center"><div class="w-14 h-14 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] mb-2"><i class="fa-solid fa-envelope"></i></div><p class="font-display text-lg">Masukkan Email</p><p class="text-xs text-[var(--ink-mute)] mt-1">Email yang mau dipremiumkan</p></div><div class="paper p-5 space-y-3"><input type="email" id="buyerEmail" placeholder="email@generator.email" class="w-full bg-white border border-[var(--line-strong)] rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--moss)]"><button onclick="submitBuyerEmail()" class="btn-primary w-full">Kirim Magic Link</button></div><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;}
-async function submitBuyerEmail(){const email=document.getElementById('buyerEmail').value.trim();if(!email||!email.includes('@')){showToast('⚠️ Masukkan email valid');return;}const body=document.getElementById('orderTabBody');body.innerHTML=loadingHtml('Mengirim magic link');try{const res=await fetch(`${JX_BASE}/api/am/send?apikey=${JX_KEY}&email=${encodeURIComponent(email)}`);const json=await res.json();if(json.status===false||json.status==='error'){body.innerHTML=errBox(`❌ ${json.message||'Gagal kirim'}`);return;}body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5 text-center"><div class="w-14 h-14 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] mb-2"><i class="fa-solid fa-paper-plane"></i></div><p class="font-display text-lg">Magic Link Terkirim!</p></div><div class="paper p-5 space-y-3 text-xs"><p class="font-bold text-[var(--moss)]">Cara ambil link:</p><p>1. Buka <a href="https://generator.email/" target="_blank" class="text-[var(--moss)] underline">generator.email</a></p><p>2. Email: <b class="break-all">${escapeHtml(email)}</b></p><p>3. Cari email dari Alight Motion, copy link verifikasinya</p></div><div class="paper p-5 space-y-3"><input type="text" id="verifyLink" placeholder="Paste link verifikasi..." class="w-full bg-white border border-[var(--line-strong)] rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--moss)]"><button onclick="submitBuyerVerify('${escapeHtml(email)}')" class="btn-primary w-full">Verifikasi & Aktifkan</button></div><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;}catch(e){body.innerHTML=errBox(`❌ Error: ${e.message}`);}}
-async function submitBuyerVerify(email){const link=document.getElementById('verifyLink').value.trim();if(!link){showToast('⚠️ Masukkan link verifikasi');return;}const body=document.getElementById('orderTabBody');body.innerHTML=loadingHtml('Memverifikasi');try{const res=await fetch(`${JX_BASE}/api/am/verif?apikey=${JX_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,link})});const json=await res.json();if(json.status===false||json.status==='error'){body.innerHTML=errBox(`❌ ${json.message||'Gagal verif'}`);return;}body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4 text-center"><div class="paper p-6 space-y-3"><div class="w-16 h-16 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] text-2xl"><i class="fa-solid fa-check"></i></div><p class="font-display text-xl">AM Premium Aktif! 🎉</p><div class="bg-[rgba(107,142,94,0.08)] rounded-xl p-3 text-xs text-left space-y-1"><p><b>Email:</b> <span class="font-mono break-all">${escapeHtml(email)}</span></p><p class="mt-2"><b>Cara login:</b></p><p>1. Buka AM → login pakai email</p><p>2. Cek generator.email → klik link login</p></div></div><button onclick="closeTab('orderTab')" class="btn-primary w-full">Tutup</button></div>`;}catch(e){body.innerHTML=errBox(`❌ Error: ${e.message}`);}}
-async function deliverAmBulk(amount){const body=document.getElementById('orderTabBody');body.innerHTML=loadingHtml(`Mengambil ${amount} akun`);try{const res=await fetch(`${JX_BASE}/api/am/bulk?apikey=${JX_KEY}&amount=${amount}`);const json=await res.json();if(!json||json.status===false||json.status==='error'){body.innerHTML=errBox(`❌ ${json?.message||'Server error'}. Hubungi owner.`);return;}const accounts=json.result?.accounts||json.data||json.result||[];const list=(Array.isArray(accounts)?accounts:[]).map(a=>typeof a==='string'?a:(a.email||a.mail||Object.values(a)[0]||'')).filter(Boolean);window._amList=list.join('\n');body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5 text-center"><div class="w-14 h-14 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] mb-2"><i class="fa-solid fa-check"></i></div><p class="font-display text-lg">Berhasil! (${list.length} akun)</p></div><div class="paper p-5 space-y-2 max-h-80 overflow-y-auto">${list.map((m,i)=>`<div class="bg-[rgba(107,142,94,0.06)] rounded-lg p-2.5 font-mono text-xs break-all">${i+1}. ${escapeHtml(m)}</div>`).join('')}</div><button onclick="copyText(window._amList,'Semua akun disalin')" class="btn-ghost w-full">📋 Salin Semua</button><button onclick="closeTab('orderTab')" class="btn-primary w-full">Tutup</button></div>`;}catch(e){body.innerHTML=errBox(`❌ Error: ${e.message}`);}}
-function showResellerStep(paket){document.getElementById('orderTabBody').innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5 text-center"><div class="w-14 h-14 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] mb-2"><i class="fa-solid fa-check"></i></div><p class="font-display text-lg">Pembayaran Berhasil!</p><p class="text-xs text-[var(--ink-mute)]">Masukkan nomor WA untuk diundang</p></div><div class="paper p-5 space-y-3"><input type="text" id="resellerWa" placeholder="08123456789" class="w-full bg-white border border-[var(--line-strong)] rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--moss)]"><button onclick="submitReseller('${paket}')" class="btn-primary w-full">Kirim & Dapatkan Grup</button></div></div>`;}
-function submitReseller(paket){const wa=document.getElementById('resellerWa').value.trim();if(!wa){showToast('⚠️ Masukkan nomor WA');return;}document.getElementById('orderTabBody').innerHTML=`<div class="max-w-md mx-auto w-full space-y-4 text-center"><div class="paper p-6 space-y-3"><div class="w-16 h-16 rounded-full bg-[rgba(107,142,94,0.15)] flex items-center justify-center mx-auto text-[var(--moss)] text-2xl"><i class="fa-solid fa-check"></i></div><p class="font-display text-xl">Data Terkirim!</p><p class="text-sm">WA: <b>${escapeHtml(wa)}</b><br>Paket: <b>${escapeHtml(paket)}</b></p></div><a href="https://chat.whatsapp.com/CrptveEAXrl82mzpH9Be54" target="_blank" class="btn-primary w-full">Join Grup Reseller</a><button onclick="closeTab('orderTab')" class="btn-ghost w-full">Tutup</button></div>`;}
-function genOrderCode(prefix){return prefix+'-'+Date.now().toString(36).toUpperCase().slice(-6)+Math.random().toString(36).substring(2,6).toUpperCase();}
-
-/* ============================================================
-   PAYMENT
-============================================================ */
-let _activePolls={};
-function stopAllPolls(){Object.values(_activePolls).forEach(i=>clearInterval(i));_activePolls={};}
-function createInvoice(amount,product,containerId,onSuccess){
-    const body=document.getElementById(containerId);if(!body)return;stopAllPolls();
-    const now=new Date();const orderId='ORD-'+now.getTime().toString(36).toUpperCase().slice(-8);const orderDate=now.toLocaleString('id-ID',{dateStyle:'long',timeStyle:'short'});
-    body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5"><div class="flex items-center gap-2 mb-3"><div class="w-8 h-8 rounded-full bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-receipt text-xs"></i></div><div><p class="text-xs font-bold">Detail Pesanan</p><p class="text-[10px] text-[var(--ink-mute)]">Invoice sedang dibuat...</p></div></div><div class="space-y-2 text-xs"><div class="flex justify-between gap-3"><span class="text-[var(--ink-mute)]">ID Pesanan</span><span class="font-mono font-semibold text-right break-all">${orderId}</span></div><div class="flex justify-between gap-3 pt-2 border-t border-[var(--line)]"><span class="text-[var(--ink-mute)]">Produk</span><span class="font-semibold text-right">${escapeHtml(product)}</span></div><div class="flex justify-between gap-3 pt-2 border-t border-[var(--line)]"><span class="text-[var(--ink-mute)]">Tanggal</span><span class="font-semibold text-right">${orderDate}</span></div><div class="flex justify-between gap-3 pt-3 border-t border-[var(--line)] items-center"><span class="font-semibold">Total</span><span class="font-display text-xl text-[var(--moss)]">Rp${amount.toLocaleString('id-ID')}</span></div></div></div><div class="paper p-8">${loadingHtml('Menyiapkan QRIS')}</div><button onclick="cancelInvoice()" class="btn-danger w-full"><i class="fa-solid fa-xmark"></i> Batal</button></div>`;
-    const controller=new AbortController();const timeoutId=setTimeout(()=>controller.abort(),QRIS_TIMEOUT_MS);
-    fetch(`${PAYIN_BASE}/api/v2/create-transaksi`,{method:'POST',headers:{'Content-Type':'application/json','X-API-KEY':PAYIN_KEY},body:JSON.stringify({amount,payment_method:'qris',expired_minutes:30}),signal:controller.signal})
-    .then(r=>r.json()).then(data=>{
-        clearTimeout(timeoutId);
-        if(!data.success){showInvoiceError(body,data.message||'Gagal membuat invoice',product,amount);return;}
-        const {reference,qr_url,total_to_pay,expired_at}=data.data;
-        saveHistory({product,reference,amount:total_to_pay,status:'pending',date:new Date().toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'})});
-        let expLabel='N/A';const ed=new Date(expired_at);if(!isNaN(ed))expLabel=ed.toLocaleString('id-ID',{dateStyle:'short',timeStyle:'short'});
-        body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-5"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-[rgba(201,169,97,0.15)] flex items-center justify-center text-[#8A6E2C]"><i class="fa-solid fa-receipt text-xs"></i></div><div><p class="text-xs font-bold">Detail Pesanan</p><p class="text-[10px] text-[var(--ink-mute)]">Invoice QRIS</p></div></div><span class="history-badge badge-pending">⏳ Menunggu</span></div><div class="space-y-2 text-xs"><div class="flex justify-between gap-3"><span class="text-[var(--ink-mute)]">ID Transaksi</span><span class="font-mono font-semibold text-right break-all">${reference}</span></div><div class="flex justify-between gap-3 pt-2 border-t border-[var(--line)]"><span class="text-[var(--ink-mute)]">Produk</span><span class="font-semibold text-right">${escapeHtml(product)}</span></div><div class="flex justify-between gap-3 pt-2 border-t border-[var(--line)]"><span class="text-[var(--ink-mute)]">Tanggal</span><span class="font-semibold text-right">${orderDate}</span></div><div class="flex justify-between gap-3 pt-2 border-t border-[var(--line)]"><span class="text-[var(--ink-mute)]">Berlaku Sampai</span><span class="font-semibold text-right">${expLabel}</span></div><div class="flex justify-between gap-3 pt-3 border-t border-[var(--line)] items-center"><span class="font-semibold">Total Bayar</span><span class="font-display text-xl text-[var(--moss)]">Rp${parseFloat(total_to_pay).toLocaleString('id-ID')}</span></div></div></div><div class="paper p-5 text-center"><p class="text-xs font-bold uppercase tracking-wider text-[var(--ink-mute)] mb-3">Scan QRIS</p><div class="bg-white p-3 rounded-2xl w-fit mx-auto shadow-sm border border-[var(--line)]"><img src="${qr_url}" alt="QRIS" class="w-56 h-56 object-contain" onerror="this.parentElement.innerHTML='<a href=\\'${qr_url}\\' target=\\'_blank\\' class=\\'text-[var(--moss)] underline text-xs\\'>Buka QRIS di tab baru</a>';"></div><div class="flex gap-2 mt-4"><a href="${qr_url}" download="QRIS-${reference}.png" target="_blank" class="btn-ghost flex-1 text-xs"><i class="fa-solid fa-download"></i> Download</a><button onclick="copyText('${qr_url}','Link QRIS disalin')" class="btn-ghost flex-1 text-xs"><i class="fa-solid fa-copy"></i> Salin Link</button></div></div><div class="paper p-4 text-xs text-[var(--ink-soft)] leading-relaxed"><p class="font-bold mb-2">📌 Cara Bayar</p><p>1. Buka e-wallet / m-Banking</p><p>2. Scan QRIS di atas</p><p>3. Nominal sudah otomatis</p><p>4. Selesaikan pembayaran</p><p class="text-[var(--ink-mute)] mt-2">Status update otomatis setelah pembayaran terdeteksi.</p></div><div class="paper p-3 bg-[rgba(200,90,90,0.05)] border border-[rgba(200,90,90,0.2)]"><p class="text-[11px] text-[var(--ink-soft)] mb-2"><i class="fa-solid fa-triangle-exclamation text-red-500"></i> Masalah dengan pembayaran?</p><div class="flex gap-2"><a href="https://wa.me/${ADMIN_ORDER_WA}?text=${encodeURIComponent('Halo kak, saya mau order manual '+product+' (Rp'+parseFloat(total_to_pay).toLocaleString('id-ID')+'). Invoice: '+reference)}" target="_blank" class="btn-primary flex-1 text-xs py-2.5"><i class="fa-brands fa-whatsapp"></i> Order Manual WA</a><button onclick="cancelInvoice()" class="btn-danger flex-1 text-xs py-2.5">Batal</button></div></div></div>`;
-        const pollKey='p_'+reference;
-        _activePolls[pollKey]=setInterval(()=>{
-            fetch(`${PAYIN_BASE}/api/v2/cek-status?reference=${reference}`,{headers:{'X-API-KEY':PAYIN_KEY}}).then(r=>r.json()).then(sd=>{
-                if(!sd.success)return;
-                if(sd.data.status==='success'){clearInterval(_activePolls[pollKey]);delete _activePolls[pollKey];updateHistoryStatus(reference,'success');onSuccess({reference,amount:total_to_pay,product});}
-                else if(sd.data.status==='expired'||sd.data.status==='failed'){clearInterval(_activePolls[pollKey]);delete _activePolls[pollKey];updateHistoryStatus(reference,'expired');showInvoiceError(body,'Transaksi '+sd.data.status,product,amount,reference);}
-            }).catch(()=>{});
-        },3000);
-    }).catch(err=>{clearTimeout(timeoutId);const msg=err.name==='AbortError'?'Server QRIS tidak merespon':err.message;showInvoiceError(body,msg,product,amount);});
-}
-function showInvoiceError(body,message,product,amount,reference){
-    body.innerHTML=`<div class="max-w-md mx-auto w-full space-y-4"><div class="paper p-6 text-center space-y-3"><div class="w-16 h-16 rounded-full bg-[rgba(200,90,90,0.1)] flex items-center justify-center mx-auto text-red-500 text-2xl"><i class="fa-solid fa-circle-exclamation"></i></div><p class="font-display text-xl">Invoice Gagal Dibuat</p><p class="text-xs text-[var(--ink-mute)]">${escapeHtml(message)}</p>${reference?`<p class="text-[11px] font-mono text-[var(--ink-mute)]">Ref: ${reference}</p>`:''}</div><div class="paper p-4 bg-[rgba(201,169,97,0.08)] border border-[rgba(201,169,97,0.25)]"><p class="text-xs font-bold text-[#8A6E2C] mb-2">💡 Alternatif</p><p class="text-xs text-[var(--ink-soft)] leading-relaxed mb-3">Kamu bisa order manual langsung ke WhatsApp Admin. Kami proses sesuai ketersediaan.</p><a href="https://wa.me/${ADMIN_ORDER_WA}?text=${encodeURIComponent('Halo kak, saya mau order '+product+' (Rp'+amount.toLocaleString('id-ID')+') karena invoice gagal dibuat. Mohon dibantu ya!')}" target="_blank" class="btn-primary w-full text-xs"><i class="fa-brands fa-whatsapp"></i> Order Manual WA Admin</a></div><button onclick="cancelInvoice()" class="btn-danger w-full"><i class="fa-solid fa-xmark"></i> Batal</button></div>`;
-}
-function cancelInvoice(){stopAllPolls();closeTab('orderTab');showToast('Order dibatalkan');}
-
-/* ============================================================
-   AI CHAT — MULTI SOURCE
-   1. jerexd (primary, sama dengan AM send/verif)
-   2. ndxhs (backup)
-   3. Gemini (last resort, key kamu)
-============================================================ */
-const AI_SYSTEM = `Kamu adalah "Totoro AI", asisten virtual ramah dari website Totoro AI milik @radipgtg. Jawab dalam Bahasa Indonesia santai, singkat, jelas. Emoji secukupnya.
-
-=== DATA PRODUK ===
-1) SEWA BOT WA (1300+ fitur): 7hr Rp4.000 | 15hr Rp6.000 | 30hr Rp10.000 | 60hr Rp20.000 | Permanen Rp35.000
-2) TUTOR PEMBUATAN BOT: Rp40.000
-3) PANEL PTERODACTYL: 3GB Rp5.000 | 4GB Rp6.500 | 5GB Rp7.500 | 6GB Rp8.500 | 7GB Rp9.500 | 8GB Rp10.500 | 9GB Rp11.500 | 10GB Rp12.500 | Unlimited Rp18.500
-4) ALIGHT MOTION: Buyer Rp1.000 | Seller Rp1.500 | Bulk Rp300/akun (10-50) | Reseller 1bln Rp5.000, 2bln Rp7.000, 3bln Rp9.000, Perm Rp12.000
-5) JASA: Run Script mulai Rp10.000 | Script Full Source Rp35.000
-
-=== KONTAK ===
-WA Owner 0857-1117-0694 | WA Order 0856-0265-4058 | Telegram @radipgtg | IG @radipppppp | Admin Haidar 0851-2410-2334
-
-=== PEMBAYARAN ===
-QRIS otomatis (GoPay, DANA, OVO, ShopeePay, m-Banking).
-
-Jawab ramah, singkat, langsung ke inti. Kalau ditanya error → arahkan WA Order. Jangan pernah bilang "sebagai AI tidak bisa".`;
-
-let aiHistory = [];
-
-// Fallback 1: jerexd
-async function callJerexdAI(text) {
-    try {
-        const res = await fetch(AI_CHAT_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: text }],
-                message: text, prompt: text, question: text
-            })
-        });
-        if (!res.ok) return null;
-        const json = await res.json();
-        const reply = json.result || json.message || json.response || json.reply || json.answer || json.data?.reply || json.data?.message || json.data?.text || (typeof json.data === 'string' ? json.data : null);
-        if (reply && typeof reply === 'string' && reply.length > 3 && !reply.toLowerCase().includes('error')) return reply;
-        return null;
-    } catch (e) { console.warn('[jerexd] fail:', e.message); return null; }
-}
-
-// Fallback 2: ndxhs
-async function callNdxhsAI(text) {
-    try {
-        const fullQ = `${AI_SYSTEM}\n\nPertanyaan User: ${text}`;
-        const res = await fetch(NDXHS_URL + encodeURIComponent(fullQ));
-        if (!res.ok) return null;
-        const json = await res.json();
-        const reply = json.result || json.message || json.data?.reply || json.data?.message || (typeof json.data === 'string' ? json.data : null);
-        if (reply && typeof reply === 'string' && reply.length > 3) return reply;
-        return null;
-    } catch (e) { console.warn('[ndxhs] fail:', e.message); return null; }
-}
-
-// Fallback 3: Gemini
-async function callGeminiOnce(model, contents) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_KEY}`;
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            systemInstruction: { parts: [{ text: AI_SYSTEM }] },
-            contents, generationConfig: { temperature: 0.7, maxOutputTokens: 700 }
-        })
-    });
-    const json = await res.json();
-    if (json.candidates?.[0]?.content?.parts?.[0]?.text) return json.candidates[0].content.parts[0].text;
-    throw new Error(json.error?.message || 'empty');
-}
-async function callGeminiAI(text) {
-    aiHistory.push({ role: 'user', parts: [{ text }] });
-    if (aiHistory.length > 16) aiHistory = aiHistory.slice(-16);
-    for (const model of GEMINI_MODELS) {
-        try {
-            const reply = await callGeminiOnce(model, aiHistory);
-            aiHistory.push({ role: 'model', parts: [{ text: reply }] });
-            return reply;
-        } catch (e) { console.warn(`[Gemini ${model}] fail:`, e.message); }
-    }
-    return null;
-}
-
-// Master
-async function askAI(text) {
-    console.log('[AI] Mencoba jerexd...');
-    let reply = await callJerexdAI(text);
-    if (reply) { console.log('[AI] ✅ jerexd OK'); return reply; }
-
-    console.log('[AI] Mencoba ndxhs...');
-    reply = await callNdxhsAI(text);
-    if (reply) { console.log('[AI] ✅ ndxhs OK'); return reply; }
-
-    console.log('[AI] Mencoba Gemini...');
-    reply = await callGeminiAI(text);
-    if (reply) { console.log('[AI] ✅ Gemini OK'); return reply; }
-
-    console.error('[AI] ❌ Semua sumber gagal');
-    throw new Error('Semua sumber AI gagal');
-}
-
-async function sendAiMessage() {
-    const input = document.getElementById('aiInput');
-    const body = document.getElementById('aiChatBody');
-    const text = input.value.trim();
-    if (!text) return;
-    body.innerHTML += `<div class="chat-bubble-user">${escapeHtml(text)}</div>`;
-    input.value = ''; body.scrollTop = body.scrollHeight;
-    const loadId = 'ld_' + Date.now();
-    body.innerHTML += `<div class="chat-bubble-bot" id="${loadId}"><span class="text-xs text-[var(--ink-mute)]">Totoro AI mengetik...</span></div>`;
-    body.scrollTop = body.scrollHeight;
-    try {
-        const reply = await askAI(text);
-        document.getElementById(loadId)?.remove();
-        body.innerHTML += `<div class="chat-bubble-bot">${escapeHtml(reply).replace(/\n/g, '<br>')}</div>`;
-    } catch (e) {
-        document.getElementById(loadId)?.remove();
-        body.innerHTML += `<div class="chat-bubble-bot">🌿 Aku lagi ga bisa jawab otomatis. Langsung chat <b>WA Order 0856-0265-4058</b> ya, admin bantu langsung 🙏</div>`;
-    }
-    body.scrollTop = body.scrollHeight;
-}
-function quickAsk(q){document.getElementById('aiInput').value=q;sendAiMessage();}
-function openAiChatTab(){openNewTab('ai');}
-function showAiChat(){document.title='AI Assistant — Totoro AI';openTab('aiChatTab');setTimeout(()=>document.getElementById('aiInput')?.focus(),300);}
-
-window.addEventListener('DOMContentLoaded',()=>{renderFaq();routePage();});
+const SYS=()=>`Kamu "Totoro AI", asisten ramah toko Totoro AI. Jawab Bahasa Indonesia singkat, hangat ala Ghibli, emoji secukupnya. Katalog terkini: `+Object.values(CAT.cats).map(c=>c.n+": "+c.it.map(i=>i.l+" "+rp(i.p)).join(", ")).join(" | ")+`. Cara order: masuk akun, pilih paket, isi nomor WhatsApp (sewa bot wajib link grup), bayar QRIS, kirim bukti transfer, tunggu ACC owner. Jangan mengarang harga di luar katalog. Masalah teknis arahkan ke WA Order 0856-0265-4058.`;
+async function gemini(q){
+ if(!GEMINI_KEY)return null;
+ for(const mdl of ["gemini-2.5-flash","gemini-2.0-flash"]){
+  try{const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:SYS()}]},contents:[...hist.slice(-8),{role:"user",parts:[{text:q}]}],generationConfig:{temperature:.7,maxOutputTokens:500}})});
+   const j=await r.json(),a=j.candidates?.[0]?.content?.parts?.[0]?.text;if(a){hist.push({role:"user",parts:[{text:q}]},{role:"model",parts:[{text:a}]});return a}}catch{}}
+ return null}
+function vAi(){
+ if(!chat.length)chat=[{r:"bot",t:"Halo, aku Totoro ☁ Tanya apa saja soal harga, produk, cara order, atau pembayaran ya ✿"}];
+ app.innerHTML=`<div class="split2"><div class="glass pad"><div style="font-size:42px;animation:bob 3s ease-in-out infinite;display:inline-block">🌳</div><h2>✦ Tanya Totoro</h2><p class="sub">Asisten hutan yang menjawab seputar toko ini.</p>
+ <div class="help" style="padding:0;margin-top:14px"><h4>Bisa ditanya soal</h4><ul><li>Harga sewa bot, panel, Alight Motion, jasa</li><li>Cara order dan cara bayar</li><li>Diskon yang sedang aktif</li><li>Lama proses dan garansi</li><li>Kontak owner dan admin</li></ul></div>
+ <div style="margin-top:12px">${["Berapa harga sewa bot?","Panel 5 GB berapa?","Bulk 20 akun berapa?","Cara order?","Ada diskon?"].map(q=>`<span class="chip" style="cursor:pointer" onclick="ask('${q}')">${q}</span>`).join("")}</div></div>
+ <div class="glass pad"><div class="chat" id="chat" style="height:56vh;margin-top:0">${chat.map(m=>`<div class="m ${m.r}">${m.typing?'<span class="dots"><i></i><i></i><i></i></span>':esc(m.t).replace(/\n/g,"<br>")}</div>`).join("")}</div>
+ <div class="send"><input id="aiIn" placeholder="Ketik pertanyaan…" onkeydown="if(event.key==='Enter')ask()"><button class="btn" onclick="ask()">➤</button></div></div></div>`;
+ const c=$("#chat");c.scrollTop=c.scrollHeight}
+async function ask(q){
+ if(busy)return;const t=(q||$("#aiIn")?.value||"").trim();if(!t)return;busy=true;
+ chat.push({r:"me",t},{r:"bot",t:"",typing:1});vAi();
+ const L=local(t);let a=null;
+ if(L.s)a=L.t;else{a=await gemini(t);if(!a)a=await api("/api/ai",{b:{message:t}}).then(j=>j.reply).catch(()=>null);if(!a)a=L.t}
+ await new Promise(r=>setTimeout(r,450));
+ chat[chat.length-1]={r:"bot",t:a};busy=false;if(location.hash==="#ai")vAi()}
+boot();
 </script>
 </body>
 </html>
