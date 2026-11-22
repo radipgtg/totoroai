@@ -3,155 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1e17">
 <title>Totoro AI ✿ Toko Digital Hutan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--t:#f4f1e4;--mute:rgba(244,241,228,.68);--moss:#8fd16f;--gold:#f0cf7a;--g:rgba(255,255,255,.11);--gb:rgba(255,255,255,.24)}
-body{font-family:Inter,sans-serif;color:var(--t);line-height:1.6;min-height:100vh;background:#0c2a20;overflow-x:hidden}
-.blob{position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none;animation:float 18s ease-in-out infinite}
-@keyframes float{50%{transform:translate(40px,-50px) scale(1.1)}}
-.ff{position:fixed;width:5px;height:5px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 12px 4px rgba(255,233,168,.5);animation:fly 10s ease-in-out infinite;z-index:0;pointer-events:none}
-@keyframes fly{0%,100%{transform:translate(0,0);opacity:.15}50%{transform:translate(40px,-60px);opacity:1}}
-.serif,h1,h2,h3{font-family:Fraunces,serif;letter-spacing:-.01em}
-.glass{background:var(--g);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--gb);border-radius:24px;box-shadow:0 10px 36px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.3)}
-header{position:sticky;top:0;z-index:30;padding:12px 18px;padding-top:calc(12px + env(safe-area-inset-top))}
-.bar{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 18px;border-radius:99px}
-.logo{font-size:20px;font-weight:600;cursor:pointer;white-space:nowrap}
-nav{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
-nav a{padding:8px 14px;border-radius:99px;font-size:13.5px;font-weight:500;color:var(--t);cursor:pointer;white-space:nowrap;opacity:.8;transition:.2s}
-nav a:hover,nav a.on{background:rgba(255,255,255,.16);opacity:1}
-.wrap{position:relative;z-index:1;max-width:1180px;margin:auto;padding:24px 18px 70px;min-height:70vh}
-.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.pad{padding:26px}.center{text-align:center}
-h2{font-size:28px;line-height:1.2;margin-bottom:6px}.sub{color:var(--mute);font-size:14px}.mt{margin-top:40px}
-.hero{text-align:center;padding:56px 18px 34px}
-.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.08;margin:16px auto;max-width:780px}.hero h1 em{color:var(--gold)}
-.hero p{max-width:560px;margin:auto;color:var(--mute)}
-.chip{display:inline-block;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.13);border:1px solid var(--gb);font-size:12px;margin:3px}
-.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14px Inter,sans-serif;padding:12px 24px;border-radius:99px;background:linear-gradient(135deg,#7cc35d,#3f8f55);color:#fff;text-decoration:none;box-shadow:0 6px 18px rgba(63,143,85,.4);transition:.2s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.btn:disabled{opacity:.5;cursor:wait}
-.btn.ghost{background:rgba(255,255,255,.1);border:1px solid var(--gb);box-shadow:none}.btn.red{background:linear-gradient(135deg,#c75a5a,#9a3a3a);box-shadow:none}.btn.sm{padding:7px 14px;font-size:12px}.full{width:100%}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
-.g3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.split{display:grid;gap:20px;grid-template-columns:1fr 1fr;align-items:start}
-@media(max-width:820px){.split{grid-template-columns:1fr}.bar{border-radius:26px}}
-.cat{padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:.3s;min-height:210px}
-.cat:hover{transform:translateY(-6px);background:rgba(255,255,255,.17)}
-.cat .ic{font-size:36px;animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-5px)}}
-.cat small{margin-top:auto;color:var(--moss);font-weight:600}
-.tile{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;border-radius:18px;transition:.2s;font-size:14px}
-.tile:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
-.tile b{color:var(--gold);white-space:nowrap}.tile s{display:block;font-size:11px;color:var(--mute)}
-.off{background:var(--gold);color:#3a2f0a;border-radius:99px;font-size:11px;font-weight:700;padding:2px 9px;margin-left:6px}
-input,textarea,select{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--gb);background:rgba(255,255,255,.1);color:var(--t);font:15px Inter,sans-serif;outline:none;margin-top:6px}
-input::placeholder{color:rgba(244,241,228,.45)}input:focus{border-color:var(--moss);background:rgba(255,255,255,.16)}
+:root{--bg:#0a1e17;--card:rgba(255,255,255,.055);--card2:rgba(255,255,255,.095);--ln:rgba(255,255,255,.11);--t:#eef3e6;--mute:#a3bbac;--moss:#9be07a;--moss2:#4f9f62;--gold:#f2cf7e;--sky:#8ec9e8;--rose:#f2a3a3;--r:20px}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--t);background:var(--bg);line-height:1.6;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 50% at 12% 0%,rgba(155,224,122,.13),transparent 70%),radial-gradient(50% 45% at 100% 100%,rgba(242,207,126,.1),transparent 70%),radial-gradient(40% 40% at 90% 20%,rgba(142,201,232,.07),transparent 70%)}
+h1,h2,h3,.serif{font-family:Fraunces,serif;font-weight:600;letter-spacing:-.015em}
+button,input,textarea,select{font-family:inherit}
+a{color:inherit}
+.ff{position:fixed;width:4px;height:4px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 10px 3px rgba(255,233,168,.4);animation:fly 12s ease-in-out infinite;z-index:0;pointer-events:none}
+@keyframes fly{0%,100%{transform:translate(0,0);opacity:.1}50%{transform:translate(30px,-50px);opacity:.8}}
+.leaf{position:fixed;top:-40px;z-index:0;pointer-events:none;opacity:.35;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(70px,115vh) rotate(300deg)}}
+.glass{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--ln);border-radius:var(--r);box-shadow:0 8px 28px rgba(0,0,0,.22)}
+.pad{padding:26px}.center{text-align:center}.mt{margin-top:56px}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin-bottom:6px}
+.sub{color:var(--mute);font-size:14px}
+.eyebrow{display:inline-block;font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}
+/* header */
+header{position:sticky;top:0;z-index:40;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top))}
+.bar{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 10px 8px 18px;border-radius:99px;background:rgba(10,30,23,.72)}
+.logo{display:flex;align-items:center;gap:9px;font-size:19px;cursor:pointer;white-space:nowrap}
+.logo i{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--moss),var(--moss2));display:grid;place-items:center;font-style:normal;font-size:16px}
+.stat-chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;border:1px solid var(--ln);color:var(--mute);white-space:nowrap}
+.stat-chip b{width:7px;height:7px;border-radius:50%;background:var(--moss);box-shadow:0 0 8px var(--moss)}
+.stat-chip.off b{background:var(--rose);box-shadow:0 0 8px var(--rose)}
+nav{display:flex;gap:2px;align-items:center}
+nav a{display:flex;align-items:center;gap:6px;padding:8px 13px;border-radius:99px;font-size:13.5px;font-weight:500;cursor:pointer;color:var(--mute);transition:.2s;white-space:nowrap}
+nav a i{font-style:normal;font-size:14px}
+nav a:hover{color:var(--t);background:var(--card)}
+nav a.on{color:#0a1e17;background:var(--moss);font-weight:600}
+nav img.av{width:20px;height:20px;border-radius:50%;object-fit:cover}
+.mb{max-width:1180px;margin:8px auto 0;padding:0 16px;position:sticky;top:70px;z-index:35}
+.mb div{padding:10px 18px;border-radius:14px;font-size:13.5px;font-weight:500;background:rgba(242,207,126,.16);border:1px solid rgba(242,207,126,.45);color:var(--gold)}
+.mb div.red{background:rgba(242,163,163,.15);border-color:rgba(242,163,163,.5);color:var(--rose)}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:auto;padding:26px 16px 90px;min-height:70vh}
+.view{animation:rise .4s ease both}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* buttons & forms */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14px Inter,sans-serif;padding:12px 24px;border-radius:99px;background:linear-gradient(135deg,#9be07a,#4f9f62);color:#082015;text-decoration:none;box-shadow:0 6px 20px rgba(79,159,98,.35);transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn:disabled{opacity:.5;cursor:wait;transform:none}
+.btn.ghost{background:var(--card);color:var(--t);border:1px solid var(--ln);box-shadow:none}.btn.ghost:hover{background:var(--card2)}
+.btn.red{background:linear-gradient(135deg,#e07b7b,#b24a4a);color:#fff;box-shadow:none}.btn.sm{padding:7px 14px;font-size:12px}.full{width:100%}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.acts.c{justify-content:center}
+input,textarea,select{width:100%;padding:12px 15px;border-radius:14px;border:1px solid var(--ln);background:rgba(0,0,0,.22);color:var(--t);font-size:15px;outline:none;margin-top:6px;transition:.2s}
+select option{background:#10291f}
+textarea{resize:vertical;min-height:84px}
+input::placeholder,textarea::placeholder{color:rgba(238,243,230,.38)}
+input:focus,textarea:focus,select:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(155,224,122,.15)}
 label{font-size:12px;font-weight:600;color:var(--mute);display:block;margin-top:14px}
-.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--gb);font-size:14px}
+.chk{display:flex;align-items:center;gap:9px;margin-top:12px;font-size:13px;color:var(--t);font-weight:500;cursor:pointer}.chk input{width:auto;margin:0;accent-color:#9be07a}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 36px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;min-height:520px}
+.hero h1{font-size:clamp(36px,5.6vw,62px);line-height:1.04;margin:12px 0 16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#f2cf7e,#9be07a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--mute);max-width:480px;font-size:16px}
+.hero-l{position:relative;z-index:2;padding-bottom:110px}
+.hero svg.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:150px;z-index:1}
+.chip{display:inline-block;padding:5px 13px;border-radius:99px;background:var(--card);border:1px solid var(--ln);font-size:12px;margin:0 6px 6px 0;color:var(--mute)}
+.phone{position:relative;z-index:2;max-width:300px;margin:0 auto 70px;border-radius:30px;background:#0d1a15;border:1px solid var(--ln);box-shadow:0 24px 60px rgba(0,0,0,.45);overflow:hidden;transform:rotate(2.5deg)}
+.ph-top{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#12302a;border-bottom:1px solid var(--ln)}
+.ph-top img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;border:2px solid rgba(155,224,122,.5)}
+.bub .nm{display:block;font-style:normal;font-size:10px;font-weight:700;margin-bottom:2px}.bub.me .nm{color:var(--gold)}.bub.bot .nm{color:var(--moss)}
+.ph-top i{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss2));display:grid;place-items:center;font-style:normal}
+.ph-top b{font-size:13px;display:block;line-height:1.2}.ph-top small{font-size:10.5px;color:var(--moss)}
+.ph-body{padding:14px 12px;display:flex;flex-direction:column;gap:7px;min-height:270px;background:radial-gradient(circle at 50% 0,rgba(155,224,122,.07),transparent 60%)}
+.bub{max-width:86%;padding:7px 11px;border-radius:12px;font-size:12px;line-height:1.45;opacity:0;animation:pop .5s ease forwards}
+.bub.me{align-self:flex-end;background:#1f5f46;border-top-right-radius:3px}.bub.bot{align-self:flex-start;background:#1a2a24;border:1px solid var(--ln);border-top-left-radius:3px}
+.bub code{font-family:ui-monospace,monospace;color:var(--gold)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+/* stats */
+.sgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:18px}
+.stat{padding:22px 18px;text-align:center}.stat b{font:600 34px Fraunces,serif;display:block;line-height:1.1;color:var(--gold)}.stat span{font-size:12.5px;color:var(--mute)}
+.stat.sm b{font-size:24px}
+/* grids */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.g3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.split{display:grid;gap:18px;grid-template-columns:1fr 1fr;align-items:start}
+.split2{display:grid;gap:18px;grid-template-columns:320px 1fr;align-items:start}
+@media(max-width:860px){.split,.split2{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding:40px 22px 0}.phone{display:none}.hero-l{padding-bottom:120px}}
+.cat{padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:.25s;min-height:200px}
+.cat:hover,.tile:hover,.feat:hover{transform:translateY(-4px);background:var(--card2);border-color:rgba(242,207,126,.45)}
+.cat .ic{font-size:34px}.cat small{margin-top:auto;color:var(--moss);font-weight:600}
+.tile{padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;border-radius:16px;transition:.2s;font-size:14px}
+.tile b{color:var(--gold);white-space:nowrap}.tile s{display:block;font-size:11px;color:var(--mute)}
+.off{background:var(--gold);color:#3a2f0a;border-radius:99px;font-size:11px;font-weight:700;padding:2px 9px;margin-left:6px;vertical-align:middle}
+.feat{padding:22px;transition:.25s;cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.feat .ic{font-size:30px;width:54px;height:54px;border-radius:16px;background:rgba(155,224,122,.12);display:grid;place-items:center;margin-bottom:6px}
+.cmd{display:inline-block;font:600 12px ui-monospace,monospace;color:var(--gold);background:rgba(242,207,126,.12);padding:3px 10px;border-radius:99px;width:fit-content}
+.demo{margin-top:8px;padding:10px;border-radius:14px;background:rgba(0,0,0,.25);font-size:12px;display:flex;flex-direction:column;gap:5px}
+.demo span{padding:5px 9px;border-radius:10px;width:fit-content;max-width:92%}.demo .u{align-self:flex-end;background:#1f5f46}.demo .b{background:#1a2a24;border:1px solid var(--ln)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--ln);font-size:14px}
 .kv span:first-child{color:var(--mute)}.kv span:last-child{text-align:right;font-weight:600;word-break:break-all}
-.note{background:rgba(240,207,122,.15);border:1px solid rgba(240,207,122,.4);border-radius:14px;padding:12px 14px;font-size:13px;margin-top:14px}
-.qr{background:#fff;padding:12px;border-radius:18px;display:inline-block}.qr img{width:260px;max-width:100%;display:block}
-.spin{font-size:40px;display:inline-block;animation:sp 2.4s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.note{background:rgba(242,207,126,.1);border:1px solid rgba(242,207,126,.35);border-radius:14px;padding:12px 14px;font-size:13px;margin-top:14px}
+.qr{background:#fff;padding:12px;border-radius:18px;display:inline-block}.qr img{width:240px;max-width:100%;display:block}
+.spin{font-size:38px;display:inline-block;animation:sp 2.4s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
 .badge{font-size:11px;font-weight:700;padding:3px 11px;border-radius:99px;white-space:nowrap}
-.s-awaiting{background:#f0cf7a;color:#4a3a05}.s-verifying{background:#9ccbee;color:#12395b}.s-success{background:#a6e08a;color:#1c4a10}.s-rejected{background:#f0a3a3;color:#5a1414}
-.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:18px 0}
-.stat{padding:16px;text-align:center}.stat b{font-size:26px;display:block;font-family:Fraunces,serif}
+.s-awaiting{background:#f2cf7e;color:#4a3a05}.s-verifying{background:#9ccbee;color:#12395b}.s-success{background:#a6e08a;color:#1c4a10}.s-rejected{background:#f2a3a3;color:#5a1414}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
 .ord{padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;cursor:pointer;margin-bottom:12px;transition:.2s;align-items:center}
-.ord:hover{background:rgba(255,255,255,.18)}.ord small{color:var(--mute)}
-.chat{height:50vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px;margin-top:12px}
-.m{max-width:82%;padding:11px 15px;border-radius:18px;font-size:14px}
-.m.bot{background:rgba(255,255,255,.16);border:1px solid var(--gb);align-self:flex-start;border-bottom-left-radius:4px}
-.m.me{background:linear-gradient(135deg,#7cc35d,#3f8f55);align-self:flex-end;border-bottom-right-radius:4px}
-.send{display:flex;gap:8px;margin-top:12px}.send input{margin:0}
-details{padding:15px 20px;margin-top:10px}summary{cursor:pointer;font-weight:600;font-size:14px}details p{margin-top:8px;color:var(--mute);font-size:13.5px}
-.back{background:none;border:0;color:var(--t);opacity:.75;cursor:pointer;font:500 13px Inter;margin-bottom:14px}
-.banner{padding:12px 20px;text-align:center;margin-bottom:10px;color:var(--gold);font-weight:600;font-size:14px}
-table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;text-align:left;border-bottom:1px solid var(--gb)}th{color:var(--mute);font-weight:600}
-footer{position:relative;z-index:1;text-align:center;padding:30px 18px 50px;font-size:12px;color:var(--mute)}
-#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);padding:11px 22px;border-radius:99px;font-size:13px;opacity:0;transition:.3s;z-index:99;pointer-events:none;background:rgba(12,42,32,.9);border:1px solid var(--gb)}
-#toast.show{opacity:1;transform:translate(-50%,0)}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 20% 10%,rgba(143,209,111,.2),transparent 45%),radial-gradient(circle at 85% 90%,rgba(240,207,122,.16),transparent 45%);animation:aur 14s ease-in-out infinite alternate}
-@keyframes aur{to{transform:scale(1.18) rotate(3deg)}}
-.leaf{position:fixed;top:-40px;z-index:0;pointer-events:none;opacity:.5;font-style:normal;animation:fall linear infinite}
-@keyframes fall{to{transform:translate(90px,115vh) rotate(360deg)}}
-.wrap{padding:34px 24px 90px}.pad{padding:32px}
-.hero{position:relative;overflow:hidden;padding:72px 24px 52px}
-.hero h1 em{background:linear-gradient(90deg,#f0cf7a,#8fd16f,#f0cf7a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
-@keyframes shine{to{background-position:200% 0}}
-.deco{position:absolute;font-size:32px;opacity:.75;animation:bob 4s ease-in-out infinite;pointer-events:none}
-.btn{position:relative;overflow:hidden}
-.btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:.7s}
-.btn:hover::after{left:150%}
-.glass{transition:transform .3s,box-shadow .3s,border-color .3s,background .3s}
-.cat:hover,.tile:hover{border-color:rgba(240,207,122,.6);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 28px rgba(143,209,111,.25)}
-.tick{overflow:hidden;white-space:nowrap;margin:34px 0 4px;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.tick div{display:inline-block;animation:mq 30s linear infinite;font-family:Fraunces,serif;font-size:18px;color:var(--gold)}
-@keyframes mq{to{transform:translateX(-50%)}}
-.steps{display:grid;gap:26px 18px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s;margin-top:30px}
-.step{padding:34px 22px 22px;position:relative}
-.step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#f0cf7a,#d9a93f);color:#3a2f0a;font:700 17px Fraunces,serif;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.ord:hover{background:var(--card2)}.ord small{color:var(--mute)}
+.steps{display:grid;gap:26px 16px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s;margin-top:34px}
+.step{padding:32px 22px 22px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#f2cf7e,#d9a93f);color:#3a2f0a;font:700 17px Fraunces,serif;display:grid;place-items:center}
 .step h3{font-size:17px;margin-bottom:4px}
 .help{padding:20px 24px;margin-top:20px;font-size:13.5px}
-.help h4{font-family:Fraunces,serif;font-size:16px;color:var(--gold);margin-bottom:6px}
-.help ol,.help ul{margin-left:20px}.help li{margin:5px 0;color:var(--mute)}.help li b{color:var(--t)}
-.help p{color:var(--mute)}
-:is(.grid,.g3,.stats,.steps)>*{animation:rise .6s ease backwards}
-:is(.grid,.g3,.stats,.steps)>*:nth-child(2){animation-delay:.08s}:is(.grid,.g3,.stats,.steps)>*:nth-child(3){animation-delay:.16s}:is(.grid,.g3,.stats,.steps)>*:nth-child(4){animation-delay:.24s}:is(.grid,.g3,.stats,.steps)>*:nth-child(n+5){animation-delay:.32s}
-.dots i{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--t);animation:dot 1.2s infinite}
-.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
-@keyframes dot{50%{transform:translateY(-5px);opacity:.4}}
-.split2{display:grid;gap:22px;grid-template-columns:340px 1fr;align-items:start}
-@media(max-width:820px){.split2{grid-template-columns:1fr}.hero{padding:52px 16px 36px}}
+.help h4{font:600 16px Fraunces,serif;color:var(--gold);margin-bottom:6px}
+.help ol,.help ul{margin-left:20px}.help li{margin:5px 0;color:var(--mute)}.help li b{color:var(--t)}.help p{color:var(--mute)}
+details{padding:15px 20px;margin-top:10px}summary{cursor:pointer;font-weight:600;font-size:14px}details p{margin-top:8px;color:var(--mute);font-size:13.5px}
+.back{background:none;border:0;color:var(--t);opacity:.7;cursor:pointer;font:500 13px Inter;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:9px 8px;text-align:left;border-bottom:1px solid var(--ln)}th{color:var(--mute);font-weight:600}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--mute);margin-top:10px}
+/* avatar */
+.avt{display:inline-grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--moss2),#2f6f4a);color:#fff;font-weight:700;overflow:hidden;flex:none;object-fit:cover}
+.avt img{width:100%;height:100%;object-fit:cover}
+.avbtn{position:relative;cursor:pointer;border-radius:50%;display:inline-block}
+.avbtn::after{content:"📷 Ganti";position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center;font-size:12px;font-weight:600;opacity:0;transition:.2s}
+.avbtn:hover::after{opacity:1}
+/* chat */
+.chat{height:56vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:4px 4px 4px 0;margin-top:12px;scroll-behavior:smooth}
+.cm{display:flex;gap:10px;align-items:flex-end}.cm.mine{flex-direction:row-reverse}
+.cm .bx{max-width:76%}
+.cm .nm{font-size:11.5px;color:var(--mute);margin:0 6px 3px;display:flex;gap:6px;align-items:center}.cm.mine .nm{justify-content:flex-end}
+.cm .tx{padding:9px 14px;border-radius:16px;font-size:14px;background:var(--card2);border:1px solid var(--ln);border-bottom-left-radius:4px;word-break:break-word}
+.cm.mine .tx{background:linear-gradient(135deg,#2e7d52,#215f3f);border-color:transparent;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.cm .rl{font-size:10px;background:var(--gold);color:#3a2f0a;border-radius:99px;padding:0 7px;font-weight:700}
+.cm .x{background:none;border:0;color:var(--rose);cursor:pointer;font-size:11px;opacity:.7}
+.m{max-width:82%;padding:11px 15px;border-radius:18px;font-size:14px}
+.m.bot{background:var(--card2);border:1px solid var(--ln);align-self:flex-start;border-bottom-left-radius:4px}
+.m.me{background:linear-gradient(135deg,#2e7d52,#215f3f);align-self:flex-end;border-bottom-right-radius:4px}
+.send{display:flex;gap:8px;margin-top:12px}.send input{margin:0}
+.dots i{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--t);animation:dot 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}@keyframes dot{50%{transform:translateY(-5px);opacity:.4}}
+/* bar chart fitur */
+.bars{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.bar-r{display:grid;grid-template-columns:104px 1fr 42px;gap:10px;align-items:center;font-size:12.5px}
+.bar-r div{height:9px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}.bar-r div i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--moss2),var(--moss));width:0;transition:width 1s ease}
+.bar-r span:last-child{text-align:right;color:var(--mute)}
+.cmdc{padding:12px 14px;border-radius:14px;cursor:pointer;transition:.2s;font-size:13px}.cmdc:hover{background:var(--card2)}
+.cmdc b{font-family:ui-monospace,monospace;color:var(--gold);font-size:13px}.cmdc small{display:block;color:var(--mute);font-size:11.5px;line-height:1.4;margin-top:2px}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.pill{padding:6px 13px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;background:var(--card);border:1px solid var(--ln);color:var(--mute);transition:.2s}.pill.on{background:var(--moss);color:#0a1e17;border-color:var(--moss)}
+.shot{overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.shot:hover{transform:translateY(-4px);border-color:rgba(242,207,126,.45)}.shot .cmd{cursor:copy}
+.shot .im{position:relative;background:radial-gradient(circle at 50% 0,rgba(155,224,122,.1),rgba(0,0,0,.35));padding:12px;display:grid;place-items:center;cursor:zoom-in}
+.shot img{width:100%;height:auto;max-height:340px;object-fit:contain;display:block;border-radius:10px;transition:.4s}.shot:hover img{transform:scale(1.03)}
+.shot .zoom{position:absolute;right:14px;bottom:14px;font-style:normal;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.6);opacity:0;transition:.2s}.shot:hover .zoom{opacity:1}
+@media(hover:none){.shot .zoom{opacity:1}}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(5,15,11,.93);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;cursor:zoom-out}#lb.on{display:flex}
+#lb img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6)}#lb small{color:var(--mute)}
+.shot .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}
+.shot.more{align-items:center;justify-content:center;text-align:center;padding:30px;min-height:240px;gap:8px;cursor:default}
+.shots{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.promo{position:relative;overflow:hidden;padding:28px 30px;margin-bottom:22px;display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;background:linear-gradient(120deg,rgba(242,207,126,.2),rgba(155,224,122,.11) 55%,rgba(142,201,232,.09));border-color:rgba(242,207,126,.5)}
+.promo::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-70px;top:-110px;background:radial-gradient(circle,rgba(242,207,126,.25),transparent 70%)}
+.promo .ribbon{position:absolute;top:14px;left:-34px;transform:rotate(-35deg);background:var(--gold);color:#3a2f0a;font:800 10px Inter;letter-spacing:.18em;padding:4px 40px}
+.promo .pd{position:absolute;font-style:normal;opacity:.5;pointer-events:none}.promo .p1{right:24%;top:10px;font-size:20px}.promo .p2{left:34%;bottom:8px;font-size:18px}.promo .p3{right:6px;bottom:12px;font-size:22px}
+.pbadge{width:112px;height:112px;border-radius:50%;background:linear-gradient(135deg,#f2cf7e,#d9a93f);color:#3a2f0a;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(217,169,63,.4),inset 0 0 0 5px rgba(255,255,255,.28);line-height:1.05;flex:none}
+.pbadge b{font:700 32px Fraunces,serif}.pbadge small{font-size:9px;font-weight:800;letter-spacing:.1em}
+.pbody{position:relative;min-width:0}.pbody h2{margin:2px 0 6px;font-size:clamp(22px,3vw,30px)}
+.pchips{margin-top:12px}.pchips .chip{color:var(--t)}.pchips .chip b{color:var(--gold)}
+.pside{position:relative;display:flex;flex-direction:column;gap:10px;align-items:flex-end;text-align:right}.pside small{color:var(--mute);font-size:12px;font-weight:600}
+.cd{display:flex;gap:7px}.cdb{min-width:54px;padding:8px 6px;border-radius:12px;background:rgba(0,0,0,.28);border:1px solid var(--ln);text-align:center}.cdb b{display:block;font:700 22px Fraunces,serif;color:var(--gold);line-height:1.1}.cdb span{font-size:10px;color:var(--mute)}
+@media(max-width:860px){.promo{grid-template-columns:1fr;padding:30px 22px 24px;gap:16px}.pbadge{width:92px;height:92px}.pbadge b{font-size:26px}.pside{align-items:flex-start;text-align:left}.pside .btn{width:100%}}
+footer{position:relative;z-index:1;text-align:center;padding:30px 18px 100px;font-size:12px;color:var(--mute)}
+#toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);padding:11px 22px;border-radius:99px;font-size:13px;opacity:0;transition:.3s;z-index:99;pointer-events:none;background:rgba(10,30,23,.96);border:1px solid var(--ln)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:761px){#toast{bottom:26px}footer{padding-bottom:50px}}
+/* mobile bottom nav */
+@media(max-width:760px){
+ .bar .stat-chip span{display:none}
+ nav{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;justify-content:space-around;padding:6px;border-radius:22px;background:rgba(10,30,23,.92);backdrop-filter:blur(16px);border:1px solid var(--ln);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+ nav a{flex-direction:column;gap:1px;padding:6px 8px;font-size:10px;border-radius:14px;flex:1;justify-content:center}
+ nav a i{font-size:18px}nav img.av{width:22px;height:22px}
+ .mb{top:64px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bub{opacity:1}}
 </style>
 </head>
 <body>
-<div class="blob" style="width:420px;height:420px;background:#2f8f5b;top:-100px;left:-80px"></div>
-<div class="blob" style="width:380px;height:380px;background:#c9a94d;opacity:.35;bottom:-120px;right:-60px;animation-delay:-8s"></div>
-<div class="blob" style="width:300px;height:300px;background:#3b7fa6;opacity:.3;top:40%;left:55%;animation-delay:-4s"></div>
-<header><div class="bar glass"><div class="logo serif" onclick="go('home')">☁ Totoro AI ❀</div><nav id="nav"></nav></div></header>
+<header><div class="bar glass"><div class="logo serif" onclick="go('home')"><i>🌿</i>Totoro AI</div><div style="display:flex;align-items:center;gap:6px;min-width:0"><nav id="nav"></nav><div class="stat-chip" id="chip"><b></b><span>Bot</span></div></div></div></header>
+<div class="mb" id="mb"></div>
 <main class="wrap"><div id="app" class="view"></div></main>
-<footer>⋆｡˚ ☁︎ Totoro AI · dibuat dengan ♡ oleh @radipgtg ☁︎ ˚｡⋆<br>“Hutan kecil untuk kebutuhan digitalmu.”</footer>
+<footer>Totoro AI · dibuat dengan ♡ oleh @radipgtg<br>“Hutan kecil untuk kebutuhan digitalmu.”</footer>
+<div id="lb" onclick="this.classList.remove('on')"></div>
 <div id="toast"></div>
 <script>
 const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058";
-let CAT=null,ME=null,TOK=localStorage.getItem("tt_tok")||"",NEXT="",P=null,AUTHTAB="in",FIL="all";
+let CAT=null,ME=null,TOK=localStorage.getItem("tt_tok")||"",NEXT="",P=null,AUTHTAB="in",FIL="all",FEAT=null,SS={bot:true,maint:null,stats:{features:1300,groups:50,users:1000}},FCAT="all",FQ="",FN=48;
 const $=s=>document.querySelector(s),app=$("#app");
 const rp=n=>"Rp"+Number(n).toLocaleString("id-ID");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ST={awaiting:"Belum bayar",verifying:"Menunggu ACC",success:"Berhasil",rejected:"Ditolak"};
 const dt=s=>new Date(s).toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"});
-function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2600)}
+const hm=s=>new Date(s).toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2800)}
 const go=h=>{location.hash=h};
 async function api(p,o={}){
  const r=await fetch(API+p,{method:o.b?"POST":"GET",headers:{"Content-Type":"application/json",...(TOK?{Authorization:"Bearer "+TOK}:{})},body:o.b?JSON.stringify(o.b):undefined});
  const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false)throw new Error(j.message||"Gagal ("+r.status+")");return j}
 const load=t=>`<div class="center pad"><span class="spin">❀</span><p class="serif" style="margin-top:10px">${t}</p></div>`;
-for(let i=0;i<14;i++){const f=document.createElement("i");f.className="ff";f.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${-Math.random()*10}s;animation-duration:${8+Math.random()*8}s`;document.body.appendChild(f)}
-
-for(let i=0;i<9;i++){const l=document.createElement("i");l.className="leaf";l.textContent=["🍃","✿","❀","☘","🌿"][i%5];l.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*14}px;animation-duration:${14+Math.random()*14}s;animation-delay:${-Math.random()*20}s`;document.body.appendChild(l)}
+const avatar=(u,s=36)=>u&&u.av?`<span class="avt" style="width:${s}px;height:${s}px"><img src="${API}/api/avatar/${u.id||u.uid}?v=${u.av}" alt="" loading="lazy"></span>`:`<span class="avt" style="width:${s}px;height:${s}px;font-size:${Math.round(s*.42)}px">${esc((u?.name||"?").trim().charAt(0).toUpperCase())}</span>`;
+/* suasana latar: sengaja sedikit */
+for(let i=0;i<5;i++){const f=document.createElement("i");f.className="ff";f.style.cssText=`left:${8+Math.random()*84}%;top:${10+Math.random()*80}%;animation-delay:${-Math.random()*12}s;animation-duration:${10+Math.random()*8}s`;document.body.appendChild(f)}
+for(let i=0;i<3;i++){const l=document.createElement("i");l.className="leaf";l.textContent=["🍃","🌿","🍃"][i];l.style.cssText=`left:${10+i*35+Math.random()*15}%;font-size:${15+Math.random()*8}px;animation-duration:${28+Math.random()*14}s;animation-delay:${-Math.random()*25}s`;document.body.appendChild(l)}
+/* ===== konten ===== */
+const FEATURED=[
+ {k:"alightmotion",ic:"👑",n:"Alight Motion",cmd:".alightmotion",d:"Premiumkan akun Alight Motion-mu selama 1 tahun langsung dari bot WhatsApp.",u:"Kirim .alightmotion",b:"👑 Akun berhasil dipremiumkan 1 tahun"},
+ {k:"amrender",ic:"🎬",n:"AM Render",cmd:".amrender",d:"Render project Alight Motion jadi video lewat link project (maks 5MB), tanpa buka aplikasinya.",u:".amrender + link project",b:"🎬 Render selesai, video dikirim"},
+ {k:"ampreset",ic:"🎨",n:"AM Preset",cmd:".ampreset",d:"Atur preset langsung dari bot: ganti media, ganti musik, dan pengaturan lainnya.",u:".ampreset + link preset",b:"🎨 Media & musik berhasil diganti"},
+ {k:"amfinder",ic:"🔎",n:"AM Finder",cmd:".amfinder",d:"Cari preset Alight Motion dari bot, mis. .amfinder negoro angin.",u:".amfinder negoro angin",b:"🔎 Ketemu beberapa preset untukmu"},
+ {k:"swhd",ic:"✨",n:"SW HD",cmd:".swhd",d:"HD-kan video sebelum di-forward ke status WhatsApp supaya tetap tajam.",u:".swhd + video",b:"✅ Video HD siap dikirim ke status"},
+ {k:"slowmo",ic:"🐢",n:"Slowmo",cmd:".slowmo",d:"Slowmo video dengan smooth, cocok untuk editor yang mau transisi halus.",u:".slowmo + video",b:"🐢 Slowmo mulus selesai"},
+ {k:"tiktokdl",ic:"🎵",n:"TikTok Downloader",cmd:".tiktokdl",d:"Unduh video TikTok cepat, tinggal tempel link-nya di chat.",u:".tiktokdl + link",b:"✅ Video berhasil diunduh"}];
+const GAMES=[
+ {n:"Chess",cmd:".chess",img:"https://files.catbox.moe/veg4bo.jpeg",d:"Main catur langsung dari chat WhatsApp."},
+ {n:"Flappy Bird",cmd:".flappybird",img:"https://files.catbox.moe/ben50y.jpeg",d:"Game Flappy Bird yang seru dimainkan bareng."},
+ {n:"Geometry",cmd:".geometry",img:"https://files.catbox.moe/hw9sxm.jpeg",d:"Game geometry dengan tampilan yang keren."},
+ {n:"Tetris",cmd:".tetris",img:"https://files.catbox.moe/zy4m37.jpeg",d:"Tetris klasik, susun blok sampai skor tertinggi."},
+ {n:"Dino Game",cmd:".dinogame",img:"https://files.catbox.moe/lbkvs9.jpeg",d:"Lompati rintangan bersama si dino."},
+ {n:"TTC HTML",cmd:".ttchtml",img:"https://files.catbox.moe/igzetm.jpeg",d:"Tampilan HTML interaktif langsung dari bot."},
+ {n:"Menu HTML",cmd:".menuhtml",img:"https://files.catbox.moe/jzv05w.jpeg",d:"Menu bot dengan tampilan HTML yang cantik."}];
+const shots=(L,more)=>`<div class="grid shots">${L.map(g=>`<div class="glass shot"><div class="im" onclick="openLb(${GAMES.indexOf(g)})"><img src="${g.img}" alt="${g.n}" loading="lazy"><i class="zoom">🔍 Perbesar</i></div><div class="bd"><h3 style="font-size:18px">${g.n}</h3><span class="cmd" onclick="cpy('${g.cmd}',event)">${g.cmd} ⧉</span><p class="sub">${g.d}</p></div></div>`).join("")}${more?`<div class="glass shot more"><div style="font-size:42px">✨</div><h3 style="font-size:18px">Dan masih banyak lagi</h3><p class="sub">Game, tools, downloader, AI, dan ratusan fitur keren lainnya menunggumu.</p></div>`:""}</div>`;
+function openLb(i){const g=GAMES[i],l=$("#lb");l.innerHTML=`<img src="${g.img}" alt="${esc(g.n)}"><div class="cap"><b>${g.n}</b> <span class="cmd">${g.cmd}</span></div><small>Ketuk di mana saja untuk menutup</small>`;l.classList.add("on")}
+function cpy(c,e){e.stopPropagation();navigator.clipboard?.writeText(c);toast("Disalin: "+c)}
+addEventListener("keydown",e=>{if(e.key==="Escape")$("#lb").classList.remove("on")});
 const EXPL={
- bot:{what:"Bot WhatsApp siap pakai yang kamu sewa untuk grupmu: AI, downloader TikTok/YouTube, pembuat stiker, game, dan 1300+ fitur lain. Tidak perlu hosting sendiri.",who:"Admin grup, komunitas, atau toko online yang ingin grupnya lebih hidup dan otomatis.",flow:["Pilih durasi sewa","Isi <b>nomor WhatsApp</b> dan <b>link grup</b> (wajib)","Transfer QRIS lalu kirim bukti transfer","Owner menekan ACC, bot otomatis masuk ke grupmu"]},
+ bot:{what:"Bot WhatsApp siap pakai yang kamu sewa untuk grupmu: AI, downloader TikTok/YouTube, pembuat stiker, game, dan 1300+ fitur lain. Tidak perlu hosting sendiri.",who:"Admin grup, komunitas, atau toko online yang ingin grupnya lebih hidup dan otomatis.",flow:["Pilih durasi sewa","Isi <b>nomor WhatsApp</b> dan <b>link grup</b> (wajib)","Transfer QRIS lalu kirim bukti transfer","Owner menekan ACC, bot otomatis masuk ke grupmu dan masa sewa langsung berjalan"]},
  panel:{what:"Server hosting Pterodactyl yang legal untuk menjalankan bot WhatsApp/Telegram 24 jam nonstop. Makin besar RAM, makin banyak yang bisa dijalankan.",who:"Pemilik script bot yang butuh tempat menjalankannya, dari bot pribadi sampai bot ramai.",flow:["Pilih ukuran RAM","Isi <b>nomor WhatsApp</b> aktif","Transfer QRIS lalu kirim bukti transfer","Owner ACC, lalu detail login panel dikirim ke WhatsApp-mu"]},
  am:{what:"Alight Motion Premium untuk edit video tanpa watermark dan dengan fitur lengkap. Ada akun siap pakai (Seller/Bulk), premium untuk email sendiri (Buyer), dan paket Reseller.",who:"Editor video, pembuat konten, atau penjual ulang akun premium.",flow:["Pilih jenis paket (Bulk: tentukan jumlah 10-50)","Isi <b>nomor WhatsApp</b> aktif (dan email AM di catatan untuk Buyer)","Transfer QRIS lalu kirim bukti transfer","Owner ACC, akun tampil di halaman pesanan dan dikirim ke WhatsApp"]},
  jasa:{what:"Bantuan teknis: owner memasang dan menjalankan botmu di panel, menjual source code bot Totoro AI, atau membimbing kamu membuat bot dari nol.",who:"Pemula yang bingung setup, atau yang ingin langsung punya script bot lengkap.",flow:["Pilih jasa yang dibutuhkan","Isi <b>nomor WhatsApp</b> aktif dan jelaskan kebutuhan di catatan","Transfer QRIS lalu kirim bukti transfer","Owner ACC lalu menghubungi WhatsApp-mu untuk langkah berikutnya"]}};
 const helpBox=k=>{const E=EXPL[k];return `<div class="help glass"><h4>✦ Apa ini?</h4><p>${E.what}</p><h4 style="margin-top:14px">☘ Cocok untuk</h4><p>${E.who}</p><h4 style="margin-top:14px">➶ Alurnya</h4><ol>${E.flow.map(f=>`<li>${f}</li>`).join("")}</ol></div>`};
 /* ===== boot & router ===== */
+function applyState(s){
+ if(!s)return;if(s.now)SKEW=s.now-Date.now();SS={bot:s.bot,maint:s.maint,stats:s.stats||SS.stats};
+ const c=$("#chip");c.className="stat-chip"+(SS.bot?"":" off");c.innerHTML=`<b></b><span>${SS.bot?"Bot online":"Bot offline"}</span>`;
+ const mb=$("#mb");
+ mb.innerHTML=SS.maint?`<div>🛠️ <b>${esc(SS.maint.title||"Maintenance")}</b> · ${esc(SS.maint.msg)}${SS.maint.eta?` · estimasi ${esc(SS.maint.eta)}`:""}</div>`:(!SS.bot?`<div class="red">🔴 Bot sedang offline. Pesanan baru bisa tertunda sampai bot tersambung lagi.</div>`:"")}
 async function boot(){
  app.innerHTML=load("Menyiapkan hutan…");
- try{CAT=await api("/api/catalog")}catch{app.innerHTML=`<div class="glass pad center"><h2>🍃 Server belum terhubung</h2><p class="sub">Pastikan bot menyala, lalu muat ulang halaman.</p><button class="btn" style="margin-top:16px" onclick="boot()">↻ Coba lagi</button></div>`;return}
+ try{CAT=await api("/api/catalog");applyState(CAT)}catch{app.innerHTML=`<div class="glass pad center"><h2>🍃 Server belum terhubung</h2><p class="sub">Pastikan bot menyala, lalu muat ulang halaman.</p><button class="btn" style="margin-top:16px" onclick="boot()">↻ Coba lagi</button></div>`;return}
  if(TOK)try{ME=(await api("/api/me")).user}catch{TOK="";localStorage.removeItem("tt_tok")}
- route()}
+ route();setInterval(tick,1000);setInterval(async()=>{try{applyState(await api("/api/status"))}catch{applyState({bot:false,maint:SS.maint,stats:SS.stats})}},30000)}
 function navDraw(a){
- const L=[["home","⌂ Beranda"],["katalog","✿ Katalog"],["ai","✦ Tanya AI"]];
- if(ME){L.push(["profil","❀ Profil"]);if(ME.role==="owner")L.push(["owner","♛ Owner"])}else L.push(["masuk","➜ Masuk"]);
- $("#nav").innerHTML=L.map(([r,t])=>`<a class="${a===r?"on":""}" onclick="go('${r}')">${t}</a>`).join("")}
+ const L=[["home","🏡","Beranda"],["katalog","🛍️","Katalog"],["fitur","✨","Fitur"],["komunitas","💬","Chat"],["ai","🤖","AI"]];
+ if(ME){L.push(["profil",ME.av?`<img class="av" src="${API}/api/avatar/${ME.id}?v=${ME.av}">`:"👤","Profil"]);if(ME.role==="owner")L.push(["owner","👑","Owner"])}else L.push(["masuk","🔑","Masuk"]);
+ $("#nav").innerHTML=L.map(([r,i,t])=>`<a class="${a===r||(a==="beli"&&r==="katalog")?"on":""}" onclick="go('${r}')"><i>${i}</i>${t}</a>`).join("")}
 function route(){
  clearInterval(P);const[a,b,c]=(location.hash.slice(1)||"home").split("-");navDraw(a);
  app.classList.remove("view");void app.offsetWidth;app.classList.add("view");scrollTo(0,0);
@@ -163,29 +265,99 @@ function route(){
  else if(a==="profil")ME?vProfile():need();
  else if(a==="owner")ME?.role==="owner"?vOwner():go("home");
  else if(a==="masuk")ME?go("profil"):vAuth();
+ else if(a==="fitur")vFitur();
+ else if(a==="komunitas")vChat();
  else if(a==="ai")vAi();
  else vHome()}
 addEventListener("hashchange",route);
-
+function countUp(){document.querySelectorAll("[data-n]").forEach(el=>{const n=+el.dataset.n,suf=el.dataset.s||"+",t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3);el.textContent=Math.round(n*e).toLocaleString("id-ID")+(p>=1?suf:"");if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
+let SKEW=0;
+const pad2=n=>String(n).padStart(2,"0");
+function cdParts(ms){const s=Math.max(0,Math.floor(ms/1000));return{d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),x:s%60}}
+function cdBoxes(ms){const{d,h,m,x}=cdParts(ms),B=(n,l)=>`<div class="cdb"><b>${pad2(n)}</b><span>${l}</span></div>`;return(d?B(d,"Hari"):"")+B(h,"Jam")+B(m,"Mnt")+B(x,"Dtk")}
+function cdTxt(ms){const{d,h,m,x}=cdParts(ms);return d?`${d} hari ${h} jam`:`${h}j ${m}m ${x}d`}
+function tick(){document.querySelectorAll("[data-until]").forEach(el=>{const ms=+el.dataset.until-(Date.now()+SKEW);if(ms<=0){el.textContent=el.dataset.t?"selesai":"Promo berakhir";if(!tick.rf||Date.now()-tick.rf>10000){tick.rf=Date.now();api("/api/catalog").then(j=>{CAT=j;applyState(j);if(/^#(home|katalog)?$/.test(location.hash))route()}).catch(()=>{})}}else el.innerHTML=el.dataset.t?cdTxt(ms):cdBoxes(ms)})}
+function promoBanner(){
+ const p=CAT.promo;if(!p)return"";const ents=Object.entries(p.discs||{});if(!p.title&&!ents.length)return"";
+ const mx=ents.length?Math.max(...ents.map(e=>e[1])):0;
+ return `<section class="promo glass"><span class="ribbon">PROMO</span><i class="pd p1">✿</i><i class="pd p2">🍃</i><i class="pd p3">✦</i>
+ <div class="pbadge">${mx?`<small>HEMAT HINGGA</small><b>${mx}%</b><small>SEMUA PAKET</small>`:"<b>🎁</b>"}</div>
+ <div class="pbody"><span class="eyebrow">✦ Promo spesial dari hutan</span><h2>${esc(p.title||"Diskon spesial untukmu")}</h2><p class="sub">${esc(p.desc||"Berlaku untuk pesanan baru. Harga sudah otomatis terpotong di katalog, tinggal pilih paketnya.")}</p>
+ <div class="pchips">${ents.map(([k,v])=>`<span class="chip">${CAT.cats[k].ic} ${CAT.cats[k].n} <b>-${v}%</b></span>`).join("")}</div></div>
+ <div class="pside">${p.until?`<small>⏳ Berakhir dalam</small><div class="cd" data-until="${p.until}"></div>`:`<small>⏳ Promo tanpa batas waktu</small>`}<button class="btn" onclick="go('katalog')">🛍️ Belanja sekarang</button></div></section>`}
+const statCards=()=>{const s=SS.stats;return `<div class="sgrid"><div class="glass stat"><b data-n="${s.features}">${s.features}+</b><span>Fitur siap pakai</span></div><div class="glass stat"><b data-n="${s.groups}">${s.groups}+</b><span>Grup terdaftar di database</span></div><div class="glass stat"><b data-n="${s.users}">${s.users}+</b><span>Pengguna bot</span></div></div>`};
 /* ===== katalog ===== */
 const cards=()=>`<div class="grid">${Object.entries(CAT.cats).map(([k,c])=>`<div class="glass cat" onclick="go('katalog-${k}')"><span class="ic">${c.ic}</span><h3 style="font-size:21px">${c.n}${c.disc?`<span class="off">-${c.disc}%</span>`:""}</h3><p class="sub">${c.d}</p><small>mulai ${rp(Math.min(...c.it.map(i=>i.p)))} ➜</small></div>`).join("")}</div>`;
-function vCatalog(){app.innerHTML=`<h2>✿ Katalog Hutan</h2><p class="sub" style="margin-bottom:20px">Pilih layanan yang kamu butuhkan ✦</p>${cards()}`}
+function vCatalog(){app.innerHTML=`<span class="eyebrow">Katalog</span><h2>Pilih layanan yang kamu butuhkan</h2><p class="sub" style="margin-bottom:20px">Semua dibayar lewat QRIS dan diproses owner langsung.</p>${promoBanner()}${cards()}`;tick()}
 function vHome(){
- const F=[["Bagaimana cara memesan?","Masuk akun, pilih paket, transfer lewat QRIS, kirim bukti transfer. Owner menerima notifikasi WhatsApp dan menekan ACC."],["Berapa lama prosesnya?","Biasanya hitungan menit setelah bukti terkirim. Halaman pesanan ikut berubah otomatis."],["Untuk sewa bot, apa yang harus disiapkan?","Link grup WhatsApp. Setelah di-ACC bot langsung masuk ke grupmu."],["Ada garansi?","Ada, selama masa aktif produk. Hubungi owner jika ada kendala."]];
- app.innerHTML=`${CAT.banner?`<div class="glass banner">✦ ${esc(CAT.banner)} ✦</div>`:""}
- <section class="hero glass"><span class="deco" style="left:6%;top:14%">🌿</span><span class="deco" style="right:8%;top:18%;animation-delay:-1.5s">☁️</span><span class="deco" style="left:12%;bottom:12%;animation-delay:-2.5s">✿</span><span class="deco" style="right:12%;bottom:14%;animation-delay:-3s">🍃</span><span class="chip">★ 4.9 / 5 · terpercaya</span><span class="chip">☘ bergaransi</span>
- <h1>Selamat datang di <em>hutan Totoro</em> ✿</h1><p>Bot WhatsApp, panel hosting, Alight Motion, sampai jasa setup. Bayar lewat QRIS, kirim bukti, dan biar daun-daun yang mengantar ➶</p>
- <div class="acts"><button class="btn" onclick="go('katalog')">✿ Lihat Katalog</button><button class="btn ghost" onclick="go('ai')">✦ Tanya Totoro</button></div></section>
- <div class="tick"><div>${"✿ Sewa Bot WA ⋆ Panel Pterodactyl ⋆ Alight Motion Premium ⋆ Jasa Setup ⋆ Bayar QRIS ⋆ Bot Otomatis Masuk Grup ⋆ ".repeat(2)}</div></div><h2 class="mt center">✿ Pilih Layanan</h2><p class="sub center" style="margin-bottom:20px">Semua pesanan diteruskan langsung ke WhatsApp owner</p>${cards()}
- <h2 class="mt center">➶ Cara Order</h2><p class="sub center">Empat langkah mudah, dari masuk sampai layananmu aktif</p><div class="steps"><div class="glass step"><h3>Masuk Akun</h3><p class="sub">Daftar sekali dengan email. Semua transaksimu tersimpan di Profil.</p></div><div class="glass step"><h3>Pilih Paket</h3><p class="sub">Buka katalog, baca penjelasannya, lalu isi nomor WhatsApp (dan link grup untuk sewa bot).</p></div><div class="glass step"><h3>Bayar & Kirim Bukti</h3><p class="sub">Scan QRIS sesuai total, lalu unggah foto bukti transfer.</p></div><div class="glass step"><h3>Owner ACC</h3><p class="sub">Owner memeriksa. Setelah ACC, layanan aktif dan kabarnya dikirim ke WhatsApp-mu.</p></div></div><h2 class="mt center">⋆ Kenapa Totoro AI?</h2><p class="sub center" style="margin-bottom:20px">Seperti pohon camphor: kokoh, teduh, selalu ada</p>
- <div class="g3"><div class="glass pad"><h3>⚡ Cepat</h3><p class="sub">Bukti transfer langsung masuk ke WhatsApp owner.</p></div><div class="glass pad"><h3>☘ Ramah</h3><p class="sub">Owner siap membantu lewat WhatsApp & Telegram.</p></div><div class="glass pad"><h3>❀ Bergaransi</h3><p class="sub">Garansi penuh selama masa aktif produk.</p></div></div>
- <div style="max-width:700px;margin:40px auto 0"><h2 class="center">❓ Pertanyaan Umum</h2>${F.map(f=>`<details class="glass"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
- <div class="acts"><a class="btn ghost" href="https://wa.me/${WA}" target="_blank">WA Order</a><a class="btn ghost" href="https://t.me/radipgtg" target="_blank">Telegram</a><a class="btn ghost" href="https://instagram.com/radipppppp" target="_blank">Instagram</a></div>`}
+ const F=[["Bagaimana cara memesan?","Masuk akun, pilih paket, transfer lewat QRIS, kirim bukti transfer. Owner menerima notifikasi WhatsApp dan menekan ACC."],["Berapa lama prosesnya?","Biasanya hitungan menit setelah bukti terkirim. Halaman pesanan ikut berubah otomatis."],["Untuk sewa bot, apa yang harus disiapkan?","Link grup WhatsApp. Setelah di-ACC bot langsung masuk ke grupmu dan masa sewa mulai dihitung."],["Ada garansi?","Ada, selama masa aktif produk. Hubungi owner jika ada kendala."]];
+ app.innerHTML=`${promoBanner()}
+ <section class="hero glass"><div class="hero-l"><span class="chip">★ 4.9 / 5 terpercaya</span><span class="chip">☘ bergaransi</span><span class="chip">⚡ proses cepat</span>
+ <h1>Bot WhatsApp & layanan digital <em>dari hutan Totoro</em></h1><p class="lead">Sewa bot dengan 1300+ fitur, panel hosting, Alight Motion premium, sampai jasa setup. Bayar QRIS, kirim bukti, selesai.</p>
+ <div class="acts"><button class="btn" onclick="go('katalog')">🛍️ Lihat Katalog</button><button class="btn ghost" onclick="go('fitur')">✨ Jelajahi Fitur Bot</button></div></div>
+ <div class="phone"><div class="ph-top"><img src="https://files.catbox.moe/3h14or.jpeg" alt="Totoro AI"><div><b>Totoro AI</b><small>● online</small></div></div><div class="ph-body">
+  <div class="bub me" style="animation-delay:.4s"><em class="nm">Radipgtg</em><code>.tiktokdl</code> vt.tiktok.com/xxxx</div>
+  <div class="bub bot" style="animation-delay:1.3s"><em class="nm">Totoro AI</em>⏳ Mengunduh video…</div>
+  <div class="bub bot" style="animation-delay:2.4s"><em class="nm">Totoro AI</em>✅ Selesai! Tanpa watermark</div>
+  <div class="bub me" style="animation-delay:3.4s"><em class="nm">Radipgtg</em><code>.amfinder</code> negoro angin</div>
+  <div class="bub bot" style="animation-delay:4.4s"><em class="nm">Totoro AI</em>🔎 Ketemu 8 preset negoro angin</div></div></div>
+ <svg class="hills" viewBox="0 0 1200 150" preserveAspectRatio="none"><path d="M0 90 C150 40 300 120 480 80 S800 30 1000 70 S1150 90 1200 60 V150 H0Z" fill="#14402f" opacity=".75"/><path d="M0 115 C200 70 380 135 600 105 S950 70 1200 110 V150 H0Z" fill="#0f3326"/><path d="M0 138 C250 112 450 148 700 130 S1050 118 1200 136 V150 H0Z" fill="#0a1e17"/></svg></section>
+ ${statCards()}
+ <div class="center mt"><span class="eyebrow">Fitur unggulan</span><h2>Dibuat untuk editor & kreator</h2><p class="sub">Ketik perintahnya di chat, bot langsung bekerja.</p></div>
+ <div class="grid" style="margin-top:22px">${FEATURED.map(f=>`<div class="glass feat" onclick="go('fitur')"><div class="ic">${f.ic}</div><h3 style="font-size:19px">${f.n}</h3><span class="cmd">${f.cmd}</span><p class="sub">${f.d}</p></div>`).join("")}</div>
+ <div class="acts c"><button class="btn ghost" onclick="go('fitur')">Lihat semua fitur ➜</button></div>
+ <div class="center mt"><span class="eyebrow">Showcase</span><h2>Tampilan fitur yang keren</h2><p class="sub" style="margin-bottom:18px">Game dan tampilan interaktif langsung dari WhatsApp.</p></div>${shots(GAMES.slice(0,3),false)}<div class="acts c"><button class="btn ghost" onclick="go('fitur')">Lihat semua showcase ➜</button></div>
+ <div class="center mt"><span class="eyebrow">Layanan</span><h2>Pilih yang kamu butuhkan</h2><p class="sub" style="margin-bottom:20px">Semua pesanan diteruskan langsung ke WhatsApp owner</p></div>${cards()}
+ <div class="center mt"><span class="eyebrow">Cara order</span><h2>Empat langkah mudah</h2></div><div class="steps"><div class="glass step"><h3>Masuk Akun</h3><p class="sub">Daftar sekali dengan email. Semua transaksimu tersimpan di Profil.</p></div><div class="glass step"><h3>Pilih Paket</h3><p class="sub">Buka katalog, baca penjelasannya, lalu isi nomor WhatsApp (dan link grup untuk sewa bot).</p></div><div class="glass step"><h3>Bayar & Kirim Bukti</h3><p class="sub">Scan QRIS sesuai total, lalu unggah foto bukti transfer.</p></div><div class="glass step"><h3>Owner ACC</h3><p class="sub">Setelah di-ACC, layanan aktif dan kabarnya dikirim ke WhatsApp-mu.</p></div></div>
+ <div class="g3 mt"><div class="glass pad"><h3>⚡ Cepat</h3><p class="sub">Bukti transfer langsung masuk ke WhatsApp owner.</p></div><div class="glass pad"><h3>☘ Ramah</h3><p class="sub">Owner siap membantu lewat WhatsApp & Telegram.</p></div><div class="glass pad"><h3>❀ Bergaransi</h3><p class="sub">Garansi penuh selama masa aktif produk.</p></div></div>
+ <div style="max-width:700px;margin:48px auto 0"><h2 class="center">Pertanyaan Umum</h2>${F.map(f=>`<details class="glass"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>
+ <div class="acts c"><a class="btn ghost" href="https://wa.me/${WA}" target="_blank">WA Order</a><a class="btn ghost" href="https://t.me/radipgtg" target="_blank">Telegram</a><a class="btn ghost" href="https://instagram.com/radipppppp" target="_blank">Instagram</a></div>`;
+ countUp();tick()}
 function vCat(k){
  const c=CAT.cats[k];
  app.innerHTML=`<button class="back" onclick="go('katalog')">← Kembali ke katalog</button><div class="glass pad"><div style="font-size:40px">${c.ic}</div><h2>${c.n}${c.disc?`<span class="off">-${c.disc}%</span>`:""}</h2><p class="sub">${c.d}</p>
  <div class="grid" style="margin-top:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">${c.it.map((x,i)=>`<div class="glass tile" onclick="go('beli-${k}-${i}')"><span>${esc(x.l)}</span><b>${x.p!==x.b?`<s>${rp(x.b)}</s>`:""}${rp(x.p)}</b></div>`).join("")}</div><div class="note">☘ ${c.tip}</div>${helpBox(k)}</div>`}
-
+/* ===== fitur bot ===== */
+async function vFitur(){
+ const s=SS.stats;
+ app.innerHTML=`<span class="eyebrow">Fitur bot</span><h2>${s.features}+ fitur dalam satu bot</h2><p class="sub">Dari downloader sampai tools editing. Ketuk perintah untuk menyalin.</p>${statCards()}
+ <div class="grid" style="margin-top:26px">${FEATURED.map(f=>`<div class="glass feat" onclick="navigator.clipboard?.writeText('${f.cmd}');toast('Disalin: ${f.cmd}')"><div class="ic">${f.ic}</div><h3 style="font-size:19px">${f.n}</h3><span class="cmd">${f.cmd}</span><p class="sub">${f.d}</p><div class="demo"><span class="u">${f.u}</span><span class="b">${f.b}</span></div></div>`).join("")}</div>
+ <div class="mt"><span class="eyebrow">Showcase</span><h2>Tampilan fitur yang keren</h2><p class="sub" style="margin-bottom:18px">Game dan tampilan HTML interaktif langsung dari chat. Ketuk gambar untuk melihat utuh, ketuk perintah untuk menyalin.</p>${shots(GAMES,true)}</div>
+ <div class="split mt"><div class="glass pad"><h3>Sebaran fitur</h3><p class="sub">Jumlah perintah per kategori</p><div class="bars" id="bars">${load("Memuat…")}</div></div>
+ <div class="glass pad"><h3>Database bot</h3><p class="sub">Bot kami dipakai di banyak grup, dan terus bertambah.</p><div class="kv"><span>Grup terdaftar</span><span>${s.groups}+</span></div><div class="kv"><span>Pengguna</span><span>${s.users}+</span></div><div class="kv"><span>Total fitur</span><span>${s.features}+</span></div><div class="acts"><button class="btn" onclick="go('katalog-bot')">🤖 Sewa bot sekarang</button></div></div></div>
+ <div class="mt"><h2>Daftar perintah</h2><p class="sub">Cari fitur yang kamu butuhkan.</p><input id="fq" placeholder="Cari perintah, mis. tiktok, stiker, ai…" value="${esc(FQ)}" oninput="FQ=this.value;FN=48;fList()"><div class="pills" id="fp"></div><div class="grid" id="fl" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px"></div><div class="acts c" id="fm"></div></div>`;
+ countUp();
+ if(!FEAT){try{FEAT=await api("/api/features")}catch{FEAT={cats:[],items:[]}}}
+ if(location.hash!=="#fitur")return;
+ const mx=Math.max(1,...FEAT.cats.slice(0,8).map(c=>c.n));
+ $("#bars").innerHTML=FEAT.cats.length?FEAT.cats.slice(0,8).map(c=>`<div class="bar-r"><span>${esc(c.c)}</span><div><i data-w="${Math.round(c.n/mx*100)}"></i></div><span>${c.n}</span></div>`).join(""):`<p class="sub">Data kategori belum tersedia.</p>`;
+ requestAnimationFrame(()=>document.querySelectorAll("[data-w]").forEach(e=>e.style.width=e.dataset.w+"%"));
+ $("#fp").innerHTML=[{c:"all",n:FEAT.items.length},...FEAT.cats.slice(0,10)].map(c=>`<span class="pill ${FCAT===c.c?"on":""}" onclick="FCAT='${c.c}';FN=48;vFiturPills();fList()">${c.c==="all"?"Semua":esc(c.c)}</span>`).join("");
+ fList()}
+function vFiturPills(){document.querySelectorAll("#fp .pill").forEach(p=>p.classList.toggle("on",p.textContent===(FCAT==="all"?"Semua":FCAT)))}
+function fList(){
+ if(!FEAT||!$("#fl"))return;const q=FQ.trim().toLowerCase();
+ const L=FEAT.items.filter(i=>(FCAT==="all"||i.c===FCAT)&&(!q||i.n.includes(q)||i.d.toLowerCase().includes(q)));
+ $("#fl").innerHTML=L.slice(0,FN).map(i=>`<div class="glass cmdc" onclick="navigator.clipboard?.writeText('.${esc(i.n)}');toast('Disalin: .${esc(i.n)}')"><b>.${esc(i.n)}</b><small>${esc(i.d||i.c)}</small></div>`).join("")||`<p class="sub">Tidak ada yang cocok.</p>`;
+ $("#fm").innerHTML=L.length>FN?`<button class="btn ghost" onclick="FN+=48;fList()">Tampilkan lebih banyak (${L.length-FN})</button>`:""}
+/* ===== chat publik ===== */
+let CHK="";
+async function vChat(){
+ app.innerHTML=`<span class="eyebrow">Komunitas</span><h2>Chat Publik</h2><p class="sub">Ngobrol bareng sesama pengguna Totoro AI. Jaga sopan santun ya ✿</p>
+ <div class="split2" style="margin-top:20px"><div class="glass pad"><h3>Aturan singkat</h3><ul class="sub" style="margin:10px 0 0 18px"><li>Saling menghormati</li><li>Dilarang spam dan promosi tanpa izin</li><li>Jangan bagikan data pribadi</li></ul><div class="note">Obrolan terbuka untuk dibaca siapa saja. Masuk akun untuk ikut bicara.</div></div>
+ <div class="glass pad"><div class="chat" id="chat">${load("Memuat obrolan…")}</div>${ME?`<div class="send"><input id="ci" maxlength="300" placeholder="Tulis pesan…" onkeydown="if(event.key==='Enter')sendChat()"><button class="btn" onclick="sendChat()">➤</button></div>`:`<div class="send"><button class="btn full" onclick="NEXT='komunitas';go('masuk')">🔑 Masuk untuk ikut chat</button></div>`}</div></div>`;
+ CHK="";await pullChat(true);P=setInterval(()=>pullChat(false),3000)}
+async function pullChat(first){
+ const c=$("#chat");if(!c||location.hash!=="#komunitas")return;
+ let j;try{j=await api("/api/chat")}catch{return}
+ const key=j.messages.length+":"+(j.messages.at(-1)?.id||"");if(key===CHK&&!first)return;CHK=key;
+ const near=c.scrollHeight-c.scrollTop-c.clientHeight<140||first;
+ c.innerHTML=j.messages.length?j.messages.map(m=>{const mine=ME&&m.uid===ME.id;return `<div class="cm ${mine?"mine":""}">${avatar(m,34)}<div class="bx"><div class="nm"><b style="color:var(--t)">${esc(m.name)}</b>${m.role==="owner"?'<span class="rl">OWNER</span>':""}<span>${hm(m.t)}</span>${ME?.role==="owner"?`<button class="x" onclick="delChat('${m.id}')">hapus</button>`:""}</div><div class="tx">${esc(m.text)}</div></div></div>`}).join(""):`<div class="center sub" style="margin:auto">Belum ada obrolan. Jadi yang pertama menyapa 🌿</div>`;
+ if(near)c.scrollTop=c.scrollHeight}
+async function sendChat(){
+ const i=$("#ci"),t=i.value.trim();if(!t)return;i.value="";
+ try{await api("/api/chat",{b:{text:t}});await pullChat(true)}catch(e){toast("⚠ "+e.message);i.value=t}}
+async function delChat(id){try{await api("/api/owner/chat/"+id+"/delete",{b:{}});pullChat(true)}catch(e){toast("⚠ "+e.message)}}
 /* ===== auth ===== */
 function vAuth(){
  const reg=AUTHTAB==="up";
@@ -200,14 +372,13 @@ async function doAuth(){
   TOK=j.token;ME=j.user;localStorage.setItem("tt_tok",TOK);toast("✿ Selamat datang, "+ME.name);const n=NEXT;NEXT="";go(n||"profil")}
  catch(e){toast("⚠ "+e.message);b.disabled=false}}
 function logout(){TOK="";ME=null;localStorage.removeItem("tt_tok");toast("Sampai jumpa di hutan ☁");go("home")}
-
 /* ===== checkout ===== */
 function vBuy(k,i){
  const c=CAT.cats[k],it=c.it[i],bulk=it.k==="bulk";
- app.innerHTML=`<button class="back" onclick="go('katalog-${k}')">← Ganti paket</button><div class="glass pad" style="max-width:520px;margin:auto"><h2>❀ Konfirmasi Pesanan</h2><p class="sub">Periksa dulu sebelum lanjut ya ✦</p><div class="help glass" style="margin-top:14px"><h4>Apa yang terjadi setelah ini?</h4><ol><li>Pesanan dibuat, lalu kamu diarahkan ke halaman pembayaran QRIS.</li><li>Kamu transfer dan <b>unggah bukti transfer</b>.</li><li>Owner memeriksa dan menekan ACC.</li><li>Layanan diproses dan owner mengirim kabar ke <b>nomor WhatsApp</b> yang kamu isi di bawah.</li></ol></div>
+ app.innerHTML=`<button class="back" onclick="go('katalog-${k}')">← Ganti paket</button><div class="glass pad" style="max-width:520px;margin:auto"><h2>❀ Konfirmasi Pesanan</h2><p class="sub">Periksa dulu sebelum lanjut ya ✦</p><div class="help glass" style="margin-top:14px"><h4>Apa yang terjadi setelah ini?</h4><ol><li>Pesanan dibuat, lalu kamu diarahkan ke halaman pembayaran QRIS.</li><li>Kamu transfer dan <b>unggah bukti transfer</b>.</li><li>Owner memeriksa dan menekan ACC.</li><li>${k==="bot"?"Bot otomatis masuk ke grupmu dan masa sewa langsung berjalan.":"Layanan diproses dan owner mengirim kabar ke <b>nomor WhatsApp</b> di bawah."}</li></ol></div>
  <div style="margin-top:12px"><div class="kv"><span>Layanan</span><span>${c.n}</span></div><div class="kv"><span>Paket</span><span>${esc(it.l)}</span></div><div class="kv"><span>Pembeli</span><span>${esc(ME.name)} · +${ME.wa}</span></div><div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px" id="tot">${rp(bulk?it.p*10:it.p)}</span></div></div>
  ${bulk?`<label>Jumlah akun (10-50)</label><input id="bQ" type="number" min="10" max="50" value="10" oninput="$('#tot').textContent=rp(${it.p}*Math.min(50,Math.max(0,+this.value||0)))">`:""}
- <label>Nomor WhatsApp (wajib)</label><input id="bW" value="${esc(ME.wa)}" placeholder="08123456789" inputmode="tel"><p class="sub" style="font-size:12px;margin-top:4px">Owner memakai nomor ini untuk mengirim pesanan, akun, atau info login. Pastikan aktif dan bisa dihubungi.</p>
+ <label>Nomor WhatsApp (wajib)</label><input id="bW" value="${esc(ME.wa)}" placeholder="08123456789" inputmode="tel"><p class="sub" style="font-size:12px;margin-top:4px">Owner memakai nomor ini untuk mengirim pesanan, akun, atau info login. Pastikan aktif.</p>
  ${k==="bot"?`<label>Link grup WhatsApp (wajib)</label><input id="bG" placeholder="https://chat.whatsapp.com/…">`:""}
  <label>Catatan (opsional)</label><input id="bN" placeholder="${k==="am"?"Email AM, dll":"Pesan untuk owner"}">
  <button class="btn full" style="margin-top:20px" id="bB" onclick="mkOrder('${k}',${i})">✿ Buat Pesanan & Bayar</button></div>`}
@@ -215,63 +386,92 @@ async function mkOrder(k,i){
  const b=$("#bB");b.disabled=true;
  try{const j=await api("/api/orders",{b:{cat:k,idx:i,wa:$("#bW").value,qty:$("#bQ")?.value,group:$("#bG")?.value,note:$("#bN").value}});go("order-"+j.order.id)}
  catch(e){toast("⚠ "+e.message);b.disabled=false}}
-
 /* ===== halaman pesanan ===== */
 function shrink(f){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const s=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.8))};i.onerror=no;i.src=URL.createObjectURL(f)})}
-function sum(o){return `<div class="kv"><span>ID</span><span style="font-family:monospace;font-size:12px">${o.id}</span></div><div class="kv"><span>Produk</span><span>${esc(o.product)}${o.qty>1?" × "+o.qty:""}</span></div><div class="kv"><span>WhatsApp</span><span>+${o.wa}</span></div><div class="kv"><span>Status</span><span><span class="badge s-${o.status}">${ST[o.status]}</span></span></div>${o.group?`<div class="kv"><span>Grup</span><span style="font-size:12px">${esc(o.group)}</span></div>`:""}<div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px">${rp(o.amount)}</span></div>`}
+function square(f,S=256){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const m=Math.min(i.width,i.height),c=document.createElement("canvas");c.width=c.height=S;c.getContext("2d").drawImage(i,(i.width-m)/2,(i.height-m)/2,m,m,0,0,S,S);ok(c.toDataURL("image/jpeg",.86))};i.onerror=no;i.src=URL.createObjectURL(f)})}
+function sum(o){return `<div class="kv"><span>ID</span><span style="font-family:monospace;font-size:12px">${o.id}</span></div><div class="kv"><span>Produk</span><span>${esc(o.product)}${o.qty>1?" × "+o.qty:""}</span></div><div class="kv"><span>WhatsApp</span><span>+${o.wa}</span></div><div class="kv"><span>Status</span><span><span class="badge s-${o.status}">${ST[o.status]}</span></span></div>${o.group?`<div class="kv"><span>Grup</span><span style="font-size:12px">${esc(o.group)}</span></div>`:""}${o.sewaDone?`<div class="kv"><span>Sewa sampai</span><span>${o.lifetime?"Permanen":dt(o.expiredAt)}</span></div>`:""}<div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px">${rp(o.amount)}</span></div>`}
 async function vOrder(id){
  app.innerHTML=load("Membuka pesanan…");let last="";
  const draw=async()=>{if(location.hash!=="#order-"+id)return;
   let o;try{o=(await api("/api/orders/"+id)).order}catch(e){app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`;return}
   if(o.status===last)return;last=o.status;const c=CAT.cats[o.cat];window._acc=o.accounts||[];let h;
-  if(o.status==="awaiting")h=`<div class="split"><div class="glass pad"><h2>❀ Pesananmu</h2>${sum(o)}<div class="help glass"><h4>✦ Langkah selanjutnya</h4><ol><li>Scan QRIS lalu bayar <b>tepat sesuai total</b>.</li><li>Screenshot bukti transfer, unggah di kolom Kirim Bukti.</li><li>Bukti langsung masuk ke WhatsApp owner untuk diperiksa.</li><li>Setelah di-ACC, halaman ini otomatis berubah jadi berhasil dan owner menghubungi nomor WhatsApp-mu.</li></ol></div></div>
-   <div class="glass pad center"><h3>1 · Scan & Bayar</h3><div class="qr" style="margin:14px 0"><img src="${QRIS}" alt="QRIS"></div><p class="sub">Nominal: <b style="color:var(--gold)">${rp(o.amount)}</b></p>
+  if(o.status==="awaiting")h=`<div class="split"><div class="glass pad"><h2>❀ Pesananmu</h2>${sum(o)}<div class="help glass"><h4>✦ Langkah selanjutnya</h4><ol><li>Scan QRIS lalu bayar <b>tepat sesuai total</b>.</li><li>Screenshot bukti transfer, unggah di kolom Kirim Bukti.</li><li>Bukti langsung masuk ke WhatsApp owner untuk diperiksa.</li><li>Setelah di-ACC, halaman ini otomatis berubah jadi berhasil.</li></ol></div></div>
+   <div class="glass pad center"><h3>1 · Scan & Bayar</h3><div class="qr" style="margin:14px 0 8px"><img src="${QRIS}" alt="QRIS"></div><div><button class="btn ghost sm" onclick="dlQris()">⬇ Unduh QRIS</button></div><p class="sub" style="margin-top:10px">Nominal: <b style="color:var(--gold)">${rp(o.amount)}</b></p>
    <h3 style="margin-top:22px">2 · Kirim Bukti</h3><input type="file" id="pf" accept="image/*" style="margin-bottom:12px"><button class="btn full" id="pb" onclick="upProof('${o.id}')">➶ Kirim Bukti Transfer</button></div></div>`;
   else if(o.status==="verifying")h=`<div class="glass pad" style="max-width:520px;margin:auto">${load("Bukti diterima! Owner sedang memeriksa…")}${sum(o)}<p class="note">Halaman ini berubah otomatis begitu pesananmu di-ACC.</p></div>`;
   else if(o.status==="success")h=`<div class="glass pad" style="max-width:560px;margin:auto"><div class="center"><div style="font-size:52px">🥳</div><h2>Yeay, pesananmu berhasil!</h2><p class="sub">Terima kasih sudah mampir ke hutan Totoro ✿</p></div>${sum(o)}
-   ${o.groupJid?`<div class="note">🌿 Bot sudah masuk ke grupmu dan siap dipakai.</div>`:`<div class="note">☘ ${c.tip}</div>`}
+   ${o.groupJid?`<div class="note">🌿 Bot sudah masuk ke grupmu dan masa sewa sudah berjalan.</div>`:`<div class="note">☘ ${c.tip}</div>`}
    ${window._acc.length?`<h3 style="margin-top:16px">Akun Alight Motion</h3><div style="max-height:260px;overflow:auto;margin-top:8px">${window._acc.map((a,i)=>`<div class="kv"><span>${i+1}</span><span style="font-family:monospace;font-size:12px">${esc(a)}</span></div>`).join("")}</div><button class="btn ghost full" style="margin-top:12px" onclick="navigator.clipboard.writeText(window._acc.join('\\n'));toast('❀ Disalin!')">❐ Salin semua</button>`:""}
    <button class="btn ghost full" style="margin-top:12px" onclick="go('profil')">❀ Ke profil</button></div>`;
   else h=`<div class="glass pad center" style="max-width:520px;margin:auto"><div style="font-size:48px">🍂</div><h2>Pesanan belum bisa diproses</h2><p class="sub" style="margin:8px 0 16px">Owner menolak pesanan ini. Hubungi admin untuk penjelasan.</p>${sum(o)}<a class="btn full" target="_blank" href="https://wa.me/${WA}?text=${encodeURIComponent("Halo kak, pesanan "+o.id+" ditolak. Mohon info.")}">Hubungi WA Order</a></div>`;
   app.innerHTML=h};
  await draw();P=setInterval(draw,5000)}
+async function dlQris(){try{const r=await fetch(QRIS);if(!r.ok)throw 0;const b=await r.blob(),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="QRIS-TotoroAI.jpg";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);toast("✿ QRIS diunduh")}catch{window.open(QRIS,"_blank");toast("Tahan gambar lalu simpan ke galeri")}}
 async function upProof(id){
  const f=$("#pf").files[0];if(!f)return toast("⚠ Pilih foto bukti transfer dulu");
  const b=$("#pb");b.disabled=true;b.textContent="Mengirim…";
  try{await api("/api/orders/"+id+"/proof",{b:{image:await shrink(f)}});toast("✿ Bukti terkirim ke owner");route()}
  catch(e){toast("⚠ "+e.message);b.disabled=false;b.textContent="➶ Kirim Bukti Transfer"}}
-
 /* ===== profil ===== */
 async function vProfile(){
  app.innerHTML=load("Membuka profil…");let d;
  try{d=await api("/api/me")}catch(e){return app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`}
+ ME=d.user;navDraw("profil");
  const O=d.orders,n=s=>O.filter(o=>o.status===s).length,L=FIL==="all"?O:O.filter(o=>o.status===FIL);
- app.innerHTML=`<div class="glass pad" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap"><div><h2>❀ ${esc(d.user.name)}</h2><p class="sub">${esc(d.user.email)} · +${d.user.wa}${d.user.role==="owner"?" · ♛ owner":""}</p></div><button class="btn ghost sm" onclick="logout()">Keluar</button></div>
- <div class="stats"><div class="glass stat"><b>${O.length}</b><span class="sub">Total</span></div><div class="glass stat"><b style="color:#a6e08a">${n("success")}</b><span class="sub">Berhasil</span></div><div class="glass stat"><b style="color:#f0cf7a">${n("awaiting")+n("verifying")}</b><span class="sub">Tertunda</span></div><div class="glass stat"><b style="color:#f0a3a3">${n("rejected")}</b><span class="sub">Ditolak</span></div></div>
- <div class="legend"><span><span class="badge s-awaiting">Belum bayar</span> menunggu bukti transfer</span><span><span class="badge s-verifying">Menunggu ACC</span> bukti diterima, owner memeriksa</span><span><span class="badge s-success">Berhasil</span> layanan aktif</span><span><span class="badge s-rejected">Ditolak</span> hubungi admin</span></div><div class="tabs">${[["all","Semua"],["success","Berhasil"],["verifying","Menunggu ACC"],["awaiting","Belum bayar"],["rejected","Ditolak"]].map(([k,t])=>`<button class="btn sm ${FIL===k?"":"ghost"}" onclick="FIL='${k}';vProfile()">${t}</button>`).join("")}</div>
+ app.innerHTML=`<div class="glass pad" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:16px"><label class="avbtn" style="margin:0">${avatar(ME,76)}<input type="file" accept="image/*" hidden onchange="upAvatar(this)"></label><div><h2 style="margin:0">${esc(ME.name)}</h2><p class="sub">${esc(ME.email)} · +${ME.wa}${ME.role==="owner"?" · 👑 owner":""}</p><p class="sub" style="font-size:12px">Ketuk foto untuk menggantinya</p></div></div><button class="btn ghost sm" onclick="logout()">Keluar</button></div>
+ <div class="sgrid"><div class="glass stat sm"><b>${O.length}</b><span>Total</span></div><div class="glass stat sm"><b style="color:#a6e08a">${n("success")}</b><span>Berhasil</span></div><div class="glass stat sm"><b>${n("awaiting")+n("verifying")}</b><span>Tertunda</span></div><div class="glass stat sm"><b style="color:#f2a3a3">${n("rejected")}</b><span>Ditolak</span></div></div>
+ <div class="glass pad" style="margin-top:18px"><h3>🔒 Ganti Password</h3><p class="sub">Masukkan password lama untuk memastikan ini benar-benar kamu.</p>
+ <div class="split" style="gap:0 18px"><div><label>Password lama</label><input id="pO" type="password" autocomplete="current-password" placeholder="Password lama"></div><div><label>Password baru</label><input id="pN" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"></div></div><label>Ulangi password baru</label><input id="pC" type="password" autocomplete="new-password" placeholder="Ketik lagi password baru" onkeydown="if(event.key==='Enter')chPw()">
+ <button class="btn" style="margin-top:16px" id="pB" onclick="chPw()">Simpan Password</button><p class="sub" style="font-size:12px;margin-top:8px">Perangkat lain yang sedang masuk akan otomatis keluar.</p></div>
+ <h3 style="margin-top:28px">Riwayat transaksi</h3><div class="legend"><span><span class="badge s-awaiting">Belum bayar</span> menunggu bukti</span><span><span class="badge s-verifying">Menunggu ACC</span> owner memeriksa</span><span><span class="badge s-success">Berhasil</span> layanan aktif</span><span><span class="badge s-rejected">Ditolak</span> hubungi admin</span></div>
+ <div class="tabs">${[["all","Semua"],["success","Berhasil"],["verifying","Menunggu ACC"],["awaiting","Belum bayar"],["rejected","Ditolak"]].map(([k,t])=>`<button class="btn sm ${FIL===k?"":"ghost"}" onclick="FIL='${k}';vProfile()">${t}</button>`).join("")}</div>
  ${L.length?L.map(o=>`<div class="glass ord" onclick="go('order-${o.id}')"><b>${esc(o.product)}${o.qty>1?" × "+o.qty:""}</b><span class="badge s-${o.status}">${ST[o.status]}</span><small>${o.id} · ${dt(o.createdAt)}</small><b style="color:var(--gold)">${rp(o.amount)}</b></div>`).join(""):`<div class="glass pad center sub"><div style="font-size:40px">🍃</div>Belum ada transaksi di sini ✿</div>`}`}
-
+async function upAvatar(inp){
+ const f=inp.files[0];if(!f)return;toast("Mengunggah foto…");
+ try{const j=await api("/api/me/avatar",{b:{image:await square(f)}});ME=j.user;toast("✿ Foto profil diperbarui");vProfile()}catch(e){toast("⚠ "+e.message)}}
+async function chPw(){
+ const o=$("#pO").value,n=$("#pN").value,c=$("#pC").value;
+ if(!o)return toast("⚠ Isi password lama dulu");if(n.length<6)return toast("⚠ Password baru minimal 6 karakter");if(n!==c)return toast("⚠ Konfirmasi password tidak sama");
+ const b=$("#pB");b.disabled=true;
+ try{await api("/api/auth/password",{b:{old:o,pw:n}});toast("✿ Password berhasil diganti");$("#pO").value=$("#pN").value=$("#pC").value=""}catch(e){toast("⚠ "+e.message)}b.disabled=false}
 /* ===== owner ===== */
 async function vOwner(){
  app.innerHTML=load("Membuka ruang owner…");let d;
  try{d=await api("/api/owner/data")}catch(e){return app.innerHTML=`<div class="glass pad center">${esc(e.message)}</div>`}
- const s=d.settings,dv=k=>s.disc?.[k]??"",pend=d.orders.filter(o=>o.status==="verifying").length;
- app.innerHTML=`<h2>♛ Ruang Owner</h2><div class="stats"><div class="glass stat"><b>${d.orders.length}</b><span class="sub">Pesanan</span></div><div class="glass stat"><b style="color:#9ccbee">${pend}</b><span class="sub">Menunggu ACC</span></div><div class="glass stat"><b>${d.users}</b><span class="sub">Pengguna</span></div><div class="glass stat"><b style="color:var(--gold);font-size:20px">${rp(d.revenue)}</b><span class="sub">Pendapatan</span></div></div>
- <div class="split"><div class="glass pad"><h3>✦ Diskon & Banner</h3><p class="sub">Kosongkan untuk tanpa diskon. Diskon kategori menimpa diskon semua.</p>
- <div class="g3" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px">${[["all","Semua %"],["bot","Bot %"],["panel","Panel %"],["am","AM %"],["jasa","Jasa %"]].map(([k,t])=>`<div><label>${t}</label><input type="number" min="0" max="90" id="d_${k}" value="${dv(k)}"></div>`).join("")}</div>
- <label>Banner promo (tampil di beranda)</label><input id="d_bn" maxlength="160" value="${esc(s.banner)}" placeholder="Diskon akhir bulan!"><button class="btn full" style="margin-top:16px" onclick="saveSet()">✿ Simpan</button></div>
- <div class="glass pad" style="overflow:auto"><h3>♡ Pesanan Terbaru</h3><table><tr><th>ID</th><th>Produk</th><th>Status</th><th></th></tr>${d.orders.slice(0,30).map(o=>`<tr><td style="font-family:monospace;font-size:11px">${o.id}<br><span class="sub">${rp(o.amount)}</span></td><td>${esc(o.product)}<br><span class="sub">${esc(o.name)} · +${o.wa}</span></td><td><span class="badge s-${o.status}">${ST[o.status]}</span></td>
- <td style="white-space:nowrap">${o.proofAt?`<a class="btn ghost sm" target="_blank" href="${API}/api/owner/proof/${o.id}?t=${TOK}">Bukti</a> `:""}${o.status==="verifying"?`<button class="btn sm" onclick="act('${o.id}','approve')">ACC</button> <button class="btn red sm" onclick="act('${o.id}','reject')">Tolak</button>`:""}</td></tr>`).join("")}</table></div></div>`}
+ const s=d.settings,dv=k=>s.disc?.[k]??"",pend=d.orders.filter(o=>o.status==="verifying").length,mt=s.maint?.on?s.maint:null;
+ app.innerHTML=`<span class="eyebrow">Owner</span><h2>Ruang Owner</h2><div class="sgrid"><div class="glass stat sm"><b>${d.orders.length}</b><span>Pesanan</span></div><div class="glass stat sm"><b style="color:#9ccbee">${pend}</b><span>Menunggu ACC</span></div><div class="glass stat sm"><b>${d.users}</b><span>Akun web</span></div><div class="glass stat sm"><b style="font-size:19px">${rp(d.revenue)}</b><span>Pendapatan</span></div><div class="glass stat sm"><b style="font-size:19px;color:${d.bot?"#a6e08a":"#f2a3a3"}">${d.bot?"Online":"Offline"}</b><span>Status bot</span></div></div>
+ <div class="split" style="margin-top:18px"><div class="glass pad"><h3>📢 Siaran ke Channel</h3><p class="sub">Kirim kabar maintenance atau info lain ke channel WhatsApp dengan tampilan rapi.</p>
+ ${mt?`<div class="note">Banner aktif: <b>${esc(mt.title)}</b>${mt.block?" · pesanan ditutup":""} <button class="btn ghost sm" style="margin-left:8px" onclick="clrMaint()">Matikan banner</button></div>`:""}
+ <label>Jenis</label><select id="n_t"><option value="maintenance">🛠️ Maintenance</option><option value="offline">🔴 Gangguan</option><option value="online">🟢 Kembali online (hapus banner)</option><option value="info">📢 Pengumuman</option><option value="update">✨ Update fitur</option><option value="promo">🎁 Promo</option></select>
+ <label>Judul (opsional)</label><input id="n_h" maxlength="80" placeholder="Mis. Perbaikan server"><label>Pesan</label><textarea id="n_m" maxlength="600" placeholder="Tulis isi pengumuman…"></textarea><label>Estimasi selesai (opsional)</label><input id="n_e" maxlength="60" placeholder="Mis. 30 menit / pukul 23.00 WIB">
+ <label class="chk"><input type="checkbox" id="n_b" checked> Tampilkan banner di website</label><label class="chk"><input type="checkbox" id="n_k"> Tutup pesanan baru selama banner aktif</label>
+ <button class="btn full" style="margin-top:16px" id="n_s" onclick="sendAnn()">➶ Kirim ke Channel</button></div>
+ <div class="glass pad"><h3>🎁 Diskon & Banner Promo</h3><p class="sub">Atur diskon per kategori, tampilan banner, dan berapa lama promo berlaku.</p>
+ ${(s.discUntil||s.banner||Object.keys(s.disc||{}).length)?`<div class="note">🎁 Promo aktif · ${s.discUntil?`sisa <b data-until="${s.discUntil}" data-t="1"></b>`:"tanpa batas waktu"}</div>`:""}
+ <div class="g3" style="grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px">${[["all","Semua %"],["bot","Bot %"],["panel","Panel %"],["am","AM %"],["jasa","Jasa %"]].map(([k,t])=>`<div><label>${t}</label><input type="number" min="0" max="90" id="d_${k}" value="${dv(k)}"></div>`).join("")}</div>
+ <label>Judul banner</label><input id="d_bn" maxlength="160" value="${esc(s.banner)}" placeholder="Diskon akhir bulan!">
+ <label>Penjelasan promo</label><textarea id="d_bd" maxlength="300" placeholder="Mis. Diskon berlaku untuk semua paket sewa bot. Pesan sekarang sebelum waktu habis!">${esc(s.bannerDesc||"")}</textarea>
+ <label>Durasi promo</label><div style="display:flex;gap:10px"><input id="d_dn" type="number" min="1" placeholder="Mis. 24" style="flex:1"><select id="d_du" style="flex:1"><option value="jam">Jam</option><option value="hari">Hari</option><option value="none">Tanpa batas waktu</option></select></div>
+ <p class="sub" style="font-size:12px;margin-top:4px">Isi angka untuk memulai hitungan baru dari sekarang. Kosongkan untuk mempertahankan waktu yang sedang berjalan. Diskon dan banner hilang otomatis saat waktu habis.</p>
+ <label class="chk"><input type="checkbox" id="d_ann"> Kirim info promo ke channel WhatsApp</label>
+ <label class="chk"><input type="checkbox" id="d_an" ${s.autoNotify!==false?"checked":""}> Kabari channel otomatis saat bot/website mati lalu hidup lagi</label>
+ <button class="btn full" style="margin-top:16px" onclick="saveSet()">✿ Simpan</button></div></div>
+ <div class="glass pad" style="overflow:auto;margin-top:18px"><h3>♡ Pesanan Terbaru</h3><table><tr><th>ID</th><th>Produk</th><th>Status</th><th></th></tr>${d.orders.slice(0,30).map(o=>`<tr><td style="font-family:monospace;font-size:11px">${o.id}<br><span class="sub">${rp(o.amount)}</span></td><td>${esc(o.product)}<br><span class="sub">${esc(o.name)} · +${o.wa}</span></td><td><span class="badge s-${o.status}">${ST[o.status]}</span></td>
+ <td style="white-space:nowrap">${o.proofAt?`<a class="btn ghost sm" target="_blank" href="${API}/api/owner/proof/${o.id}?t=${TOK}">Bukti</a> `:""}${o.status==="verifying"?`<button class="btn sm" onclick="act('${o.id}','approve')">ACC</button> <button class="btn red sm" onclick="act('${o.id}','reject')">Tolak</button>`:""}</td></tr>`).join("")}</table></div>`;tick()}
 async function saveSet(){
  const disc={};for(const k of ["all","bot","panel","am","jasa"])disc[k]=$("#d_"+k).value;
- try{await api("/api/owner/settings",{b:{disc,banner:$("#d_bn").value}});CAT=await api("/api/catalog");toast("✿ Tersimpan")}catch(e){toast("⚠ "+e.message)}}
+ try{const j=await api("/api/owner/settings",{b:{disc,banner:$("#d_bn").value,bannerDesc:$("#d_bd").value,durNum:$("#d_dn").value,durUnit:$("#d_du").value,autoNotify:$("#d_an").checked,announce:$("#d_ann").checked}});CAT=await api("/api/catalog");toast(j.announced?"✿ Tersimpan & dikirim ke channel":"✿ Tersimpan");vOwner()}catch(e){toast("⚠ "+e.message)}}
+async function sendAnn(){
+ const m=$("#n_m").value.trim();if(m.length<3)return toast("⚠ Isi pesan dulu");
+ const b=$("#n_s");b.disabled=true;
+ try{const j=await api("/api/owner/announce",{b:{type:$("#n_t").value,title:$("#n_h").value,message:m,eta:$("#n_e").value,banner:$("#n_b").checked,block:$("#n_k").checked}});toast("✿ "+j.message);applyState(await api("/api/status"));vOwner()}
+ catch(e){toast("⚠ "+e.message);b.disabled=false}}
+async function clrMaint(){try{await api("/api/owner/maint/clear",{b:{}});applyState(await api("/api/status"));toast("✿ Banner dimatikan");vOwner()}catch(e){toast("⚠ "+e.message)}}
 async function act(id,a){
  if(!confirm((a==="approve"?"ACC":"Tolak")+" pesanan "+id+"?"))return;toast("Memproses…");
  try{const j=await api(`/api/owner/orders/${id}/${a}`,{b:{}});toast("✿ "+j.message)}catch(e){toast("⚠ "+e.message)}vOwner()}
-
-/* ===== AI: logika lokal dulu, lalu Gemini, lalu server ===== */
-const GEMINI_KEY=""; // opsional: isi untuk memanggil Gemini langsung dari browser (key jadi publik). Disarankan pakai env GEMINI_KEY di server.
-let chat=[],hist=[],busy=false;
+/* ===== AI: logika lokal dulu, lalu server ===== */
+let chat=[],busy=false;
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9 ]/g," ");
 const bl=k=>CAT.cats[k].it.map(i=>"• "+i.l+": "+rp(i.p)).join("\n");
 const mn=k=>rp(Math.min(...CAT.cats[k].it.map(i=>i.p)));
@@ -285,28 +485,23 @@ function local(q){
  if(has(/cara|gimana|bagaimana/)&&has(/order|beli|pesan|bayar|sewa/)||has(/ orderan | order /))return{s:1,t:"Cara order ➶\n1. Masuk atau daftar akun\n2. Pilih paket di Katalog\n3. Isi nomor WhatsApp (dan link grup untuk sewa bot)\n4. Scan QRIS, bayar sesuai total\n5. Unggah bukti transfer\n6. Tunggu owner menekan ACC, halaman otomatis berubah jadi berhasil ✿"};
  if(has(/bayar|pembayaran|qris|transfer|bukti|dana|gopay|ovo/))return{s:1,t:"Pembayaran lewat QRIS (semua e-wallet dan m-banking). Setelah pesanan dibuat, scan QRIS, bayar tepat sesuai total, lalu unggah foto bukti transfer di halaman pesanan. Owner akan memeriksanya ✿"};
  if(has(/diskon|promo|murah|potongan/)){const d=Object.values(C).filter(c=>c.disc).map(c=>`• ${c.n}: -${c.disc}%`).join("\n");return{s:1,t:d?"Diskon yang sedang berjalan ✿\n"+d:"Saat ini belum ada diskon aktif 🍃 Pantau banner di beranda ya."}}
+ if(has(/fitur|command|perintah|tiktok|preset|render|finder|slowmo|swhd/))return{s:1,t:`Bot Totoro AI punya ${SS.stats.features}+ fitur ✿ Unggulannya: Alight Motion, AM Render, AM Preset, AM Finder, SW HD, dan Slowmo. Lihat semuanya di menu Fitur.`};
  if(has(/panel|ram|pterodactyl|hosting|server/))return{s:1,t:"Panel Pterodactyl adalah server untuk menjalankan bot 24 jam ✿\n"+bl("panel")};
  if(has(/alight|\bam\b|reseller|seller|buyer|bulk|premium|edit video/))return{s:1,t:"Alight Motion Premium ✨\n"+bl("am")+"\nSeller dan Bulk dikirim otomatis setelah di-ACC."};
  if(has(/jasa|script|source|tutor|install|setup|run bot/))return{s:1,t:"Jasa & Tools 🧰\n"+bl("jasa")};
- if(has(/sewa|bot|addsewa|grup|group/))return{s:1,t:"Sewa Bot WA 🤖 (1300+ fitur)\n"+bl("bot")+"\nLink grup WhatsApp wajib diisi saat order. Setelah di-ACC, bot otomatis masuk ke grupmu."};
+ if(has(/sewa|bot|addsewa|grup|group/))return{s:1,t:`Sewa Bot WA 🤖 (${SS.stats.features}+ fitur)\n`+bl("bot")+"\nLink grup WhatsApp wajib diisi saat order. Setelah di-ACC, bot otomatis masuk ke grupmu."};
  if(has(/garansi|jaminan|refund/))return{s:1,t:"Ada garansi selama masa aktif produk. Kalau ada kendala, hubungi WA Order 0856-0265-4058 ✿"};
  if(has(/kontak|admin|owner|wa order|whatsapp|telegram|instagram|hubungi/))return{s:1,t:"Kontak ✿\n• WA Order: 0856-0265-4058\n• WA Owner: 0857-1117-0694\n• Telegram: @radipgtg\n• Instagram: @radipppppp"};
  if(has(/lama|cepat|proses|acc|nunggu|menunggu/))return{s:1,t:"Biasanya hitungan menit setelah bukti transfer terkirim. Status di halaman pesanan berubah otomatis begitu owner menekan ACC ✿"};
- if(has(/login|masuk|daftar|riwayat|profil|akun saya/))return{s:1,t:"Daftar atau masuk lewat tombol Masuk di atas. Di Profil kamu bisa melihat semua transaksi: berhasil, tertunda, atau ditolak ✿"};
+ if(has(/password|sandi|ganti pass/))return{s:1,t:"Buka Profil › Ganti Password. Kamu perlu mengisi password lama, lalu password baru ✿"};
+ if(has(/login|masuk|daftar|riwayat|profil|akun saya/))return{s:1,t:"Daftar atau masuk lewat tombol Masuk. Di Profil kamu bisa melihat semua transaksi, mengganti foto, dan mengganti password ✿"};
  if(has(/error|gagal|bug|rusak|tidak bisa|gabisa|ga bisa/))return{s:1,t:"Maaf ya 🍃 Coba muat ulang halaman. Kalau masih bermasalah, chat WA Order 0856-0265-4058 dengan ID pesananmu."};
  if(has(/harga|katalog|produk|jual|list|daftar harga/))return{s:1,t:`Harga mulai dari ✿\n• Sewa Bot: ${mn("bot")}\n• Panel: ${mn("panel")}\n• Alight Motion: ${mn("am")}\n• Jasa: ${mn("jasa")}\nBuka Katalog untuk detailnya.`};
  return{s:0,t:"Hmm, daun-daun belum paham maksudmu 🍃 Coba tanya soal harga bot, panel, Alight Motion, cara order, atau pembayaran. Atau chat WA Order 0856-0265-4058."};
 }
-const SYS=()=>`Kamu "Totoro AI", asisten ramah toko Totoro AI. Jawab Bahasa Indonesia singkat, hangat ala Ghibli, emoji secukupnya. Katalog terkini: `+Object.values(CAT.cats).map(c=>c.n+": "+c.it.map(i=>i.l+" "+rp(i.p)).join(", ")).join(" | ")+`. Cara order: masuk akun, pilih paket, isi nomor WhatsApp (sewa bot wajib link grup), bayar QRIS, kirim bukti transfer, tunggu ACC owner. Jangan mengarang harga di luar katalog. Masalah teknis arahkan ke WA Order 0856-0265-4058.`;
-async function gemini(q){
- if(!GEMINI_KEY)return null;
- for(const mdl of ["gemini-2.5-flash","gemini-2.0-flash"]){
-  try{const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent?key=${GEMINI_KEY}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({systemInstruction:{parts:[{text:SYS()}]},contents:[...hist.slice(-8),{role:"user",parts:[{text:q}]}],generationConfig:{temperature:.7,maxOutputTokens:500}})});
-   const j=await r.json(),a=j.candidates?.[0]?.content?.parts?.[0]?.text;if(a){hist.push({role:"user",parts:[{text:q}]},{role:"model",parts:[{text:a}]});return a}}catch{}}
- return null}
 function vAi(){
  if(!chat.length)chat=[{r:"bot",t:"Halo, aku Totoro ☁ Tanya apa saja soal harga, produk, cara order, atau pembayaran ya ✿"}];
- app.innerHTML=`<div class="split2"><div class="glass pad"><div style="font-size:42px;animation:bob 3s ease-in-out infinite;display:inline-block">🌳</div><h2>✦ Tanya Totoro</h2><p class="sub">Asisten hutan yang menjawab seputar toko ini.</p>
+ app.innerHTML=`<div class="split2"><div class="glass pad"><div style="font-size:42px">🌳</div><h2>Tanya Totoro</h2><p class="sub">Asisten hutan yang menjawab seputar toko ini.</p>
  <div class="help" style="padding:0;margin-top:14px"><h4>Bisa ditanya soal</h4><ul><li>Harga sewa bot, panel, Alight Motion, jasa</li><li>Cara order dan cara bayar</li><li>Diskon yang sedang aktif</li><li>Lama proses dan garansi</li><li>Kontak owner dan admin</li></ul></div>
  <div style="margin-top:12px">${["Berapa harga sewa bot?","Panel 5 GB berapa?","Bulk 20 akun berapa?","Cara order?","Ada diskon?"].map(q=>`<span class="chip" style="cursor:pointer" onclick="ask('${q}')">${q}</span>`).join("")}</div></div>
  <div class="glass pad"><div class="chat" id="chat" style="height:56vh;margin-top:0">${chat.map(m=>`<div class="m ${m.r}">${m.typing?'<span class="dots"><i></i><i></i><i></i></span>':esc(m.t).replace(/\n/g,"<br>")}</div>`).join("")}</div>
@@ -316,7 +511,7 @@ async function ask(q){
  if(busy)return;const t=(q||$("#aiIn")?.value||"").trim();if(!t)return;busy=true;
  chat.push({r:"me",t},{r:"bot",t:"",typing:1});vAi();
  const L=local(t);let a=null;
- if(L.s)a=L.t;else{a=await gemini(t);if(!a)a=await api("/api/ai",{b:{message:t}}).then(j=>j.reply).catch(()=>null);if(!a)a=L.t}
+ if(L.s)a=L.t;else{a=await api("/api/ai",{b:{message:t}}).then(j=>j.reply).catch(()=>null);if(!a)a=L.t}
  await new Promise(r=>setTimeout(r,450));
  chat[chat.length-1]={r:"bot",t:a};busy=false;if(location.hash==="#ai")vAi()}
 boot();
