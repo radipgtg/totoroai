@@ -1781,73 +1781,634 @@ html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){.gr-i{animation:none}html{scroll-behavior:auto}}
 
 
-/* ===== CLAIM & BOT V1 / V2 SELECTOR UPGRADE ===== */
+/* ═══════════════════════════════════════════════════════════════
+   CLAIM SECTION — FINAL (compact pill + tombol gede)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Box utama ── */
 .claim-box{
-  position:relative;margin:26px auto 0;padding:28px 28px 26px;
-  border:2px solid var(--edge);border-radius:36px 10px 36px 10px;
-  background:linear-gradient(145deg,color-mix(in srgb,var(--moss) 13%,var(--solid)),color-mix(in srgb,var(--gold) 10%,var(--solid)))!important;
-  box-shadow:8px 8px 0 var(--moss)!important;
+  position:relative;
+  margin:40px auto 0;
+  padding:36px 32px 32px;
+  max-width:860px;
+  border:2px solid var(--edge);
+  border-radius:32px 12px 32px 12px;
+  background:var(--solid);
+  box-shadow:8px 8px 0 var(--moss),0 20px 50px -20px rgba(0,0,0,.3);
+  overflow:hidden;
 }
-.claim-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-.claim-head h2{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 6px}
+.claim-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:24px;
+}
+.claim-head h2{
+  font-size:clamp(26px,3.6vw,36px);line-height:1.1;
+  margin:4px 0 8px;letter-spacing:-.02em;
+}
+.claim-head .sub{
+  font-size:14px;line-height:1.6;max-width:520px;color:var(--mute);
+}
+.claim-head .sub b{color:var(--t);font-weight:700}
 .claim-pill{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 16px;
-  border:2px solid var(--edge);border-radius:99px;background:var(--solid);
-  font-size:12.5px;font-weight:700;box-shadow:3px 3px 0 var(--gold);white-space:nowrap
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border:2px solid var(--edge);border-radius:99px;
+  background:var(--solid);
+  font-size:12.5px;font-weight:800;color:var(--t);
+  box-shadow:3px 3px 0 var(--gold);
+  white-space:nowrap;flex-shrink:0;
 }
-.bot-picker{margin-bottom:20px}
-.bot-picker-lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
-.bot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+
+/* ═══ BOT PICKER — COMPACT PILL (tidak gepeng) ═══ */
+.bot-picker{margin-bottom:24px}
+.bot-picker-lbl{
+  display:block;font-size:11.5px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mute);margin-bottom:10px;
+}
+.bot-grid{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:10px !important;
+  align-items:stretch !important;
+}
 .bot-card{
-  position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;
-  border:2px solid var(--edge);border-radius:22px 22px 22px 6px;
-  background:var(--solid);cursor:pointer;text-align:left;
-  box-shadow:4px 4px 0 var(--edge);transition:transform .22s var(--spring),box-shadow .22s var(--ease),background .2s
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  font-family:inherit !important;
+  cursor:pointer !important;
+  box-sizing:border-box !important;
+  display:inline-flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:10px !important;
+  flex:1 1 240px !important;
+  min-width:0 !important;
+  min-height:64px !important;
+  padding:10px 14px !important;
+  border:2px solid var(--edge) !important;
+  border-radius:16px !important;
+  background:var(--solid) !important;
+  color:var(--t) !important;
+  text-align:left !important;
+  box-shadow:3px 3px 0 var(--edge) !important;
+  transition:transform .18s var(--spring),box-shadow .18s,background .18s !important;
+  overflow:hidden !important;
+  position:relative !important;
 }
-.bot-card:nth-child(2){border-radius:22px 22px 6px 22px}
-.bot-card:hover{transform:translate(-2px,-3px);box-shadow:6px 6px 0 var(--moss)}
+.bot-card:hover{
+  transform:translate(-1px,-2px) !important;
+  box-shadow:5px 5px 0 var(--moss) !important;
+}
 .bot-card.on{
-  background:color-mix(in srgb,var(--moss) 18%,var(--solid));
-  border-color:var(--edge);box-shadow:6px 6px 0 var(--moss)
+  background:linear-gradient(135deg,color-mix(in srgb,var(--moss) 18%,var(--solid)),color-mix(in srgb,var(--gold) 6%,var(--solid))) !important;
+  border-color:var(--edge) !important;
+  box-shadow:5px 5px 0 var(--moss) !important;
 }
 .bot-badge{
-  flex:none;width:48px;height:48px;border-radius:15px 15px 15px 5px;
-  border:2px solid var(--edge);display:grid;place-items:center;
-  font:800 16px "Bricolage Grotesque",sans-serif;background:color-mix(in srgb,var(--gold) 24%,var(--solid));
-  box-shadow:2px 2px 0 var(--edge)
+  flex:0 0 auto !important;
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  border-radius:12px !important;
+  border:2px solid var(--edge) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font:800 15px/1 "Bricolage Grotesque",sans-serif !important;
+  background:color-mix(in srgb,var(--gold) 25%,var(--solid)) !important;
+  box-shadow:2px 2px 0 var(--edge) !important;
+  box-sizing:border-box !important;
 }
-.bot-card.on .bot-badge{background:var(--moss);color:var(--on)}
-.bot-meta{flex:1;min-width:0}
-.bot-meta b{display:block;font:700 17px/1.2 "Bricolage Grotesque",sans-serif}
-.bot-meta small{display:block;font-size:12.5px;color:var(--mute);margin-top:3px;font-weight:600;word-break:break-all}
-.bot-meta em{display:inline-block;margin-top:5px;font-style:normal;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;border:1.5px solid var(--edge);background:var(--wash)}
+.bot-card.on .bot-badge{
+  background:var(--moss) !important;
+  color:var(--on) !important;
+}
+.bot-meta{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  gap:2px !important;
+  overflow:hidden !important;
+}
+.bot-meta b{
+  display:block !important;
+  font:800 14px/1.2 "Bricolage Grotesque",sans-serif !important;
+  color:var(--t) !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.bot-meta small{
+  display:block !important;
+  font-size:11.5px !important;
+  color:var(--mute) !important;
+  font-weight:600 !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.bot-meta em{
+  display:none !important;  /* sembunyikan role biar compact */
+}
 .bot-chk{
-  flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--edge);
-  display:grid;place-items:center;background:var(--solid);font-size:13px;font-weight:800
+  flex:0 0 auto !important;
+  width:22px !important;
+  height:22px !important;
+  min-width:22px !important;
+  min-height:22px !important;
+  border-radius:50% !important;
+  border:2px solid var(--edge) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:var(--solid) !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  color:transparent !important;
+  box-sizing:border-box !important;
+  line-height:1 !important;
 }
-.bot-card.on .bot-chk{background:var(--moss);color:var(--on)}
-.claim-form-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch}
+.bot-card.on .bot-chk{
+  background:var(--moss) !important;
+  color:var(--on) !important;
+}
+
+/* ═══ TOMBOL CLAIM — GEDE & MENCOLOK ═══ */
+.claim-form-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;align-items:stretch;
+  margin-top:6px;
+}
 .claim-input{
-  margin-top:0!important;padding:15px 18px!important;font-size:16px!important;
-  border-radius:16px!important;background:var(--solid)!important
+  margin-top:0 !important;
+  padding:18px 20px !important;
+  font-size:16px !important;
+  border-radius:16px !important;
+  background:var(--solid) !important;
+  border:2px solid var(--edge) !important;
+  box-shadow:3px 3px 0 var(--edge) !important;
+  color:var(--t) !important;
 }
-.claim-submit{padding:15px 28px!important;font-size:15px!important;white-space:nowrap}
+.claim-input:focus{
+  outline:none !important;
+  border-color:var(--moss) !important;
+  box-shadow:3px 3px 0 var(--moss) !important;
+}
+
+/* TOMBOL BESAR — full width di mobile */
+.claim-submit{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  padding:18px 36px !important;
+  font-size:16px !important;
+  font-weight:900 !important;
+  letter-spacing:.01em !important;
+  white-space:nowrap !important;
+  border-radius:16px !important;
+  border:2px solid var(--edge) !important;
+  background:linear-gradient(135deg,var(--moss),#e9953d) !important;
+  color:var(--on) !important;
+  box-shadow:4px 4px 0 var(--edge) !important;
+  cursor:pointer !important;
+  transition:transform .18s var(--spring),box-shadow .18s !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+.claim-submit:hover{
+  transform:translate(-1px,-2px) !important;
+  box-shadow:6px 6px 0 var(--edge) !important;
+}
+.claim-submit:active{
+  transform:translate(2px,2px) !important;
+  box-shadow:0 0 0 var(--edge) !important;
+}
+.claim-submit::before{
+  content:"" !important;
+  position:absolute !important;
+  top:0 !important;
+  left:-100% !important;
+  width:100% !important;
+  height:100% !important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent) !important;
+  animation:claimShine 2.4s ease-in-out infinite !important;
+}
+@keyframes claimShine{
+  0%,60%{left:-100%}
+  100%{left:100%}
+}
+
+/* Hasil klaim */
 .claim-note{
-  margin-top:16px;padding:14px 16px;border:2px dashed var(--edge);border-radius:16px;
-  background:var(--solid);font-size:13px;line-height:1.6;color:var(--mute)
+  margin-top:18px;padding:14px 18px;
+  border:2px dashed var(--edge);border-radius:14px;
+  background:var(--solid);font-size:12.5px;
+  line-height:1.55;color:var(--mute);
 }
 .claim-note b{color:var(--t)}
+.claim-note code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:color-mix(in srgb,var(--moss) 14%,var(--solid));
+  padding:2px 6px;border-radius:5px;
+  font-size:11.5px;color:var(--t);word-break:break-all;
+}
 .claim-res{
-  margin-top:16px;padding:16px 18px;border:2px solid var(--edge);border-radius:18px;
-  background:color-mix(in srgb,var(--sage) 16%,var(--solid));box-shadow:4px 4px 0 var(--sage)
+  margin-top:16px;padding:16px 18px;
+  border:2px solid var(--edge);border-radius:16px;
+  background:color-mix(in srgb,var(--sage) 16%,var(--solid));
+  box-shadow:4px 4px 0 var(--sage);
+  color:var(--t);
+  font-size:13.5px;
 }
-.claim-res.err{background:color-mix(in srgb,var(--rose) 15%,var(--solid));box-shadow:4px 4px 0 var(--rose)}
-@media(max-width:760px){
-  .claim-box{padding:20px 16px;border-radius:26px 8px 26px 8px;box-shadow:5px 5px 0 var(--moss)!important}
-  .bot-grid{grid-template-columns:1fr}
-  .claim-form-row{grid-template-columns:1fr}
-  .claim-submit{width:100%}
+.claim-res b{font-size:15px;display:block;margin-bottom:4px}
+.claim-res.err{
+  background:color-mix(in srgb,var(--rose) 15%,var(--solid));
+  box-shadow:4px 4px 0 var(--rose);
 }
+
+/* ── Mobile ── */
+@media(max-width:820px){
+  .claim-box{padding:24px 18px 22px;margin-top:24px;border-radius:24px 10px 24px 10px}
+  .claim-head{margin-bottom:18px;gap:12px}
+  .claim-head h2{font-size:24px}
+  .claim-head .sub{font-size:13px}
+  .claim-pill{
+    width:100%;justify-content:center;
+    padding:8px 14px;font-size:11.5px;
+    white-space:normal;text-align:center;line-height:1.3;
+  }
+  .bot-grid{flex-direction:column !important;gap:8px !important}
+  .bot-card{
+    flex:1 1 auto !important;
+    min-height:60px !important;
+    padding:10px 12px !important;
+  }
+  .bot-badge{width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important;font-size:14px !important}
+  .bot-meta b{font-size:13.5px !important}
+  .bot-meta small{font-size:11px !important}
+  .bot-chk{width:20px !important;height:20px !important;min-width:20px !important;min-height:20px !important;font-size:11px !important}
+  .claim-form-row{grid-template-columns:1fr;gap:10px}
+  .claim-input{padding:16px 18px !important;font-size:15px !important}
+  .claim-submit{
+    width:100% !important;
+    padding:20px 24px !important;
+    font-size:16px !important;
+    border-radius:16px !important;
+  }
+  .claim-note{padding:12px 14px;font-size:12px}
+  .claim-res{padding:14px 16px;font-size:13px}
+}
+@media(max-width:400px){
+  .claim-box{padding:20px 14px 18px}
+  .claim-head h2{font-size:21px}
+  .bot-card{padding:9px 11px !important;min-height:56px !important}
+  .bot-badge{width:32px !important;height:32px !important;min-width:32px !important;min-height:32px !important;font-size:13px !important}
+  .bot-meta b{font-size:13px !important}
+  .bot-meta small{font-size:10.5px !important}
+  .claim-submit{padding:18px 20px !important;font-size:15px !important}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CLAIM CTA (tombol di beranda) + HALAMAN PREMIUM GRATIS (Ghibli)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Tombol CTA di beranda ── */
+.claim-cta{
+  position:relative;
+  margin:32px auto;
+  max-width:920px;
+  border:2px solid var(--edge);
+  border-radius:32px 12px 32px 12px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--moss) 14%,var(--solid)),color-mix(in srgb,var(--gold) 10%,var(--solid)));
+  box-shadow:8px 8px 0 var(--moss),0 20px 50px -20px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+.claim-cta-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(255,255,255,.15) 0,transparent 40%),
+    radial-gradient(circle at 88% 80%,rgba(255,255,255,.1) 0,transparent 40%);
+}
+.claim-cta-inner{
+  position:relative;
+  display:flex;align-items:center;gap:24px;
+  padding:28px 32px;flex-wrap:wrap;
+}
+.claim-cta-emoji{
+  flex:none;
+  width:72px;height:72px;
+  display:grid;place-items:center;
+  font-size:36px;
+  border-radius:22px;
+  border:2px solid var(--edge);
+  background:linear-gradient(135deg,#f9d27a,#f0a54a);
+  box-shadow:0 8px 20px -8px #e9953d,0 0 0 4px color-mix(in srgb,var(--gold) 20%,transparent);
+  animation:grf 3.2s ease-in-out infinite;
+}
+.claim-cta-text{flex:1 1 280px;min-width:0}
+.claim-cta-eyebrow{
+  display:inline-block;
+  font-size:12px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin-bottom:4px;
+}
+.claim-cta-text h2{
+  font-size:clamp(22px,3vw,30px);
+  line-height:1.15;
+  margin:0 0 6px;
+  color:var(--t);
+  letter-spacing:-.01em;
+}
+.claim-cta-text p{
+  font-size:14px;line-height:1.55;
+  color:var(--mute);
+  margin:0;
+  max-width:520px;
+}
+.claim-cta-btn{
+  flex:none;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2px;
+  padding:16px 32px;
+  border:2px solid var(--edge);
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--moss),#e9953d);
+  color:var(--on);
+  font:800 16px/1.2 "Plus Jakarta Sans",sans-serif;
+  letter-spacing:.01em;
+  box-shadow:5px 5px 0 var(--edge);
+  cursor:pointer;
+  transition:transform .18s var(--spring),box-shadow .18s;
+  position:relative;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.claim-cta-btn small{
+  font-size:11px;font-weight:600;opacity:.85;
+  letter-spacing:.02em;
+}
+.claim-cta-btn::before{
+  content:"";position:absolute;
+  top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:grShine 2.4s ease-in-out infinite;
+}
+.claim-cta-btn:hover{
+  transform:translate(-1px,-2px);
+  box-shadow:7px 7px 0 var(--edge);
+}
+.claim-cta-btn:active{
+  transform:translate(2px,2px);
+  box-shadow:0 0 0 var(--edge);
+}
+
+/* ── Halaman Premium Gratis ── */
+.gr-wrap{
+  max-width:640px;
+  margin:36px auto;
+  padding:0 4px;
+}
+.gr-loading{
+  text-align:center;
+  padding:60px 20px;
+  color:var(--mute);
+  font-size:14px;
+  font-style:italic;
+}
+.gr-box{
+  position:relative;
+  padding:44px 36px 36px;
+  border:2px solid var(--edge);
+  border-radius:32px 12px 32px 12px;
+  background:var(--solid);
+  box-shadow:8px 8px 0 var(--moss),0 20px 50px -20px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+.gr-deco{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(2px);
+}
+.gr-deco-1{
+  width:200px;height:200px;
+  top:-60px;right:-60px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--gold) 30%,transparent),transparent 70%);
+}
+.gr-deco-2{
+  width:180px;height:180px;
+  bottom:-50px;left:-50px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--moss) 25%,transparent),transparent 70%);
+}
+.gr-head{
+  position:relative;
+  text-align:center;
+  margin-bottom:24px;
+}
+.gr-icon{
+  display:grid;place-items:center;
+  width:88px;height:88px;
+  margin:0 auto 16px;
+  border-radius:28px;
+  font-size:40px;
+  background:linear-gradient(135deg,#f9d27a,#f0a54a);
+  box-shadow:0 14px 26px -12px #e9953d,0 0 0 4px color-mix(in srgb,var(--gold) 20%,transparent);
+  animation:grf 3.2s ease-in-out infinite;
+}
+.gr-eyebrow{
+  display:inline-block;
+  font-size:12px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin-bottom:6px;
+}
+.gr-head h2{
+  font-size:clamp(26px,4vw,36px);
+  line-height:1.15;
+  margin:0 0 10px;
+  color:var(--t);
+  letter-spacing:-.02em;
+}
+.gr-sub{
+  font-size:14.5px;
+  line-height:1.65;
+  max-width:460px;
+  margin:0 auto;
+  color:var(--mute);
+}
+.gr-benefits{
+  position:relative;
+  list-style:none;
+  display:grid;
+  gap:10px;
+  margin:20px 0 24px;
+  padding:18px 20px;
+  border-radius:18px;
+  background:var(--wash);
+  border:2px dashed var(--edge);
+}
+.gr-benefits li{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;line-height:1.5;
+  color:var(--t);
+}
+.gr-benefits i{
+  flex:none;
+  width:26px;height:26px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-style:normal;font-size:13px;font-weight:800;
+  background:#3f9b4a;color:#fff;
+}
+.gr-label{
+  position:relative;
+  display:block;
+  font-size:13px;font-weight:700;
+  color:var(--mute);
+  letter-spacing:.02em;
+  margin-bottom:8px;
+}
+.gr-input{
+  position:relative;
+  width:100% !important;
+  margin:0 0 8px !important;
+  padding:18px 20px !important;
+  font-size:17px !important;
+  border-radius:16px !important;
+  background:var(--solid) !important;
+  border:2px solid var(--edge) !important;
+  box-shadow:3px 3px 0 var(--edge) !important;
+  color:var(--t) !important;
+  box-sizing:border-box !important;
+}
+.gr-input:focus{
+  outline:none !important;
+  border-color:var(--moss) !important;
+  box-shadow:3px 3px 0 var(--moss) !important;
+}
+.gr-hint{
+  position:relative;
+  font-size:12.5px;
+  line-height:1.6;
+  color:var(--mute);
+  margin:8px 0 20px;
+  padding:10px 14px;
+  border-left:3px solid var(--gold);
+  background:color-mix(in srgb,var(--gold) 8%,transparent);
+  border-radius:0 8px 8px 0;
+}
+.gr-btn{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;
+  width:100%;
+  margin-top:8px;
+  padding:20px 28px;
+  font:900 17px/1.2 "Plus Jakarta Sans",sans-serif;
+  letter-spacing:.01em;
+  border:2px solid var(--edge);
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--moss),#e9953d);
+  color:var(--on);
+  box-shadow:5px 5px 0 var(--edge);
+  cursor:pointer;
+  transition:transform .18s var(--spring),box-shadow .18s;
+  overflow:hidden;
+}
+.gr-btn::before{
+  content:"";position:absolute;
+  top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:grShine 2.4s ease-in-out infinite;
+}
+.gr-btn:hover{transform:translate(-1px,-2px);box-shadow:7px 7px 0 var(--edge)}
+.gr-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--edge)}
+.gr-btn:disabled{opacity:.7;cursor:wait}
+.gr-btn-ghost{
+  background:var(--solid);
+  color:var(--t);
+  font-weight:700;
+}
+.gr-note{
+  text-align:center;
+  font-size:12px;
+  color:var(--mute);
+  margin-top:14px;
+}
+.gr-error{
+  padding:16px 18px;
+  border-radius:14px;
+  border:2px solid var(--rose);
+  background:color-mix(in srgb,var(--rose) 12%,var(--solid));
+  color:var(--t);
+  font-size:14px;
+  margin-bottom:16px;
+}
+.gr-already{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px 20px;
+  border-radius:18px;
+  border:2px solid #3f9b4a;
+  background:color-mix(in srgb,#3f9b4a 12%,var(--solid));
+  margin-bottom:16px;
+}
+.gr-already-icon{
+  flex:none;
+  font-size:32px;
+  line-height:1;
+}
+.gr-already h3{
+  margin:0 0 6px;
+  font-size:16px;
+  color:var(--t);
+}
+.gr-already p{
+  margin:0;
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--mute);
+}
+.gr-already p b{color:var(--t)}
+.gr-footer{
+  text-align:center;
+  font-size:12px;
+  color:var(--mute);
+  margin-top:20px;
+  font-style:italic;
+}
+
+@keyframes grf{50%{transform:translateY(-6px) rotate(-4deg)}}
+@keyframes grShine{0%,60%{left:-100%}100%{left:100%}}
+
+@media(max-width:820px){
+  .claim-cta-inner{padding:22px 20px;gap:16px}
+  .claim-cta-emoji{width:60px;height:60px;font-size:30px;border-radius:18px}
+  .claim-cta-text h2{font-size:22px}
+  .claim-cta-text p{font-size:13px}
+  .claim-cta-btn{width:100%;padding:16px 24px;font-size:15px}
+  .gr-box{padding:32px 22px 28px}
+  .gr-icon{width:72px;height:72px;font-size:34px;border-radius:24px}
+  .gr-head h2{font-size:24px}
+  .gr-sub{font-size:13.5px}
+  .gr-benefits{padding:14px 16px}
+  .gr-benefits li{font-size:13px}
+  .gr-input{padding:16px 18px !important;font-size:16px !important}
+  .gr-btn{padding:18px 22px;font-size:16px}
+}
+@media(max-width:400px){
+  .claim-cta-inner{padding:18px 16px}
+  .gr-box{padding:26px 16px 22px}
+  .gr-head h2{font-size:22px}
+  .gr-icon{width:64px;height:64px;font-size:30px}
+}
+
 </style>
 </head>
 <body>
@@ -1908,7 +2469,7 @@ html{scroll-behavior:smooth}
 <script>
 /* ===== OURIN WEBHOOK & BOT V1 / V2 CONFIG ===== */
 const WEBHOOK_PATH = "/api/ourin-webhook";
-const WEBHOOK_URL = API + WEBHOOK_PATH;
+const WEBHOOK_URL = () => API + WEBHOOK_PATH;   // ← jadi fungsi
 const BOT_INSTANCES = {
   v1: {
     id: "v1",
@@ -1930,64 +2491,55 @@ const BOT_INSTANCES = {
   }
 };
 let SEL_BOT = localStorage.getItem("tt_bot_ver") || "v1";
+let BUYBOT = "v1";   // pilihan bot untuk sewa
 if (!BOT_INSTANCES[SEL_BOT]) SEL_BOT = "v1";
 
 function selectBotVer(ver) {
   if (!BOT_INSTANCES[ver]) return;
   SEL_BOT = ver;
   try { localStorage.setItem("tt_bot_ver", ver); } catch {}
-  document.querySelectorAll(".bot-card").forEach(el => {
+
+  document.querySelectorAll("#claimSection .bot-card").forEach(el => {
     const on = el.dataset.bot === ver;
+    el.classList.toggle("on", on);
+    el.setAttribute("aria-pressed", String(on));
+    const chk = el.querySelector(".bot-chk");
+    if (chk) chk.textContent = on ? "✓" : "";
+  });
+
+  const badge = $("#claimActiveBot");
+  const b = BOT_INSTANCES[ver];
+  if (badge) badge.textContent = "🎯 Target: " + b.label + " (" + b.waDisplay + ")";
+
+  toast("Bot aktif: " + b.label + " (" + b.waDisplay + ")");
+}
+
+function selectBuyBot(v) {
+  if (!BOT_INSTANCES[v]) return;
+  BUYBOT = v;
+  document.querySelectorAll("#buyBotGrid .bot-card").forEach(el => {
+    const on = el.dataset.bot === v;
     el.classList.toggle("on", on);
     const chk = el.querySelector(".bot-chk");
     if (chk) chk.textContent = on ? "✓" : "";
   });
-  const b = BOT_INSTANCES[ver];
-  const badge = $("#claimActiveBot");
-  if (badge) badge.textContent = "Target: " + b.label + " (" + b.waDisplay + ")";
-  toast("Bot aktif: " + b.label + " (" + b.waDisplay + ")");
+  toast("Bot sewa: " + BOT_INSTANCES[v].label);
 }
 
 function claimSectionHTML() {
-  const cur = BOT_INSTANCES[SEL_BOT] || BOT_INSTANCES.v1;
-  return `<section class="claim-box reveal" id="claimSection">
-    <div class="claim-head">
-      <div>
-        <span class="eyebrow">✦ Klaim instan via ourin-webhook</span>
-        <h2>Klaim Paket / Akses Bot Sekarang</h2>
-        <p class="sub">Pilih instance bot tujuan (<b>Bot V1</b> atau <b>Bot V2</b>), masukkan nomor WA atau kode klaim, lalu kirim langsung ke <code>ourin-webhook</code>.</p>
+  return `<section class="claim-cta reveal" id="claimSection">
+    <div class="claim-cta-bg"></div>
+    <div class="claim-cta-inner">
+      <span class="claim-cta-emoji">🎁</span>
+      <div class="claim-cta-text">
+        <span class="claim-cta-eyebrow">✦ Hadiah dari hutan</span>
+        <h2>Premium Gratis 30 Hari</h2>
+        <p>Coba semua sihir premium selama 30 hari. Cukup isi nomor WhatsApp-mu — seperti menerima biji ek dari Totoro, gratis dan tanpa kartu.</p>
       </div>
-      <span class="claim-pill" id="claimActiveBot">Target: ${esc(cur.label)} (${esc(cur.waDisplay)})</span>
-    </div>
-
-    <div class="bot-picker">
-      <span class="bot-picker-lbl">Pilih Bot Tujuan</span>
-      <div class="bot-grid">
-        ${Object.values(BOT_INSTANCES).map(b => {
-          const on = b.id === SEL_BOT;
-          return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" onclick="selectBotVer('${b.id}')">
-            <span class="bot-badge">${b.id.toUpperCase()}</span>
-            <span class="bot-meta">
-              <b>${esc(b.label)}</b>
-              <small>📱 WA: ${esc(b.waDisplay)}</small>
-              <em>${esc(b.role)}</em>
-            </span>
-            <span class="bot-chk">${on ? "✓" : ""}</span>
-          </button>`;
-        }).join("")}
-      </div>
-    </div>
-
-    <div class="claim-form-row">
-      <input id="claimInput" class="claim-input" placeholder="Masukkan nomor WA (08xxxx) atau kode klaim / ID order…" onkeydown="if(event.key==='Enter')submitClaim()">
-      <button type="button" class="btn claim-submit" id="claimBtn" onclick="submitClaim()">⚡ Klaim via ourin-webhook</button>
-    </div>
-
-    <div id="claimResult"></div>
-
-    <div class="claim-note">
-      <b>Info Webhook & Bot:</b> Semua klaim diteruskan ke <code>${esc(WEBHOOK_URL)}</code> dengan payload <code>{ bot, waNumber, code, source: "ourin-webhook" }</code>.
-      Bot V1: <b>0838-7928-4053</b> · Bot V2: <b>0883-8390-26238</b>.
+      <button class="claim-cta-btn" onclick="go('gratis')">
+        <span>🍃 Terima Hadiah</span>
+        <small>Gratis · 30 hari</small>
+      </button>
     </div>
   </section>`;
 }
@@ -1998,13 +2550,18 @@ async function submitClaim() {
   const resBox = $("#claimResult");
   const rawVal = (inp?.value || "").trim();
   if (!rawVal) {
-    toast("⚠ Isi nomor WhatsApp atau kode klaim dulu");
+    toast("🌰 Isi nomor WhatsApp-mu dulu ya");
     inp?.focus();
     return;
   }
   const botInfo = BOT_INSTANCES[SEL_BOT] || BOT_INSTANCES.v1;
   const digits = rawVal.replace(/\D/g, "");
   const normWa = digits ? (digits.startsWith("0") ? "62" + digits.slice(1) : digits) : "";
+  if (digits.length < 10) {
+    toast("🌰 Nomor WhatsApp-nya belum pas, coba periksa lagi");
+    inp?.focus();
+    return;
+  }
   const payload = {
     source: "ourin-webhook",
     webhook: "ourin-webhook",
@@ -2017,46 +2574,39 @@ async function submitClaim() {
     timestamp: new Date().toISOString()
   };
 
-  if (btn) { btn.disabled = true; btn.textContent = "Mengirim…"; }
+  if (btn) { btn.disabled = true; btn.textContent = "Mengirim ke hutan…"; }
   try {
-    let data = null;
-    try {
-      const r = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Webhook-Source": "ourin-webhook",
-          "X-Bot-Version": botInfo.id,
-          ...(TOK ? { Authorization: "Bearer " + TOK } : {})
-        },
-        body: JSON.stringify(payload)
-      });
-      data = await r.json().catch(() => ({}));
-      if (!r.ok && data?.message) throw new Error(data.message);
-    } catch (netErr) {
-      // Fallback jika endpoint lokal belum aktif agar alur UI tetap responsif & informatif
-      data = {
-        ok: true,
-        queued: true,
-        message: "Permintaan klaim dicatat untuk " + botInfo.label + " (" + botInfo.waDisplay + ") via ourin-webhook."
-      };
-    }
+    const r = await fetch(WEBHOOK_URL(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Webhook-Source": "ourin-webhook",
+        "X-Bot-Version": botInfo.id,
+        ...(TOK ? { Authorization: "Bearer " + TOK } : {})
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data?.message || `Gagal (${r.status})`);
     if (resBox) {
       resBox.className = "claim-res";
-      resBox.innerHTML = `<b>✅ Klaim Terkirim ke ${esc(botInfo.label)}</b><div class="sub" style="margin-top:4px">${esc(data.message || "Diproses melalui ourin-webhook.")}</div><div class="sub" style="margin-top:6px;font-family:monospace;font-size:11.5px">Target WA: ${esc(botInfo.waDisplay)} · Input: ${esc(rawVal)}</div>`;
+      resBox.innerHTML = `<b>🌿 Hadiah dalam perjalanan!</b>
+        <div class="sub" style="margin-top:6px">${esc(data.message || "Klaimmu sudah terbang ke hutan. Bot akan mengetuk pintumu sebentar lagi.")}</div>
+        <div class="sub" style="margin-top:6px;font-family:monospace;font-size:11.5px;opacity:.7">Tujuan: ${esc(botInfo.waDisplay)} · Nomor: ${esc(rawVal)}</div>`;
     }
-    toast("✿ Klaim dikirim ke " + botInfo.label);
+    toast("🍃 Hadiah dikirim lewat " + botInfo.label);
   } catch (err) {
     if (resBox) {
       resBox.className = "claim-res err";
-      resBox.innerHTML = `<b>⚠ Gagal memproses klaim</b><div class="sub" style="margin-top:4px">${esc(err.message || "Terjadi kesalahan")}</div>`;
+      resBox.innerHTML = `<b>🍂 Angin belum bersahabat</b>
+        <div class="sub" style="margin-top:6px">${esc(err.message || "Klaim belum bisa terkirim. Coba lagi sebentar ya.")}</div>
+        <div class="sub" style="margin-top:6px;font-size:11.5px">Atau hubungi WA Order kalau masalahnya berlanjut.</div>`;
     }
-    toast("⚠ " + (err.message || "Gagal klaim"));
+    toast("🍂 " + (err.message || "Klaim belum terkirim"));
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = "⚡ Klaim via ourin-webhook"; }
+    if (btn) { btn.disabled = false; btn.textContent = "🍃 Terima Hadiah"; }
   }
 }
-
 
 const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058",AVATAR_IMG="https://api.totoroai.my.id/api/img/logo";
 const LOGO_ORIG="https://files.catbox.moe/3h14or.jpeg";
@@ -2494,7 +3044,25 @@ function vBuy(k,i){
  <div id="bulkQty" style="${bulk?"":"display:none"};margin-top:12px"><label>Jumlah akun (10-50)</label><input id="bQ" type="number" min="10" max="50" value="10" oninput="BUYSEL.qty=Math.min(50,Math.max(10,+this.value||10));updTotal()"></div>
  <div style="margin-top:16px"><div class="kv"><span>Layanan</span><span>${c.n}</span></div><div class="kv"><span>Pembeli</span><span>${esc(ME.name)} · +${ME.wa}</span></div><div class="kv"><span>Total</span><span style="color:var(--gold);font-size:19px" id="tot">${rp(bulk?it.p*10:it.p)}</span></div></div>
  <label>Nomor WhatsApp (wajib)</label><input id="bW" value="${esc(ME.wa)}" placeholder="08123456789" inputmode="tel"><p class="sub" style="font-size:12px;margin-top:4px">Nomor ini dipakai owner kalau perlu menghubungimu. Semua data pesanan tampil di website, bukan lewat chat pribadi.</p>
- ${k==="bot"?`<label>Link grup WhatsApp (wajib)</label><input id="bG" placeholder="https://chat.whatsapp.com/…">`:""}
+${k==="bot"?`
+  <label>Pilih Bot</label>
+  <div class="bot-grid" id="buyBotGrid" style="margin-top:8px">
+    ${Object.values(BOT_INSTANCES).map(b => {
+      const on = b.id === BUYBOT;
+      return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" onclick="selectBuyBot('${b.id}')">
+        <span class="bot-badge">${b.id.toUpperCase()}</span>
+        <span class="bot-meta">
+          <b>${esc(b.label)}</b>
+          <small>📱 ${esc(b.waDisplay)}</small>
+          <em>${esc(b.role)}</em>
+        </span>
+        <span class="bot-chk">${on ? "✓" : ""}</span>
+      </button>`;
+    }).join("")}
+  </div>
+  <label>Link grup WhatsApp (wajib)</label>
+  <input id="bG" placeholder="https://chat.whatsapp.com/…">
+`:""}
  <label>Catatan (opsional)</label><input id="bN" placeholder="${buyer?"Pesan untuk owner (email diisi nanti setelah di-ACC)":"Pesan untuk owner"}">
  <button class="btn full" style="margin-top:20px" id="bB" onclick="mkOrder('${k}',BUYSEL.i)">✿ Buat Pesanan & Bayar</button></div>`;
  setTimeout(initReveal,50)}
@@ -2524,7 +3092,16 @@ async function mkOrder(k,i){
   if(k==="panel"){pu=($("#pU")?.value||"").trim().toLowerCase();
    if(!/^[a-z0-9_]{3,16}$/.test(pu)){$("#pU")?.focus();b.disabled=false;return toast("⚠ Username panel wajib diisi (3-16 huruf kecil, angka, atau _)")}
    if(!PUOK){$("#pU")?.focus();b.disabled=false;return toast("⚠ Tunggu pengecekan username selesai atau pakai username lain")}}
-  const j=await api("/api/orders",{b:{cat:k,idx:i,wa:$("#bW").value,qty:it.k==="bulk"?BUYSEL.qty:1,group:$("#bG")?.value,note:$("#bN").value,panelUser:pu}});go("order-"+j.order.id)}
+  const j=await api("/api/orders",{b:{
+  cat:k,
+  idx:i,
+  wa:$("#bW").value,
+  qty:it.k==="bulk"?BUYSEL.qty:1,
+  group:$("#bG")?.value,
+  note:$("#bN").value,
+  panelUser:pu,
+  botVer: k==="bot" ? BUYBOT : undefined
+}});;go("order-"+j.order.id)}
  catch(e){toast("⚠ "+e.message);b.disabled=false;if(k==="panel"&&/username/i.test(e.message))puSet("bad",e.message)}}
 
 /* Pesanan */
@@ -3001,27 +3578,73 @@ const SOC=[["Telegram","https://t.me/radipgtg","tg",'<svg viewBox="0 0 24 24"><p
 ["WhatsApp","https://wa.me/"+WA,"wa",'<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>'],
 ["Instagram","https://instagram.com/radipppppp","ig",'<svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" style="fill:currentColor;stroke:none"/></svg>']];
 function socHTML(){return `<div class="soc">${SOC.map(([n,u,c,i])=>`<a class="${c}" href="${u}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${i}</a>`).join("")}</div>`}
-async function vGratis(){
- app.innerHTML=`<section class="gr glass pad"><div class="center"><p class="sub">Memuat…</p></div></section>`;
- let st={claimed:false};try{st=await api("/api/claim/status")}catch(e){st={error:e.message}}
- const ben=["Akses fitur premium bot WhatsApp selama 30 hari","Aktif otomatis di nomor WhatsApp yang kamu isi","Gratis, tanpa bayar dan tanpa kartu"];
- const body=st.error?`<div class="note">⚠ ${esc(st.error)}</div>`
- :st.claimed?`<div class="gr-ok"><b>✓</b><div><h3>Premium sudah kamu klaim</h3><p class="sub">Nomor <b>+${esc(st.number||"")}</b> aktif premium sampai <b>${st.expiredAt?dt(st.expiredAt):"-"}</b>. Klaim gratis hanya berlaku satu kali per akun.</p></div></div>
- <div class="acts c" style="margin-top:16px"><button class="btn" onclick="go('katalog')">🛍️ Lihat Katalog</button></div>`
- :`<label for="gW">Nomor WhatsApp</label><input id="gW" inputmode="tel" value="${esc(ME.wa||"")}" placeholder="08123456789" onkeydown="if(event.key==='Enter')claimGo()">
- <p class="sub" style="font-size:12px;margin-top:6px">Nomor ini yang dipakai bot untuk mengaktifkan premium. Pastikan benar dan aktif di WhatsApp, karena tidak bisa diganti setelah diklaim.</p>
- <button class="btn full" style="margin-top:16px" id="gB" onclick="claimGo()">🎁 Klaim Premium Gratis</button>
- <p class="sub" style="font-size:12px;margin-top:10px;text-align:center">Satu kali per akun dan per nomor WhatsApp.</p>`;
- app.innerHTML=`<section class="gr glass pad"><div class="gr-h"><span class="gr-i">🎁</span><span class="eyebrow">Hadiah dari hutan</span><h2>Premium Gratis 30 Hari</h2><p class="sub">Coba fitur premium Totoro AI tanpa biaya. Cukup isi nomor WhatsApp-mu.</p></div>
- <ul class="gr-b">${ben.map(x=>`<li><i>✓</i>${x}</li>`).join("")}</ul>${body}</section>`;
- setTimeout(initReveal,50)}
+
 async function claimGo(){
- const b=$("#gB"),wa=$("#gW").value;
- if(wa.replace(/\D/g,"").length<10)return toast("⚠ Nomor WhatsApp belum benar");
- b.disabled=true;b.textContent="Memproses…";
- try{const j=await api("/api/claim",{b:{wa}});if(ME&&!ME.wa)ME.wa=j.number;toast("🎁 Premium aktif 30 hari!");vGratis()}
- catch(e){toast("⚠ "+e.message);b.disabled=false;b.textContent="🎁 Klaim Premium Gratis"}}
-Object.entries({"Premium Gratis 30 Hari":"Free 30-Day Premium","Premium Gratis":"Free Premium","Hadiah dari hutan":"A gift from the forest","Klaim Premium Gratis":"Claim Free Premium","Coba fitur premium Totoro AI tanpa biaya. Cukup isi nomor WhatsApp-mu.":"Try Totoro AI premium features for free. Just enter your WhatsApp number.","Akses fitur premium bot WhatsApp selama 30 hari":"Premium bot features for 30 days","Aktif otomatis di nomor WhatsApp yang kamu isi":"Activated automatically on the WhatsApp number you enter","Gratis, tanpa bayar dan tanpa kartu":"Free, no payment or card needed","Satu kali per akun dan per nomor WhatsApp.":"Once per account and per WhatsApp number."}).forEach(([k,v])=>{if(!TD.has(k))TD.set(k,v)});
+  const b=$("#gB"), wa=$("#gW").value;
+  const digits=String(wa||"").replace(/\D/g,"");
+  if(digits.length<10){toast("🌰 Nomor WhatsApp-nya belum pas, coba periksa lagi");return}
+  b.disabled=true; b.textContent="Mengirim ke hutan…";
+  try{
+    const j=await api("/api/claim",{b:{wa}});
+    if(ME&&!ME.wa)ME.wa=j.number;
+    toast("🍃 Hadiah dalam perjalanan!");
+    vGratis();
+  }catch(e){
+    toast("🍂 "+(e.message||"Hadiah belum bisa terkirim"));
+    b.disabled=false; b.textContent="🍃 Terima Hadiah";
+  }
+}
+
+/* ═══ HALAMAN PREMIUM GRATIS — FULLCODE ═══ */
+async function vGratis(){
+  if(!ME){NEXT="gratis";go("masuk");return}
+  app.innerHTML=`<section class="gr-wrap"><div class="gr-loading">Memanggil hadiah dari hutan…</div></section>`;
+  
+  let st={claimed:false};
+  try{st=await api("/api/claim/status")}catch(e){st={error:e.message}}
+  
+  const ben=[
+    "Akses fitur premium bot WhatsApp selama 30 hari",
+    "Aktif otomatis di nomor WhatsApp yang kamu isi",
+    "Gratis, tanpa bayar dan tanpa kartu"
+  ];
+  
+  const body = st.error
+    ? `<div class="gr-error">🍂 ${esc(st.error)}</div>`
+    : st.claimed
+      ? `<div class="gr-already">
+          <span class="gr-already-icon">🌿</span>
+          <div>
+            <h3>Hadiah sudah kamu terima</h3>
+            <p>Nomor <b>+${esc(st.number||"")}</b> aktif premium sampai <b>${st.expiredAt?dt(st.expiredAt):"-"}</b>. Hadiah gratis hanya sekali per akun dan per nomor, seperti biji ek yang hanya tumbuh sekali di musim semi.</p>
+          </div>
+        </div>
+        <button class="gr-btn gr-btn-ghost" onclick="go('katalog')">🛍️ Jelajahi Katalog</button>`
+      : `<label class="gr-label" for="gW">Nomor WhatsApp-mu</label>
+        <input id="gW" class="gr-input" inputmode="tel" value="${esc(ME.wa||"")}" placeholder="08123456789" onkeydown="if(event.key==='Enter')claimGo()">
+        <p class="gr-hint">Nomor ini yang dipakai bot untuk mengantarkan hadiahnya. Pastikan benar dan aktif, karena tidak bisa diganti setelah diklaim — seperti menanam biji ek, harus di tempat yang tepat.</p>
+        <button class="gr-btn" id="gB" onclick="claimGo()">🍃 Terima Hadiah</button>
+        <p class="gr-note">Satu kali per akun dan per nomor WhatsApp.</p>`;
+  
+  app.innerHTML=`<section class="gr-wrap">
+    <div class="gr-box">
+      <div class="gr-deco gr-deco-1"></div>
+      <div class="gr-deco gr-deco-2"></div>
+      <div class="gr-head">
+        <span class="gr-icon">🎁</span>
+        <span class="gr-eyebrow">✦ Hadiah dari hutan</span>
+        <h2>Premium Gratis 30 Hari</h2>
+        <p class="gr-sub">Seperti menerima biji ek dari Totoro yang tumbuh jadi pohon besar — nikmati semua sihir premium selama 30 hari, tanpa biaya, tanpa kartu.</p>
+      </div>
+      <ul class="gr-benefits">
+        ${ben.map(x=>`<li><i>✓</i><span>${x}</span></li>`).join("")}
+      </ul>
+      ${body}
+    </div>
+    <p class="gr-footer">🌿 _Hadiah dari hutan Totoro, untukmu yang mampir._</p>
+  </section>`;
+  setTimeout(initReveal,50);
+}
 
 /* ===== Penataan ulang DOM: halaman beli jadi dua panel ===== */
 let RLB=false;
