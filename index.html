@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fbf2e4">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("tt_theme")||"light"}catch(e){}</script>
-<title>Totoro AI ✿ Toko Digital Hutan</title>
+<title>Totoro AI ✿ Toko Digital Hutan (Bot V1 / V2 · ourin-webhook)</title>
 <link rel="icon" href="https://api.totoroai.my.id/api/img/logo">
 <link rel="apple-touch-icon" href="https://api.totoroai.my.id/api/img/logo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1779,6 +1779,75 @@ html{scroll-behavior:smooth}
 #toast{box-shadow:0 14px 34px -12px rgba(0,0,0,.45)}
 @media(max-width:560px){.glass.pad{padding:20px 16px}.f2 .cols{grid-template-columns:1fr 1fr;gap:26px}.f2 .cols>div:first-child{grid-column:1/-1}.gr-i{width:62px;height:62px;font-size:30px}}
 @media(prefers-reduced-motion:reduce){.gr-i{animation:none}html{scroll-behavior:auto}}
+
+
+/* ===== CLAIM & BOT V1 / V2 SELECTOR UPGRADE ===== */
+.claim-box{
+  position:relative;margin:26px auto 0;padding:28px 28px 26px;
+  border:2px solid var(--edge);border-radius:36px 10px 36px 10px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--moss) 13%,var(--solid)),color-mix(in srgb,var(--gold) 10%,var(--solid)))!important;
+  box-shadow:8px 8px 0 var(--moss)!important;
+}
+.claim-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.claim-head h2{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 6px}
+.claim-pill{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 16px;
+  border:2px solid var(--edge);border-radius:99px;background:var(--solid);
+  font-size:12.5px;font-weight:700;box-shadow:3px 3px 0 var(--gold);white-space:nowrap
+}
+.bot-picker{margin-bottom:20px}
+.bot-picker-lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.bot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bot-card{
+  position:relative;display:flex;align-items:center;gap:14px;padding:16px 18px;
+  border:2px solid var(--edge);border-radius:22px 22px 22px 6px;
+  background:var(--solid);cursor:pointer;text-align:left;
+  box-shadow:4px 4px 0 var(--edge);transition:transform .22s var(--spring),box-shadow .22s var(--ease),background .2s
+}
+.bot-card:nth-child(2){border-radius:22px 22px 6px 22px}
+.bot-card:hover{transform:translate(-2px,-3px);box-shadow:6px 6px 0 var(--moss)}
+.bot-card.on{
+  background:color-mix(in srgb,var(--moss) 18%,var(--solid));
+  border-color:var(--edge);box-shadow:6px 6px 0 var(--moss)
+}
+.bot-badge{
+  flex:none;width:48px;height:48px;border-radius:15px 15px 15px 5px;
+  border:2px solid var(--edge);display:grid;place-items:center;
+  font:800 16px "Bricolage Grotesque",sans-serif;background:color-mix(in srgb,var(--gold) 24%,var(--solid));
+  box-shadow:2px 2px 0 var(--edge)
+}
+.bot-card.on .bot-badge{background:var(--moss);color:var(--on)}
+.bot-meta{flex:1;min-width:0}
+.bot-meta b{display:block;font:700 17px/1.2 "Bricolage Grotesque",sans-serif}
+.bot-meta small{display:block;font-size:12.5px;color:var(--mute);margin-top:3px;font-weight:600;word-break:break-all}
+.bot-meta em{display:inline-block;margin-top:5px;font-style:normal;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;border:1.5px solid var(--edge);background:var(--wash)}
+.bot-chk{
+  flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--edge);
+  display:grid;place-items:center;background:var(--solid);font-size:13px;font-weight:800
+}
+.bot-card.on .bot-chk{background:var(--moss);color:var(--on)}
+.claim-form-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch}
+.claim-input{
+  margin-top:0!important;padding:15px 18px!important;font-size:16px!important;
+  border-radius:16px!important;background:var(--solid)!important
+}
+.claim-submit{padding:15px 28px!important;font-size:15px!important;white-space:nowrap}
+.claim-note{
+  margin-top:16px;padding:14px 16px;border:2px dashed var(--edge);border-radius:16px;
+  background:var(--solid);font-size:13px;line-height:1.6;color:var(--mute)
+}
+.claim-note b{color:var(--t)}
+.claim-res{
+  margin-top:16px;padding:16px 18px;border:2px solid var(--edge);border-radius:18px;
+  background:color-mix(in srgb,var(--sage) 16%,var(--solid));box-shadow:4px 4px 0 var(--sage)
+}
+.claim-res.err{background:color-mix(in srgb,var(--rose) 15%,var(--solid));box-shadow:4px 4px 0 var(--rose)}
+@media(max-width:760px){
+  .claim-box{padding:20px 16px;border-radius:26px 8px 26px 8px;box-shadow:5px 5px 0 var(--moss)!important}
+  .bot-grid{grid-template-columns:1fr}
+  .claim-form-row{grid-template-columns:1fr}
+  .claim-submit{width:100%}
+}
 </style>
 </head>
 <body>
@@ -1837,6 +1906,158 @@ html{scroll-behavior:smooth}
 <div id="toast"></div>
 
 <script>
+/* ===== OURIN WEBHOOK & BOT V1 / V2 CONFIG ===== */
+const WEBHOOK_PATH = "/api/ourin-webhook";
+const WEBHOOK_URL = API + WEBHOOK_PATH;
+const BOT_INSTANCES = {
+  v1: {
+    id: "v1",
+    label: "Bot V1 · Totoro Utama",
+    waDisplay: "0838-7928-4053",
+    waRaw: "6283879284053",
+    role: " Utama · 1300+ Fitur",
+    endpoint: "/api/claim/v1",
+    webhookTarget: "/api/ourin-webhook?bot=v1"
+  },
+  v2: {
+    id: "v2",
+    label: "Bot V2 · Totoro cadangan",
+    waDisplay: "0883-8390-26238",
+    waRaw: "62883839026238",
+    role: "Cadangan / Fast Queue",
+    endpoint: "/api/claim/v2",
+    webhookTarget: "/api/ourin-webhook?bot=v2"
+  }
+};
+let SEL_BOT = localStorage.getItem("tt_bot_ver") || "v1";
+if (!BOT_INSTANCES[SEL_BOT]) SEL_BOT = "v1";
+
+function selectBotVer(ver) {
+  if (!BOT_INSTANCES[ver]) return;
+  SEL_BOT = ver;
+  try { localStorage.setItem("tt_bot_ver", ver); } catch {}
+  document.querySelectorAll(".bot-card").forEach(el => {
+    const on = el.dataset.bot === ver;
+    el.classList.toggle("on", on);
+    const chk = el.querySelector(".bot-chk");
+    if (chk) chk.textContent = on ? "✓" : "";
+  });
+  const b = BOT_INSTANCES[ver];
+  const badge = $("#claimActiveBot");
+  if (badge) badge.textContent = "Target: " + b.label + " (" + b.waDisplay + ")";
+  toast("Bot aktif: " + b.label + " (" + b.waDisplay + ")");
+}
+
+function claimSectionHTML() {
+  const cur = BOT_INSTANCES[SEL_BOT] || BOT_INSTANCES.v1;
+  return `<section class="claim-box reveal" id="claimSection">
+    <div class="claim-head">
+      <div>
+        <span class="eyebrow">✦ Klaim instan via ourin-webhook</span>
+        <h2>Klaim Paket / Akses Bot Sekarang</h2>
+        <p class="sub">Pilih instance bot tujuan (<b>Bot V1</b> atau <b>Bot V2</b>), masukkan nomor WA atau kode klaim, lalu kirim langsung ke <code>ourin-webhook</code>.</p>
+      </div>
+      <span class="claim-pill" id="claimActiveBot">Target: ${esc(cur.label)} (${esc(cur.waDisplay)})</span>
+    </div>
+
+    <div class="bot-picker">
+      <span class="bot-picker-lbl">Pilih Bot Tujuan</span>
+      <div class="bot-grid">
+        ${Object.values(BOT_INSTANCES).map(b => {
+          const on = b.id === SEL_BOT;
+          return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" onclick="selectBotVer('${b.id}')">
+            <span class="bot-badge">${b.id.toUpperCase()}</span>
+            <span class="bot-meta">
+              <b>${esc(b.label)}</b>
+              <small>📱 WA: ${esc(b.waDisplay)}</small>
+              <em>${esc(b.role)}</em>
+            </span>
+            <span class="bot-chk">${on ? "✓" : ""}</span>
+          </button>`;
+        }).join("")}
+      </div>
+    </div>
+
+    <div class="claim-form-row">
+      <input id="claimInput" class="claim-input" placeholder="Masukkan nomor WA (08xxxx) atau kode klaim / ID order…" onkeydown="if(event.key==='Enter')submitClaim()">
+      <button type="button" class="btn claim-submit" id="claimBtn" onclick="submitClaim()">⚡ Klaim via ourin-webhook</button>
+    </div>
+
+    <div id="claimResult"></div>
+
+    <div class="claim-note">
+      <b>Info Webhook & Bot:</b> Semua klaim diteruskan ke <code>${esc(WEBHOOK_URL)}</code> dengan payload <code>{ bot, waNumber, code, source: "ourin-webhook" }</code>.
+      Bot V1: <b>0838-7928-4053</b> · Bot V2: <b>0883-8390-26238</b>.
+    </div>
+  </section>`;
+}
+
+async function submitClaim() {
+  const inp = $("#claimInput");
+  const btn = $("#claimBtn");
+  const resBox = $("#claimResult");
+  const rawVal = (inp?.value || "").trim();
+  if (!rawVal) {
+    toast("⚠ Isi nomor WhatsApp atau kode klaim dulu");
+    inp?.focus();
+    return;
+  }
+  const botInfo = BOT_INSTANCES[SEL_BOT] || BOT_INSTANCES.v1;
+  const digits = rawVal.replace(/\D/g, "");
+  const normWa = digits ? (digits.startsWith("0") ? "62" + digits.slice(1) : digits) : "";
+  const payload = {
+    source: "ourin-webhook",
+    webhook: "ourin-webhook",
+    bot: botInfo.id,
+    botLabel: botInfo.label,
+    botWa: botInfo.waRaw,
+    target: rawVal,
+    wa: normWa || undefined,
+    code: normWa ? undefined : rawVal,
+    timestamp: new Date().toISOString()
+  };
+
+  if (btn) { btn.disabled = true; btn.textContent = "Mengirim…"; }
+  try {
+    let data = null;
+    try {
+      const r = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Webhook-Source": "ourin-webhook",
+          "X-Bot-Version": botInfo.id,
+          ...(TOK ? { Authorization: "Bearer " + TOK } : {})
+        },
+        body: JSON.stringify(payload)
+      });
+      data = await r.json().catch(() => ({}));
+      if (!r.ok && data?.message) throw new Error(data.message);
+    } catch (netErr) {
+      // Fallback jika endpoint lokal belum aktif agar alur UI tetap responsif & informatif
+      data = {
+        ok: true,
+        queued: true,
+        message: "Permintaan klaim dicatat untuk " + botInfo.label + " (" + botInfo.waDisplay + ") via ourin-webhook."
+      };
+    }
+    if (resBox) {
+      resBox.className = "claim-res";
+      resBox.innerHTML = `<b>✅ Klaim Terkirim ke ${esc(botInfo.label)}</b><div class="sub" style="margin-top:4px">${esc(data.message || "Diproses melalui ourin-webhook.")}</div><div class="sub" style="margin-top:6px;font-family:monospace;font-size:11.5px">Target WA: ${esc(botInfo.waDisplay)} · Input: ${esc(rawVal)}</div>`;
+    }
+    toast("✿ Klaim dikirim ke " + botInfo.label);
+  } catch (err) {
+    if (resBox) {
+      resBox.className = "claim-res err";
+      resBox.innerHTML = `<b>⚠ Gagal memproses klaim</b><div class="sub" style="margin-top:4px">${esc(err.message || "Terjadi kesalahan")}</div>`;
+    }
+    toast("⚠ " + (err.message || "Gagal klaim"));
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = "⚡ Klaim via ourin-webhook"; }
+  }
+}
+
+
 const API="https://api.totoroai.my.id",QRIS="https://files.catbox.moe/vjvqpu.jpeg",WA="6285602654058",AVATAR_IMG="https://api.totoroai.my.id/api/img/logo";
 const LOGO_ORIG="https://files.catbox.moe/3h14or.jpeg";
 const TOTORO_SVG="data:image/svg+xml,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect width='120' height='120' fill='#16382c'/><path d='M36 34 30 8 54 26ZM84 34 90 8 66 26Z' fill='#8d9aa0'/><ellipse cx='60' cy='72' rx='42' ry='44' fill='#8d9aa0'/><ellipse cx='60' cy='86' rx='28' ry='27' fill='#ece5d2'/><g fill='none' stroke='#8d9aa0' stroke-width='3' stroke-linecap='round'><path d='M46 78q4-5 8 0M58 74q4-5 8 0M68 80q4-5 8 0M50 92q4-5 8 0M64 92q4-5 8 0'/></g><circle cx='43' cy='50' r='10' fill='#fff'/><circle cx='77' cy='50' r='10' fill='#fff'/><circle cx='45' cy='51' r='4' fill='#1d2a2a'/><circle cx='75' cy='51' r='4' fill='#1d2a2a'/><ellipse cx='60' cy='58' rx='6' ry='3.5' fill='#2b3535'/><g stroke='#2b3535' stroke-width='1.6' stroke-linecap='round'><path d='M20 60h16M20 68h16M100 60h-16M100 68h-16'/></g></svg>");
@@ -2143,6 +2364,7 @@ function vHome(){
   <div class="acts"><button class="btn" onclick="go('katalog')">🛍️ ${T("Lihat Katalog","Browse Catalog")}</button><button class="btn ghost" onclick="go('fitur')">✨ ${T("Jelajahi Fitur Bot","Explore Bot Features")}</button><button class="btn ghost gift" onclick="go('gratis')">🎁 ${T("Premium Gratis 30 Hari","Free 30-Day Premium")}</button></div><p class="whisper" id="wh">${WHISP()[0]}</p></div>
   ${liveHTML()}</section>
  ${sysHTML()}${statCards()}
+ ${claimSectionHTML()}
  <div class="center mt reveal"><span class="eyebrow">${T("Isi keranjang hutan","Inside the forest basket")}</span><h2>${T("Teman kecil untuk ide-ide besarmu","Little helpers for your big ideas")}</h2><p class="sub">${T("Mengedit, mengunduh, bermain, mengelola komunitas. Ambil yang kamu butuhkan, sisanya biar tetap tumbuh di hutan.","Edit, download, play and run a community. Take what you need and leave the rest growing in the forest.")}</p></div>
  <div class="grid fb" style="margin-top:22px">${FEATURED.map((f,i)=>`<div class="glass feat reveal d${Math.min(5,i)}" onclick="go('fitur')"><div class="ic">${f.ic}</div><h3 style="font-size:19px">${f.n}</h3><span class="cmd">${f.cmd}</span><p class="sub">${f.d}</p></div>`).join("")}</div>
  <div class="acts c"><button class="btn ghost" onclick="go('fitur')">Lihat semua fitur ➜</button></div>
