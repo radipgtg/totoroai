@@ -1617,6 +1617,37 @@ html body .help p{margin-top:8px}
  html body #app:has(>.pf) .split{grid-template-columns:1fr}
 }
 
+
+/* ================= V8: RESET SISA CSS LAMA + RAPIKAN ================= */
+/* kartu katalog: buang aturan lama (span 4 / min-height 360 / baris) yang bikin kartu pertama beda */
+html body .catmap .cat:nth-child(n){grid-column:auto;grid-row:auto;min-height:0;padding:0;flex-direction:column;align-items:stretch;gap:0}
+html body .catmap .cat:nth-child(n) h3{font-size:23px!important}
+html body .catmap .cat:nth-child(n) .cat-b{padding:6px 24px 24px}
+html body .catmap .cat:nth-child(n) .cat-b .sub{padding:0}
+
+/* chip & statistik: bentuk seragam, tanpa miring */
+html body .ct-trust span,html body .ct-trust span:nth-child(even){border-radius:12px;box-shadow:2px 2px 0 var(--edge)}
+html body .sgrid .stat,html body .sgrid .stat:nth-child(even),html body .sgrid .stat:nth-child(n){border-radius:20px;transform:none}
+html body .pf-chip,html body .pf-chip:nth-child(even){border-radius:12px}
+html body .cat-tags i{border-radius:8px}
+
+/* hover menempel di layar sentuh bikin kartu loncat saat scroll: matikan */
+@media(hover:none){
+ html body :is(.cat,.tile,.feat,.ord,.shot,.tc,.usg-p,.usg-i,.cmdc,.lr,.pkg,.pk,.btn,.drawer-link):hover{transform:none}
+ html body :is(.cat,.tile,.feat,.ord,.shot,.tc,.usg-p,.usg-i,.cmdc,.lr,.pk):hover{box-shadow:5px 5px 0 var(--ca,var(--moss))!important}
+ html body .reveal{transition-duration:.25s}
+}
+
+@media(max-width:640px){
+ html body .catmap .cat:nth-child(n){display:grid;grid-template-columns:78px minmax(0,1fr);border-radius:22px 22px 22px 6px}
+ html body .catmap .cat:nth-child(n) h3{font-size:18px!important}
+ html body .catmap .cat:nth-child(n) .cat-b{padding:14px}
+ html body .wrap{min-height:40vh}
+ html body .f2{margin-top:36px;border-radius:32px 32px 0 0;padding-top:40px}
+ html body .sgrid .stat{border-radius:16px}
+ html body .glass:hover{transform:none}
+}
+
 </style>
 </head>
 <body>
