@@ -2409,6 +2409,45 @@ html{scroll-behavior:smooth}
   .gr-icon{width:64px;height:64px;font-size:30px}
 }
 
+
+/* ===== Totoro refresh: pemilihan bot & premium claim ===== */
+.bot-grid#buyBotGrid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px!important;margin-top:12px!important}
+#buyBotGrid .bot-card{width:100%!important;min-width:0!important;min-height:132px!important;display:grid!important;grid-template-columns:46px minmax(0,1fr) 24px!important;align-items:center!important;gap:11px!important;padding:15px!important;border:1px solid var(--ln)!important;border-radius:18px!important;background:linear-gradient(145deg,var(--card),var(--inset))!important;box-shadow:0 8px 22px rgba(var(--shc),.10)!important;text-align:left!important;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease!important}
+#buyBotGrid .bot-card:hover{transform:translateY(-3px)!important;border-color:rgba(var(--acc),.42)!important;box-shadow:0 13px 26px rgba(var(--shc),.16)!important}
+#buyBotGrid .bot-card.on{border:1.5px solid var(--moss)!important;background:linear-gradient(145deg,rgba(var(--acc),.15),var(--card))!important;box-shadow:0 0 0 3px rgba(var(--acc),.10),0 12px 25px rgba(var(--shc),.14)!important}
+#buyBotGrid .bot-badge{width:46px!important;height:46px!important;display:grid!important;place-items:center!important;border-radius:15px!important;background:rgba(var(--acc),.12)!important;color:var(--moss)!important;font-size:14px!important;font-weight:900!important;letter-spacing:.02em!important}
+#buyBotGrid .bot-card.on .bot-badge{background:var(--moss)!important;color:var(--on)!important}
+#buyBotGrid .bot-meta{gap:4px!important;min-width:0!important}
+#buyBotGrid .bot-meta b{font-size:13px!important;line-height:1.35!important;color:var(--t)!important;white-space:normal!important}
+#buyBotGrid .bot-meta small{font-size:11px!important;color:var(--mute)!important}
+#buyBotGrid .bot-meta em{font-size:10px!important;line-height:1.35!important;color:var(--moss)!important;font-style:normal!important}
+#buyBotGrid .bot-chk{width:22px!important;height:22px!important;min-width:22px!important;border-radius:50%!important;border:1px solid var(--ln)!important;display:grid!important;place-items:center!important;color:transparent!important;font-size:12px!important;font-weight:900!important}
+#buyBotGrid .bot-card.on .bot-chk{border-color:var(--moss)!important;background:var(--moss)!important;color:var(--on)!important}
+#claimSection{overflow:hidden;border-radius:26px!important;border:1px solid rgba(var(--acc),.25)!important;background:linear-gradient(120deg,rgba(var(--acc),.14),var(--card) 52%,rgba(var(--gld),.10))!important;box-shadow:0 18px 44px rgba(var(--shc),.15)!important}
+#claimSection .claim-cta-inner{position:relative;z-index:1;gap:22px!important;padding:26px!important}
+#claimSection .claim-cta-emoji{width:62px;height:62px;display:grid;place-items:center;border-radius:20px;background:rgba(var(--gld),.16);font-size:30px;flex:none}
+#claimSection .claim-cta-eyebrow{font-size:10px;letter-spacing:.16em;font-weight:800;color:var(--moss)}
+#claimSection .claim-cta-text h2{margin:5px 0 7px;font-size:clamp(21px,3vw,29px)!important}
+#claimSection .claim-cta-text p{max-width:560px;font-size:13px!important;line-height:1.7}
+#claimSection .claim-cta-btn{border-radius:16px!important;padding:13px 18px!important;min-width:160px!important;box-shadow:0 8px 20px rgba(var(--acc2),.22)!important}
+.gr-wrap{max-width:700px!important;margin:30px auto!important}
+.gr-box{border:1px solid rgba(var(--acc),.22)!important;border-radius:28px!important;background:linear-gradient(155deg,var(--card),var(--inset))!important;box-shadow:0 22px 60px rgba(var(--shc),.17)!important;padding:clamp(22px,5vw,42px)!important}
+.gr-head{max-width:520px;margin:0 auto 22px!important}
+.gr-icon{width:76px!important;height:76px!important;border-radius:24px!important;display:grid!important;place-items:center!important;margin:0 auto 14px!important;background:linear-gradient(145deg,rgba(var(--gld),.22),rgba(var(--acc),.14))!important;border:1px solid rgba(var(--acc),.2)!important;box-shadow:0 10px 28px rgba(var(--shc),.12)!important}
+.gr-head h2{font-size:clamp(25px,5vw,34px)!important;line-height:1.15!important;margin:8px 0 10px!important}
+.gr-sub{max-width:480px;margin:0 auto!important;line-height:1.8!important}
+.gr-benefits{display:grid!important;gap:10px!important;margin:24px 0!important;padding:0!important;list-style:none!important}
+.gr-benefits li{display:flex!important;align-items:flex-start!important;gap:11px!important;padding:12px 14px!important;border:1px solid var(--ln)!important;border-radius:14px!important;background:rgba(var(--acc),.045)!important;font-size:13px!important}
+.gr-benefits li i{width:22px;height:22px;min-width:22px;border-radius:50%;display:grid;place-items:center;background:rgba(var(--acc),.17);color:var(--moss);font-style:normal;font-weight:900}
+.gr-label{font-size:12px!important;letter-spacing:.02em!important}
+.gr-input{min-height:52px!important;border-radius:15px!important;padding:14px 16px!important;background:var(--inset)!important}
+.gr-hint{font-size:11.5px!important;line-height:1.7!important;margin:8px 2px 15px!important}
+.gr-btn{min-height:52px!important;border-radius:15px!important;font-weight:800!important;letter-spacing:.01em!important;box-shadow:0 9px 22px rgba(var(--acc2),.22)!important}
+.gr-note,.gr-footer{font-size:11px!important;line-height:1.7!important}
+.gr-already{display:flex!important;gap:14px!important;padding:17px!important;border:1px solid rgba(var(--acc),.25)!important;border-radius:17px!important;background:rgba(var(--acc),.08)!important;margin:18px 0!important}
+.gr-already-icon{font-size:26px!important}
+@media(max-width:700px){.bot-grid#buyBotGrid{grid-template-columns:1fr!important;gap:9px!important}#buyBotGrid .bot-card{min-height:82px!important;grid-template-columns:42px minmax(0,1fr) 22px!important;padding:12px!important}#buyBotGrid .bot-badge{width:42px!important;height:42px!important}#claimSection .claim-cta-inner{padding:20px!important;align-items:flex-start!important;flex-wrap:wrap!important}#claimSection .claim-cta-btn{width:100%!important}.gr-wrap{margin:16px auto!important}.gr-box{border-radius:22px!important}}
+
 </style>
 </head>
 <body>
@@ -2485,14 +2524,24 @@ const BOT_INSTANCES = {
     label: "Totoro Ai V2",
     waDisplay: "0883-8390-26238",
     waRaw: "62883839026238",
-    role: "Fast respon V2",
+    role: "Fast respon · Bot V2",
     endpoint: "/api/claim/v2",
     webhookTarget: "/api/ourin-webhook?bot=v2"
+  },
+  v3: {
+    id: "v3",
+    label: "Totoro Ai V3",
+    waDisplay: "0857-1637-5649",
+    waRaw: "6285716375649",
+    role: "Generasi terbaru · Bot V3",
+    endpoint: "/api/claim/v3",
+    webhookTarget: "/api/ourin-webhook?bot=v3"
   }
 };
 let SEL_BOT = localStorage.getItem("tt_bot_ver") || "v1";
-let BUYBOT = "v1";   // pilihan bot untuk sewa
+let BUYBOT = localStorage.getItem("tt_buy_bot_ver") || "v1"; // pilihan bot untuk sewa
 if (!BOT_INSTANCES[SEL_BOT]) SEL_BOT = "v1";
+if (!BOT_INSTANCES[BUYBOT]) BUYBOT = "v1";
 
 function selectBotVer(ver) {
   if (!BOT_INSTANCES[ver]) return;
@@ -2517,9 +2566,11 @@ function selectBotVer(ver) {
 function selectBuyBot(v) {
   if (!BOT_INSTANCES[v]) return;
   BUYBOT = v;
+  try { localStorage.setItem("tt_buy_bot_ver", v); } catch {}
   document.querySelectorAll("#buyBotGrid .bot-card").forEach(el => {
     const on = el.dataset.bot === v;
     el.classList.toggle("on", on);
+    el.setAttribute("aria-pressed", String(on));
     const chk = el.querySelector(".bot-chk");
     if (chk) chk.textContent = on ? "✓" : "";
   });
@@ -2915,11 +2966,9 @@ function vHome(){
   ${liveHTML()}</section>
  ${sysHTML()}${statCards()}
  ${claimSectionHTML()}
- <div class="center mt reveal"><span class="eyebrow">${T("Isi keranjang hutan","Inside the forest basket")}</span><h2>${T("Teman kecil untuk ide-ide besarmu","Little helpers for your big ideas")}</h2><p class="sub">${T("Mengedit, mengunduh, bermain, mengelola komunitas. Ambil yang kamu butuhkan, sisanya biar tetap tumbuh di hutan.","Edit, download, play and run a community. Take what you need and leave the rest growing in the forest.")}</p></div>
- <div class="grid fb" style="margin-top:22px">${FEATURED.map((f,i)=>`<div class="glass feat reveal d${Math.min(5,i)}" onclick="go('fitur')"><div class="ic">${f.ic}</div><h3 style="font-size:19px">${f.n}</h3><span class="cmd">${f.cmd}</span><p class="sub">${f.d}</p></div>`).join("")}</div>
- <div class="acts c"><button class="btn ghost" onclick="go('fitur')">Lihat semua fitur ➜</button></div>
+
  ${demoHTML()}<section id="usageHome" class="mt"></section><section id="rkHome" class="mt"></section><div class="center mt reveal"><span class="eyebrow">Jendela kecil ke dunia bot</span><h2>Lihat apa saja yang bisa dilakukan</h2><p class="sub" style="margin-bottom:18px">Intip beberapa contoh game dan tampilan interaktif yang bisa dinikmati langsung melalui WhatsApp.</p></div>${shots(GAMES.slice(0,3),false)}<div class="acts c"><button class="btn ghost" onclick="go('fitur')">Lihat semua showcase ➜</button></div>
- <div class="center mt reveal"><span class="eyebrow">Jalan setapak layanan</span><h2>Apa yang ingin kamu temukan?</h2><p class="sub" style="margin-bottom:20px">Setiap kartu punya penjelasan dan pilihan paket. Baca pelan-pelan, lalu pilih yang paling sesuai dengan kebutuhanmu.</p></div>${cards()}
+
  <div class="center mt reveal"><span class="eyebrow">Peta perjalanan</span><h2>Empat langkah menuju layananmu</h2><p class="sub">Ikuti petunjuk kecil ini. Kalau ada yang terasa membingungkan, tim kami siap membantu.</p></div><div class="steps"><div class="glass step reveal"><h3>Masuk Akun</h3><p class="sub">Daftar sekali dengan email. Semua transaksimu tersimpan di Profil.</p></div><div class="glass step reveal d1"><h3>Pilih Paket</h3><p class="sub">Buka katalog, baca penjelasannya, lalu isi nomor WhatsApp (dan link grup untuk sewa bot).</p></div><div class="glass step reveal d2"><h3>Bayar & Kirim Bukti</h3><p class="sub">Scan QRIS sesuai total, lalu unggah foto bukti transfer.</p></div><div class="glass step reveal d3"><h3>Owner ACC</h3><p class="sub">Setelah di-ACC, layanan aktif dan semua detailnya tampil di halaman pesanan.</p></div></div>
  <div class="g3 mt"><div class="glass pad reveal"><h3>⚡ Cepat</h3><p class="sub">Bukti transfer langsung masuk ke WhatsApp owner.</p></div><div class="glass pad reveal d1"><h3>☘ Ramah</h3><p class="sub">Owner siap membantu lewat WhatsApp & Telegram.</p></div><div class="glass pad reveal d2"><h3>❀ Bergaransi</h3><p class="sub">Garansi penuh selama masa aktif produk.</p></div></div>
  ${faqHTML()}
@@ -3049,7 +3098,7 @@ ${k==="bot"?`
   <div class="bot-grid" id="buyBotGrid" style="margin-top:8px">
     ${Object.values(BOT_INSTANCES).map(b => {
       const on = b.id === BUYBOT;
-      return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" onclick="selectBuyBot('${b.id}')">
+      return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" aria-pressed="${on}" onclick="selectBuyBot('${b.id}')">
         <span class="bot-badge">${b.id.toUpperCase()}</span>
         <span class="bot-meta">
           <b>${esc(b.label)}</b>
