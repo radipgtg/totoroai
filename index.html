@@ -4324,11 +4324,12 @@ async function vGratis(){
   let st={claimed:false};
   try{st=await api("/api/claim/status")}catch(e){st={error:e.message}}
   
-  const ben=[
-    "Akses fitur premium bot WhatsApp selama 30 hari",
-    "Aktif otomatis di nomor WhatsApp yang kamu isi",
-    "Gratis, tanpa bayar dan tanpa kartu"
-  ];
+ const ben = [
+  "Benih keajaiban fitur premium bot WhatsApp mekar selama 30 hari",
+  "Tumbuh otomatis bersama embun di nomor WhatsApp pilihanmu",
+  "Hadiah tulus dari hutan Totoro, gratis tanpa biaya dan tanpa kartu"
+];
+
   
   const body = st.error
     ? `<div class="gr-error">🍂 ${esc(st.error)}</div>`
@@ -4338,7 +4339,7 @@ async function vGratis(){
           <div>
             <h3>Hadiah premium berhasil diaktifkan!</h3>
             <p>Premium sudah tercatat untuk nomor <b>+${esc(st.number||"")}</b> dan berlaku sampai <b>${st.expiredAt?dt(st.expiredAt):"-"}</b>.</p>
-            <p class="sub" style="margin-top:8px">✨ Pengumuman klaim hanya tampil di channel resmi, bukan melalui chat pribadi bot.</p>
+            <p class="sub" style="margin-top:8px">🎐 Gerbang istimewa telah terbuka, semua fitur premium kini dalam genggamanmu.</p>
           </div>
         </div>
         <button class="gr-btn gr-btn-ghost" onclick="go('katalog')">🛍️ Jelajahi Katalog</button>`
