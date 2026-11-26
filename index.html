@@ -2643,8 +2643,8 @@ const BOT_INSTANCES = {
   v2: {
     id: "v2",
     label: "Totoro Ai V2",
-    waDisplay: "0883-8390-26238",
-    waRaw: "62883839026238",
+    waDisplay: "0857-1637-5649",
+    waRaw: "6285716375649",
     role: "Fast respon · Bot V2",
     endpoint: "/api/claim/v2",
     webhookTarget: "/api/ourin-webhook?bot=v2"
@@ -3320,7 +3320,7 @@ function vBuy(k,i){
 ${k==="bot"?`
   <label>Pilih Bot</label>
   <div class="bot-grid" id="buyBotGrid">
-    ${Object.values(BOT_INSTANCES).map(b => {
+    ${Object.values(BOT_INSTANCES).filter(b => b.id === "v1" || b.id === "v2").map(b => {
       const on = b.id === BUYBOT;
       return `<button type="button" class="bot-card ${on ? "on" : ""}" data-bot="${b.id}" aria-pressed="${on}" onclick="selectBuyBot('${b.id}')">
         <span class="bot-badge">${b.id.toUpperCase()}</span>
